@@ -31,11 +31,19 @@ class AtomSource extends AbstractAtom implements Renderer\RendererInterface
     /**
      * Render Atom Feed Metadata (Source element)
      *
+<<<<<<< HEAD
      * @return \Zend\Feed\Writer\Renderer\Feed\AbstractAtom
      */
     public function render()
     {
         if (! $this->container->getEncoding()) {
+=======
+     * @return \Zend\Feed\Writer\Renderer\Feed\Atom
+     */
+    public function render()
+    {
+        if (!$this->container->getEncoding()) {
+>>>>>>> pantheon-drops-8/master
             $this->container->setEncoding('UTF-8');
         }
         $this->dom = new DOMDocument('1.0', $this->container->getEncoding());
@@ -60,7 +68,11 @@ class AtomSource extends AbstractAtom implements Renderer\RendererInterface
         foreach ($this->extensions as $ext) {
             $ext->setType($this->getType());
             $ext->setRootElement($this->getRootElement());
+<<<<<<< HEAD
             $ext->setDomDocument($this->getDomDocument(), $root);
+=======
+            $ext->setDOMDocument($this->getDOMDocument(), $root);
+>>>>>>> pantheon-drops-8/master
             $ext->render();
         }
         return $this;
@@ -73,11 +85,17 @@ class AtomSource extends AbstractAtom implements Renderer\RendererInterface
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setGenerator(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getGenerator()) {
+=======
+    protected function _setGenerator(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getGenerator()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
 

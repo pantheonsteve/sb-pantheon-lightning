@@ -119,7 +119,11 @@ abstract class AbstractFeed
      * Set the XPath query
      *
      * @param  DOMXPath $xpath
+<<<<<<< HEAD
      * @return AbstractFeed
+=======
+     * @return AbstractEntry
+>>>>>>> pantheon-drops-8/master
      */
     public function setXpath(DOMXPath $xpath = null)
     {

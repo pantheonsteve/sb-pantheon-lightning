@@ -1,4 +1,25 @@
 <?php
+<<<<<<< HEAD
+=======
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
+
+>>>>>>> pantheon-drops-8/master
 namespace Doctrine\Common\Proxy;
 
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
@@ -12,8 +33,11 @@ use Doctrine\Common\Util\ClassUtils;
  *
  * @author Marco Pivetta <ocramius@gmail.com>
  * @since  2.4
+<<<<<<< HEAD
  *
  * @deprecated The Doctrine\Common\Proxy component is deprecated, please use ocramius/proxy-manager instead.
+=======
+>>>>>>> pantheon-drops-8/master
  */
 class ProxyGenerator
 {
@@ -21,7 +45,11 @@ class ProxyGenerator
      * Used to match very simple id methods that don't need
      * to be decorated since the identifier is known.
      */
+<<<<<<< HEAD
     const PATTERN_MATCH_ID_METHOD = '((public\s+)?(function\s+%s\s*\(\)\s*)\s*(?::\s*\??\s*\\\\?[a-z_\x7f-\xff][\w\x7f-\xff]*(?:\\\\[a-z_\x7f-\xff][\w\x7f-\xff]*)*\s*)?{\s*return\s*\$this->%s;\s*})i';
+=======
+    const PATTERN_MATCH_ID_METHOD = '((public\s+)?(function\s+%s\s*\(\)\s*)\s*{\s*return\s*\$this->%s;\s*})i';
+>>>>>>> pantheon-drops-8/master
 
     /**
      * The namespace that contains all proxy classes.
@@ -203,8 +231,13 @@ class <proxyShortClassName> extends \<className> implements \<baseProxyInterface
             throw InvalidArgumentException::proxyNamespaceRequired();
         }
 
+<<<<<<< HEAD
         $this->proxyDirectory = $proxyDirectory;
         $this->proxyNamespace = $proxyNamespace;
+=======
+        $this->proxyDirectory        = $proxyDirectory;
+        $this->proxyNamespace        = $proxyNamespace;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -240,13 +273,19 @@ class <proxyShortClassName> extends \<className> implements \<baseProxyInterface
      * @param \Doctrine\Common\Persistence\Mapping\ClassMetadata $class    Metadata for the original class.
      * @param string|bool                                        $fileName Filename (full path) for the generated class. If none is given, eval() is used.
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+>>>>>>> pantheon-drops-8/master
      * @throws UnexpectedValueException
      */
     public function generateProxyClass(ClassMetadata $class, $fileName = false)
     {
+<<<<<<< HEAD
         $this->verifyClassCanBeProxied($class);
 
+=======
+>>>>>>> pantheon-drops-8/master
         preg_match_all('(<([a-zA-Z]+)>)', $this->proxyClassTemplate, $placeholderMatches);
 
         $placeholderMatches = array_combine($placeholderMatches[0], $placeholderMatches[1]);
@@ -294,6 +333,7 @@ class <proxyShortClassName> extends \<className> implements \<baseProxyInterface
     }
 
     /**
+<<<<<<< HEAD
      * @param ClassMetadata $class
      *
      * @throws InvalidArgumentException
@@ -310,6 +350,8 @@ class <proxyShortClassName> extends \<className> implements \<baseProxyInterface
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Generates the proxy short class name to be used in the template.
      *
      * @param \Doctrine\Common\Persistence\Mapping\ClassMetadata $class
@@ -334,7 +376,11 @@ class <proxyShortClassName> extends \<className> implements \<baseProxyInterface
     private function generateNamespace(ClassMetadata $class)
     {
         $proxyClassName = ClassUtils::generateProxyClassName($class->getName(), $this->proxyNamespace);
+<<<<<<< HEAD
         $parts          = explode('\\', strrev($proxyClassName), 2);
+=======
+        $parts = explode('\\', strrev($proxyClassName), 2);
+>>>>>>> pantheon-drops-8/master
 
         return strrev($parts[1]);
     }
@@ -388,7 +434,11 @@ class <proxyShortClassName> extends \<className> implements \<baseProxyInterface
     {
 
 EOT;
+<<<<<<< HEAD
         $toUnset         = [];
+=======
+        $toUnset = [];
+>>>>>>> pantheon-drops-8/master
 
         foreach ($this->getLazyLoadedPublicProperties($class) as $lazyPublicProperty => $unused) {
             $toUnset[] = '$this->' . $lazyPublicProperty;
@@ -759,7 +809,12 @@ EOT;
         foreach ($reflectionMethods as $method) {
             $name = $method->getName();
 
+<<<<<<< HEAD
             if ($method->isConstructor() ||
+=======
+            if (
+                $method->isConstructor() ||
+>>>>>>> pantheon-drops-8/master
                 isset($skippedMethods[strtolower($name)]) ||
                 isset($methodNames[$name]) ||
                 $method->isFinal() ||
@@ -770,7 +825,11 @@ EOT;
             }
 
             $methodNames[$name] = true;
+<<<<<<< HEAD
             $methods           .= "\n    /**\n"
+=======
+            $methods .= "\n    /**\n"
+>>>>>>> pantheon-drops-8/master
                 . "     * {@inheritDoc}\n"
                 . "     */\n"
                 . '    public function ';
@@ -779,7 +838,11 @@ EOT;
                 $methods .= '&';
             }
 
+<<<<<<< HEAD
             $methods .= $name . '(' . $this->buildParametersString($method->getParameters()) . ')';
+=======
+            $methods .= $name . '(' . $this->buildParametersString($class, $method, $method->getParameters()) . ')';
+>>>>>>> pantheon-drops-8/master
             $methods .= $this->getMethodReturnType($method);
             $methods .= "\n" . '    {' . "\n";
 
@@ -789,21 +852,33 @@ EOT;
                 $cast       = in_array($fieldType, ['integer', 'smallint']) ? '(int) ' : '';
 
                 $methods .= '        if ($this->__isInitialized__ === false) {' . "\n";
+<<<<<<< HEAD
                 $methods .= '            ';
                 $methods .= $this->shouldProxiedMethodReturn($method) ? 'return ' : '';
                 $methods .= $cast . ' parent::' . $method->getName() . "();\n";
+=======
+                $methods .= '            return ' . $cast . ' parent::' . $method->getName() . "();\n";
+>>>>>>> pantheon-drops-8/master
                 $methods .= '        }' . "\n\n";
             }
 
             $invokeParamsString = implode(', ', $this->getParameterNamesForInvoke($method->getParameters()));
+<<<<<<< HEAD
             $callParamsString   = implode(', ', $this->getParameterNamesForParentCall($method->getParameters()));
+=======
+            $callParamsString = implode(', ', $this->getParameterNamesForParentCall($method->getParameters()));
+>>>>>>> pantheon-drops-8/master
 
             $methods .= "\n        \$this->__initializer__ "
                 . "&& \$this->__initializer__->__invoke(\$this, " . var_export($name, true)
                 . ", [" . $invokeParamsString . "]);"
+<<<<<<< HEAD
                 . "\n\n        "
                 . ($this->shouldProxiedMethodReturn($method) ? 'return ' : '')
                 . "parent::" . $name . '(' . $callParamsString . ');'
+=======
+                . "\n\n        return parent::" . $name . '(' . $callParamsString . ');'
+>>>>>>> pantheon-drops-8/master
                 . "\n" . '    }' . "\n";
         }
 
@@ -845,8 +920,13 @@ EOT;
     private function isShortIdentifierGetter($method, ClassMetadata $class)
     {
         $identifier = lcfirst(substr($method->getName(), 3));
+<<<<<<< HEAD
         $startLine  = $method->getStartLine();
         $endLine    = $method->getEndLine();
+=======
+        $startLine = $method->getStartLine();
+        $endLine = $method->getEndLine();
+>>>>>>> pantheon-drops-8/master
         $cheapCheck = (
             $method->getNumberOfParameters() == 0
             && substr($method->getName(), 0, 3) == 'get'
@@ -879,7 +959,11 @@ EOT;
     private function getLazyLoadedPublicProperties(ClassMetadata $class)
     {
         $defaultProperties = $class->getReflectionClass()->getDefaultProperties();
+<<<<<<< HEAD
         $properties        = [];
+=======
+        $properties = [];
+>>>>>>> pantheon-drops-8/master
 
         foreach ($class->getReflectionClass()->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
             $name = $property->getName();
@@ -893,11 +977,20 @@ EOT;
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * @param ClassMetadata          $class
+     * @param \ReflectionMethod      $method
+>>>>>>> pantheon-drops-8/master
      * @param \ReflectionParameter[] $parameters
      *
      * @return string
      */
+<<<<<<< HEAD
     private function buildParametersString(array $parameters)
+=======
+    private function buildParametersString(ClassMetadata $class, \ReflectionMethod $method, array $parameters)
+>>>>>>> pantheon-drops-8/master
     {
         $parameterDefinitions = [];
 
@@ -905,7 +998,11 @@ EOT;
         foreach ($parameters as $param) {
             $parameterDefinition = '';
 
+<<<<<<< HEAD
             if ($parameterType = $this->getParameterType($param)) {
+=======
+            if ($parameterType = $this->getParameterType($class, $method, $param)) {
+>>>>>>> pantheon-drops-8/master
                 $parameterDefinition .= $parameterType . ' ';
             }
 
@@ -913,10 +1010,18 @@ EOT;
                 $parameterDefinition .= '&';
             }
 
+<<<<<<< HEAD
             if ($param->isVariadic()) {
                 $parameterDefinition .= '...';
             }
 
+=======
+            if (method_exists($param, 'isVariadic') && $param->isVariadic()) {
+                $parameterDefinition .= '...';
+            }
+
+            $parameters[]     = '$' . $param->getName();
+>>>>>>> pantheon-drops-8/master
             $parameterDefinition .= '$' . $param->getName();
 
             if ($param->isDefaultValueAvailable()) {
@@ -936,6 +1041,7 @@ EOT;
      *
      * @return string|null
      */
+<<<<<<< HEAD
     private function getParameterType(\ReflectionParameter $parameter)
     {
         if ( ! $parameter->hasType()) {
@@ -943,6 +1049,40 @@ EOT;
         }
 
         return $this->formatType($parameter->getType(), $parameter->getDeclaringFunction(), $parameter);
+=======
+    private function getParameterType(ClassMetadata $class, \ReflectionMethod $method, \ReflectionParameter $parameter)
+    {
+
+        // We need to pick the type hint class too
+        if ($parameter->isArray()) {
+            return 'array';
+        }
+
+        if ($parameter->isCallable()) {
+            return 'callable';
+        }
+
+        if (method_exists($parameter, 'hasType') && $parameter->hasType() && $parameter->getType()->isBuiltin()) {
+            return (string) $parameter->getType();
+        }
+
+        try {
+            $parameterClass = $parameter->getClass();
+
+            if ($parameterClass) {
+                return '\\' . $parameterClass->getName();
+            }
+        } catch (\ReflectionException $previous) {
+            throw UnexpectedValueException::invalidParameterTypeHint(
+                $class->getName(),
+                $method->getName(),
+                $parameter->getName(),
+                $previous
+            );
+        }
+
+        return null;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -971,7 +1111,11 @@ EOT;
             function (\ReflectionParameter $parameter) {
                 $name = '';
 
+<<<<<<< HEAD
                 if ($parameter->isVariadic()) {
+=======
+                if (method_exists($parameter, 'isVariadic') && $parameter->isVariadic()) {
+>>>>>>> pantheon-drops-8/master
                     $name .= '...';
                 }
 
@@ -984,12 +1128,17 @@ EOT;
     }
 
     /**
+<<<<<<< HEAD
      * @param \ReflectionMethod $method
+=======
+     * @Param \ReflectionMethod $method
+>>>>>>> pantheon-drops-8/master
      *
      * @return string
      */
     private function getMethodReturnType(\ReflectionMethod $method)
     {
+<<<<<<< HEAD
         if ( ! $method->hasReturnType()) {
             return '';
         }
@@ -1060,5 +1209,28 @@ EOT;
         }
 
         return $name;
+=======
+        if (! (method_exists($method, 'hasReturnType') && $method->hasReturnType())) {
+            return '';
+        }
+
+        $returnType = $method->getReturnType();
+
+        if ($returnType->isBuiltin()) {
+            return ': ' . $returnType;
+        }
+
+        $nameLower = strtolower((string) $returnType);
+
+        if ('self' === $nameLower) {
+            return ': \\' . $method->getDeclaringClass()->getName();
+        }
+
+        if ('parent' === $nameLower) {
+            return ': \\' . $method->getDeclaringClass()->getParentClass()->getName();
+        }
+
+        return ': \\' . (string) $returnType;
+>>>>>>> pantheon-drops-8/master
     }
 }

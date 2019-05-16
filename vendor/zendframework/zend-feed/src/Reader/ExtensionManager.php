@@ -46,7 +46,11 @@ class ExtensionManager implements ExtensionManagerInterface
      */
     public function __call($method, $args)
     {
+<<<<<<< HEAD
         if (! method_exists($this->pluginManager, $method)) {
+=======
+        if (!method_exists($this->pluginManager, $method)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\BadMethodCallException(sprintf(
                 'Method by name of %s does not exist in %s',
                 $method,

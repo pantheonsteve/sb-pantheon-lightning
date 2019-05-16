@@ -38,11 +38,19 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
     {
         $supportedEncodings = static::getSupportedEncodings();
 
+<<<<<<< HEAD
         if (! in_array(strtoupper($encoding), $supportedEncodings)) {
             return false;
         }
 
         if ($convertEncoding !== null && ! in_array(strtoupper($convertEncoding), $supportedEncodings)) {
+=======
+        if (!in_array(strtoupper($encoding), $supportedEncodings)) {
+            return false;
+        }
+
+        if ($convertEncoding !== null && !in_array(strtoupper($convertEncoding), $supportedEncodings)) {
+>>>>>>> pantheon-drops-8/master
             return false;
         }
 
@@ -61,7 +69,11 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
         $supportedEncodings = static::getSupportedEncodings();
 
         $encodingUpper = strtoupper($encoding);
+<<<<<<< HEAD
         if (! in_array($encodingUpper, $supportedEncodings)) {
+=======
+        if (!in_array($encodingUpper, $supportedEncodings)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException(
                 'Wrapper doesn\'t support character encoding "' . $encoding . '"'
             );
@@ -69,7 +81,11 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
 
         if ($convertEncoding !== null) {
             $convertEncodingUpper = strtoupper($convertEncoding);
+<<<<<<< HEAD
             if (! in_array($convertEncodingUpper, $supportedEncodings)) {
+=======
+            if (!in_array($convertEncodingUpper, $supportedEncodings)) {
+>>>>>>> pantheon-drops-8/master
                 throw new Exception\InvalidArgumentException(
                     'Wrapper doesn\'t support character encoding "' . $convertEncoding . '"'
                 );

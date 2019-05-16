@@ -47,6 +47,7 @@ class Entry extends Extension\AbstractRenderer
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _appendNamespaces()
     {
@@ -55,6 +56,12 @@ class Entry extends Extension\AbstractRenderer
             'xmlns:content',
             'http://purl.org/rss/1.0/modules/content/'
         );
+=======
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute('xmlns:content',
+            'http://purl.org/rss/1.0/modules/content/');
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -64,12 +71,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setContent(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $content = $this->getDataContainer()->getContent();
         if (! $content) {
+=======
+    protected function _setContent(DOMDocument $dom, DOMElement $root)
+    {
+        $content = $this->getDataContainer()->getContent();
+        if (!$content) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $element = $dom->createElement('content:encoded');

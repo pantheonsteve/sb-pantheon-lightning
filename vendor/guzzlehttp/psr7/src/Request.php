@@ -45,7 +45,11 @@ class Request implements RequestInterface
         $this->setHeaders($headers);
         $this->protocol = $version;
 
+<<<<<<< HEAD
         if (!isset($this->headerNames['host'])) {
+=======
+        if (!$this->hasHeader('Host')) {
+>>>>>>> pantheon-drops-8/master
             $this->updateHostFromUri();
         }
 
@@ -110,7 +114,11 @@ class Request implements RequestInterface
         $new = clone $this;
         $new->uri = $uri;
 
+<<<<<<< HEAD
         if (!$preserveHost || !isset($this->headerNames['host'])) {
+=======
+        if (!$preserveHost) {
+>>>>>>> pantheon-drops-8/master
             $new->updateHostFromUri();
         }
 

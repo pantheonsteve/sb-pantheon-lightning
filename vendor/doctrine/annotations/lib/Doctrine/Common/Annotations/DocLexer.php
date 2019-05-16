@@ -51,7 +51,10 @@ final class DocLexer extends AbstractLexer
     const T_TRUE                = 110;
     const T_NULL                = 111;
     const T_COLON               = 112;
+<<<<<<< HEAD
     const T_MINUS               = 113;
+=======
+>>>>>>> pantheon-drops-8/master
 
     /**
      * @var array
@@ -65,7 +68,10 @@ final class DocLexer extends AbstractLexer
         '}'  => self::T_CLOSE_CURLY_BRACES,
         '='  => self::T_EQUALS,
         ':'  => self::T_COLON,
+<<<<<<< HEAD
         '-'  => self::T_MINUS,
+=======
+>>>>>>> pantheon-drops-8/master
         '\\' => self::T_NAMESPACE_SEPARATOR
     );
 
@@ -79,6 +85,7 @@ final class DocLexer extends AbstractLexer
     );
 
     /**
+<<<<<<< HEAD
      * Whether the next token starts immediately, or if there were
      * non-captured symbols before that
      */
@@ -90,6 +97,8 @@ final class DocLexer extends AbstractLexer
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritdoc}
      */
     protected function getCatchablePatterns()

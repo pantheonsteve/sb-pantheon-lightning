@@ -59,7 +59,11 @@ class ServiceConfigurator extends AbstractServiceConfigurator
     {
         parent::__destruct();
 
+<<<<<<< HEAD
         $this->container->removeBindings($this->id);
+=======
+        $this->container->addRemovedBindingIds($this->id);
+>>>>>>> pantheon-drops-8/master
 
         if (!$this->definition instanceof ChildDefinition) {
             $this->container->setDefinition($this->id, $this->definition->setInstanceofConditionals($this->instanceof));

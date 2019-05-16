@@ -13,7 +13,10 @@
 namespace Twig\TokenParser;
 
 use Twig\Error\SyntaxError;
+<<<<<<< HEAD
 use Twig\Node\Node;
+=======
+>>>>>>> pantheon-drops-8/master
 use Twig\Token;
 
 /**
@@ -39,8 +42,11 @@ class ExtendsTokenParser extends AbstractTokenParser
         $this->parser->setParent($this->parser->getExpressionParser()->parseExpression());
 
         $stream->expect(Token::BLOCK_END_TYPE);
+<<<<<<< HEAD
 
         return new Node();
+=======
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getTag()

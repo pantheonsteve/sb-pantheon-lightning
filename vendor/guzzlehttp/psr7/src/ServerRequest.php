@@ -166,7 +166,11 @@ class ServerRequest extends Request implements ServerRequestInterface
     public static function fromGlobals()
     {
         $method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
+<<<<<<< HEAD
         $headers = getallheaders();
+=======
+        $headers = function_exists('getallheaders') ? getallheaders() : [];
+>>>>>>> pantheon-drops-8/master
         $uri = self::getUriFromGlobals();
         $body = new LazyOpenStream('php://input', 'r+');
         $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? str_replace('HTTP/', '', $_SERVER['SERVER_PROTOCOL']) : '1.1';
@@ -180,6 +184,7 @@ class ServerRequest extends Request implements ServerRequestInterface
             ->withUploadedFiles(self::normalizeFiles($_FILES));
     }
 
+<<<<<<< HEAD
     private static function extractHostAndPortFromAuthority($authority)
     {
         $uri = 'http://'.$authority;
@@ -194,19 +199,26 @@ class ServerRequest extends Request implements ServerRequestInterface
         return [$host, $port];
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     /**
      * Get a Uri populated with values from $_SERVER.
      *
      * @return UriInterface
      */
+<<<<<<< HEAD
     public static function getUriFromGlobals()
     {
+=======
+    public static function getUriFromGlobals() {
+>>>>>>> pantheon-drops-8/master
         $uri = new Uri('');
 
         $uri = $uri->withScheme(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http');
 
         $hasPort = false;
         if (isset($_SERVER['HTTP_HOST'])) {
+<<<<<<< HEAD
             list($host, $port) = self::extractHostAndPortFromAuthority($_SERVER['HTTP_HOST']);
             if ($host !== null) {
                 $uri = $uri->withHost($host);
@@ -215,6 +227,13 @@ class ServerRequest extends Request implements ServerRequestInterface
             if ($port !== null) {
                 $hasPort = true;
                 $uri = $uri->withPort($port);
+=======
+            $hostHeaderParts = explode(':', $_SERVER['HTTP_HOST']);
+            $uri = $uri->withHost($hostHeaderParts[0]);
+            if (isset($hostHeaderParts[1])) {
+                $hasPort = true;
+                $uri = $uri->withPort($hostHeaderParts[1]);
+>>>>>>> pantheon-drops-8/master
             }
         } elseif (isset($_SERVER['SERVER_NAME'])) {
             $uri = $uri->withHost($_SERVER['SERVER_NAME']);
@@ -228,7 +247,11 @@ class ServerRequest extends Request implements ServerRequestInterface
 
         $hasQuery = false;
         if (isset($_SERVER['REQUEST_URI'])) {
+<<<<<<< HEAD
             $requestUriParts = explode('?', $_SERVER['REQUEST_URI'], 2);
+=======
+            $requestUriParts = explode('?', $_SERVER['REQUEST_URI']);
+>>>>>>> pantheon-drops-8/master
             $uri = $uri->withPath($requestUriParts[0]);
             if (isset($requestUriParts[1])) {
                 $hasQuery = true;

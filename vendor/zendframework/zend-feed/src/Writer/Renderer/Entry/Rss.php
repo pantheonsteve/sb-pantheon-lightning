@@ -56,7 +56,11 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
         foreach ($this->extensions as $ext) {
             $ext->setType($this->getType());
             $ext->setRootElement($this->getRootElement());
+<<<<<<< HEAD
             $ext->setDomDocument($this->getDomDocument(), $entry);
+=======
+            $ext->setDOMDocument($this->getDOMDocument(), $entry);
+>>>>>>> pantheon-drops-8/master
             $ext->render();
         }
 
@@ -71,17 +75,28 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @return void
      * @throws Writer\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getDescription()
         && ! $this->getDataContainer()->getTitle()) {
+=======
+    protected function _setTitle(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDescription()
+        && !$this->getDataContainer()->getTitle()) {
+>>>>>>> pantheon-drops-8/master
             $message = 'RSS 2.0 entry elements SHOULD contain exactly one'
             . ' title element but a title has not been set. In addition, there'
             . ' is no description as required in the absence of a title.';
             $exception = new Writer\Exception\InvalidArgumentException($message);
+<<<<<<< HEAD
             if (! $this->ignoreExceptions) {
+=======
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -102,25 +117,40 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @return void
      * @throws Writer\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDescription(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getDescription()
         && ! $this->getDataContainer()->getTitle()) {
+=======
+    protected function _setDescription(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDescription()
+        && !$this->getDataContainer()->getTitle()) {
+>>>>>>> pantheon-drops-8/master
             $message = 'RSS 2.0 entry elements SHOULD contain exactly one'
             . ' description element but a description has not been set. In'
             . ' addition, there is no title element as required in the absence'
             . ' of a description.';
             $exception = new Writer\Exception\InvalidArgumentException($message);
+<<<<<<< HEAD
             if (! $this->ignoreExceptions) {
+=======
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
                 return;
             }
         }
+<<<<<<< HEAD
         if (! $this->getDataContainer()->getDescription()) {
+=======
+        if (!$this->getDataContainer()->getDescription()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $subtitle = $dom->createElement('description');
@@ -136,11 +166,17 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDateModified(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getDateModified()) {
+=======
+    protected function _setDateModified(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDateModified()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
 
@@ -159,6 +195,7 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDateCreated(DOMDocument $dom, DOMElement $root)
     {
@@ -167,6 +204,14 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
             return;
         }
         if (! $this->getDataContainer()->getDateModified()) {
+=======
+    protected function _setDateCreated(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDateCreated()) {
+            return;
+        }
+        if (!$this->getDataContainer()->getDateModified()) {
+>>>>>>> pantheon-drops-8/master
             $this->getDataContainer()->setDateModified(
                 $this->getDataContainer()->getDateCreated()
             );
@@ -180,12 +225,19 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setAuthors(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $authors = $this->container->getAuthors();
         if ((! $authors || empty($authors))) {
+=======
+    protected function _setAuthors(DOMDocument $dom, DOMElement $root)
+    {
+        $authors = $this->container->getAuthors();
+        if ((!$authors || empty($authors))) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($authors as $data) {
@@ -208,6 +260,7 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @return void
      * @throws Writer\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setEnclosure(DOMDocument $dom, DOMElement $root)
     {
@@ -219,25 +272,49 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
         if (! isset($data['type'])) {
             $exception = new Writer\Exception\InvalidArgumentException('Enclosure "type" is not set');
             if (! $this->ignoreExceptions) {
+=======
+    protected function _setEnclosure(DOMDocument $dom, DOMElement $root)
+    {
+        $data = $this->container->getEnclosure();
+        if ((!$data || empty($data))) {
+            return;
+        }
+        if (!isset($data['type'])) {
+            $exception = new Writer\Exception\InvalidArgumentException('Enclosure "type" is not set');
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
                 return;
             }
         }
+<<<<<<< HEAD
         if (! isset($data['length'])) {
             $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" is not set');
             if (! $this->ignoreExceptions) {
+=======
+        if (!isset($data['length'])) {
+            $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" is not set');
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
                 return;
             }
         }
+<<<<<<< HEAD
         if ((int) $data['length'] < 0 || ! ctype_digit((string) $data['length'])) {
             $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" must be an integer'
             . ' indicating the content\'s length in bytes');
             if (! $this->ignoreExceptions) {
+=======
+        if ((int) $data['length'] < 0 || !ctype_digit((string) $data['length'])) {
+            $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" must be an integer'
+            . ' indicating the content\'s length in bytes');
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -258,11 +335,17 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setLink(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getLink()) {
+=======
+    protected function _setLink(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getLink()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $link = $dom->createElement('link');
@@ -278,17 +361,25 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getId()
         && ! $this->getDataContainer()->getLink()) {
+=======
+    protected function _setId(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getId()
+        && !$this->getDataContainer()->getLink()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
 
         $id = $dom->createElement('guid');
         $root->appendChild($id);
+<<<<<<< HEAD
         if (! $this->getDataContainer()->getId()) {
             $this->getDataContainer()->setId(
                 $this->getDataContainer()->getLink()
@@ -300,6 +391,15 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
         $uri = Uri::factory($this->getDataContainer()->getId());
         if (! $uri->isValid() || ! $uri->isAbsolute()) {
             /** @see http://www.rssboard.org/rss-profile#element-channel-item-guid */
+=======
+        if (!$this->getDataContainer()->getId()) {
+            $this->getDataContainer()->setId(
+                $this->getDataContainer()->getLink());
+        }
+        $text = $dom->createTextNode($this->getDataContainer()->getId());
+        $id->appendChild($text);
+        if (!Uri::factory($this->getDataContainer()->getId())->isValid()) {
+>>>>>>> pantheon-drops-8/master
             $id->setAttribute('isPermaLink', 'false');
         }
     }
@@ -311,12 +411,19 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCommentLink(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $link = $this->getDataContainer()->getCommentLink();
         if (! $link) {
+=======
+    protected function _setCommentLink(DOMDocument $dom, DOMElement $root)
+    {
+        $link = $this->getDataContainer()->getCommentLink();
+        if (!$link) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $clink = $this->dom->createElement('comments');
@@ -332,12 +439,19 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
      * @param DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCategories(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $categories = $this->getDataContainer()->getCategories();
         if (! $categories) {
+=======
+    protected function _setCategories(DOMDocument $dom, DOMElement $root)
+    {
+        $categories = $this->getDataContainer()->getCategories();
+        if (!$categories) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($categories as $cat) {

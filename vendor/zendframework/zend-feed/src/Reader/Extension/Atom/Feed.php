@@ -53,7 +53,11 @@ class Feed extends Extension\AbstractFeed
         if ($list->length) {
             foreach ($list as $author) {
                 $author = $this->getAuthorFromElement($author);
+<<<<<<< HEAD
                 if (! empty($author)) {
+=======
+                if (!empty($author)) {
+>>>>>>> pantheon-drops-8/master
                     $authors[] = $author;
                 }
             }
@@ -91,7 +95,11 @@ class Feed extends Extension\AbstractFeed
             $copyright = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:rights)');
         }
 
+<<<<<<< HEAD
         if (! $copyright) {
+=======
+        if (!$copyright) {
+>>>>>>> pantheon-drops-8/master
             $copyright = null;
         }
 
@@ -175,7 +183,11 @@ class Feed extends Extension\AbstractFeed
             $description = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:subtitle)');
         }
 
+<<<<<<< HEAD
         if (! $description) {
+=======
+        if (!$description) {
+>>>>>>> pantheon-drops-8/master
             $description = null;
         }
 
@@ -197,7 +209,11 @@ class Feed extends Extension\AbstractFeed
         // TODO: Add uri support
         $generator = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:generator)');
 
+<<<<<<< HEAD
         if (! $generator) {
+=======
+        if (!$generator) {
+>>>>>>> pantheon-drops-8/master
             $generator = null;
         }
 
@@ -219,7 +235,11 @@ class Feed extends Extension\AbstractFeed
 
         $id = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:id)');
 
+<<<<<<< HEAD
         if (! $id) {
+=======
+        if (!$id) {
+>>>>>>> pantheon-drops-8/master
             if ($this->getLink()) {
                 $id = $this->getLink();
             } elseif ($this->getTitle()) {
@@ -247,11 +267,19 @@ class Feed extends Extension\AbstractFeed
 
         $language = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:lang)');
 
+<<<<<<< HEAD
         if (! $language) {
             $language = $this->xpath->evaluate('string(//@xml:lang[1])');
         }
 
         if (! $language) {
+=======
+        if (!$language) {
+            $language = $this->xpath->evaluate('string(//@xml:lang[1])');
+        }
+
+        if (!$language) {
+>>>>>>> pantheon-drops-8/master
             $language = null;
         }
 
@@ -273,7 +301,11 @@ class Feed extends Extension\AbstractFeed
 
         $imageUrl = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:logo)');
 
+<<<<<<< HEAD
         if (! $imageUrl) {
+=======
+        if (!$imageUrl) {
+>>>>>>> pantheon-drops-8/master
             $image = null;
         } else {
             $image = ['uri' => $imageUrl];
@@ -297,7 +329,11 @@ class Feed extends Extension\AbstractFeed
 
         $baseUrl = $this->xpath->evaluate('string(//@xml:base[1])');
 
+<<<<<<< HEAD
         if (! $baseUrl) {
+=======
+        if (!$baseUrl) {
+>>>>>>> pantheon-drops-8/master
             $baseUrl = null;
         }
         $this->data['baseUrl'] = $baseUrl;
@@ -394,7 +430,11 @@ class Feed extends Extension\AbstractFeed
 
         $title = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/atom:title)');
 
+<<<<<<< HEAD
         if (! $title) {
+=======
+        if (!$title) {
+>>>>>>> pantheon-drops-8/master
             $title = null;
         }
 
@@ -479,6 +519,7 @@ class Feed extends Extension\AbstractFeed
     /**
      *  Attempt to absolutise the URI, i.e. if a relative URI apply the
      *  xml:base value as a prefix to turn into an absolute URI.
+<<<<<<< HEAD
      *
      * @param string $link
      * @return string|null
@@ -489,6 +530,15 @@ class Feed extends Extension\AbstractFeed
             if ($this->getBaseUrl() !== null) {
                 $link = $this->getBaseUrl() . $link;
                 if (! Uri::factory($link)->isValid()) {
+=======
+     */
+    protected function absolutiseUri($link)
+    {
+        if (!Uri::factory($link)->isAbsolute()) {
+            if ($this->getBaseUrl() !== null) {
+                $link = $this->getBaseUrl() . $link;
+                if (!Uri::factory($link)->isValid()) {
+>>>>>>> pantheon-drops-8/master
                     $link = null;
                 }
             }
@@ -526,12 +576,20 @@ class Feed extends Extension\AbstractFeed
         $prefixAtom03 = $dom->lookupPrefix(Reader\Reader::NAMESPACE_ATOM_03);
         $prefixAtom10 = $dom->lookupPrefix(Reader\Reader::NAMESPACE_ATOM_10);
         if ($dom->isDefaultNamespace(Reader\Reader::NAMESPACE_ATOM_10)
+<<<<<<< HEAD
             || ! empty($prefixAtom10)
+=======
+            || !empty($prefixAtom10)
+>>>>>>> pantheon-drops-8/master
         ) {
             return Reader\Reader::TYPE_ATOM_10;
         }
         if ($dom->isDefaultNamespace(Reader\Reader::NAMESPACE_ATOM_03)
+<<<<<<< HEAD
             || ! empty($prefixAtom03)
+=======
+            || !empty($prefixAtom03)
+>>>>>>> pantheon-drops-8/master
         ) {
             return Reader\Reader::TYPE_ATOM_03;
         }

@@ -34,7 +34,11 @@ class Atom extends AbstractAtom implements Renderer\RendererInterface
      */
     public function render()
     {
+<<<<<<< HEAD
         if (! $this->container->getEncoding()) {
+=======
+        if (!$this->container->getEncoding()) {
+>>>>>>> pantheon-drops-8/master
             $this->container->setEncoding('UTF-8');
         }
         $this->dom = new DOMDocument('1.0', $this->container->getEncoding());
@@ -64,7 +68,11 @@ class Atom extends AbstractAtom implements Renderer\RendererInterface
         foreach ($this->extensions as $ext) {
             $ext->setType($this->getType());
             $ext->setRootElement($this->getRootElement());
+<<<<<<< HEAD
             $ext->setDomDocument($this->getDomDocument(), $root);
+=======
+            $ext->setDOMDocument($this->getDOMDocument(), $root);
+>>>>>>> pantheon-drops-8/master
             $ext->render();
         }
 
@@ -75,7 +83,11 @@ class Atom extends AbstractAtom implements Renderer\RendererInterface
             if ($entry instanceof Writer\Entry) {
                 $renderer = new Renderer\Entry\Atom($entry);
             } else {
+<<<<<<< HEAD
                 if (! $this->dom->documentElement->hasAttribute('xmlns:at')) {
+=======
+                if (!$this->dom->documentElement->hasAttribute('xmlns:at')) {
+>>>>>>> pantheon-drops-8/master
                     $this->dom->documentElement->setAttribute(
                         'xmlns:at',
                         'http://purl.org/atompub/tombstones/1.0'

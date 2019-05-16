@@ -9,10 +9,13 @@
 
 namespace Zend\Diactoros\Response;
 
+<<<<<<< HEAD
 use function array_keys;
 use function array_reduce;
 use function strtolower;
 
+=======
+>>>>>>> pantheon-drops-8/master
 trait InjectContentTypeTrait
 {
     /**

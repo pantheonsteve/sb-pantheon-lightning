@@ -21,12 +21,22 @@ short and long options.</description>
   <name>Greg Beaver</name>
   <user>cellog</user>
   <email>cellog@php.net</email>
+<<<<<<< HEAD
   <active>no</active>
  </helper>
 
  <date>2019-02-06</date>
  <version>
   <release>1.4.2</release>
+=======
+  <active>yes</active>
+ </helper>
+
+ <date>2015-07-20</date>
+ <time>22:21:23</time>
+ <version>
+  <release>1.4.1</release>
+>>>>>>> pantheon-drops-8/master
   <api>1.4.0</api>
  </version>
  <stability>
@@ -36,7 +46,11 @@ short and long options.</description>
  <license uri="http://opensource.org/licenses/bsd-license.php">BSD-2-Clause</license>
 
  <notes>
+<<<<<<< HEAD
 * Remove use of each(), which is removed in PHP 8
+=======
+* Fix unit test on PHP 7 [cweiske]
+>>>>>>> pantheon-drops-8/master
  </notes>
 
  <contents>
@@ -76,6 +90,7 @@ short and long options.</description>
  <changelog>
 
   <release>
+<<<<<<< HEAD
     <date>2019-02-06</date>
     <version>
      <release>1.4.2</release>
@@ -92,6 +107,8 @@ short and long options.</description>
   </release>
 
   <release>
+=======
+>>>>>>> pantheon-drops-8/master
     <date>2015-07-20</date>
     <version>
      <release>1.4.1</release>

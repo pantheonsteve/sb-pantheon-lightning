@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
 namespace Masterminds\HTML5\Parser;
 
 /**
@@ -15,6 +18,10 @@ namespace Masterminds\HTML5\Parser;
  */
 class TreeBuildingRules
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> pantheon-drops-8/master
     protected static $tags = array(
         'li' => 1,
         'dd' => 1,
@@ -29,10 +36,28 @@ class TreeBuildingRules
         'tbody' => 1,
         'table' => 1,
         'optgroup' => 1,
+<<<<<<< HEAD
         'option' => 1,
     );
 
     /**
+=======
+        'option' => 1
+    );
+
+    /**
+     * Build a new rules engine.
+     *
+     * @param \DOMDocument $doc
+     *            The DOM document to use for evaluation and modification.
+     */
+    public function __construct($doc)
+    {
+        $this->doc = $doc;
+    }
+
+    /**
+>>>>>>> pantheon-drops-8/master
      * Returns true if the given tagname has special processing rules.
      */
     public function hasRules($tagname)
@@ -60,7 +85,11 @@ class TreeBuildingRules
                 return $this->handleRT($new, $current);
             case 'optgroup':
                 return $this->closeIfCurrentMatches($new, $current, array(
+<<<<<<< HEAD
                     'optgroup',
+=======
+                    'optgroup'
+>>>>>>> pantheon-drops-8/master
                 ));
             case 'option':
                 return $this->closeIfCurrentMatches($new, $current, array(
@@ -68,13 +97,21 @@ class TreeBuildingRules
                 ));
             case 'tr':
                 return $this->closeIfCurrentMatches($new, $current, array(
+<<<<<<< HEAD
                     'tr',
+=======
+                    'tr'
+>>>>>>> pantheon-drops-8/master
                 ));
             case 'td':
             case 'th':
                 return $this->closeIfCurrentMatches($new, $current, array(
                     'th',
+<<<<<<< HEAD
                     'td',
+=======
+                    'td'
+>>>>>>> pantheon-drops-8/master
                 ));
             case 'tbody':
             case 'thead':
@@ -84,7 +121,11 @@ class TreeBuildingRules
                 return $this->closeIfCurrentMatches($new, $current, array(
                     'thead',
                     'tfoot',
+<<<<<<< HEAD
                     'tbody',
+=======
+                    'tbody'
+>>>>>>> pantheon-drops-8/master
                 ));
         }
 
@@ -94,7 +135,11 @@ class TreeBuildingRules
     protected function handleLI($ele, $current)
     {
         return $this->closeIfCurrentMatches($ele, $current, array(
+<<<<<<< HEAD
             'li',
+=======
+            'li'
+>>>>>>> pantheon-drops-8/master
         ));
     }
 
@@ -102,7 +147,11 @@ class TreeBuildingRules
     {
         return $this->closeIfCurrentMatches($ele, $current, array(
             'dt',
+<<<<<<< HEAD
             'dd',
+=======
+            'dd'
+>>>>>>> pantheon-drops-8/master
         ));
     }
 
@@ -110,13 +159,22 @@ class TreeBuildingRules
     {
         return $this->closeIfCurrentMatches($ele, $current, array(
             'rt',
+<<<<<<< HEAD
             'rp',
+=======
+            'rp'
+>>>>>>> pantheon-drops-8/master
         ));
     }
 
     protected function closeIfCurrentMatches($ele, $current, $match)
     {
+<<<<<<< HEAD
         if (in_array($current->tagName, $match, true)) {
+=======
+        $tname = $current->tagName;
+        if (in_array($current->tagName, $match)) {
+>>>>>>> pantheon-drops-8/master
             $current->parentNode->appendChild($ele);
         } else {
             $current->appendChild($ele);

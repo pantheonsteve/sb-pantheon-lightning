@@ -12,8 +12,11 @@ use UnexpectedValueException;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\Stream;
 
+<<<<<<< HEAD
 use function sprintf;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * Serialize or deserialize response messages to/from arrays.
  *

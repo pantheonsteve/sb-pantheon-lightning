@@ -34,10 +34,15 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setLanguage(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _setLanguage(DOMDocument $dom, DOMElement $root)
+    {
+>>>>>>> pantheon-drops-8/master
         if ($this->getDataContainer()->getLanguage()) {
             $root->setAttribute('xml:lang', $this->getDataContainer()
                 ->getLanguage());
@@ -52,6 +57,7 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @return void
      * @throws Feed\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
@@ -61,6 +67,15 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
                 . ' atom:title element but a title has not been set';
             $exception = new Feed\Exception\InvalidArgumentException($message);
             if (! $this->ignoreExceptions) {
+=======
+    protected function _setTitle(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getTitle()) {
+            $message = 'Atom 1.0 feed elements MUST contain exactly one'
+                . ' atom:title element but a title has not been set';
+            $exception = new Feed\Exception\InvalidArgumentException($message);
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -82,11 +97,17 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDescription(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getDescription()) {
+=======
+    protected function _setDescription(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDescription()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $subtitle = $dom->createElement('subtitle');
@@ -104,6 +125,7 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @return void
      * @throws Feed\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDateModified(DOMDocument $dom, DOMElement $root)
     {
@@ -113,6 +135,15 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
                 . ' atom:updated element but a modification date has not been set';
             $exception = new Feed\Exception\InvalidArgumentException($message);
             if (! $this->ignoreExceptions) {
+=======
+    protected function _setDateModified(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDateModified()) {
+            $message = 'Atom 1.0 feed elements MUST contain exactly one'
+                . ' atom:updated element but a modification date has not been set';
+            $exception = new Feed\Exception\InvalidArgumentException($message);
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -135,6 +166,7 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setGenerator(DOMDocument $dom, DOMElement $root)
     {
@@ -145,6 +177,13 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
                 Version::VERSION,
                 'http://framework.zend.com'
             );
+=======
+    protected function _setGenerator(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getGenerator()) {
+            $this->getDataContainer()->setGenerator('Zend_Feed_Writer',
+                Version::VERSION, 'http://framework.zend.com');
+>>>>>>> pantheon-drops-8/master
         }
 
         $gdata = $this->getDataContainer()->getGenerator();
@@ -167,11 +206,17 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setLink(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getLink()) {
+=======
+    protected function _setLink(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getLink()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $link = $dom->createElement('link');
@@ -189,18 +234,29 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @return void
      * @throws Feed\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $flinks = $this->getDataContainer()->getFeedLinks();
         if (! $flinks || ! array_key_exists('atom', $flinks)) {
+=======
+    protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
+    {
+        $flinks = $this->getDataContainer()->getFeedLinks();
+        if (!$flinks || !array_key_exists('atom', $flinks)) {
+>>>>>>> pantheon-drops-8/master
             $message = 'Atom 1.0 feed elements SHOULD contain one atom:link '
                 . 'element with a rel attribute value of "self".  This is the '
                 . 'preferred URI for retrieving Atom Feed Documents representing '
                 . 'this Atom feed but a feed link has not been set';
             $exception = new Feed\Exception\InvalidArgumentException($message);
+<<<<<<< HEAD
             if (! $this->ignoreExceptions) {
+=======
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -225,12 +281,19 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setAuthors(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $authors = $this->container->getAuthors();
         if (! $authors || empty($authors)) {
+=======
+    protected function _setAuthors(DOMDocument $dom, DOMElement $root)
+    {
+        $authors = $this->container->getAuthors();
+        if (!$authors || empty($authors)) {
+>>>>>>> pantheon-drops-8/master
             /**
              * Technically we should defer an exception until we can check
              * that all entries contain an author. If any entry is missing
@@ -268,18 +331,29 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @return void
      * @throws Feed\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getId()
         && ! $this->getDataContainer()->getLink()) {
+=======
+    protected function _setId(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getId()
+        && !$this->getDataContainer()->getLink()) {
+>>>>>>> pantheon-drops-8/master
             $message = 'Atom 1.0 feed elements MUST contain exactly one '
                 . 'atom:id element, or as an alternative, we can use the same '
                 . 'value as atom:link however neither a suitable link nor an '
                 . 'id have been set';
             $exception = new Feed\Exception\InvalidArgumentException($message);
+<<<<<<< HEAD
             if (! $this->ignoreExceptions) {
+=======
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -287,10 +361,16 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
             }
         }
 
+<<<<<<< HEAD
         if (! $this->getDataContainer()->getId()) {
             $this->getDataContainer()->setId(
                 $this->getDataContainer()->getLink()
             );
+=======
+        if (!$this->getDataContainer()->getId()) {
+            $this->getDataContainer()->setId(
+                $this->getDataContainer()->getLink());
+>>>>>>> pantheon-drops-8/master
         }
         $id = $dom->createElement('id');
         $root->appendChild($id);
@@ -305,12 +385,19 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCopyright(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $copyright = $this->getDataContainer()->getCopyright();
         if (! $copyright) {
+=======
+    protected function _setCopyright(DOMDocument $dom, DOMElement $root)
+    {
+        $copyright = $this->getDataContainer()->getCopyright();
+        if (!$copyright) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $copy = $dom->createElement('rights');
@@ -318,7 +405,10 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
         $text = $dom->createTextNode($copyright);
         $copy->appendChild($text);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
     /**
      * Set feed level logo (image)
      *
@@ -326,12 +416,19 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setImage(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $image = $this->getDataContainer()->getImage();
         if (! $image) {
+=======
+    protected function _setImage(DOMDocument $dom, DOMElement $root)
+    {
+        $image = $this->getDataContainer()->getImage();
+        if (!$image) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $img = $dom->createElement('logo');
@@ -347,6 +444,7 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDateCreated(DOMDocument $dom, DOMElement $root)
     {
@@ -355,6 +453,14 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
             return;
         }
         if (! $this->getDataContainer()->getDateModified()) {
+=======
+    protected function _setDateCreated(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDateCreated()) {
+            return;
+        }
+        if (!$this->getDataContainer()->getDateModified()) {
+>>>>>>> pantheon-drops-8/master
             $this->getDataContainer()->setDateModified(
                 $this->getDataContainer()->getDateCreated()
             );
@@ -368,12 +474,19 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setBaseUrl(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $baseUrl = $this->getDataContainer()->getBaseUrl();
         if (! $baseUrl) {
+=======
+    protected function _setBaseUrl(DOMDocument $dom, DOMElement $root)
+    {
+        $baseUrl = $this->getDataContainer()->getBaseUrl();
+        if (!$baseUrl) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $root->setAttribute('xml:base', $baseUrl);
@@ -386,12 +499,19 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setHubs(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $hubs = $this->getDataContainer()->getHubs();
         if (! $hubs) {
+=======
+    protected function _setHubs(DOMDocument $dom, DOMElement $root)
+    {
+        $hubs = $this->getDataContainer()->getHubs();
+        if (!$hubs) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($hubs as $hubUrl) {
@@ -409,12 +529,19 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCategories(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $categories = $this->getDataContainer()->getCategories();
         if (! $categories) {
+=======
+    protected function _setCategories(DOMDocument $dom, DOMElement $root)
+    {
+        $categories = $this->getDataContainer()->getCategories();
+        if (!$categories) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($categories as $cat) {

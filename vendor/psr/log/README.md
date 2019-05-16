@@ -7,6 +7,7 @@ This repository holds all interfaces/classes/traits related to
 Note that this is not a logger of its own. It is merely an interface that
 describes a logger. See the specification for more details.
 
+<<<<<<< HEAD
 Installation
 ------------
 
@@ -14,6 +15,8 @@ Installation
 composer require psr/log
 ```
 
+=======
+>>>>>>> pantheon-drops-8/master
 Usage
 -----
 

@@ -676,7 +676,11 @@ class PEAR_ErrorStack {
      * @return boolean
      * @since PEAR1.5.0a1
      */
+<<<<<<< HEAD
     static function staticPop($package)
+=======
+    function staticPop($package)
+>>>>>>> pantheon-drops-8/master
     {
         if ($package) {
             if (!isset($GLOBALS['_PEAR_ERRORSTACK_SINGLETON'][$package])) {

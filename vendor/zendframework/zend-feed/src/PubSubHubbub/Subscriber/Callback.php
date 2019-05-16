@@ -147,7 +147,11 @@ class Callback extends PubSubHubbub\AbstractCallback
             'hub_verify_token',
         ];
         foreach ($required as $key) {
+<<<<<<< HEAD
             if (! array_key_exists($key, $httpGetData)) {
+=======
+            if (!array_key_exists($key, $httpGetData)) {
+>>>>>>> pantheon-drops-8/master
                 return false;
             }
         }
@@ -157,11 +161,19 @@ class Callback extends PubSubHubbub\AbstractCallback
             return false;
         }
         if ($httpGetData['hub_mode'] == 'subscribe'
+<<<<<<< HEAD
             && ! array_key_exists('hub_lease_seconds', $httpGetData)
         ) {
             return false;
         }
         if (! Uri::factory($httpGetData['hub_topic'])->isValid()) {
+=======
+            && !array_key_exists('hub_lease_seconds', $httpGetData)
+        ) {
+            return false;
+        }
+        if (!Uri::factory($httpGetData['hub_topic'])->isValid()) {
+>>>>>>> pantheon-drops-8/master
             return false;
         }
 
@@ -169,7 +181,11 @@ class Callback extends PubSubHubbub\AbstractCallback
          * Attempt to retrieve any Verification Token Key attached to Callback
          * URL's path by our Subscriber implementation
          */
+<<<<<<< HEAD
         if (! $this->_hasValidVerifyToken($httpGetData)) {
+=======
+        if (!$this->_hasValidVerifyToken($httpGetData)) {
+>>>>>>> pantheon-drops-8/master
             return false;
         }
         return true;
@@ -220,16 +236,25 @@ class Callback extends PubSubHubbub\AbstractCallback
      * @param  bool $checkValue
      * @return bool
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _hasValidVerifyToken(array $httpGetData = null, $checkValue = true)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _hasValidVerifyToken(array $httpGetData = null, $checkValue = true)
+    {
+>>>>>>> pantheon-drops-8/master
         $verifyTokenKey = $this->_detectVerifyTokenKey($httpGetData);
         if (empty($verifyTokenKey)) {
             return false;
         }
         $verifyTokenExists = $this->getStorage()->hasSubscription($verifyTokenKey);
+<<<<<<< HEAD
         if (! $verifyTokenExists) {
+=======
+        if (!$verifyTokenExists) {
+>>>>>>> pantheon-drops-8/master
             return false;
         }
         if ($checkValue) {
@@ -252,10 +277,15 @@ class Callback extends PubSubHubbub\AbstractCallback
      * @param  null|array $httpGetData
      * @return false|string
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _detectVerifyTokenKey(array $httpGetData = null)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _detectVerifyTokenKey(array $httpGetData = null)
+    {
+>>>>>>> pantheon-drops-8/master
         /**
          * Available when sub keys encoding in Callback URL path
          */
@@ -290,10 +320,15 @@ class Callback extends PubSubHubbub\AbstractCallback
      *
      * @return array|void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _parseQueryString()
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _parseQueryString()
+    {
+>>>>>>> pantheon-drops-8/master
         $params      = [];
         $queryString = '';
         if (isset($_SERVER['QUERY_STRING'])) {

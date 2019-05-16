@@ -20,7 +20,10 @@
 namespace Doctrine\Common\Annotations;
 
 use Doctrine\Common\Cache\Cache;
+<<<<<<< HEAD
 use ReflectionClass;
+=======
+>>>>>>> pantheon-drops-8/master
 
 /**
  * A cache aware annotation reader.
@@ -31,6 +34,14 @@ use ReflectionClass;
 final class CachedReader implements Reader
 {
     /**
+<<<<<<< HEAD
+=======
+     * @var string
+     */
+    private static $CACHE_SALT = '@[Annot]';
+
+    /**
+>>>>>>> pantheon-drops-8/master
      * @var Reader
      */
     private $delegate;
@@ -67,7 +78,11 @@ final class CachedReader implements Reader
     /**
      * {@inheritDoc}
      */
+<<<<<<< HEAD
     public function getClassAnnotations(ReflectionClass $class)
+=======
+    public function getClassAnnotations(\ReflectionClass $class)
+>>>>>>> pantheon-drops-8/master
     {
         $cacheKey = $class->getName();
 
@@ -86,7 +101,11 @@ final class CachedReader implements Reader
     /**
      * {@inheritDoc}
      */
+<<<<<<< HEAD
     public function getClassAnnotation(ReflectionClass $class, $annotationName)
+=======
+    public function getClassAnnotation(\ReflectionClass $class, $annotationName)
+>>>>>>> pantheon-drops-8/master
     {
         foreach ($this->getClassAnnotations($class) as $annot) {
             if ($annot instanceof $annotationName) {
@@ -178,6 +197,7 @@ final class CachedReader implements Reader
     /**
      * Fetches a value from the cache.
      *
+<<<<<<< HEAD
      * @param string          $cacheKey The cache key.
      * @param ReflectionClass $class    The related class.
      *
@@ -185,6 +205,16 @@ final class CachedReader implements Reader
      */
     private function fetchFromCache($cacheKey, ReflectionClass $class)
     {
+=======
+     * @param string           $rawCacheKey The cache key.
+     * @param \ReflectionClass $class       The related class.
+     *
+     * @return mixed The cached value or false when the value is not in cache.
+     */
+    private function fetchFromCache($rawCacheKey, \ReflectionClass $class)
+    {
+        $cacheKey = $rawCacheKey . self::$CACHE_SALT;
+>>>>>>> pantheon-drops-8/master
         if (($data = $this->cache->fetch($cacheKey)) !== false) {
             if (!$this->debug || $this->isCacheFresh($cacheKey, $class)) {
                 return $data;
@@ -197,6 +227,7 @@ final class CachedReader implements Reader
     /**
      * Saves a value to the cache.
      *
+<<<<<<< HEAD
      * @param string $cacheKey The cache key.
      * @param mixed  $value    The value.
      *
@@ -204,6 +235,16 @@ final class CachedReader implements Reader
      */
     private function saveToCache($cacheKey, $value)
     {
+=======
+     * @param string $rawCacheKey The cache key.
+     * @param mixed  $value       The value.
+     *
+     * @return void
+     */
+    private function saveToCache($rawCacheKey, $value)
+    {
+        $cacheKey = $rawCacheKey . self::$CACHE_SALT;
+>>>>>>> pantheon-drops-8/master
         $this->cache->save($cacheKey, $value);
         if ($this->debug) {
             $this->cache->save('[C]'.$cacheKey, time());
@@ -214,6 +255,7 @@ final class CachedReader implements Reader
      * Checks if the cache is fresh.
      *
      * @param string           $cacheKey
+<<<<<<< HEAD
      * @param ReflectionClass $class
      *
      * @return boolean
@@ -258,5 +300,18 @@ final class CachedReader implements Reader
             [$fileName ? filemtime($fileName) : 0],
             array_map([$this, 'getTraitLastModificationTime'], $reflectionTrait->getTraits())
         ));
+=======
+     * @param \ReflectionClass $class
+     *
+     * @return boolean
+     */
+    private function isCacheFresh($cacheKey, \ReflectionClass $class)
+    {
+        if (false === $filename = $class->getFilename()) {
+            return true;
+        }
+
+        return $this->cache->fetch('[C]'.$cacheKey) >= filemtime($filename);
+>>>>>>> pantheon-drops-8/master
     }
 }

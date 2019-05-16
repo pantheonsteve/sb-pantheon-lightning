@@ -76,7 +76,11 @@ class Writer
      */
     public static function getExtensionManager()
     {
+<<<<<<< HEAD
         if (! isset(static::$extensionManager)) {
+=======
+        if (!isset(static::$extensionManager)) {
+>>>>>>> pantheon-drops-8/master
             static::setExtensionManager(new ExtensionManager());
         }
         return static::$extensionManager;
@@ -91,6 +95,7 @@ class Writer
      */
     public static function registerExtension($name)
     {
+<<<<<<< HEAD
         if (! static::hasExtension($name)) {
             throw new Exception\RuntimeException(sprintf(
                 'Could not load extension "%s" using Plugin Loader.'
@@ -121,6 +126,42 @@ class Writer
         }
 
         $entryRendererName = $name . '\Renderer\Entry';
+=======
+        $feedName          = $name . '\Feed';
+        $entryName         = $name . '\Entry';
+        $feedRendererName  = $name . '\Renderer\Feed';
+        $entryRendererName = $name . '\Renderer\Entry';
+        $manager           = static::getExtensionManager();
+        if (static::isRegistered($name)) {
+            if ($manager->has($feedName)
+                || $manager->has($entryName)
+                || $manager->has($feedRendererName)
+                || $manager->has($entryRendererName)
+            ) {
+                return;
+            }
+        }
+        if (! $manager->has($feedName)
+            && ! $manager->has($entryName)
+            && ! $manager->has($feedRendererName)
+            && ! $manager->has($entryRendererName)
+        ) {
+            throw new Exception\RuntimeException(sprintf(
+                'Could not load extension "%s" using Plugin Loader. '
+                . 'Check prefix paths are configured and extension exists.',
+                $name
+            ));
+        }
+        if ($manager->has($feedName)) {
+            static::$extensions['feed'][] = $feedName;
+        }
+        if ($manager->has($entryName)) {
+            static::$extensions['entry'][] = $entryName;
+        }
+        if ($manager->has($feedRendererName)) {
+            static::$extensions['feedRenderer'][] = $feedRendererName;
+        }
+>>>>>>> pantheon-drops-8/master
         if ($manager->has($entryRendererName)) {
             static::$extensions['entryRenderer'][] = $entryRendererName;
         }
@@ -188,6 +229,7 @@ class Writer
         static::registerExtension('WellFormedWeb');
         static::registerExtension('Threading');
         static::registerExtension('ITunes');
+<<<<<<< HEAD
 
         // Added in 2.10.0; check for it conditionally
         static::hasExtension('GooglePlayPodcast')
@@ -244,5 +286,13 @@ class Writer
             || $manager->has($entryName)
             || $manager->has($feedRendererName)
             || $manager->has($entryRendererName);
+=======
+    }
+
+    public static function lcfirst($str)
+    {
+        $str[0] = strtolower($str[0]);
+        return $str;
+>>>>>>> pantheon-drops-8/master
     }
 }

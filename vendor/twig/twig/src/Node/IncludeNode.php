@@ -37,6 +37,7 @@ class IncludeNode extends Node implements NodeOutputInterface
         $compiler->addDebugInfo($this);
 
         if ($this->getAttribute('ignore_missing')) {
+<<<<<<< HEAD
             $template = $compiler->getVarName();
 
             $compiler
@@ -50,11 +51,30 @@ class IncludeNode extends Node implements NodeOutputInterface
 
             $compiler
                 ->raw(";\n")
+=======
+            $compiler
+                ->write("try {\n")
+                ->indent()
+            ;
+        }
+
+        $this->addGetTemplate($compiler);
+
+        $compiler->raw('->display(');
+
+        $this->addTemplateArguments($compiler);
+
+        $compiler->raw(");\n");
+
+        if ($this->getAttribute('ignore_missing')) {
+            $compiler
+>>>>>>> pantheon-drops-8/master
                 ->outdent()
                 ->write("} catch (LoaderError \$e) {\n")
                 ->indent()
                 ->write("// ignore missing template\n")
                 ->outdent()
+<<<<<<< HEAD
                 ->write("}\n")
                 ->write(sprintf("if ($%s) {\n", $template))
                 ->indent()
@@ -71,12 +91,17 @@ class IncludeNode extends Node implements NodeOutputInterface
             $compiler->raw('->display(');
             $this->addTemplateArguments($compiler);
             $compiler->raw(");\n");
+=======
+                ->write("}\n\n")
+            ;
+>>>>>>> pantheon-drops-8/master
         }
     }
 
     protected function addGetTemplate(Compiler $compiler)
     {
         $compiler
+<<<<<<< HEAD
             ->write('$this->loadTemplate(')
             ->subcompile($this->getNode('expr'))
             ->raw(', ')
@@ -85,6 +110,16 @@ class IncludeNode extends Node implements NodeOutputInterface
             ->repr($this->getTemplateLine())
             ->raw(')')
         ;
+=======
+             ->write('$this->loadTemplate(')
+             ->subcompile($this->getNode('expr'))
+             ->raw(', ')
+             ->repr($this->getTemplateName())
+             ->raw(', ')
+             ->repr($this->getTemplateLine())
+             ->raw(')')
+         ;
+>>>>>>> pantheon-drops-8/master
     }
 
     protected function addTemplateArguments(Compiler $compiler)

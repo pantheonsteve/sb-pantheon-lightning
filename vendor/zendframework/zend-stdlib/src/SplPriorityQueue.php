@@ -36,7 +36,11 @@ class SplPriorityQueue extends \SplPriorityQueue implements Serializable
      */
     public function insert($datum, $priority)
     {
+<<<<<<< HEAD
         if (! is_array($priority)) {
+=======
+        if (!is_array($priority)) {
+>>>>>>> pantheon-drops-8/master
             $priority = [$priority, $this->serial--];
         }
         parent::insert($datum, $priority);
@@ -84,9 +88,13 @@ class SplPriorityQueue extends \SplPriorityQueue implements Serializable
      */
     public function unserialize($data)
     {
+<<<<<<< HEAD
         $this->serial = PHP_INT_MAX;
         foreach (unserialize($data) as $item) {
             $this->serial--;
+=======
+        foreach (unserialize($data) as $item) {
+>>>>>>> pantheon-drops-8/master
             $this->insert($item['data'], $item['priority']);
         }
     }

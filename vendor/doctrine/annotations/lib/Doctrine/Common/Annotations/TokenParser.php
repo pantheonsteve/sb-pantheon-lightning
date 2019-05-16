@@ -99,8 +99,11 @@ class TokenParser
      */
     public function parseUseStatement()
     {
+<<<<<<< HEAD
 
         $groupRoot = '';
+=======
+>>>>>>> pantheon-drops-8/master
         $class = '';
         $alias = '';
         $statements = array();
@@ -116,11 +119,16 @@ class TokenParser
                 $explicitAlias = true;
                 $alias = '';
             } else if ($token === ',') {
+<<<<<<< HEAD
                 $statements[strtolower($alias)] = $groupRoot . $class;
+=======
+                $statements[strtolower($alias)] = $class;
+>>>>>>> pantheon-drops-8/master
                 $class = '';
                 $alias = '';
                 $explicitAlias = false;
             } else if ($token === ';') {
+<<<<<<< HEAD
                 $statements[strtolower($alias)] = $groupRoot . $class;
                 break;
             } else if ($token === '{' ) {
@@ -128,6 +136,10 @@ class TokenParser
                 $class = '';
             } else if ($token === '}' ) {
                 continue;
+=======
+                $statements[strtolower($alias)] = $class;
+                break;
+>>>>>>> pantheon-drops-8/master
             } else {
                 break;
             }

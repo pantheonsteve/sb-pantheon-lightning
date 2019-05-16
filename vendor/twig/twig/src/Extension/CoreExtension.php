@@ -11,7 +11,10 @@
 
 namespace Twig\Extension {
 use Twig\ExpressionParser;
+<<<<<<< HEAD
 use Twig\TokenParser\ApplyTokenParser;
+=======
+>>>>>>> pantheon-drops-8/master
 use Twig\TokenParser\BlockTokenParser;
 use Twig\TokenParser\DeprecatedTokenParser;
 use Twig\TokenParser\DoTokenParser;
@@ -140,7 +143,10 @@ class CoreExtension extends AbstractExtension
     public function getTokenParsers()
     {
         return [
+<<<<<<< HEAD
             new ApplyTokenParser(),
+=======
+>>>>>>> pantheon-drops-8/master
             new ForTokenParser(),
             new IfTokenParser(),
             new ExtendsTokenParser(),
@@ -194,9 +200,12 @@ class CoreExtension extends AbstractExtension
             new TwigFilter('sort', 'twig_sort_filter'),
             new TwigFilter('merge', 'twig_array_merge'),
             new TwigFilter('batch', 'twig_array_batch'),
+<<<<<<< HEAD
             new TwigFilter('filter', 'twig_array_filter'),
             new TwigFilter('map', 'twig_array_map'),
             new TwigFilter('reduce', 'twig_array_reduce'),
+=======
+>>>>>>> pantheon-drops-8/master
 
             // string/array filters
             new TwigFilter('reverse', 'twig_reverse_filter', ['needs_environment' => true]),
@@ -519,9 +528,13 @@ function twig_replace_filter($str, $from, $to = null)
         @trigger_error('Using "replace" with character by character replacement is deprecated since version 1.22 and will be removed in Twig 2.0', E_USER_DEPRECATED);
 
         return strtr($str, $from, $to);
+<<<<<<< HEAD
     }
 
     if (!twig_test_iterable($from)) {
+=======
+    } elseif (!twig_test_iterable($from)) {
+>>>>>>> pantheon-drops-8/master
         throw new RuntimeError(sprintf('The "replace" filter expects an array or "Traversable" as replace values, got "%s".', \is_object($from) ? \get_class($from) : \gettype($from)));
     }
 
@@ -675,7 +688,11 @@ function twig_slice(Environment $env, $item, $start, $length = null, $preserveKe
         if ($start >= 0 && $length >= 0 && $item instanceof \Iterator) {
             try {
                 return iterator_to_array(new \LimitIterator($item, $start, null === $length ? -1 : $length), $preserveKeys);
+<<<<<<< HEAD
             } catch (\OutOfBoundsException $e) {
+=======
+            } catch (\OutOfBoundsException $exception) {
+>>>>>>> pantheon-drops-8/master
                 return [];
             }
         }
@@ -746,6 +763,7 @@ function twig_last(Environment $env, $item)
  */
 function twig_join_filter($value, $glue = '', $and = null)
 {
+<<<<<<< HEAD
     if (!twig_test_iterable($value)) {
         $value = (array) $value;
     }
@@ -753,6 +771,11 @@ function twig_join_filter($value, $glue = '', $and = null)
     $value = twig_to_array($value, false);
 
     if (0 === \count($value)) {
+=======
+    $value = twig_to_array($value, false);
+
+    if (!\is_array($value) || 0 === \count($value)) {
+>>>>>>> pantheon-drops-8/master
         return '';
     }
 
@@ -940,10 +963,13 @@ function twig_sort_filter($array)
  */
 function twig_in_filter($value, $compare)
 {
+<<<<<<< HEAD
     if ($value instanceof Markup) {
         $value = (string) $value;
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     if (\is_array($compare)) {
         return \in_array($value, $compare, \is_object($value) || \is_resource($value));
     } elseif (\is_string($compare) && (\is_string($value) || \is_int($value) || \is_float($value))) {
@@ -1316,6 +1342,7 @@ if (\function_exists('mb_get_info')) {
             return mb_strlen($thing, $env->getCharset());
         }
 
+<<<<<<< HEAD
         if ($thing instanceof \Countable || \is_array($thing) || $thing instanceof \SimpleXMLElement) {
             return \count($thing);
         }
@@ -1326,6 +1353,22 @@ if (\function_exists('mb_get_info')) {
 
         if (\is_object($thing) && method_exists($thing, '__toString')) {
             return mb_strlen((string) $thing, $env->getCharset());
+=======
+        if ($thing instanceof \SimpleXMLElement) {
+            return \count($thing);
+        }
+
+        if (\is_object($thing) && method_exists($thing, '__toString') && !$thing instanceof \Countable) {
+            return mb_strlen((string) $thing, $env->getCharset());
+        }
+
+        if ($thing instanceof \Countable || \is_array($thing)) {
+            return \count($thing);
+        }
+
+        if ($thing instanceof \IteratorAggregate) {
+            return iterator_count($thing);
+>>>>>>> pantheon-drops-8/master
         }
 
         return 1;
@@ -1479,11 +1522,23 @@ function twig_to_array($seq, $preserveKeys = true)
         return iterator_to_array($seq, $preserveKeys);
     }
 
+<<<<<<< HEAD
     if (!\is_array($seq)) {
         return $seq;
     }
 
     return $preserveKeys ? $seq : array_values($seq);
+=======
+    if (!is_array($seq)) {
+        return (array) $seq;
+    }
+
+    if(!$preserveKeys) {
+        return array_values($seq);
+    }
+
+    return $seq;
+>>>>>>> pantheon-drops-8/master
 }
 
 /**
@@ -1555,9 +1610,15 @@ function twig_include(Environment $env, $context, $template, $variables = [], $w
         }
     }
 
+<<<<<<< HEAD
     $loaded = null;
     try {
         $loaded = $env->resolveTemplate($template);
+=======
+    $result = '';
+    try {
+        $result = $env->resolveTemplate($template)->render($variables);
+>>>>>>> pantheon-drops-8/master
     } catch (LoaderError $e) {
         if (!$ignoreMissing) {
             if ($isSandboxed && !$alreadySandboxed) {
@@ -1580,6 +1641,7 @@ function twig_include(Environment $env, $context, $template, $variables = [], $w
         throw $e;
     }
 
+<<<<<<< HEAD
     try {
         $ret = $loaded ? $loaded->render($variables) : '';
     } catch (\Exception $e) {
@@ -1590,11 +1652,17 @@ function twig_include(Environment $env, $context, $template, $variables = [], $w
         throw $e;
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     if ($isSandboxed && !$alreadySandboxed) {
         $sandbox->disableSandbox();
     }
 
+<<<<<<< HEAD
     return $ret;
+=======
+    return $result;
+>>>>>>> pantheon-drops-8/master
 }
 
 /**
@@ -1666,10 +1734,13 @@ function twig_constant_is_defined($constant, $object = null)
  */
 function twig_array_batch($items, $size, $fill = null, $preserveKeys = true)
 {
+<<<<<<< HEAD
     if (!twig_test_iterable($items)) {
         throw new RuntimeError(sprintf('The "batch" filter expects an array or "Traversable", got "%s".', \is_object($items) ? \get_class($items) : \gettype($items)));
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     $size = ceil($size);
 
     $result = array_chunk(twig_to_array($items, $preserveKeys), $size, $preserveKeys);
@@ -1677,7 +1748,11 @@ function twig_array_batch($items, $size, $fill = null, $preserveKeys = true)
     if (null !== $fill && $result) {
         $last = \count($result) - 1;
         if ($fillCount = $size - \count($result[$last])) {
+<<<<<<< HEAD
             for ($i = 0; $i < $fillCount; ++$i) {
+=======
+            for ($i = 0; $i < $fillCount; $i++) {
+>>>>>>> pantheon-drops-8/master
                 $result[$last][] = $fill;
             }
         }
@@ -1685,6 +1760,7 @@ function twig_array_batch($items, $size, $fill = null, $preserveKeys = true)
 
     return $result;
 }
+<<<<<<< HEAD
 
 function twig_array_filter($array, $arrow)
 {
@@ -1721,4 +1797,6 @@ function twig_array_reduce($array, $arrow, $initial = null)
 
     return array_reduce($array, $arrow, $initial);
 }
+=======
+>>>>>>> pantheon-drops-8/master
 }

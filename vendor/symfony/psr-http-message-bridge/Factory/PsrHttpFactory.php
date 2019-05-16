@@ -50,7 +50,11 @@ class PsrHttpFactory implements HttpMessageFactoryInterface
     {
         $request = $this->serverRequestFactory->createServerRequest(
             $symfonyRequest->getMethod(),
+<<<<<<< HEAD
             $symfonyRequest->getUri(),
+=======
+            $symfonyRequest->getSchemeAndHttpHost().$symfonyRequest->getRequestUri(),
+>>>>>>> pantheon-drops-8/master
             $symfonyRequest->server->all()
         );
 
@@ -58,7 +62,16 @@ class PsrHttpFactory implements HttpMessageFactoryInterface
             $request = $request->withHeader($name, $value);
         }
 
+<<<<<<< HEAD
         $body = $this->streamFactory->createStreamFromResource($symfonyRequest->getContent(true));
+=======
+        if (PHP_VERSION_ID < 50600) {
+            $body = $this->streamFactory->createStreamFromFile('php://temp', 'wb+');
+            $body->write($symfonyRequest->getContent());
+        } else {
+            $body = $this->streamFactory->createStreamFromResource($symfonyRequest->getContent(true));
+        }
+>>>>>>> pantheon-drops-8/master
 
         $request = $request
             ->withBody($body)
@@ -84,7 +97,11 @@ class PsrHttpFactory implements HttpMessageFactoryInterface
      */
     private function getFiles(array $uploadedFiles)
     {
+<<<<<<< HEAD
         $files = [];
+=======
+        $files = array();
+>>>>>>> pantheon-drops-8/master
 
         foreach ($uploadedFiles as $key => $value) {
             if (null === $value) {
@@ -126,7 +143,11 @@ class PsrHttpFactory implements HttpMessageFactoryInterface
      */
     public function createResponse(Response $symfonyResponse)
     {
+<<<<<<< HEAD
         $response = $this->responseFactory->createResponse($symfonyResponse->getStatusCode(), Response::$statusTexts[$symfonyResponse->getStatusCode()] ?? '');
+=======
+        $response = $this->responseFactory->createResponse($symfonyResponse->getStatusCode());
+>>>>>>> pantheon-drops-8/master
 
         if ($symfonyResponse instanceof BinaryFileResponse) {
             $stream = $this->streamFactory->createStreamFromFile(
@@ -153,7 +174,11 @@ class PsrHttpFactory implements HttpMessageFactoryInterface
         $headers = $symfonyResponse->headers->all();
         $cookies = $symfonyResponse->headers->getCookies();
         if (!empty($cookies)) {
+<<<<<<< HEAD
             $headers['Set-Cookie'] = [];
+=======
+            $headers['Set-Cookie'] = array();
+>>>>>>> pantheon-drops-8/master
 
             foreach ($cookies as $cookie) {
                 $headers['Set-Cookie'][] = $cookie->__toString();

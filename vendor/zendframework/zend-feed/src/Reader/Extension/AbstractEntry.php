@@ -135,18 +135,30 @@ abstract class AbstractEntry
         if ($type === Reader\Reader::TYPE_RSS_10
             || $type === Reader\Reader::TYPE_RSS_090
         ) {
+<<<<<<< HEAD
             $this->setXpathPrefix('//rss:item[' . ((int)$this->entryKey + 1) . ']');
+=======
+            $this->setXpathPrefix('//rss:item[' . ($this->entryKey + 1) . ']');
+>>>>>>> pantheon-drops-8/master
             return $this;
         }
 
         if ($type === Reader\Reader::TYPE_ATOM_10
             || $type === Reader\Reader::TYPE_ATOM_03
         ) {
+<<<<<<< HEAD
             $this->setXpathPrefix('//atom:entry[' . ((int)$this->entryKey + 1) . ']');
             return $this;
         }
 
         $this->setXpathPrefix('//item[' . ((int)$this->entryKey + 1) . ']');
+=======
+            $this->setXpathPrefix('//atom:entry[' . ($this->entryKey + 1) . ']');
+            return $this;
+        }
+
+        $this->setXpathPrefix('//item[' . ($this->entryKey + 1) . ']');
+>>>>>>> pantheon-drops-8/master
         return $this;
     }
 
@@ -186,7 +198,11 @@ abstract class AbstractEntry
      */
     public function getXpath()
     {
+<<<<<<< HEAD
         if (! $this->xpath) {
+=======
+        if (!$this->xpath) {
+>>>>>>> pantheon-drops-8/master
             $this->setXpath(new DOMXPath($this->getDomDocument()));
         }
         return $this->xpath;

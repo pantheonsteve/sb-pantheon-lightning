@@ -52,6 +52,7 @@ class Feed extends Extension\AbstractRenderer
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _appendNamespaces()
     {
@@ -60,6 +61,12 @@ class Feed extends Extension\AbstractRenderer
             'xmlns:atom',
             'http://www.w3.org/2005/Atom'
         );
+=======
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute('xmlns:atom',
+            'http://www.w3.org/2005/Atom');
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -69,12 +76,19 @@ class Feed extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $flinks = $this->getDataContainer()->getFeedLinks();
         if (! $flinks || empty($flinks)) {
+=======
+    protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
+    {
+        $flinks = $this->getDataContainer()->getFeedLinks();
+        if (!$flinks || empty($flinks)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($flinks as $type => $href) {
@@ -97,12 +111,19 @@ class Feed extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setHubs(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $hubs = $this->getDataContainer()->getHubs();
         if (! $hubs || empty($hubs)) {
+=======
+    protected function _setHubs(DOMDocument $dom, DOMElement $root)
+    {
+        $hubs = $this->getDataContainer()->getHubs();
+        if (!$hubs || empty($hubs)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($hubs as $hubUrl) {

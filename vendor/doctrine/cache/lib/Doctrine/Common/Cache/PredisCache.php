@@ -3,6 +3,7 @@
 namespace Doctrine\Common\Cache;
 
 use Predis\ClientInterface;
+<<<<<<< HEAD
 use function array_combine;
 use function array_filter;
 use function array_map;
@@ -18,6 +19,26 @@ class PredisCache extends CacheProvider
     /** @var ClientInterface */
     private $client;
 
+=======
+
+/**
+ * Predis cache provider.
+ *
+ * @author othillo <othillo@othillo.nl>
+ */
+class PredisCache extends CacheProvider
+{
+    /**
+     * @var ClientInterface
+     */
+    private $client;
+
+    /**
+     * @param ClientInterface $client
+     *
+     * @return void
+     */
+>>>>>>> pantheon-drops-8/master
     public function __construct(ClientInterface $client)
     {
         $this->client = $client;
@@ -29,7 +50,11 @@ class PredisCache extends CacheProvider
     protected function doFetch($id)
     {
         $result = $this->client->get($id);
+<<<<<<< HEAD
         if ($result === null) {
+=======
+        if (null === $result) {
+>>>>>>> pantheon-drops-8/master
             return false;
         }
 
@@ -41,7 +66,11 @@ class PredisCache extends CacheProvider
      */
     protected function doFetchMultiple(array $keys)
     {
+<<<<<<< HEAD
         $fetchedItems = call_user_func_array([$this->client, 'mget'], $keys);
+=======
+        $fetchedItems = call_user_func_array(array($this->client, 'mget'), $keys);
+>>>>>>> pantheon-drops-8/master
 
         return array_map('unserialize', array_filter(array_combine($keys, $fetchedItems)));
     }
@@ -56,6 +85,7 @@ class PredisCache extends CacheProvider
 
             // Keys have lifetime, use SETEX for each of them
             foreach ($keysAndValues as $key => $value) {
+<<<<<<< HEAD
                 $response = (string) $this->client->setex($key, $lifetime, serialize($value));
 
                 if ($response == 'OK') {
@@ -63,6 +93,13 @@ class PredisCache extends CacheProvider
                 }
 
                 $success = false;
+=======
+                $response = $this->client->setex($key, $lifetime, serialize($value));
+
+                if ((string) $response != 'OK') {
+                    $success = false;
+                }
+>>>>>>> pantheon-drops-8/master
             }
 
             return $success;
@@ -110,6 +147,7 @@ class PredisCache extends CacheProvider
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     protected function doDeleteMultiple(array $keys)
     {
         return $this->client->del($keys) >= 0;
@@ -118,6 +156,8 @@ class PredisCache extends CacheProvider
     /**
      * {@inheritdoc}
      */
+=======
+>>>>>>> pantheon-drops-8/master
     protected function doFlush()
     {
         $response = $this->client->flushdb();
@@ -132,12 +172,21 @@ class PredisCache extends CacheProvider
     {
         $info = $this->client->info();
 
+<<<<<<< HEAD
         return [
+=======
+        return array(
+>>>>>>> pantheon-drops-8/master
             Cache::STATS_HITS              => $info['Stats']['keyspace_hits'],
             Cache::STATS_MISSES            => $info['Stats']['keyspace_misses'],
             Cache::STATS_UPTIME            => $info['Server']['uptime_in_seconds'],
             Cache::STATS_MEMORY_USAGE      => $info['Memory']['used_memory'],
+<<<<<<< HEAD
             Cache::STATS_MEMORY_AVAILABLE  => false,
         ];
+=======
+            Cache::STATS_MEMORY_AVAILABLE  => false
+        );
+>>>>>>> pantheon-drops-8/master
     }
 }

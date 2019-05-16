@@ -28,7 +28,11 @@ class EntityReferenceAutocompleteWidget extends WidgetBase {
   public static function defaultSettings() {
     return [
       'match_operator' => 'CONTAINS',
+<<<<<<< HEAD
       'size' => 60,
+=======
+      'size' => '60',
+>>>>>>> pantheon-drops-8/master
       'placeholder' => '',
     ] + parent::defaultSettings();
   }

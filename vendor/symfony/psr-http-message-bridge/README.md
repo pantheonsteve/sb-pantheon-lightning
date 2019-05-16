@@ -6,12 +6,15 @@ Provides integration for PSR7.
 Resources
 ---------
 
+<<<<<<< HEAD
   * [Documentation](https://symfony.com/doc/current/components/psr7.html)
   * [SensioFrameworkExtraBundle](https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html#psr-7-support)
 
 Running the tests
 -----------------
 
+=======
+>>>>>>> pantheon-drops-8/master
 If you want to run the unit tests, install dev dependencies before
 running PHPUnit:
 

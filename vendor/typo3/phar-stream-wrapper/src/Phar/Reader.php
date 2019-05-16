@@ -19,11 +19,14 @@ class Reader
     private $fileName;
 
     /**
+<<<<<<< HEAD
      * Mime-type in order to use zlib, bzip2 or no compression.
      * In case ext-fileinfo is not present only the relevant types
      * 'application/x-gzip' and 'application/x-bzip2' are assigned
      * to this class property.
      *
+=======
+>>>>>>> pantheon-drops-8/master
      * @var string
      */
     private $fileType;
@@ -157,6 +160,7 @@ class Reader
      */
     private function determineFileType()
     {
+<<<<<<< HEAD
         if (class_exists('\\finfo')) {
             $fileInfo = new \finfo();
             return $fileInfo->file($this->fileName, FILEINFO_MIME_TYPE);
@@ -188,6 +192,10 @@ class Reader
             $mimeType = 'application/x-gzip';
         }
         return $mimeType;
+=======
+        $fileInfo = new \finfo();
+        return $fileInfo->file($this->fileName, FILEINFO_MIME_TYPE);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

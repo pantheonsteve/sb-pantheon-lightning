@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 namespace Doctrine\Common\Cache;
 
@@ -12,10 +13,41 @@ use function wincache_ucache_info;
 use function wincache_ucache_meminfo;
 use function wincache_ucache_set;
 
+=======
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
+
+namespace Doctrine\Common\Cache;
+
+>>>>>>> pantheon-drops-8/master
 /**
  * WinCache cache provider.
  *
  * @link   www.doctrine-project.org
+<<<<<<< HEAD
+=======
+ * @since  2.2
+ * @author Benjamin Eberlei <kontakt@beberlei.de>
+ * @author Guilherme Blanco <guilhermeblanco@hotmail.com>
+ * @author Jonathan Wage <jonwage@gmail.com>
+ * @author Roman Borschel <roman@code-factory.org>
+ * @author David Abdemoulaie <dave@hobodave.com>
+>>>>>>> pantheon-drops-8/master
  */
 class WinCacheCache extends CacheProvider
 {
@@ -80,6 +112,7 @@ class WinCacheCache extends CacheProvider
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     protected function doDeleteMultiple(array $keys)
     {
         $result = wincache_ucache_delete($keys);
@@ -90,17 +123,27 @@ class WinCacheCache extends CacheProvider
     /**
      * {@inheritdoc}
      */
+=======
+>>>>>>> pantheon-drops-8/master
     protected function doGetStats()
     {
         $info    = wincache_ucache_info();
         $meminfo = wincache_ucache_meminfo();
 
+<<<<<<< HEAD
         return [
+=======
+        return array(
+>>>>>>> pantheon-drops-8/master
             Cache::STATS_HITS             => $info['total_hit_count'],
             Cache::STATS_MISSES           => $info['total_miss_count'],
             Cache::STATS_UPTIME           => $info['total_cache_uptime'],
             Cache::STATS_MEMORY_USAGE     => $meminfo['memory_total'],
             Cache::STATS_MEMORY_AVAILABLE => $meminfo['memory_free'],
+<<<<<<< HEAD
         ];
+=======
+        );
+>>>>>>> pantheon-drops-8/master
     }
 }

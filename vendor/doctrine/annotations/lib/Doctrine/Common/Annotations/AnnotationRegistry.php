@@ -19,6 +19,12 @@
 
 namespace Doctrine\Common\Annotations;
 
+<<<<<<< HEAD
+=======
+/**
+ * AnnotationRegistry.
+ */
+>>>>>>> pantheon-drops-8/master
 final class AnnotationRegistry
 {
     /**
@@ -29,13 +35,20 @@ final class AnnotationRegistry
      *
      * This autoloading mechanism does not utilize the PHP autoloading but implements autoloading on its own.
      *
+<<<<<<< HEAD
      * @var string[][]|string[]|null[]
      */
     static private $autoloadNamespaces = [];
+=======
+     * @var array
+     */
+    static private $autoloadNamespaces = array();
+>>>>>>> pantheon-drops-8/master
 
     /**
      * A map of autoloader callables.
      *
+<<<<<<< HEAD
      * @var callable[]
      */
     static private $loaders = [];
@@ -52,16 +65,37 @@ final class AnnotationRegistry
         self::$autoloadNamespaces = [];
         self::$loaders            = [];
         self::$failedToAutoload   = [];
+=======
+     * @var array
+     */
+    static private $loaders = array();
+
+    /**
+     * @return void
+     */
+    static public function reset()
+    {
+        self::$autoloadNamespaces = array();
+        self::$loaders = array();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
      * Registers file.
      *
+<<<<<<< HEAD
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
      *             autoloading should be deferred to the globally registered autoloader by then. For now,
      *             use @example AnnotationRegistry::registerLoader('class_exists')
      */
     public static function registerFile(string $file) : void
+=======
+     * @param string $file
+     *
+     * @return void
+     */
+    static public function registerFile($file)
+>>>>>>> pantheon-drops-8/master
     {
         require_once $file;
     }
@@ -74,11 +108,17 @@ final class AnnotationRegistry
      * @param string            $namespace
      * @param string|array|null $dirs
      *
+<<<<<<< HEAD
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
      *             autoloading should be deferred to the globally registered autoloader by then. For now,
      *             use @example AnnotationRegistry::registerLoader('class_exists')
      */
     public static function registerAutoloadNamespace(string $namespace, $dirs = null) : void
+=======
+     * @return void
+     */
+    static public function registerAutoloadNamespace($namespace, $dirs = null)
+>>>>>>> pantheon-drops-8/master
     {
         self::$autoloadNamespaces[$namespace] = $dirs;
     }
@@ -88,6 +128,7 @@ final class AnnotationRegistry
      *
      * Loading of this namespaces will be done with a PSR-0 namespace loading algorithm.
      *
+<<<<<<< HEAD
      * @param string[][]|string[]|null[] $namespaces indexed by namespace name
      *
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
@@ -97,6 +138,15 @@ final class AnnotationRegistry
     public static function registerAutoloadNamespaces(array $namespaces) : void
     {
         self::$autoloadNamespaces = \array_merge(self::$autoloadNamespaces, $namespaces);
+=======
+     * @param array $namespaces
+     *
+     * @return void
+     */
+    static public function registerAutoloadNamespaces(array $namespaces)
+    {
+        self::$autoloadNamespaces = array_merge(self::$autoloadNamespaces, $namespaces);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -105,6 +155,7 @@ final class AnnotationRegistry
      * NOTE: These class loaders HAVE to be silent when a class was not found!
      * IMPORTANT: Loaders have to return true if they loaded a class that could contain the searched annotation class.
      *
+<<<<<<< HEAD
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
      *             autoloading should be deferred to the globally registered autoloader by then. For now,
      *             use @example AnnotationRegistry::registerLoader('class_exists')
@@ -126,10 +177,25 @@ final class AnnotationRegistry
         if ( ! in_array($callable, self::$loaders, true) ) {
             self::registerLoader($callable);
         }
+=======
+     * @param callable $callable
+     *
+     * @return void
+     *
+     * @throws \InvalidArgumentException
+     */
+    static public function registerLoader($callable)
+    {
+        if (!is_callable($callable)) {
+            throw new \InvalidArgumentException("A callable is expected in AnnotationRegistry::registerLoader().");
+        }
+        self::$loaders[] = $callable;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
      * Autoloads an annotation class silently.
+<<<<<<< HEAD
      */
     public static function loadAnnotationClass(string $class) : bool
     {
@@ -145,15 +211,33 @@ final class AnnotationRegistry
             if (\strpos($class, $namespace) === 0) {
                 $file = \str_replace('\\', \DIRECTORY_SEPARATOR, $class) . '.php';
 
+=======
+     *
+     * @param string $class
+     *
+     * @return boolean
+     */
+    static public function loadAnnotationClass($class)
+    {
+        foreach (self::$autoloadNamespaces AS $namespace => $dirs) {
+            if (strpos($class, $namespace) === 0) {
+                $file = str_replace("\\", DIRECTORY_SEPARATOR, $class) . ".php";
+>>>>>>> pantheon-drops-8/master
                 if ($dirs === null) {
                     if ($path = stream_resolve_include_path($file)) {
                         require $path;
                         return true;
                     }
                 } else {
+<<<<<<< HEAD
                     foreach((array) $dirs AS $dir) {
                         if (is_file($dir . \DIRECTORY_SEPARATOR . $file)) {
                             require $dir . \DIRECTORY_SEPARATOR . $file;
+=======
+                    foreach((array)$dirs AS $dir) {
+                        if (is_file($dir . DIRECTORY_SEPARATOR . $file)) {
+                            require $dir . DIRECTORY_SEPARATOR . $file;
+>>>>>>> pantheon-drops-8/master
                             return true;
                         }
                     }
@@ -162,6 +246,7 @@ final class AnnotationRegistry
         }
 
         foreach (self::$loaders AS $loader) {
+<<<<<<< HEAD
             if ($loader($class) === true) {
                 return true;
             }
@@ -169,6 +254,12 @@ final class AnnotationRegistry
 
         self::$failedToAutoload[$class] = null;
 
+=======
+            if (call_user_func($loader, $class) === true) {
+                return true;
+            }
+        }
+>>>>>>> pantheon-drops-8/master
         return false;
     }
 }

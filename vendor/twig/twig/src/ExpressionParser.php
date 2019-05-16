@@ -14,7 +14,10 @@ namespace Twig;
 
 use Twig\Error\SyntaxError;
 use Twig\Node\Expression\ArrayExpression;
+<<<<<<< HEAD
 use Twig\Node\Expression\ArrowFunctionExpression;
+=======
+>>>>>>> pantheon-drops-8/master
 use Twig\Node\Expression\AssignNameExpression;
 use Twig\Node\Expression\Binary\ConcatBinary;
 use Twig\Node\Expression\BlockReferenceExpression;
@@ -69,12 +72,17 @@ class ExpressionParser
         }
     }
 
+<<<<<<< HEAD
     public function parseExpression($precedence = 0, $allowArrow = false)
     {
         if ($allowArrow && $arrow = $this->parseArrow()) {
             return $arrow;
         }
 
+=======
+    public function parseExpression($precedence = 0)
+    {
+>>>>>>> pantheon-drops-8/master
         $expr = $this->getPrimary();
         $token = $this->parser->getCurrentToken();
         while ($this->isBinary($token) && $this->binaryOperators[$token->getValue()]['precedence'] >= $precedence) {
@@ -103,6 +111,7 @@ class ExpressionParser
         return $expr;
     }
 
+<<<<<<< HEAD
     /**
      * @return ArrowFunctionExpression|null
      */
@@ -161,6 +170,8 @@ class ExpressionParser
         return new ArrowFunctionExpression($this->parseExpression(0), new Node($names), $line);
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     protected function getPrimary()
     {
         $token = $this->parser->getCurrentToken();
@@ -562,7 +573,11 @@ class ExpressionParser
             if (!$this->parser->getStream()->test(Token::PUNCTUATION_TYPE, '(')) {
                 $arguments = new Node();
             } else {
+<<<<<<< HEAD
                 $arguments = $this->parseArguments(true, false, true);
+=======
+                $arguments = $this->parseArguments(true);
+>>>>>>> pantheon-drops-8/master
             }
 
             $class = $this->getFilterNodeClass($name->getAttribute('value'), $token->getLine());
@@ -589,7 +604,11 @@ class ExpressionParser
      *
      * @throws SyntaxError
      */
+<<<<<<< HEAD
     public function parseArguments($namedArguments = false, $definition = false, $allowArrow = false)
+=======
+    public function parseArguments($namedArguments = false, $definition = false)
+>>>>>>> pantheon-drops-8/master
     {
         $args = [];
         $stream = $this->parser->getStream();
@@ -604,7 +623,11 @@ class ExpressionParser
                 $token = $stream->expect(Token::NAME_TYPE, null, 'An argument must be a name');
                 $value = new NameExpression($token->getValue(), $this->parser->getCurrentToken()->getLine());
             } else {
+<<<<<<< HEAD
                 $value = $this->parseExpression(0, $allowArrow);
+=======
+                $value = $this->parseExpression();
+>>>>>>> pantheon-drops-8/master
             }
 
             $name = null;
@@ -621,7 +644,11 @@ class ExpressionParser
                         throw new SyntaxError(sprintf('A default value for an argument must be a constant (a boolean, a string, a number, or an array).'), $token->getLine(), $stream->getSourceContext());
                     }
                 } else {
+<<<<<<< HEAD
                     $value = $this->parseExpression(0, $allowArrow);
+=======
+                    $value = $this->parseExpression();
+>>>>>>> pantheon-drops-8/master
                 }
             }
 
@@ -690,7 +717,11 @@ class ExpressionParser
         $class = $this->getTestNodeClass($test);
         $arguments = null;
         if ($stream->test(Token::PUNCTUATION_TYPE, '(')) {
+<<<<<<< HEAD
             $arguments = $this->parseArguments(true);
+=======
+            $arguments = $this->parser->getExpressionParser()->parseArguments(true);
+>>>>>>> pantheon-drops-8/master
         }
 
         return new $class($node, $name, $arguments, $this->parser->getCurrentToken()->getLine());

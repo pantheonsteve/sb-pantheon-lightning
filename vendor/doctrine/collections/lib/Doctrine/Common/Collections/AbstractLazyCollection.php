@@ -1,4 +1,24 @@
 <?php
+<<<<<<< HEAD
+=======
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
+>>>>>>> pantheon-drops-8/master
 
 namespace Doctrine\Common\Collections;
 
@@ -7,21 +27,35 @@ use Closure;
 /**
  * Lazy collection that is backed by a concrete collection
  *
+<<<<<<< HEAD
  * @psalm-template TKey of array-key
  * @psalm-template T
  * @template-implements Collection<TKey,T>
+=======
+ * @author Michaël Gallego <mic.gallego@gmail.com>
+ * @since  1.2
+>>>>>>> pantheon-drops-8/master
  */
 abstract class AbstractLazyCollection implements Collection
 {
     /**
      * The backed collection to use
      *
+<<<<<<< HEAD
      * @psalm-var Collection<TKey,T>
+=======
+>>>>>>> pantheon-drops-8/master
      * @var Collection
      */
     protected $collection;
 
+<<<<<<< HEAD
     /** @var bool */
+=======
+    /**
+     * @var boolean
+     */
+>>>>>>> pantheon-drops-8/master
     protected $initialized = false;
 
     /**
@@ -30,7 +64,10 @@ abstract class AbstractLazyCollection implements Collection
     public function count()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->count();
     }
 
@@ -40,7 +77,10 @@ abstract class AbstractLazyCollection implements Collection
     public function add($element)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->add($element);
     }
 
@@ -59,7 +99,10 @@ abstract class AbstractLazyCollection implements Collection
     public function contains($element)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->contains($element);
     }
 
@@ -69,7 +112,10 @@ abstract class AbstractLazyCollection implements Collection
     public function isEmpty()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->isEmpty();
     }
 
@@ -79,7 +125,10 @@ abstract class AbstractLazyCollection implements Collection
     public function remove($key)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->remove($key);
     }
 
@@ -89,7 +138,10 @@ abstract class AbstractLazyCollection implements Collection
     public function removeElement($element)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->removeElement($element);
     }
 
@@ -99,7 +151,10 @@ abstract class AbstractLazyCollection implements Collection
     public function containsKey($key)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->containsKey($key);
     }
 
@@ -109,7 +164,10 @@ abstract class AbstractLazyCollection implements Collection
     public function get($key)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->get($key);
     }
 
@@ -119,7 +177,10 @@ abstract class AbstractLazyCollection implements Collection
     public function getKeys()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->getKeys();
     }
 
@@ -129,7 +190,10 @@ abstract class AbstractLazyCollection implements Collection
     public function getValues()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->getValues();
     }
 
@@ -148,7 +212,10 @@ abstract class AbstractLazyCollection implements Collection
     public function toArray()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->toArray();
     }
 
@@ -158,7 +225,10 @@ abstract class AbstractLazyCollection implements Collection
     public function first()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->first();
     }
 
@@ -168,7 +238,10 @@ abstract class AbstractLazyCollection implements Collection
     public function last()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->last();
     }
 
@@ -178,7 +251,10 @@ abstract class AbstractLazyCollection implements Collection
     public function key()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->key();
     }
 
@@ -188,7 +264,10 @@ abstract class AbstractLazyCollection implements Collection
     public function current()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->current();
     }
 
@@ -198,7 +277,10 @@ abstract class AbstractLazyCollection implements Collection
     public function next()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->next();
     }
 
@@ -208,7 +290,10 @@ abstract class AbstractLazyCollection implements Collection
     public function exists(Closure $p)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->exists($p);
     }
 
@@ -218,7 +303,10 @@ abstract class AbstractLazyCollection implements Collection
     public function filter(Closure $p)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->filter($p);
     }
 
@@ -228,7 +316,10 @@ abstract class AbstractLazyCollection implements Collection
     public function forAll(Closure $p)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->forAll($p);
     }
 
@@ -238,7 +329,10 @@ abstract class AbstractLazyCollection implements Collection
     public function map(Closure $func)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->map($func);
     }
 
@@ -248,7 +342,10 @@ abstract class AbstractLazyCollection implements Collection
     public function partition(Closure $p)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->partition($p);
     }
 
@@ -258,7 +355,10 @@ abstract class AbstractLazyCollection implements Collection
     public function indexOf($element)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->indexOf($element);
     }
 
@@ -268,7 +368,10 @@ abstract class AbstractLazyCollection implements Collection
     public function slice($offset, $length = null)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->slice($offset, $length);
     }
 
@@ -278,7 +381,10 @@ abstract class AbstractLazyCollection implements Collection
     public function getIterator()
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->getIterator();
     }
 
@@ -288,7 +394,10 @@ abstract class AbstractLazyCollection implements Collection
     public function offsetExists($offset)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->offsetExists($offset);
     }
 
@@ -298,7 +407,10 @@ abstract class AbstractLazyCollection implements Collection
     public function offsetGet($offset)
     {
         $this->initialize();
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return $this->collection->offsetGet($offset);
     }
 
@@ -337,12 +449,19 @@ abstract class AbstractLazyCollection implements Collection
      */
     protected function initialize()
     {
+<<<<<<< HEAD
         if ($this->initialized) {
             return;
         }
 
         $this->doInitialize();
         $this->initialized = true;
+=======
+        if ( ! $this->initialized) {
+            $this->doInitialize();
+            $this->initialized = true;
+        }
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

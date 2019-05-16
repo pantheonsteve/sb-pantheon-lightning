@@ -49,6 +49,7 @@ class Entry extends Extension\AbstractRenderer
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _appendNamespaces()
     {
@@ -57,6 +58,12 @@ class Entry extends Extension\AbstractRenderer
             'xmlns:thr',
             'http://purl.org/syndication/thread/1.0'
         );
+=======
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute('xmlns:thr',
+            'http://purl.org/syndication/thread/1.0');
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -66,12 +73,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCommentLink(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $link = $this->getDataContainer()->getCommentLink();
         if (! $link) {
+=======
+    protected function _setCommentLink(DOMDocument $dom, DOMElement $root)
+    {
+        $link = $this->getDataContainer()->getCommentLink();
+        if (!$link) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $clink = $this->dom->createElement('link');
@@ -93,12 +107,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCommentFeedLinks(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $links = $this->getDataContainer()->getCommentFeedLinks();
         if (! $links || empty($links)) {
+=======
+    protected function _setCommentFeedLinks(DOMDocument $dom, DOMElement $root)
+    {
+        $links = $this->getDataContainer()->getCommentFeedLinks();
+        if (!$links || empty($links)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($links as $link) {
@@ -122,10 +143,15 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCommentCount(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _setCommentCount(DOMDocument $dom, DOMElement $root)
+    {
+>>>>>>> pantheon-drops-8/master
         $count = $this->getDataContainer()->getCommentCount();
         if ($count === null) {
             return;

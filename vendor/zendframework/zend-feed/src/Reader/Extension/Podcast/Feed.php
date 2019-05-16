@@ -1,8 +1,16 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-feed for the canonical source repository
  * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (https://www.zend.com)
  * @license   https://github.com/zendframework/zend-feed/blob/master/LICENSE.md New BSD License
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @link      http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+>>>>>>> pantheon-drops-8/master
  */
 
 namespace Zend\Feed\Reader\Extension\Podcast;
@@ -10,6 +18,11 @@ namespace Zend\Feed\Reader\Extension\Podcast;
 use DOMText;
 use Zend\Feed\Reader\Extension;
 
+<<<<<<< HEAD
+=======
+/**
+*/
+>>>>>>> pantheon-drops-8/master
 class Feed extends Extension\AbstractFeed
 {
     /**
@@ -25,7 +38,11 @@ class Feed extends Extension\AbstractFeed
 
         $author = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:author)');
 
+<<<<<<< HEAD
         if (! $author) {
+=======
+        if (!$author) {
+>>>>>>> pantheon-drops-8/master
             $author = null;
         }
 
@@ -47,7 +64,11 @@ class Feed extends Extension\AbstractFeed
 
         $block = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:block)');
 
+<<<<<<< HEAD
         if (! $block) {
+=======
+        if (!$block) {
+>>>>>>> pantheon-drops-8/master
             $block = null;
         }
 
@@ -79,7 +100,11 @@ class Feed extends Extension\AbstractFeed
                     $children = [];
 
                     foreach ($node->childNodes as $childNode) {
+<<<<<<< HEAD
                         if (! ($childNode instanceof DOMText)) {
+=======
+                        if (!($childNode instanceof DOMText)) {
+>>>>>>> pantheon-drops-8/master
                             $children[$childNode->getAttribute('text')] = null;
                         }
                     }
@@ -89,7 +114,11 @@ class Feed extends Extension\AbstractFeed
             }
         }
 
+<<<<<<< HEAD
         if (! $categories) {
+=======
+        if (!$categories) {
+>>>>>>> pantheon-drops-8/master
             $categories = null;
         }
 
@@ -111,7 +140,11 @@ class Feed extends Extension\AbstractFeed
 
         $explicit = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:explicit)');
 
+<<<<<<< HEAD
         if (! $explicit) {
+=======
+        if (!$explicit) {
+>>>>>>> pantheon-drops-8/master
             $explicit = null;
         }
 
@@ -121,7 +154,11 @@ class Feed extends Extension\AbstractFeed
     }
 
     /**
+<<<<<<< HEAD
      * Get the feed/podcast image
+=======
+     * Get the entry image
+>>>>>>> pantheon-drops-8/master
      *
      * @return string
      */
@@ -133,7 +170,11 @@ class Feed extends Extension\AbstractFeed
 
         $image = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:image/@href)');
 
+<<<<<<< HEAD
         if (! $image) {
+=======
+        if (!$image) {
+>>>>>>> pantheon-drops-8/master
             $image = null;
         }
 
@@ -145,25 +186,35 @@ class Feed extends Extension\AbstractFeed
     /**
      * Get the entry keywords
      *
+<<<<<<< HEAD
      * @deprecated since 2.10.0; itunes:keywords is no longer part of the
      *     iTunes podcast RSS specification.
+=======
+>>>>>>> pantheon-drops-8/master
      * @return string
      */
     public function getKeywords()
     {
+<<<<<<< HEAD
         trigger_error(
             'itunes:keywords has been deprecated in the iTunes podcast RSS specification,'
             . ' and should not be relied on.',
             \E_USER_DEPRECATED
         );
 
+=======
+>>>>>>> pantheon-drops-8/master
         if (isset($this->data['keywords'])) {
             return $this->data['keywords'];
         }
 
         $keywords = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:keywords)');
 
+<<<<<<< HEAD
         if (! $keywords) {
+=======
+        if (!$keywords) {
+>>>>>>> pantheon-drops-8/master
             $keywords = null;
         }
 
@@ -185,7 +236,11 @@ class Feed extends Extension\AbstractFeed
 
         $newFeedUrl = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:new-feed-url)');
 
+<<<<<<< HEAD
         if (! $newFeedUrl) {
+=======
+        if (!$newFeedUrl) {
+>>>>>>> pantheon-drops-8/master
             $newFeedUrl = null;
         }
 
@@ -210,6 +265,7 @@ class Feed extends Extension\AbstractFeed
         $email = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:owner/itunes:email)');
         $name  = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:owner/itunes:name)');
 
+<<<<<<< HEAD
         if (! empty($email)) {
             $owner = $email . (empty($name) ? '' : ' (' . $name . ')');
         } elseif (! empty($name)) {
@@ -217,6 +273,15 @@ class Feed extends Extension\AbstractFeed
         }
 
         if (! $owner) {
+=======
+        if (!empty($email)) {
+            $owner = $email . (empty($name) ? '' : ' (' . $name . ')');
+        } elseif (!empty($name)) {
+            $owner = $name;
+        }
+
+        if (!$owner) {
+>>>>>>> pantheon-drops-8/master
             $owner = null;
         }
 
@@ -238,7 +303,11 @@ class Feed extends Extension\AbstractFeed
 
         $subtitle = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:subtitle)');
 
+<<<<<<< HEAD
         if (! $subtitle) {
+=======
+        if (!$subtitle) {
+>>>>>>> pantheon-drops-8/master
             $subtitle = null;
         }
 
@@ -260,7 +329,11 @@ class Feed extends Extension\AbstractFeed
 
         $summary = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:summary)');
 
+<<<<<<< HEAD
         if (! $summary) {
+=======
+        if (!$summary) {
+>>>>>>> pantheon-drops-8/master
             $summary = null;
         }
 
@@ -270,6 +343,7 @@ class Feed extends Extension\AbstractFeed
     }
 
     /**
+<<<<<<< HEAD
      * Get the type of podcast
      *
      * @return string One of "episodic" or "serial". Defaults to "episodic"
@@ -315,6 +389,8 @@ class Feed extends Extension\AbstractFeed
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Register iTunes namespace
      *
      */

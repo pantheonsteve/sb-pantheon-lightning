@@ -92,6 +92,7 @@ class ExtensionDiscovery {
   protected $sitePath;
 
   /**
+<<<<<<< HEAD
    * The profile list.
    *
    * Used to determine the directories in which we want to scan for modules.
@@ -101,6 +102,8 @@ class ExtensionDiscovery {
   protected $profileList;
 
   /**
+=======
+>>>>>>> pantheon-drops-8/master
    * Constructs a new ExtensionDiscovery object.
    *
    * @param string $root
@@ -111,14 +114,20 @@ class ExtensionDiscovery {
    *   The available profile directories
    * @param string $site_path
    *   The path to the site.
+<<<<<<< HEAD
    * @param \Drupal\Core\Extension\ProfileExtensionList|null $profile_list
    *   (optional) The profile list.
    */
   public function __construct($root, $use_file_cache = TRUE, $profile_directories = NULL, $site_path = NULL, ProfileExtensionList $profile_list = NULL) {
+=======
+   */
+  public function __construct($root, $use_file_cache = TRUE, $profile_directories = NULL, $site_path = NULL) {
+>>>>>>> pantheon-drops-8/master
     $this->root = $root;
     $this->fileCache = $use_file_cache ? FileCacheFactory::get('extension_discovery') : NULL;
     $this->profileDirectories = $profile_directories;
     $this->sitePath = $site_path;
+<<<<<<< HEAD
 
     // ExtensionDiscovery can be used without a service container
     // (@drupalKernel::moduleData), so only use the profile list service if it
@@ -129,6 +138,8 @@ class ExtensionDiscovery {
     elseif (\Drupal::hasService('extension.list.profile')) {
       $this->profileList = \Drupal::service('extension.list.profile');
     }
+=======
+>>>>>>> pantheon-drops-8/master
   }
 
   /**
@@ -262,6 +273,7 @@ class ExtensionDiscovery {
     // In case both profile directories contain the same extension, the actual
     // profile always has precedence.
     if ($profile) {
+<<<<<<< HEAD
       if ($this->profileList) {
         $profiles = $this->profileList->getAncestors($profile);
       }
@@ -275,6 +287,9 @@ class ExtensionDiscovery {
         return $extension->getPath();
       }, $profiles);
       $this->profileDirectories = array_unique(array_merge($profile_directories, $this->profileDirectories));
+=======
+      $this->profileDirectories[] = drupal_get_path('profile', $profile);
+>>>>>>> pantheon-drops-8/master
     }
     return $this;
   }

@@ -23,15 +23,19 @@ class ProfileExtensionList extends ExtensionList {
     'package' => 'Other',
     'version' => NULL,
     'php' => DRUPAL_MINIMUM_PHP,
+<<<<<<< HEAD
     'themes' => ['stark'],
     'hidden' => FALSE,
     'base profile' => '',
     'exclude' => [],
+=======
+>>>>>>> pantheon-drops-8/master
   ];
 
   /**
    * {@inheritdoc}
    */
+<<<<<<< HEAD
   public function getExtensionInfo($extension_name) {
     $all_info = $this->getAllAvailableInfo();
     if (isset($all_info[$extension_name])) {
@@ -190,6 +194,10 @@ class ProfileExtensionList extends ExtensionList {
    */
   protected function getInstalledExtensionNames() {
     return array_keys($this->getAncestors());
+=======
+  protected function getInstalledExtensionNames() {
+    return [$this->installProfile];
+>>>>>>> pantheon-drops-8/master
   }
 
 }

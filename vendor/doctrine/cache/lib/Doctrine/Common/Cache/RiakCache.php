@@ -1,8 +1,29 @@
 <?php
+<<<<<<< HEAD
+=======
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
+>>>>>>> pantheon-drops-8/master
 
 namespace Doctrine\Common\Cache;
 
 use Riak\Bucket;
+<<<<<<< HEAD
 use Riak\Exception;
 use Riak\Input;
 use Riak\Object;
@@ -10,11 +31,18 @@ use function count;
 use function serialize;
 use function time;
 use function unserialize;
+=======
+use Riak\Connection;
+use Riak\Input;
+use Riak\Exception;
+use Riak\Object;
+>>>>>>> pantheon-drops-8/master
 
 /**
  * Riak cache provider.
  *
  * @link   www.doctrine-project.org
+<<<<<<< HEAD
  *
  * @deprecated
  */
@@ -23,10 +51,27 @@ class RiakCache extends CacheProvider
     public const EXPIRES_HEADER = 'X-Riak-Meta-Expires';
 
     /** @var Bucket */
+=======
+ * @since  1.1
+ * @author Guilherme Blanco <guilhermeblanco@hotmail.com>
+ */
+class RiakCache extends CacheProvider
+{
+    const EXPIRES_HEADER = 'X-Riak-Meta-Expires';
+
+    /**
+     * @var \Riak\Bucket
+     */
+>>>>>>> pantheon-drops-8/master
     private $bucket;
 
     /**
      * Sets the riak bucket instance to use.
+<<<<<<< HEAD
+=======
+     *
+     * @param \Riak\Bucket $bucket
+>>>>>>> pantheon-drops-8/master
      */
     public function __construct(Bucket $bucket)
     {
@@ -42,7 +87,11 @@ class RiakCache extends CacheProvider
             $response = $this->bucket->get($id);
 
             // No objects found
+<<<<<<< HEAD
             if (! $response->hasObject()) {
+=======
+            if ( ! $response->hasObject()) {
+>>>>>>> pantheon-drops-8/master
                 return false;
             }
 
@@ -84,7 +133,11 @@ class RiakCache extends CacheProvider
             $response = $this->bucket->get($id, $input);
 
             // No objects found
+<<<<<<< HEAD
             if (! $response->hasObject()) {
+=======
+            if ( ! $response->hasObject()) {
+>>>>>>> pantheon-drops-8/master
                 return false;
             }
 
@@ -181,8 +234,17 @@ class RiakCache extends CacheProvider
 
     /**
      * Check if a given Riak Object have expired.
+<<<<<<< HEAD
      */
     private function isExpired(Object $object) : bool
+=======
+     *
+     * @param \Riak\Object $object
+     *
+     * @return bool
+     */
+    private function isExpired(Object $object)
+>>>>>>> pantheon-drops-8/master
     {
         $metadataMap = $object->getMetadataMap();
 
@@ -208,12 +270,20 @@ class RiakCache extends CacheProvider
      * @param string $vClock
      * @param array  $objectList
      *
+<<<<<<< HEAD
      * @return Object
+=======
+     * @return \Riak\Object
+>>>>>>> pantheon-drops-8/master
      */
     protected function resolveConflict($id, $vClock, array $objectList)
     {
         // Our approach here is last-write wins
+<<<<<<< HEAD
         $winner = $objectList[count($objectList) - 1];
+=======
+        $winner = $objectList[count($objectList)];
+>>>>>>> pantheon-drops-8/master
 
         $putInput = new Input\PutInput();
         $putInput->setVClock($vClock);

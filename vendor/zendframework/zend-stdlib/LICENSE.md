@@ -1,15 +1,29 @@
+<<<<<<< HEAD
 Copyright (c) 2005-2018, Zend Technologies USA, Inc.
+=======
+Copyright (c) 2005-2015, Zend Technologies USA, Inc.
+
+>>>>>>> pantheon-drops-8/master
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
 
+<<<<<<< HEAD
 - Redistributions of source code must retain the above copyright notice, this
   list of conditions and the following disclaimer.
 
 - Redistributions in binary form must reproduce the above copyright notice, this
   list of conditions and the following disclaimer in the documentation and/or
   other materials provided with the distribution.
+=======
+- Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+
+- Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+>>>>>>> pantheon-drops-8/master
 
 - Neither the name of Zend Technologies USA, Inc. nor the names of its
   contributors may be used to endorse or promote products derived from this

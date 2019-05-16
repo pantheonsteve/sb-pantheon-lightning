@@ -100,6 +100,7 @@ class AnnotationReader implements Reader
         'package_version' => true,
         // PlantUML
         'startuml' => true, 'enduml' => true,
+<<<<<<< HEAD
         // Symfony 3.3 Cache Adapter
         'experimental' => true
     );
@@ -114,6 +115,11 @@ class AnnotationReader implements Reader
     private static $globalIgnoredNamespaces = array();
 
     /**
+=======
+    );
+
+    /**
+>>>>>>> pantheon-drops-8/master
      * Add a new annotation to the globally ignored annotation names with regard to exception handling.
      *
      * @param string $name
@@ -124,6 +130,7 @@ class AnnotationReader implements Reader
     }
 
     /**
+<<<<<<< HEAD
      * Add a new annotation to the globally ignored annotation namespaces with regard to exception handling.
      *
      * @param string $namespace
@@ -134,6 +141,8 @@ class AnnotationReader implements Reader
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Annotations parser.
      *
      * @var \Doctrine\Common\Annotations\DocParser
@@ -172,12 +181,17 @@ class AnnotationReader implements Reader
      * Constructor.
      *
      * Initializes a new AnnotationReader.
+<<<<<<< HEAD
      *
      * @param DocParser $parser
      *
      * @throws AnnotationException
      */
     public function __construct(DocParser $parser = null)
+=======
+     */
+    public function __construct()
+>>>>>>> pantheon-drops-8/master
     {
         if (extension_loaded('Zend Optimizer+') && (ini_get('zend_optimizerplus.save_comments') === "0" || ini_get('opcache.save_comments') === "0")) {
             throw AnnotationException::optimizerPlusSaveComments();
@@ -199,8 +213,12 @@ class AnnotationReader implements Reader
 
         AnnotationRegistry::registerFile(__DIR__ . '/Annotation/IgnoreAnnotation.php');
 
+<<<<<<< HEAD
         $this->parser = $parser ?: new DocParser();
 
+=======
+        $this->parser    = new DocParser;
+>>>>>>> pantheon-drops-8/master
         $this->preParser = new DocParser;
 
         $this->preParser->setImports(self::$globalImports);
@@ -217,7 +235,10 @@ class AnnotationReader implements Reader
         $this->parser->setTarget(Target::TARGET_CLASS);
         $this->parser->setImports($this->getClassImports($class));
         $this->parser->setIgnoredAnnotationNames($this->getIgnoredAnnotationNames($class));
+<<<<<<< HEAD
         $this->parser->setIgnoredAnnotationNamespaces(self::$globalIgnoredNamespaces);
+=======
+>>>>>>> pantheon-drops-8/master
 
         return $this->parser->parse($class->getDocComment(), 'class ' . $class->getName());
     }
@@ -249,7 +270,10 @@ class AnnotationReader implements Reader
         $this->parser->setTarget(Target::TARGET_PROPERTY);
         $this->parser->setImports($this->getPropertyImports($property));
         $this->parser->setIgnoredAnnotationNames($this->getIgnoredAnnotationNames($class));
+<<<<<<< HEAD
         $this->parser->setIgnoredAnnotationNamespaces(self::$globalIgnoredNamespaces);
+=======
+>>>>>>> pantheon-drops-8/master
 
         return $this->parser->parse($property->getDocComment(), $context);
     }
@@ -281,7 +305,10 @@ class AnnotationReader implements Reader
         $this->parser->setTarget(Target::TARGET_METHOD);
         $this->parser->setImports($this->getMethodImports($method));
         $this->parser->setIgnoredAnnotationNames($this->getIgnoredAnnotationNames($class));
+<<<<<<< HEAD
         $this->parser->setIgnoredAnnotationNamespaces(self::$globalIgnoredNamespaces);
+=======
+>>>>>>> pantheon-drops-8/master
 
         return $this->parser->parse($method->getDocComment(), $context);
     }
@@ -311,8 +338,12 @@ class AnnotationReader implements Reader
      */
     private function getIgnoredAnnotationNames(ReflectionClass $class)
     {
+<<<<<<< HEAD
         $name = $class->getName();
         if (isset($this->ignoredAnnotationNames[$name])) {
+=======
+        if (isset($this->ignoredAnnotationNames[$name = $class->getName()])) {
+>>>>>>> pantheon-drops-8/master
             return $this->ignoredAnnotationNames[$name];
         }
 
@@ -330,8 +361,12 @@ class AnnotationReader implements Reader
      */
     private function getClassImports(ReflectionClass $class)
     {
+<<<<<<< HEAD
         $name = $class->getName();
         if (isset($this->imports[$name])) {
+=======
+        if (isset($this->imports[$name = $class->getName()])) {
+>>>>>>> pantheon-drops-8/master
             return $this->imports[$name];
         }
 

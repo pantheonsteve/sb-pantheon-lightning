@@ -41,8 +41,13 @@ class Rss extends AbstractEntry implements EntryInterface
     public function __construct(DOMElement $entry, $entryKey, $type = null)
     {
         parent::__construct($entry, $entryKey, $type);
+<<<<<<< HEAD
         $this->xpathQueryRss = '//item[' . ($this->entryKey + 1) . ']';
         $this->xpathQueryRdf = '//rss:item[' . ($this->entryKey + 1) . ']';
+=======
+        $this->xpathQueryRss = '//item[' . ($this->entryKey+1) . ']';
+        $this->xpathQueryRdf = '//rss:item[' . ($this->entryKey+1) . ']';
+>>>>>>> pantheon-drops-8/master
 
         $manager    = Reader\Reader::getExtensionManager();
         $extensions = [
@@ -63,7 +68,14 @@ class Rss extends AbstractEntry implements EntryInterface
     }
 
     /**
+<<<<<<< HEAD
      * @inheritdoc
+=======
+     * Get an author entry
+     *
+     * @param int $index
+     * @return string
+>>>>>>> pantheon-drops-8/master
      */
     public function getAuthor($index = 0)
     {
@@ -89,7 +101,11 @@ class Rss extends AbstractEntry implements EntryInterface
 
         $authors = [];
         $authorsDc = $this->getExtension('DublinCore')->getAuthors();
+<<<<<<< HEAD
         if (! empty($authorsDc)) {
+=======
+        if (!empty($authorsDc)) {
+>>>>>>> pantheon-drops-8/master
             foreach ($authorsDc as $author) {
                 $authors[] = [
                     'name' => $author['name']
@@ -148,7 +164,11 @@ class Rss extends AbstractEntry implements EntryInterface
 
         $content = $this->getExtension('Content')->getContent();
 
+<<<<<<< HEAD
         if (! $content) {
+=======
+        if (!$content) {
+>>>>>>> pantheon-drops-8/master
             $content = $this->getDescription();
         }
 
@@ -206,8 +226,12 @@ class Rss extends AbstractEntry implements EntryInterface
                                     'Could not load date due to unrecognised'
                                     .' format (should follow RFC 822 or 2822):'
                                     . $e->getMessage(),
+<<<<<<< HEAD
                                     0,
                                     $e
+=======
+                                    0, $e
+>>>>>>> pantheon-drops-8/master
                                 );
                             }
                         }
@@ -216,6 +240,7 @@ class Rss extends AbstractEntry implements EntryInterface
             }
         }
 
+<<<<<<< HEAD
         if (! $date) {
             $date = $this->getExtension('DublinCore')->getDate();
         }
@@ -225,6 +250,17 @@ class Rss extends AbstractEntry implements EntryInterface
         }
 
         if (! $date) {
+=======
+        if (!$date) {
+            $date = $this->getExtension('DublinCore')->getDate();
+        }
+
+        if (!$date) {
+            $date = $this->getExtension('Atom')->getDateModified();
+        }
+
+        if (!$date) {
+>>>>>>> pantheon-drops-8/master
             $date = null;
         }
 
@@ -254,7 +290,11 @@ class Rss extends AbstractEntry implements EntryInterface
             $description = $this->xpath->evaluate('string(' . $this->xpathQueryRdf . '/rss:description)');
         }
 
+<<<<<<< HEAD
         if (! $description) {
+=======
+        if (!$description) {
+>>>>>>> pantheon-drops-8/master
             $description = $this->getExtension('DublinCore')->getDescription();
         }
 
@@ -262,7 +302,11 @@ class Rss extends AbstractEntry implements EntryInterface
             $description = $this->getExtension('Atom')->getDescription();
         }
 
+<<<<<<< HEAD
         if (! $description) {
+=======
+        if (!$description) {
+>>>>>>> pantheon-drops-8/master
             $description = null;
         }
 
@@ -294,7 +338,11 @@ class Rss extends AbstractEntry implements EntryInterface
             }
         }
 
+<<<<<<< HEAD
         if (! $enclosure) {
+=======
+        if (!$enclosure) {
+>>>>>>> pantheon-drops-8/master
             $enclosure = $this->getExtension('Atom')->getEnclosure();
         }
 
@@ -322,7 +370,11 @@ class Rss extends AbstractEntry implements EntryInterface
             $id = $this->xpath->evaluate('string(' . $this->xpathQueryRss . '/guid)');
         }
 
+<<<<<<< HEAD
         if (! $id) {
+=======
+        if (!$id) {
+>>>>>>> pantheon-drops-8/master
             $id = $this->getExtension('DublinCore')->getId();
         }
 
@@ -330,7 +382,11 @@ class Rss extends AbstractEntry implements EntryInterface
             $id = $this->getExtension('Atom')->getId();
         }
 
+<<<<<<< HEAD
         if (! $id) {
+=======
+        if (!$id) {
+>>>>>>> pantheon-drops-8/master
             if ($this->getPermalink()) {
                 $id = $this->getPermalink();
             } elseif ($this->getTitle()) {
@@ -353,7 +409,11 @@ class Rss extends AbstractEntry implements EntryInterface
      */
     public function getLink($index = 0)
     {
+<<<<<<< HEAD
         if (! array_key_exists('links', $this->data)) {
+=======
+        if (!array_key_exists('links', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             $this->getLinks();
         }
 
@@ -384,7 +444,11 @@ class Rss extends AbstractEntry implements EntryInterface
             $list = $this->xpath->query($this->xpathQueryRdf . '//rss:link');
         }
 
+<<<<<<< HEAD
         if (! $list->length) {
+=======
+        if (!$list->length) {
+>>>>>>> pantheon-drops-8/master
             $links = $this->getExtension('Atom')->getLinks();
         } else {
             foreach ($list as $link) {
@@ -468,6 +532,7 @@ class Rss extends AbstractEntry implements EntryInterface
             $title = $this->xpath->evaluate('string(' . $this->xpathQueryRdf . '/rss:title)');
         }
 
+<<<<<<< HEAD
         if (! $title) {
             $title = $this->getExtension('DublinCore')->getTitle();
         }
@@ -477,6 +542,17 @@ class Rss extends AbstractEntry implements EntryInterface
         }
 
         if (! $title) {
+=======
+        if (!$title) {
+            $title = $this->getExtension('DublinCore')->getTitle();
+        }
+
+        if (!$title) {
+            $title = $this->getExtension('Atom')->getTitle();
+        }
+
+        if (!$title) {
+>>>>>>> pantheon-drops-8/master
             $title = null;
         }
 
@@ -498,6 +574,7 @@ class Rss extends AbstractEntry implements EntryInterface
 
         $commentcount = $this->getExtension('Slash')->getCommentCount();
 
+<<<<<<< HEAD
         if (! $commentcount) {
             $commentcount = $this->getExtension('Thread')->getCommentCount();
         }
@@ -507,6 +584,17 @@ class Rss extends AbstractEntry implements EntryInterface
         }
 
         if (! $commentcount) {
+=======
+        if (!$commentcount) {
+            $commentcount = $this->getExtension('Thread')->getCommentCount();
+        }
+
+        if (!$commentcount) {
+            $commentcount = $this->getExtension('Atom')->getCommentCount();
+        }
+
+        if (!$commentcount) {
+>>>>>>> pantheon-drops-8/master
             $commentcount = null;
         }
 
@@ -534,11 +622,19 @@ class Rss extends AbstractEntry implements EntryInterface
             $commentlink = $this->xpath->evaluate('string(' . $this->xpathQueryRss . '/comments)');
         }
 
+<<<<<<< HEAD
         if (! $commentlink) {
             $commentlink = $this->getExtension('Atom')->getCommentLink();
         }
 
         if (! $commentlink) {
+=======
+        if (!$commentlink) {
+            $commentlink = $this->getExtension('Atom')->getCommentLink();
+        }
+
+        if (!$commentlink) {
+>>>>>>> pantheon-drops-8/master
             $commentlink = null;
         }
 
@@ -560,6 +656,7 @@ class Rss extends AbstractEntry implements EntryInterface
 
         $commentfeedlink = $this->getExtension('WellFormedWeb')->getCommentFeedLink();
 
+<<<<<<< HEAD
         if (! $commentfeedlink) {
             $commentfeedlink = $this->getExtension('Atom')->getCommentFeedLink('rss');
         }
@@ -569,6 +666,17 @@ class Rss extends AbstractEntry implements EntryInterface
         }
 
         if (! $commentfeedlink) {
+=======
+        if (!$commentfeedlink) {
+            $commentfeedlink = $this->getExtension('Atom')->getCommentFeedLink('rss');
+        }
+
+        if (!$commentfeedlink) {
+            $commentfeedlink = $this->getExtension('Atom')->getCommentFeedLink('rdf');
+        }
+
+        if (!$commentfeedlink) {
+>>>>>>> pantheon-drops-8/master
             $commentfeedlink = null;
         }
 

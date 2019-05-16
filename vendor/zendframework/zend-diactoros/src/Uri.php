@@ -1,7 +1,14 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-diactoros for the canonical source repository
  * @copyright Copyright (c) 2015-2017 Zend Technologies USA Inc. (http://www.zend.com)
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @see       http://github.com/zendframework/zend-diactoros for the canonical source repository
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
+>>>>>>> pantheon-drops-8/master
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
@@ -10,6 +17,7 @@ namespace Zend\Diactoros;
 use InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
 
+<<<<<<< HEAD
 use function array_key_exists;
 use function array_keys;
 use function count;
@@ -30,6 +38,8 @@ use function strpos;
 use function strtolower;
 use function substr;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * Implementation of Psr\Http\UriInterface.
  *
@@ -43,14 +53,22 @@ use function substr;
 class Uri implements UriInterface
 {
     /**
+<<<<<<< HEAD
      * Sub-delimiters used in user info, query strings and fragments.
+=======
+     * Sub-delimiters used in query strings and fragments.
+>>>>>>> pantheon-drops-8/master
      *
      * @const string
      */
     const CHAR_SUB_DELIMS = '!\$&\'\(\)\*\+,;=';
 
     /**
+<<<<<<< HEAD
      * Unreserved characters used in user info, paths, query strings, and fragments.
+=======
+     * Unreserved characters used in paths, query strings, and fragments.
+>>>>>>> pantheon-drops-8/master
      *
      * @const string
      */
@@ -111,6 +129,7 @@ class Uri implements UriInterface
      */
     public function __construct($uri = '')
     {
+<<<<<<< HEAD
         if ('' === $uri) {
             return;
         }
@@ -123,6 +142,18 @@ class Uri implements UriInterface
         }
 
         $this->parseUri($uri);
+=======
+        if (! is_string($uri)) {
+            throw new InvalidArgumentException(sprintf(
+                'URI passed to constructor must be a string; received "%s"',
+                (is_object($uri) ? get_class($uri) : gettype($uri))
+            ));
+        }
+
+        if (! empty($uri)) {
+            $this->parseUri($uri);
+        }
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -169,12 +200,20 @@ class Uri implements UriInterface
      */
     public function getAuthority()
     {
+<<<<<<< HEAD
         if ('' === $this->host) {
+=======
+        if (empty($this->host)) {
+>>>>>>> pantheon-drops-8/master
             return '';
         }
 
         $authority = $this->host;
+<<<<<<< HEAD
         if ('' !== $this->userInfo) {
+=======
+        if (! empty($this->userInfo)) {
+>>>>>>> pantheon-drops-8/master
             $authority = $this->userInfo . '@' . $authority;
         }
 
@@ -186,10 +225,13 @@ class Uri implements UriInterface
     }
 
     /**
+<<<<<<< HEAD
      * Retrieve the user-info part of the URI.
      *
      * This value is percent-encoded, per RFC 3986 Section 3.2.1.
      *
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritdoc}
      */
     public function getUserInfo()
@@ -248,7 +290,11 @@ class Uri implements UriInterface
             throw new InvalidArgumentException(sprintf(
                 '%s expects a string argument; received %s',
                 __METHOD__,
+<<<<<<< HEAD
                 is_object($scheme) ? get_class($scheme) : gettype($scheme)
+=======
+                (is_object($scheme) ? get_class($scheme) : gettype($scheme))
+>>>>>>> pantheon-drops-8/master
             ));
         }
 
@@ -256,7 +302,11 @@ class Uri implements UriInterface
 
         if ($scheme === $this->scheme) {
             // Do nothing if no change was made.
+<<<<<<< HEAD
             return $this;
+=======
+            return clone $this;
+>>>>>>> pantheon-drops-8/master
         }
 
         $new = clone $this;
@@ -266,11 +316,14 @@ class Uri implements UriInterface
     }
 
     /**
+<<<<<<< HEAD
      * Create and return a new instance containing the provided user credentials.
      *
      * The value will be percent-encoded in the new instance, but with measures
      * taken to prevent double-encoding.
      *
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritdoc}
      */
     public function withUserInfo($user, $password = null)
@@ -279,11 +332,16 @@ class Uri implements UriInterface
             throw new InvalidArgumentException(sprintf(
                 '%s expects a string user argument; received %s',
                 __METHOD__,
+<<<<<<< HEAD
                 is_object($user) ? get_class($user) : gettype($user)
+=======
+                (is_object($user) ? get_class($user) : gettype($user))
+>>>>>>> pantheon-drops-8/master
             ));
         }
         if (null !== $password && ! is_string($password)) {
             throw new InvalidArgumentException(sprintf(
+<<<<<<< HEAD
                 '%s expects a string or null password argument; received %s',
                 __METHOD__,
                 is_object($password) ? get_class($password) : gettype($password)
@@ -293,11 +351,26 @@ class Uri implements UriInterface
         $info = $this->filterUserInfoPart($user);
         if (null !== $password) {
             $info .= ':' . $this->filterUserInfoPart($password);
+=======
+                '%s expects a string password argument; received %s',
+                __METHOD__,
+                (is_object($password) ? get_class($password) : gettype($password))
+            ));
+        }
+
+        $info = $user;
+        if ($password) {
+            $info .= ':' . $password;
+>>>>>>> pantheon-drops-8/master
         }
 
         if ($info === $this->userInfo) {
             // Do nothing if no change was made.
+<<<<<<< HEAD
             return $this;
+=======
+            return clone $this;
+>>>>>>> pantheon-drops-8/master
         }
 
         $new = clone $this;
@@ -315,17 +388,29 @@ class Uri implements UriInterface
             throw new InvalidArgumentException(sprintf(
                 '%s expects a string argument; received %s',
                 __METHOD__,
+<<<<<<< HEAD
                 is_object($host) ? get_class($host) : gettype($host)
+=======
+                (is_object($host) ? get_class($host) : gettype($host))
+>>>>>>> pantheon-drops-8/master
             ));
         }
 
         if ($host === $this->host) {
             // Do nothing if no change was made.
+<<<<<<< HEAD
             return $this;
         }
 
         $new = clone $this;
         $new->host = strtolower($host);
+=======
+            return clone $this;
+        }
+
+        $new = clone $this;
+        $new->host = $host;
+>>>>>>> pantheon-drops-8/master
 
         return $new;
     }
@@ -335,6 +420,7 @@ class Uri implements UriInterface
      */
     public function withPort($port)
     {
+<<<<<<< HEAD
         if ($port !== null) {
             if (! is_numeric($port) || is_float($port)) {
                 throw new InvalidArgumentException(sprintf(
@@ -343,15 +429,32 @@ class Uri implements UriInterface
                 ));
             }
 
+=======
+        if (! is_numeric($port) && $port !== null) {
+            throw new InvalidArgumentException(sprintf(
+                'Invalid port "%s" specified; must be an integer, an integer string, or null',
+                (is_object($port) ? get_class($port) : gettype($port))
+            ));
+        }
+
+        if ($port !== null) {
+>>>>>>> pantheon-drops-8/master
             $port = (int) $port;
         }
 
         if ($port === $this->port) {
             // Do nothing if no change was made.
+<<<<<<< HEAD
             return $this;
         }
 
         if ($port !== null && ($port < 1 || $port > 65535)) {
+=======
+            return clone $this;
+        }
+
+        if ($port !== null && $port < 1 || $port > 65535) {
+>>>>>>> pantheon-drops-8/master
             throw new InvalidArgumentException(sprintf(
                 'Invalid port "%d" specified; must be a valid TCP/UDP port',
                 $port
@@ -391,7 +494,11 @@ class Uri implements UriInterface
 
         if ($path === $this->path) {
             // Do nothing if no change was made.
+<<<<<<< HEAD
             return $this;
+=======
+            return clone $this;
+>>>>>>> pantheon-drops-8/master
         }
 
         $new = clone $this;
@@ -421,7 +528,11 @@ class Uri implements UriInterface
 
         if ($query === $this->query) {
             // Do nothing if no change was made.
+<<<<<<< HEAD
             return $this;
+=======
+            return clone $this;
+>>>>>>> pantheon-drops-8/master
         }
 
         $new = clone $this;
@@ -439,7 +550,11 @@ class Uri implements UriInterface
             throw new InvalidArgumentException(sprintf(
                 '%s expects a string argument; received %s',
                 __METHOD__,
+<<<<<<< HEAD
                 is_object($fragment) ? get_class($fragment) : gettype($fragment)
+=======
+                (is_object($fragment) ? get_class($fragment) : gettype($fragment))
+>>>>>>> pantheon-drops-8/master
             ));
         }
 
@@ -447,7 +562,11 @@ class Uri implements UriInterface
 
         if ($fragment === $this->fragment) {
             // Do nothing if no change was made.
+<<<<<<< HEAD
             return $this;
+=======
+            return clone $this;
+>>>>>>> pantheon-drops-8/master
         }
 
         $new = clone $this;
@@ -472,8 +591,13 @@ class Uri implements UriInterface
         }
 
         $this->scheme    = isset($parts['scheme']) ? $this->filterScheme($parts['scheme']) : '';
+<<<<<<< HEAD
         $this->userInfo  = isset($parts['user']) ? $this->filterUserInfoPart($parts['user']) : '';
         $this->host      = isset($parts['host']) ? strtolower($parts['host']) : '';
+=======
+        $this->userInfo  = isset($parts['user']) ? $parts['user'] : '';
+        $this->host      = isset($parts['host']) ? $parts['host'] : '';
+>>>>>>> pantheon-drops-8/master
         $this->port      = isset($parts['port']) ? $parts['port'] : null;
         $this->path      = isset($parts['path']) ? $this->filterPath($parts['path']) : '';
         $this->query     = isset($parts['query']) ? $this->filterQuery($parts['query']) : '';
@@ -498,6 +622,7 @@ class Uri implements UriInterface
     {
         $uri = '';
 
+<<<<<<< HEAD
         if ('' !== $scheme) {
             $uri .= sprintf('%s:', $scheme);
         }
@@ -518,6 +643,29 @@ class Uri implements UriInterface
         }
 
         if ('' !== $fragment) {
+=======
+        if (! empty($scheme)) {
+            $uri .= sprintf('%s:', $scheme);
+        }
+
+        if (! empty($authority)) {
+            $uri .= '//' . $authority;
+        }
+
+        if ($path) {
+            if (empty($path) || '/' !== substr($path, 0, 1)) {
+                $path = '/' . $path;
+            }
+
+            $uri .= $path;
+        }
+
+        if ($query) {
+            $uri .= sprintf('?%s', $query);
+        }
+
+        if ($fragment) {
+>>>>>>> pantheon-drops-8/master
             $uri .= sprintf('#%s', $fragment);
         }
 
@@ -534,11 +682,22 @@ class Uri implements UriInterface
      */
     private function isNonStandardPort($scheme, $host, $port)
     {
+<<<<<<< HEAD
         if ('' === $scheme) {
             return '' === $host || null !== $port;
         }
 
         if ('' === $host || null === $port) {
+=======
+        if (! $scheme) {
+            if ($host && ! $port) {
+                return false;
+            }
+            return true;
+        }
+
+        if (! $host || ! $port) {
+>>>>>>> pantheon-drops-8/master
             return false;
         }
 
@@ -557,11 +716,19 @@ class Uri implements UriInterface
         $scheme = strtolower($scheme);
         $scheme = preg_replace('#:(//)?$#', '', $scheme);
 
+<<<<<<< HEAD
         if ('' === $scheme) {
             return '';
         }
 
         if (! isset($this->allowedSchemes[$scheme])) {
+=======
+        if (empty($scheme)) {
+            return '';
+        }
+
+        if (! array_key_exists($scheme, $this->allowedSchemes)) {
+>>>>>>> pantheon-drops-8/master
             throw new InvalidArgumentException(sprintf(
                 'Unsupported scheme "%s"; must be any empty string or in the set (%s)',
                 $scheme,
@@ -573,6 +740,7 @@ class Uri implements UriInterface
     }
 
     /**
+<<<<<<< HEAD
      * Filters a part of user info in a URI to ensure it is properly encoded.
      *
      * @param string $part
@@ -590,6 +758,8 @@ class Uri implements UriInterface
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Filters the path of a URI to ensure it is properly encoded.
      *
      * @param string $path
@@ -603,7 +773,11 @@ class Uri implements UriInterface
             $path
         );
 
+<<<<<<< HEAD
         if ('' === $path) {
+=======
+        if (empty($path)) {
+>>>>>>> pantheon-drops-8/master
             // No path
             return $path;
         }
@@ -627,7 +801,11 @@ class Uri implements UriInterface
      */
     private function filterQuery($query)
     {
+<<<<<<< HEAD
         if ('' !== $query && strpos($query, '?') === 0) {
+=======
+        if (! empty($query) && strpos($query, '?') === 0) {
+>>>>>>> pantheon-drops-8/master
             $query = substr($query, 1);
         }
 
@@ -657,7 +835,11 @@ class Uri implements UriInterface
     private function splitQueryValue($value)
     {
         $data = explode('=', $value, 2);
+<<<<<<< HEAD
         if (! isset($data[1])) {
+=======
+        if (1 === count($data)) {
+>>>>>>> pantheon-drops-8/master
             $data[] = null;
         }
         return $data;
@@ -666,12 +848,20 @@ class Uri implements UriInterface
     /**
      * Filter a fragment value to ensure it is properly encoded.
      *
+<<<<<<< HEAD
      * @param string $fragment
+=======
+     * @param null|string $fragment
+>>>>>>> pantheon-drops-8/master
      * @return string
      */
     private function filterFragment($fragment)
     {
+<<<<<<< HEAD
         if ('' !== $fragment && strpos($fragment, '#') === 0) {
+=======
+        if (! empty($fragment) && strpos($fragment, '#') === 0) {
+>>>>>>> pantheon-drops-8/master
             $fragment = '%23' . substr($fragment, 1);
         }
 

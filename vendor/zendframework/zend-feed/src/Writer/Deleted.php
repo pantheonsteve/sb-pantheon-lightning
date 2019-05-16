@@ -10,7 +10,10 @@
 namespace Zend\Feed\Writer;
 
 use DateTime;
+<<<<<<< HEAD
 use DateTimeInterface;
+=======
+>>>>>>> pantheon-drops-8/master
 use Zend\Feed\Uri;
 
 /**
@@ -42,7 +45,11 @@ class Deleted
      */
     public function setEncoding($encoding)
     {
+<<<<<<< HEAD
         if (empty($encoding) || ! is_string($encoding)) {
+=======
+        if (empty($encoding) || !is_string($encoding)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter: parameter must be a non-empty string');
         }
         $this->data['encoding'] = $encoding;
@@ -57,7 +64,11 @@ class Deleted
      */
     public function getEncoding()
     {
+<<<<<<< HEAD
         if (! array_key_exists('encoding', $this->data)) {
+=======
+        if (!array_key_exists('encoding', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return 'UTF-8';
         }
         return $this->data['encoding'];
@@ -111,7 +122,11 @@ class Deleted
      */
     public function setReference($reference)
     {
+<<<<<<< HEAD
         if (empty($reference) || ! is_string($reference)) {
+=======
+        if (empty($reference) || !is_string($reference)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter: reference must be a non-empty string');
         }
         $this->data['reference'] = $reference;
@@ -124,7 +139,11 @@ class Deleted
      */
     public function getReference()
     {
+<<<<<<< HEAD
         if (! array_key_exists('reference', $this->data)) {
+=======
+        if (!array_key_exists('reference', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['reference'];
@@ -133,7 +152,11 @@ class Deleted
     /**
      * Set when
      *
+<<<<<<< HEAD
      * @param null|int|DateTimeInterface $date
+=======
+     * @param null|string|DateTime $date
+>>>>>>> pantheon-drops-8/master
      * @throws Exception\InvalidArgumentException
      * @return Deleted
      */
@@ -141,11 +164,17 @@ class Deleted
     {
         if ($date === null) {
             $date = new DateTime();
+<<<<<<< HEAD
         }
         if (is_int($date)) {
             $date = new DateTime('@' . $date);
         }
         if (! $date instanceof DateTimeInterface) {
+=======
+        } elseif (is_int($date)) {
+            $date = new DateTime('@' . $date);
+        } elseif (!$date instanceof DateTime) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid DateTime object or UNIX Timestamp'
             . ' passed as parameter');
         }
@@ -159,7 +188,11 @@ class Deleted
      */
     public function getWhen()
     {
+<<<<<<< HEAD
         if (! array_key_exists('when', $this->data)) {
+=======
+        if (!array_key_exists('when', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['when'];
@@ -175,16 +208,26 @@ class Deleted
     public function setBy(array $by)
     {
         $author = [];
+<<<<<<< HEAD
         if (! array_key_exists('name', $by)
             || empty($by['name'])
             || ! is_string($by['name'])
+=======
+        if (!array_key_exists('name', $by)
+            || empty($by['name'])
+            || !is_string($by['name'])
+>>>>>>> pantheon-drops-8/master
         ) {
             throw new Exception\InvalidArgumentException('Invalid parameter: author array must include a'
             . ' "name" key with a non-empty string value');
         }
         $author['name'] = $by['name'];
         if (isset($by['email'])) {
+<<<<<<< HEAD
             if (empty($by['email']) || ! is_string($by['email'])) {
+=======
+            if (empty($by['email']) || !is_string($by['email'])) {
+>>>>>>> pantheon-drops-8/master
                 throw new Exception\InvalidArgumentException('Invalid parameter: "email" array'
                 . ' value must be a non-empty string');
             }
@@ -192,8 +235,13 @@ class Deleted
         }
         if (isset($by['uri'])) {
             if (empty($by['uri'])
+<<<<<<< HEAD
                 || ! is_string($by['uri'])
                 || ! Uri::factory($by['uri'])->isValid()
+=======
+                || !is_string($by['uri'])
+                || !Uri::factory($by['uri'])->isValid()
+>>>>>>> pantheon-drops-8/master
             ) {
                 throw new Exception\InvalidArgumentException('Invalid parameter: "uri" array value must'
                  . ' be a non-empty string and valid URI/IRI');
@@ -210,7 +258,11 @@ class Deleted
      */
     public function getBy()
     {
+<<<<<<< HEAD
         if (! array_key_exists('by', $this->data)) {
+=======
+        if (!array_key_exists('by', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['by'];
@@ -231,7 +283,11 @@ class Deleted
      */
     public function getComment()
     {
+<<<<<<< HEAD
         if (! array_key_exists('comment', $this->data)) {
+=======
+        if (!array_key_exists('comment', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         return $this->data['comment'];

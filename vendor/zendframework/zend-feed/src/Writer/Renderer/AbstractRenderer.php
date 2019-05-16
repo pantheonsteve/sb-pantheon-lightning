@@ -82,7 +82,11 @@ class AbstractRenderer
      */
     public function saveXml()
     {
+<<<<<<< HEAD
         return $this->getDomDocument()->saveXML();
+=======
+        return $this->getDomDocument()->saveXml();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -146,10 +150,15 @@ class AbstractRenderer
      */
     public function ignoreExceptions($bool = true)
     {
+<<<<<<< HEAD
         if (! is_bool($bool)) {
             throw new Writer\Exception\InvalidArgumentException(
                 'Invalid parameter: $bool. Should be TRUE or FALSE (defaults to TRUE if null)'
             );
+=======
+        if (!is_bool($bool)) {
+            throw new Writer\Exception\InvalidArgumentException('Invalid parameter: $bool. Should be TRUE or FALSE (defaults to TRUE if null)');
+>>>>>>> pantheon-drops-8/master
         }
         $this->ignoreExceptions = $bool;
         return $this;
@@ -215,6 +224,7 @@ class AbstractRenderer
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _loadExtensions()
     {
@@ -225,6 +235,18 @@ class AbstractRenderer
         $exts = stripos(get_class($this), 'entry')
             ? $all['entryRenderer']
             : $all['feedRenderer'];
+=======
+    protected function _loadExtensions()
+    {
+        Writer\Writer::registerCoreExtensions();
+        $manager = Writer\Writer::getExtensionManager();
+        $all = Writer\Writer::getExtensions();
+        if (stripos(get_class($this), 'entry')) {
+            $exts = $all['entryRenderer'];
+        } else {
+            $exts = $all['feedRenderer'];
+        }
+>>>>>>> pantheon-drops-8/master
         foreach ($exts as $extension) {
             $plugin = $manager->get($extension);
             $plugin->setDataContainer($this->getDataContainer());

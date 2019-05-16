@@ -4,8 +4,11 @@ namespace Drupal\Core\Config;
 
 use Drupal\Core\Extension\ExtensionDiscovery;
 use Drupal\Core\Extension\Extension;
+<<<<<<< HEAD
 use Drupal\Core\Extension\ProfileExtensionList;
 use Drupal\Core\Extension\ProfileHandlerInterface;
+=======
+>>>>>>> pantheon-drops-8/master
 
 /**
  * Storage used by the Drupal installer.
@@ -50,6 +53,7 @@ class InstallStorage extends FileStorage {
   protected $directory;
 
   /**
+<<<<<<< HEAD
    * The profile list, used to find additional folders to scan for config.
    *
    * @var \Drupal\Core\Extension\ProfileExtensionList
@@ -57,6 +61,8 @@ class InstallStorage extends FileStorage {
   protected $profileList;
 
   /**
+=======
+>>>>>>> pantheon-drops-8/master
    * Constructs an InstallStorage object.
    *
    * @param string $directory
@@ -65,6 +71,7 @@ class InstallStorage extends FileStorage {
    * @param string $collection
    *   (optional) The collection to store configuration in. Defaults to the
    *   default collection.
+<<<<<<< HEAD
    * @param \Drupal\Core\Extension\ProfileExtensionList $profile_list
    *   (optional) The profile list.
    */
@@ -73,6 +80,11 @@ class InstallStorage extends FileStorage {
     if (\Drupal::hasService('extension.list.profile')) {
       $this->profileList = $profile_list ?: \Drupal::service('extension.list.profile');
     }
+=======
+   */
+  public function __construct($directory = self::CONFIG_INSTALL_DIRECTORY, $collection = StorageInterface::DEFAULT_COLLECTION) {
+    parent::__construct($directory, $collection);
+>>>>>>> pantheon-drops-8/master
   }
 
   /**
@@ -165,12 +177,29 @@ class InstallStorage extends FileStorage {
     if (!isset($this->folders)) {
       $this->folders = [];
       $this->folders += $this->getCoreNames();
+<<<<<<< HEAD
       // Get dependent profiles and add the extension components.
       $this->folders += $this->getComponentNames($this->profileList->getAncestors());
+=======
+>>>>>>> pantheon-drops-8/master
       // Perform an ExtensionDiscovery scan as we cannot use drupal_get_path()
       // yet because the system module may not yet be enabled during install.
       // @todo Remove as part of https://www.drupal.org/node/2186491
       $listing = new ExtensionDiscovery(\Drupal::root());
+<<<<<<< HEAD
+=======
+      if ($profile = drupal_get_profile()) {
+        $profile_list = $listing->scan('profile');
+        if (isset($profile_list[$profile])) {
+          // Prime the drupal_get_filename() static cache with the profile info
+          // file location so we can use drupal_get_path() on the active profile
+          // during the module scan.
+          // @todo Remove as part of https://www.drupal.org/node/2186491
+          drupal_get_filename('profile', $profile, $profile_list[$profile]->getPathname());
+          $this->folders += $this->getComponentNames([$profile_list[$profile]]);
+        }
+      }
+>>>>>>> pantheon-drops-8/master
       // @todo Remove as part of https://www.drupal.org/node/2186491
       $this->folders += $this->getComponentNames($listing->scan('module'));
       $this->folders += $this->getComponentNames($listing->scan('theme'));

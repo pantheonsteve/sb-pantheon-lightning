@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+<<<<<<< HEAD
 ## 3.2.1 - 2018-08-28
 
 ### Added
@@ -101,6 +102,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+=======
+>>>>>>> pantheon-drops-8/master
 ## 3.0.1 - 2016-04-12
 
 ### Added

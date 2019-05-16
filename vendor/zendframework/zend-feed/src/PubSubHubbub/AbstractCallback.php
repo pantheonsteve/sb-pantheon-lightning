@@ -34,6 +34,7 @@ abstract class AbstractCallback implements CallbackInterface
     protected $httpResponse = null;
 
     /**
+<<<<<<< HEAD
      * The input stream to use when retrieving the request body. Defaults to
      * php://input, but can be set to another value in order to force usage
      * of another input method. This should primarily be used for testing
@@ -45,6 +46,8 @@ abstract class AbstractCallback implements CallbackInterface
     protected $inputStream = 'php://input';
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * The number of Subscribers for which any updates are on behalf of.
      *
      * @var int
@@ -78,7 +81,11 @@ abstract class AbstractCallback implements CallbackInterface
             $options = ArrayUtils::iteratorToArray($options);
         }
 
+<<<<<<< HEAD
         if (! is_array($options)) {
+=======
+        if (!is_array($options)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Array or Traversable object'
             . 'expected, got ' . gettype($options));
         }
@@ -148,7 +155,11 @@ abstract class AbstractCallback implements CallbackInterface
      */
     public function setHttpResponse($httpResponse)
     {
+<<<<<<< HEAD
         if (! $httpResponse instanceof HttpResponse && ! $httpResponse instanceof PhpResponse) {
+=======
+        if (!$httpResponse instanceof HttpResponse && !$httpResponse instanceof PhpResponse) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('HTTP Response object must'
                 . ' implement one of Zend\Feed\Pubsubhubbub\HttpResponse or'
                 . ' Zend\Http\PhpEnvironment\Response');
@@ -207,6 +218,7 @@ abstract class AbstractCallback implements CallbackInterface
      * Attempt to detect the callback URL (specifically the path forward)
      * @return string
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _detectCallbackUrl()
     {
@@ -236,6 +248,32 @@ abstract class AbstractCallback implements CallbackInterface
         }
 
         return '';
+=======
+    protected function _detectCallbackUrl()
+    {
+        $callbackUrl = '';
+        if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) {
+            $callbackUrl = $_SERVER['HTTP_X_ORIGINAL_URL'];
+        } elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
+            $callbackUrl = $_SERVER['HTTP_X_REWRITE_URL'];
+        } elseif (isset($_SERVER['REQUEST_URI'])) {
+            $callbackUrl = $_SERVER['REQUEST_URI'];
+            $scheme = 'http';
+            if ($_SERVER['HTTPS'] == 'on') {
+                $scheme = 'https';
+            }
+            $schemeAndHttpHost = $scheme . '://' . $this->_getHttpHost();
+            if (strpos($callbackUrl, $schemeAndHttpHost) === 0) {
+                $callbackUrl = substr($callbackUrl, strlen($schemeAndHttpHost));
+            }
+        } elseif (isset($_SERVER['ORIG_PATH_INFO'])) {
+            $callbackUrl= $_SERVER['ORIG_PATH_INFO'];
+            if (!empty($_SERVER['QUERY_STRING'])) {
+                $callbackUrl .= '?' . $_SERVER['QUERY_STRING'];
+            }
+        }
+        return $callbackUrl;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -243,6 +281,7 @@ abstract class AbstractCallback implements CallbackInterface
      *
      * @return string
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _getHttpHost()
     {
@@ -258,11 +297,30 @@ abstract class AbstractCallback implements CallbackInterface
 
         if (($scheme === 'http' && $port === 80)
             || ($scheme === 'https' && $port === 443)
+=======
+    protected function _getHttpHost()
+    {
+        if (!empty($_SERVER['HTTP_HOST'])) {
+            return $_SERVER['HTTP_HOST'];
+        }
+        $scheme = 'http';
+        if ($_SERVER['HTTPS'] == 'on') {
+            $scheme = 'https';
+        }
+        $name = $_SERVER['SERVER_NAME'];
+        $port = $_SERVER['SERVER_PORT'];
+        if (($scheme == 'http' && $port == 80)
+            || ($scheme == 'https' && $port == 443)
+>>>>>>> pantheon-drops-8/master
         ) {
             return $name;
         }
 
+<<<<<<< HEAD
         return sprintf('%s:%d', $name, $port);
+=======
+        return $name . ':' . $port;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -271,6 +329,7 @@ abstract class AbstractCallback implements CallbackInterface
      * @param string $header
      * @return bool|string
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _getHeader($header)
     {
@@ -281,11 +340,25 @@ abstract class AbstractCallback implements CallbackInterface
         }
         $temp = 'HTTP_' . strtoupper(str_replace('-', '_', $header));
         if (! empty($_SERVER[$temp])) {
+=======
+    protected function _getHeader($header)
+    {
+        $temp = strtoupper(str_replace('-', '_', $header));
+        if (!empty($_SERVER[$temp])) {
+            return $_SERVER[$temp];
+        }
+        $temp = 'HTTP_' . strtoupper(str_replace('-', '_', $header));
+        if (!empty($_SERVER[$temp])) {
+>>>>>>> pantheon-drops-8/master
             return $_SERVER[$temp];
         }
         if (function_exists('apache_request_headers')) {
             $headers = apache_request_headers();
+<<<<<<< HEAD
             if (! empty($headers[$header])) {
+=======
+            if (!empty($headers[$header])) {
+>>>>>>> pantheon-drops-8/master
                 return $headers[$header];
             }
         }
@@ -297,6 +370,7 @@ abstract class AbstractCallback implements CallbackInterface
      *
      * @return string|false Raw body, or false if not present
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _getRawBody()
     {
@@ -340,5 +414,17 @@ abstract class AbstractCallback implements CallbackInterface
             $callbackUrl .= '?' . $_SERVER['QUERY_STRING'];
         }
         return $callbackUrl;
+=======
+    protected function _getRawBody()
+    {
+        $body = file_get_contents('php://input');
+        if (strlen(trim($body)) == 0 && isset($GLOBALS['HTTP_RAW_POST_DATA'])) {
+            $body = $GLOBALS['HTTP_RAW_POST_DATA'];
+        }
+        if (strlen(trim($body)) > 0) {
+            return $body;
+        }
+        return false;
+>>>>>>> pantheon-drops-8/master
     }
 }

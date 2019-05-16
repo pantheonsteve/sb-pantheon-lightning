@@ -227,10 +227,14 @@ abstract class Template implements \Twig_TemplateInterface
 
                 throw $e;
             } catch (\Exception $e) {
+<<<<<<< HEAD
                 $e = new RuntimeError(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, $template->getSourceContext(), $e);
                 $e->guess();
 
                 throw $e;
+=======
+                throw new RuntimeError(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, $template->getSourceContext(), $e);
+>>>>>>> pantheon-drops-8/master
             }
         } elseif (false !== $parent = $this->getParent($context)) {
             $parent->displayBlock($name, $context, array_merge($this->blocks, $blocks), false);
@@ -253,7 +257,11 @@ abstract class Template implements \Twig_TemplateInterface
      */
     public function renderParentBlock($name, array $context, array $blocks = [])
     {
+<<<<<<< HEAD
         ob_start(function () { return ''; });
+=======
+        ob_start();
+>>>>>>> pantheon-drops-8/master
         $this->displayParentBlock($name, $context, $blocks);
 
         return ob_get_clean();
@@ -274,7 +282,11 @@ abstract class Template implements \Twig_TemplateInterface
      */
     public function renderBlock($name, array $context, array $blocks = [], $useBlocks = true)
     {
+<<<<<<< HEAD
         ob_start(function () { return ''; });
+=======
+        ob_start();
+>>>>>>> pantheon-drops-8/master
         $this->displayBlock($name, $context, $blocks, $useBlocks);
 
         return ob_get_clean();
@@ -343,9 +355,12 @@ abstract class Template implements \Twig_TemplateInterface
         return array_unique($names);
     }
 
+<<<<<<< HEAD
     /**
      * @return Template|TemplateWrapper
      */
+=======
+>>>>>>> pantheon-drops-8/master
     protected function loadTemplate($template, $templateName = null, $line = null, $index = null)
     {
         try {
@@ -358,7 +373,11 @@ abstract class Template implements \Twig_TemplateInterface
             }
 
             if ($template === $this->getTemplateName()) {
+<<<<<<< HEAD
                 $class = \get_class($this);
+=======
+                $class = get_class($this);
+>>>>>>> pantheon-drops-8/master
                 if (false !== $pos = strrpos($class, '___', -1)) {
                     $class = substr($class, 0, $pos);
                 }
@@ -387,6 +406,7 @@ abstract class Template implements \Twig_TemplateInterface
     }
 
     /**
+<<<<<<< HEAD
      * @internal
      *
      * @return Template
@@ -397,6 +417,8 @@ abstract class Template implements \Twig_TemplateInterface
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Returns all blocks.
      *
      * This method is for internal use only and should never be called
@@ -417,7 +439,11 @@ abstract class Template implements \Twig_TemplateInterface
     public function render(array $context)
     {
         $level = ob_get_level();
+<<<<<<< HEAD
         ob_start(function () { return ''; });
+=======
+        ob_start();
+>>>>>>> pantheon-drops-8/master
         try {
             $this->display($context);
         } catch (\Exception $e) {
@@ -454,10 +480,14 @@ abstract class Template implements \Twig_TemplateInterface
 
             throw $e;
         } catch (\Exception $e) {
+<<<<<<< HEAD
             $e = new RuntimeError(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, $this->getSourceContext(), $e);
             $e->guess();
 
             throw $e;
+=======
+            throw new RuntimeError(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, $this->getSourceContext(), $e);
+>>>>>>> pantheon-drops-8/master
         }
     }
 

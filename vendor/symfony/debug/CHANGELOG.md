@@ -1,12 +1,15 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 4.0.0
 -----
 
 * removed the symfony_debug extension
 * removed `ContextErrorException`
 
+=======
+>>>>>>> pantheon-drops-8/master
 3.4.0
 -----
 

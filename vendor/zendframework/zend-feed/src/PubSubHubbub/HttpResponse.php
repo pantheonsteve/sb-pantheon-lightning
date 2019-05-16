@@ -53,21 +53,33 @@ class HttpResponse
      */
     public function sendHeaders()
     {
+<<<<<<< HEAD
         if ($this->headers || (200 != $this->statusCode)) {
+=======
+        if (count($this->headers) || (200 != $this->statusCode)) {
+>>>>>>> pantheon-drops-8/master
             $this->canSendHeaders(true);
         } elseif (200 == $this->statusCode) {
             return;
         }
         $httpCodeSent = false;
         foreach ($this->headers as $header) {
+<<<<<<< HEAD
             if (! $httpCodeSent && $this->statusCode) {
+=======
+            if (!$httpCodeSent && $this->statusCode) {
+>>>>>>> pantheon-drops-8/master
                 header($header['name'] . ': ' . $header['value'], $header['replace'], $this->statusCode);
                 $httpCodeSent = true;
             } else {
                 header($header['name'] . ': ' . $header['value'], $header['replace']);
             }
         }
+<<<<<<< HEAD
         if (! $httpCodeSent) {
+=======
+        if (!$httpCodeSent) {
+>>>>>>> pantheon-drops-8/master
             header('HTTP/1.1 ' . $this->statusCode);
         }
     }
@@ -133,18 +145,28 @@ class HttpResponse
      * Can we send headers?
      *
      * @param  bool $throw Whether or not to throw an exception if headers have been sent; defaults to false
+<<<<<<< HEAD
      * @return bool
+=======
+     * @return HttpResponse
+>>>>>>> pantheon-drops-8/master
      * @throws Exception\RuntimeException
      */
     public function canSendHeaders($throw = false)
     {
         $ok = headers_sent($file, $line);
         if ($ok && $throw) {
+<<<<<<< HEAD
             throw new Exception\RuntimeException(
                 'Cannot send headers; headers already sent in ' . $file . ', line ' . $line
             );
         }
         return ! $ok;
+=======
+            throw new Exception\RuntimeException('Cannot send headers; headers already sent in ' . $file . ', line ' . $line);
+        }
+        return !$ok;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -156,7 +178,11 @@ class HttpResponse
      */
     public function setStatusCode($code)
     {
+<<<<<<< HEAD
         if (! is_int($code) || (100 > $code) || (599 < $code)) {
+=======
+        if (!is_int($code) || (100 > $code) || (599 < $code)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid HTTP response'
             . ' code:' . $code);
         }
@@ -203,10 +229,15 @@ class HttpResponse
      * @param  string $name
      * @return string
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _normalizeHeader($name)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _normalizeHeader($name)
+    {
+>>>>>>> pantheon-drops-8/master
         $filtered = str_replace(['-', '_'], ' ', (string) $name);
         $filtered = ucwords(strtolower($filtered));
         $filtered = str_replace(' ', '-', $filtered);

@@ -9,9 +9,15 @@
 
 namespace Zend\Feed\Reader\Http;
 
+<<<<<<< HEAD
 use Zend\Feed\Reader\Exception;
 use Zend\Http\Client as ZendHttpClient;
 use Zend\Http\Headers;
+=======
+use Zend\Http\Client as ZendHttpClient;
+use Zend\Http\Headers;
+use Zend\Feed\Reader\Exception;
+>>>>>>> pantheon-drops-8/master
 
 class ZendHttpClientDecorator implements HeaderAwareClientInterface
 {

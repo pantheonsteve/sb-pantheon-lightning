@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
 namespace Masterminds\HTML5\Parser;
 
 /**
@@ -21,6 +24,10 @@ namespace Masterminds\HTML5\Parser;
  */
 interface EventHandler
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> pantheon-drops-8/master
     const DOCTYPE_NONE = 0;
 
     const DOCTYPE_PUBLIC = 1;
@@ -30,11 +37,23 @@ interface EventHandler
     /**
      * A doctype declaration.
      *
+<<<<<<< HEAD
      * @param string $name   The name of the root element.
      * @param int    $idType One of DOCTYPE_NONE, DOCTYPE_PUBLIC, or DOCTYPE_SYSTEM
      * @param string $id     The identifier. For DOCTYPE_PUBLIC, this is the public ID. If DOCTYPE_SYSTEM,
      *                       then this is a system ID.
      * @param bool   $quirks Indicates whether the builder should enter quirks mode.
+=======
+     * @param string $name
+     *            The name of the root element.
+     * @param int $idType
+     *            One of DOCTYPE_NONE, DOCTYPE_PUBLIC, or DOCTYPE_SYSTEM.
+     * @param string $id
+     *            The identifier. For DOCTYPE_PUBLIC, this is the public ID. If DOCTYPE_SYSTEM,
+     *            then this is a system ID.
+     * @param boolean $quirks
+     *            Indicates whether the builder should enter quirks mode.
+>>>>>>> pantheon-drops-8/master
      */
     public function doctype($name, $idType = 0, $id = null, $quirks = false);
 
@@ -59,11 +78,21 @@ interface EventHandler
      * The textmode is automatically reset to Tokenizer::TEXTMODE_NORMAL when the
      * closing tag is encounter. **This behavior may change.**
      *
+<<<<<<< HEAD
      * @param string $name        The tag name.
      * @param array  $attributes  An array with all of the tag's attributes.
      * @param bool   $selfClosing An indicator of whether or not this tag is self-closing (<foo/>).
      *
      * @return int one of the Tokenizer::TEXTMODE_* constants
+=======
+     * @param string $name
+     *            The tag name.
+     * @param array $attributes
+     *            An array with all of the tag's attributes.
+     * @param boolean $selfClosing
+     *            An indicator of whether or not this tag is self-closing (<foo/>)
+     * @return int One of the Tokenizer::TEXTMODE_* constants.
+>>>>>>> pantheon-drops-8/master
      */
     public function startTag($name, $attributes = array(), $selfClosing = false);
 
@@ -98,7 +127,11 @@ interface EventHandler
      * A CDATA section.
      *
      * @param string $data
+<<<<<<< HEAD
      *                     The unparsed character data
+=======
+     *            The unparsed character data.
+>>>>>>> pantheon-drops-8/master
      */
     public function cdata($data);
 
@@ -107,8 +140,15 @@ interface EventHandler
      *
      * While user agents don't get PIs, server-side does.
      *
+<<<<<<< HEAD
      * @param string $name The name of the processor (e.g. 'php').
      * @param string $data The unparsed data.
+=======
+     * @param string $name
+     *            The name of the processor (e.g. 'php').
+     * @param string $data
+     *            The unparsed data.
+>>>>>>> pantheon-drops-8/master
      */
     public function processingInstruction($name, $data = null);
 }

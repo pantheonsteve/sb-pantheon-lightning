@@ -10,12 +10,17 @@
 namespace Zend\Diactoros;
 
 use InvalidArgumentException;
+<<<<<<< HEAD
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 
 use function array_key_exists;
 
 use const SEEK_SET;
+=======
+use RuntimeException;
+use Psr\Http\Message\StreamInterface;
+>>>>>>> pantheon-drops-8/master
 
 /**
  * Implementation of PSR HTTP streams

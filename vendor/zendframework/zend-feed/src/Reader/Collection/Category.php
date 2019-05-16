@@ -23,7 +23,11 @@ class Category extends AbstractCollection
     {
         $categories = [];
         foreach ($this->getIterator() as $element) {
+<<<<<<< HEAD
             if (isset($element['label']) && ! empty($element['label'])) {
+=======
+            if (isset($element['label']) && !empty($element['label'])) {
+>>>>>>> pantheon-drops-8/master
                 $categories[] = $element['label'];
             } else {
                 $categories[] = $element['term'];

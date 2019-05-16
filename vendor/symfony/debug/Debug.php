@@ -23,7 +23,11 @@ class Debug
     /**
      * Enables the debug tools.
      *
+<<<<<<< HEAD
      * This method registers an error handler and an exception handler.
+=======
+     * This method registers an error handler, an exception handler and a special class loader.
+>>>>>>> pantheon-drops-8/master
      *
      * @param int  $errorReportingLevel The level of error reporting you want
      * @param bool $displayErrors       Whether to display errors (for development) or just log them (for production)

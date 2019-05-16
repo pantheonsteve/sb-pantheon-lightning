@@ -304,7 +304,11 @@ services:
       - { name: event_subscriber }
   config.installer:
     class: Drupal\Core\Config\ConfigInstaller
+<<<<<<< HEAD
     arguments: ['@config.factory', '@config.storage', '@config.typed', '@config.manager', '@event_dispatcher', '%install_profile%', '@extension.list.profile']
+=======
+    arguments: ['@config.factory', '@config.storage', '@config.typed', '@config.manager', '@event_dispatcher', '%install_profile%']
+>>>>>>> pantheon-drops-8/master
     lazy: true
   config.storage:
     class: Drupal\Core\Config\CachedStorage

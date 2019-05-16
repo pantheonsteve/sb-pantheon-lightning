@@ -4,12 +4,15 @@ entity.taxonomy_term.edit_form:
   route_name: entity.taxonomy_term.edit_form
   weight: 10
 
+<<<<<<< HEAD
 entity.taxonomy_term.latest_version_edit_form:
   title: Edit
   group: taxonomy_term_latest_version
   route_name: entity.taxonomy_term.edit_form
   weight: 10
 
+=======
+>>>>>>> pantheon-drops-8/master
 entity.taxonomy_term.delete_form:
   title: Delete
   group: taxonomy_term

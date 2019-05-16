@@ -37,7 +37,11 @@ class Intl extends AbstractStringWrapper
      */
     public function __construct()
     {
+<<<<<<< HEAD
         if (! extension_loaded('intl')) {
+=======
+        if (!extension_loaded('intl')) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\ExtensionNotLoadedException(
                 'PHP extension "intl" is required for this wrapper'
             );

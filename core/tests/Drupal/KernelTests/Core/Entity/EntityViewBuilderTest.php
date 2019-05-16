@@ -5,7 +5,10 @@ namespace Drupal\KernelTests\Core\Entity;
 use Drupal\Core\Entity\EntityViewBuilder;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Cache\Cache;
+<<<<<<< HEAD
 use Drupal\entity_test\Entity\EntityTestMulRev;
+=======
+>>>>>>> pantheon-drops-8/master
 use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
 use Drupal\user\Entity\Role;
 use Drupal\user\RoleInterface;
@@ -25,7 +28,10 @@ class EntityViewBuilderTest extends EntityKernelTestBase {
   protected function setUp() {
     parent::setUp();
     $this->installConfig(['user', 'entity_test']);
+<<<<<<< HEAD
     $this->installEntitySchema('entity_test_mulrev');
+=======
+>>>>>>> pantheon-drops-8/master
 
     // Give anonymous users permission to view test entities.
     Role::load(RoleInterface::ANONYMOUS_ID)
@@ -232,6 +238,7 @@ class EntityViewBuilderTest extends EntityKernelTestBase {
     $this->assertFalse(array_key_exists('#theme', $build));
   }
 
+<<<<<<< HEAD
   /**
    * Test correct contextual links are rendered.
    */
@@ -294,4 +301,6 @@ class EntityViewBuilderTest extends EntityKernelTestBase {
     ], $built['#contextual_links']);
   }
 
+=======
+>>>>>>> pantheon-drops-8/master
 }

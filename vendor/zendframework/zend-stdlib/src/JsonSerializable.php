@@ -9,9 +9,12 @@
 
 namespace Zend\Stdlib;
 
+<<<<<<< HEAD
 /**
  * @deprecated Since 3.1.0; use the native JsonSerializable interface
  */
+=======
+>>>>>>> pantheon-drops-8/master
 interface JsonSerializable extends \JsonSerializable
 {
 }

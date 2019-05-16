@@ -36,20 +36,27 @@ class NameExpression extends AbstractExpression
         if ($this->getAttribute('is_defined_test')) {
             if ($this->isSpecial()) {
                 $compiler->repr(true);
+<<<<<<< HEAD
             } elseif (\PHP_VERSION_ID >= 700400) {
                 $compiler
                     ->raw('array_key_exists(')
                     ->string($name)
                     ->raw(', $context)')
                 ;
+=======
+>>>>>>> pantheon-drops-8/master
             } else {
                 $compiler
                     ->raw('(isset($context[')
                     ->string($name)
                     ->raw(']) || array_key_exists(')
                     ->string($name)
+<<<<<<< HEAD
                     ->raw(', $context))')
                 ;
+=======
+                    ->raw(', $context))');
+>>>>>>> pantheon-drops-8/master
             }
         } elseif ($this->isSpecial()) {
             $compiler->raw($this->specialVars[$name]);

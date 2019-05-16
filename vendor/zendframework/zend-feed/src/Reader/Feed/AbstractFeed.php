@@ -130,7 +130,11 @@ abstract class AbstractFeed implements FeedInterface
      */
     public function current()
     {
+<<<<<<< HEAD
         if (0 === strpos($this->getType(), 'rss')) {
+=======
+        if (substr($this->getType(), 0, 3) == 'rss') {
+>>>>>>> pantheon-drops-8/master
             $reader = new Reader\Entry\Rss($this->entries[$this->key()], $this->key(), $this->getType());
         } else {
             $reader = new Reader\Entry\Atom($this->entries[$this->key()], $this->key(), $this->getType());
@@ -172,7 +176,11 @@ abstract class AbstractFeed implements FeedInterface
      */
     public function saveXml()
     {
+<<<<<<< HEAD
         return $this->getDomDocument()->saveXML();
+=======
+        return $this->getDomDocument()->saveXml();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -263,7 +271,11 @@ abstract class AbstractFeed implements FeedInterface
      * Return an Extension object with the matching name (postfixed with _Feed)
      *
      * @param string $name
+<<<<<<< HEAD
      * @return \Zend\Feed\Reader\Extension\AbstractFeed|null
+=======
+     * @return \Zend\Feed\Reader\Extension\AbstractFeed
+>>>>>>> pantheon-drops-8/master
      */
     public function getExtension($name)
     {
@@ -282,10 +294,15 @@ abstract class AbstractFeed implements FeedInterface
             if (in_array($extension, $all['core'])) {
                 continue;
             }
+<<<<<<< HEAD
             if (! $manager->has($extension)) {
                 throw new Exception\RuntimeException(
                     sprintf('Unable to load extension "%s"; cannot find class', $extension)
                 );
+=======
+            if (!$manager->has($extension)) {
+                throw new Exception\RuntimeException(sprintf('Unable to load extension "%s"; cannot find class', $extension));
+>>>>>>> pantheon-drops-8/master
             }
             $plugin = $manager->get($extension);
             $plugin->setDomDocument($this->getDomDocument());

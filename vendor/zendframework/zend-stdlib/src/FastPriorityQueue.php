@@ -57,9 +57,15 @@ class FastPriorityQueue implements Iterator, Countable, Serializable
     /**
      * Max priority
      *
+<<<<<<< HEAD
      * @var integer|null
      */
     protected $maxPriority = null;
+=======
+     * @var integer
+     */
+    protected $maxPriority = 0;
+>>>>>>> pantheon-drops-8/master
 
     /**
      * Total number of elements in the queue
@@ -86,7 +92,11 @@ class FastPriorityQueue implements Iterator, Countable, Serializable
      * Insert an element in the queue with a specified priority
      *
      * @param mixed $value
+<<<<<<< HEAD
      * @param integer $priority
+=======
+     * @param integer $priority a positive integer
+>>>>>>> pantheon-drops-8/master
      */
     public function insert($value, $priority)
     {
@@ -96,7 +106,11 @@ class FastPriorityQueue implements Iterator, Countable, Serializable
         $this->values[$priority][] = $value;
         if (! isset($this->priorities[$priority])) {
             $this->priorities[$priority] = $priority;
+<<<<<<< HEAD
             $this->maxPriority           = $this->maxPriority === null ? $priority : max($priority, $this->maxPriority);
+=======
+            $this->maxPriority           = max($priority, $this->maxPriority);
+>>>>>>> pantheon-drops-8/master
         }
         ++$this->count;
     }
@@ -132,15 +146,19 @@ class FastPriorityQueue implements Iterator, Countable, Serializable
      */
     public function remove($datum)
     {
+<<<<<<< HEAD
         $currentIndex    = $this->index;
         $currentSubIndex = $this->subIndex;
         $currentPriority = $this->maxPriority;
 
+=======
+>>>>>>> pantheon-drops-8/master
         $this->rewind();
         while ($this->valid()) {
             if (current($this->values[$this->maxPriority]) === $datum) {
                 $index = key($this->values[$this->maxPriority]);
                 unset($this->values[$this->maxPriority][$index]);
+<<<<<<< HEAD
 
                 // The `next()` method advances the internal array pointer, so we need to use the `reset()` function,
                 // otherwise we would lose all elements before the place the pointer points.
@@ -161,6 +179,8 @@ class FastPriorityQueue implements Iterator, Countable, Serializable
                 }
 
                 $this->maxPriority = empty($this->priorities) ? null : max($this->priorities);
+=======
+>>>>>>> pantheon-drops-8/master
                 --$this->count;
                 return true;
             }
@@ -215,6 +235,7 @@ class FastPriorityQueue implements Iterator, Countable, Serializable
      */
     protected function nextAndRemove()
     {
+<<<<<<< HEAD
         $key = key($this->values[$this->maxPriority]);
 
         if (false === next($this->values[$this->maxPriority])) {
@@ -224,6 +245,13 @@ class FastPriorityQueue implements Iterator, Countable, Serializable
             $this->subIndex    = -1;
         } else {
             unset($this->values[$this->maxPriority][$key]);
+=======
+        if (false === next($this->values[$this->maxPriority])) {
+            unset($this->priorities[$this->maxPriority]);
+            unset($this->values[$this->maxPriority]);
+            $this->maxPriority = empty($this->priorities) ? 0 : max($this->priorities);
+            $this->subIndex    = -1;
+>>>>>>> pantheon-drops-8/master
         }
         ++$this->index;
         ++$this->subIndex;
@@ -239,7 +267,11 @@ class FastPriorityQueue implements Iterator, Countable, Serializable
         if (false === next($this->values[$this->maxPriority])) {
             unset($this->subPriorities[$this->maxPriority]);
             reset($this->values[$this->maxPriority]);
+<<<<<<< HEAD
             $this->maxPriority = empty($this->subPriorities) ? null : max($this->subPriorities);
+=======
+            $this->maxPriority = empty($this->subPriorities) ? 0 : max($this->subPriorities);
+>>>>>>> pantheon-drops-8/master
             $this->subIndex    = -1;
         }
         ++$this->index;

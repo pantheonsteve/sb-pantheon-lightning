@@ -112,7 +112,11 @@ class FileCacheReader implements Reader
         }
 
         if ($this->debug
+<<<<<<< HEAD
             && (false !== $filename = $class->getFileName())
+=======
+            && (false !== $filename = $class->getFilename())
+>>>>>>> pantheon-drops-8/master
             && filemtime($path) < filemtime($filename)) {
             @unlink($path);
 
@@ -214,8 +218,11 @@ class FileCacheReader implements Reader
             throw new \RuntimeException(sprintf('Unable to create tempfile in directory: %s', $this->dir));
         }
 
+<<<<<<< HEAD
         @chmod($tempfile, 0666 & (~$this->umask));
 
+=======
+>>>>>>> pantheon-drops-8/master
         $written = file_put_contents($tempfile, '<?php return unserialize('.var_export(serialize($data), true).');');
 
         if (false === $written) {

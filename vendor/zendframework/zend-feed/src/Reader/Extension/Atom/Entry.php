@@ -51,7 +51,11 @@ class Entry extends Extension\AbstractEntry
         $authors = [];
         $list = $this->getXpath()->query($this->getXpathPrefix() . '//atom:author');
 
+<<<<<<< HEAD
         if (! $list->length) {
+=======
+        if (!$list->length) {
+>>>>>>> pantheon-drops-8/master
             /**
              * TODO: Limit query to feed level els only!
              */
@@ -61,7 +65,11 @@ class Entry extends Extension\AbstractEntry
         if ($list->length) {
             foreach ($list as $author) {
                 $author = $this->getAuthorFromElement($author);
+<<<<<<< HEAD
                 if (! empty($author)) {
+=======
+                if (!empty($author)) {
+>>>>>>> pantheon-drops-8/master
                     $authors[] = $author;
                 }
             }
@@ -121,7 +129,11 @@ class Entry extends Extension\AbstractEntry
             }
         }
 
+<<<<<<< HEAD
         if (! $content) {
+=======
+        if (!$content) {
+>>>>>>> pantheon-drops-8/master
             $content = $this->getDescription();
         }
 
@@ -139,7 +151,11 @@ class Entry extends Extension\AbstractEntry
      */
     protected function collectXhtml($xhtml, $prefix)
     {
+<<<<<<< HEAD
         if (! empty($prefix)) {
+=======
+        if (!empty($prefix)) {
+>>>>>>> pantheon-drops-8/master
             $prefix = $prefix . ':';
         }
         $matches = [
@@ -147,7 +163,11 @@ class Entry extends Extension\AbstractEntry
             "/<\/" . $prefix . "div>\s*$/"
         ];
         $xhtml = preg_replace($matches, '', $xhtml);
+<<<<<<< HEAD
         if (! empty($prefix)) {
+=======
+        if (!empty($prefix)) {
+>>>>>>> pantheon-drops-8/master
             $xhtml = preg_replace("/(<[\/]?)" . $prefix . "([a-zA-Z]+)/", '$1$2', $xhtml);
         }
         return $xhtml;
@@ -222,7 +242,11 @@ class Entry extends Extension\AbstractEntry
 
         $description = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/atom:summary)');
 
+<<<<<<< HEAD
         if (! $description) {
+=======
+        if (!$description) {
+>>>>>>> pantheon-drops-8/master
             $description = null;
         }
 
@@ -271,7 +295,11 @@ class Entry extends Extension\AbstractEntry
 
         $id = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/atom:id)');
 
+<<<<<<< HEAD
         if (! $id) {
+=======
+        if (!$id) {
+>>>>>>> pantheon-drops-8/master
             if ($this->getPermalink()) {
                 $id = $this->getPermalink();
             } elseif ($this->getTitle()) {
@@ -304,11 +332,19 @@ class Entry extends Extension\AbstractEntry
             . ')'
         );
 
+<<<<<<< HEAD
         if (! $baseUrl) {
             $baseUrl = $this->getXpath()->evaluate('string(//@xml:base[1])');
         }
 
         if (! $baseUrl) {
+=======
+        if (!$baseUrl) {
+            $baseUrl = $this->getXpath()->evaluate('string(//@xml:base[1])');
+        }
+
+        if (!$baseUrl) {
+>>>>>>> pantheon-drops-8/master
             $baseUrl = null;
         }
 
@@ -325,7 +361,11 @@ class Entry extends Extension\AbstractEntry
      */
     public function getLink($index = 0)
     {
+<<<<<<< HEAD
         if (! array_key_exists('links', $this->data)) {
+=======
+        if (!array_key_exists('links', $this->data)) {
+>>>>>>> pantheon-drops-8/master
             $this->getLinks();
         }
 
@@ -388,7 +428,11 @@ class Entry extends Extension\AbstractEntry
 
         $title = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/atom:title)');
 
+<<<<<<< HEAD
         if (! $title) {
+=======
+        if (!$title) {
+>>>>>>> pantheon-drops-8/master
             $title = null;
         }
 
@@ -554,10 +598,17 @@ class Entry extends Extension\AbstractEntry
      */
     protected function absolutiseUri($link)
     {
+<<<<<<< HEAD
         if (! Uri::factory($link)->isAbsolute()) {
             if ($this->getBaseUrl() !== null) {
                 $link = $this->getBaseUrl() . $link;
                 if (! Uri::factory($link)->isValid()) {
+=======
+        if (!Uri::factory($link)->isAbsolute()) {
+            if ($this->getBaseUrl() !== null) {
+                $link = $this->getBaseUrl() . $link;
+                if (!Uri::factory($link)->isValid()) {
+>>>>>>> pantheon-drops-8/master
                     $link = null;
                 }
             }
@@ -623,11 +674,19 @@ class Entry extends Extension\AbstractEntry
         $prefixAtom03 = $dom->lookupPrefix(Reader\Reader::NAMESPACE_ATOM_03);
         $prefixAtom10 = $dom->lookupPrefix(Reader\Reader::NAMESPACE_ATOM_10);
         if ($dom->isDefaultNamespace(Reader\Reader::NAMESPACE_ATOM_03)
+<<<<<<< HEAD
         || ! empty($prefixAtom03)) {
             return Reader\Reader::TYPE_ATOM_03;
         }
         if ($dom->isDefaultNamespace(Reader\Reader::NAMESPACE_ATOM_10)
         || ! empty($prefixAtom10)) {
+=======
+        || !empty($prefixAtom03)) {
+            return Reader\Reader::TYPE_ATOM_03;
+        }
+        if ($dom->isDefaultNamespace(Reader\Reader::NAMESPACE_ATOM_10)
+        || !empty($prefixAtom10)) {
+>>>>>>> pantheon-drops-8/master
             return Reader\Reader::TYPE_ATOM_10;
         }
     }

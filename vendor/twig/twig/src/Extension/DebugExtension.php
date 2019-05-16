@@ -54,7 +54,11 @@ function twig_var_dump(Environment $env, $context, array $vars = [])
         return;
     }
 
+<<<<<<< HEAD
     ob_start(function () { return ''; });
+=======
+    ob_start();
+>>>>>>> pantheon-drops-8/master
 
     if (!$vars) {
         $vars = [];

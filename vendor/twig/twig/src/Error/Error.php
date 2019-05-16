@@ -49,15 +49,31 @@ class Error extends \Exception
     /**
      * Constructor.
      *
+<<<<<<< HEAD
      * Set the line number to -1 to enable its automatic guessing.
      * Set the name to null to enable its automatic guessing.
      *
+=======
+     * Set both the line number and the name to false to
+     * disable automatic guessing of the original template name
+     * and line number.
+     *
+     * Set the line number to -1 to enable its automatic guessing.
+     * Set the name to null to enable its automatic guessing.
+     *
+     * By default, automatic guessing is enabled.
+     *
+>>>>>>> pantheon-drops-8/master
      * @param string             $message  The error message
      * @param int                $lineno   The template line where the error occurred
      * @param Source|string|null $source   The source context where the error occurred
      * @param \Exception         $previous The previous exception
      */
+<<<<<<< HEAD
     public function __construct($message, $lineno = -1, $source = null, \Exception $previous = null)
+=======
+    public function __construct($message, $lineno = -1, $source = null, \Exception $previous = null, $autoGuess = true)
+>>>>>>> pantheon-drops-8/master
     {
         if (null === $source) {
             $name = null;
@@ -73,7 +89,17 @@ class Error extends \Exception
 
         $this->lineno = $lineno;
         $this->filename = $name;
+<<<<<<< HEAD
         $this->rawMessage = $message;
+=======
+
+        if ($autoGuess && (-1 === $lineno || null === $name || null === $this->sourcePath)) {
+            $this->guessTemplateInfo();
+        }
+
+        $this->rawMessage = $message;
+
+>>>>>>> pantheon-drops-8/master
         $this->updateRepr();
     }
 

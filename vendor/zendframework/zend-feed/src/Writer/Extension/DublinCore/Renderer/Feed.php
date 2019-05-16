@@ -47,6 +47,7 @@ class Feed extends Extension\AbstractRenderer
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _appendNamespaces()
     {
@@ -55,6 +56,12 @@ class Feed extends Extension\AbstractRenderer
             'xmlns:dc',
             'http://purl.org/dc/elements/1.1/'
         );
+=======
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute('xmlns:dc',
+            'http://purl.org/dc/elements/1.1/');
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -64,12 +71,19 @@ class Feed extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setAuthors(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $authors = $this->getDataContainer()->getAuthors();
         if (! $authors || empty($authors)) {
+=======
+    protected function _setAuthors(DOMDocument $dom, DOMElement $root)
+    {
+        $authors = $this->getDataContainer()->getAuthors();
+        if (!$authors || empty($authors)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($authors as $data) {

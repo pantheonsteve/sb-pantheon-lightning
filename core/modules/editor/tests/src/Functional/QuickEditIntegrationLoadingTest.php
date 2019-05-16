@@ -4,7 +4,10 @@ namespace Drupal\Tests\editor\Functional;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\EventSubscriber\MainContentViewSubscriber;
+<<<<<<< HEAD
 use Drupal\Core\Url;
+=======
+>>>>>>> pantheon-drops-8/master
 use Drupal\filter\Entity\FilterFormat;
 use Drupal\Tests\BrowserTestBase;
 
@@ -23,6 +26,7 @@ class QuickEditIntegrationLoadingTest extends BrowserTestBase {
   public static $modules = ['quickedit', 'filter', 'node', 'editor'];
 
   /**
+<<<<<<< HEAD
    * The test node.
    *
    * @var \Drupal\node\NodeInterface
@@ -30,6 +34,8 @@ class QuickEditIntegrationLoadingTest extends BrowserTestBase {
   protected $testNode;
 
   /**
+=======
+>>>>>>> pantheon-drops-8/master
    * The basic permissions necessary to view content and use in-place editing.
    *
    * @var array
@@ -59,7 +65,11 @@ class QuickEditIntegrationLoadingTest extends BrowserTestBase {
     ]);
 
     // Create one node of the above node type using the above text format.
+<<<<<<< HEAD
     $this->testNode = $this->drupalCreateNode([
+=======
+    $this->drupalCreateNode([
+>>>>>>> pantheon-drops-8/master
       'type' => 'article',
       'body' => [
         0 => [
@@ -120,6 +130,7 @@ class QuickEditIntegrationLoadingTest extends BrowserTestBase {
   }
 
   /**
+<<<<<<< HEAD
    * Test the latest revision of an entity is loaded for editing.
    */
   public function testLatestRevisionLoaded() {
@@ -147,6 +158,8 @@ class QuickEditIntegrationLoadingTest extends BrowserTestBase {
   }
 
   /**
+=======
+>>>>>>> pantheon-drops-8/master
    * Test loading of untransformed text when a user does have access to it.
    */
   public function testUserWithPermission() {

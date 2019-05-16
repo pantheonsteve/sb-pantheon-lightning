@@ -1,7 +1,14 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-diactoros for the canonical source repository
  * @copyright Copyright (c) 2015-2017 Zend Technologies USA Inc. (http://www.zend.com)
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @see       http://github.com/zendframework/zend-diactoros for the canonical source repository
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
+>>>>>>> pantheon-drops-8/master
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
@@ -11,6 +18,7 @@ use InvalidArgumentException;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\Stream;
 
+<<<<<<< HEAD
 use function is_object;
 use function is_resource;
 use function json_encode;
@@ -20,6 +28,8 @@ use function sprintf;
 
 use const JSON_ERROR_NONE;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * JSON response.
  *
@@ -43,6 +53,7 @@ class JsonResponse extends Response
     const DEFAULT_JSON_FLAGS = 79;
 
     /**
+<<<<<<< HEAD
      * @var mixed
      */
     private $payload;
@@ -53,6 +64,8 @@ class JsonResponse extends Response
     private $encodingOptions;
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Create a JSON response with the given data.
      *
      * Default JSON encoding is performed with the following options, which
@@ -76,11 +89,17 @@ class JsonResponse extends Response
         array $headers = [],
         $encodingOptions = self::DEFAULT_JSON_FLAGS
     ) {
+<<<<<<< HEAD
         $this->setPayload($data);
         $this->encodingOptions = $encodingOptions;
 
         $json = $this->jsonEncode($data, $this->encodingOptions);
         $body = $this->createBodyFromJson($json);
+=======
+        $body = new Stream('php://temp', 'wb+');
+        $body->write($this->jsonEncode($data, $encodingOptions));
+        $body->rewind();
+>>>>>>> pantheon-drops-8/master
 
         $headers = $this->injectContentType('application/json', $headers);
 
@@ -88,6 +107,7 @@ class JsonResponse extends Response
     }
 
     /**
+<<<<<<< HEAD
      * @return mixed
      */
     public function getPayload()
@@ -142,6 +162,8 @@ class JsonResponse extends Response
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Encode the provided data to JSON.
      *
      * @param mixed $data
@@ -170,6 +192,7 @@ class JsonResponse extends Response
 
         return $json;
     }
+<<<<<<< HEAD
 
     /**
      * @param $data
@@ -195,4 +218,6 @@ class JsonResponse extends Response
         $body = $this->createBodyFromJson($json);
         return $toUpdate->withBody($body);
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

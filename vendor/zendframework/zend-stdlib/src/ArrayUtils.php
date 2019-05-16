@@ -39,11 +39,19 @@ abstract class ArrayUtils
      */
     public static function hasStringKeys($value, $allowEmpty = false)
     {
+<<<<<<< HEAD
         if (! is_array($value)) {
             return false;
         }
 
         if (! $value) {
+=======
+        if (!is_array($value)) {
+            return false;
+        }
+
+        if (!$value) {
+>>>>>>> pantheon-drops-8/master
             return $allowEmpty;
         }
 
@@ -59,11 +67,19 @@ abstract class ArrayUtils
      */
     public static function hasIntegerKeys($value, $allowEmpty = false)
     {
+<<<<<<< HEAD
         if (! is_array($value)) {
             return false;
         }
 
         if (! $value) {
+=======
+        if (!is_array($value)) {
+            return false;
+        }
+
+        if (!$value) {
+>>>>>>> pantheon-drops-8/master
             return $allowEmpty;
         }
 
@@ -86,11 +102,19 @@ abstract class ArrayUtils
      */
     public static function hasNumericKeys($value, $allowEmpty = false)
     {
+<<<<<<< HEAD
         if (! is_array($value)) {
             return false;
         }
 
         if (! $value) {
+=======
+        if (!is_array($value)) {
+            return false;
+        }
+
+        if (!$value) {
+>>>>>>> pantheon-drops-8/master
             return $allowEmpty;
         }
 
@@ -119,11 +143,19 @@ abstract class ArrayUtils
      */
     public static function isList($value, $allowEmpty = false)
     {
+<<<<<<< HEAD
         if (! is_array($value)) {
             return false;
         }
 
         if (! $value) {
+=======
+        if (!is_array($value)) {
+            return false;
+        }
+
+        if (!$value) {
+>>>>>>> pantheon-drops-8/master
             return $allowEmpty;
         }
 
@@ -161,11 +193,19 @@ abstract class ArrayUtils
      */
     public static function isHashTable($value, $allowEmpty = false)
     {
+<<<<<<< HEAD
         if (! is_array($value)) {
             return false;
         }
 
         if (! $value) {
+=======
+        if (!is_array($value)) {
+            return false;
+        }
+
+        if (!$value) {
+>>>>>>> pantheon-drops-8/master
             return $allowEmpty;
         }
 
@@ -187,7 +227,11 @@ abstract class ArrayUtils
      */
     public static function inArray($needle, array $haystack, $strict = false)
     {
+<<<<<<< HEAD
         if (! $strict) {
+=======
+        if (!$strict) {
+>>>>>>> pantheon-drops-8/master
             if (is_int($needle) || is_float($needle)) {
                 $needle = (string) $needle;
             }
@@ -215,11 +259,19 @@ abstract class ArrayUtils
      */
     public static function iteratorToArray($iterator, $recursive = true)
     {
+<<<<<<< HEAD
         if (! is_array($iterator) && ! $iterator instanceof Traversable) {
             throw new Exception\InvalidArgumentException(__METHOD__ . ' expects an array or Traversable object');
         }
 
         if (! $recursive) {
+=======
+        if (!is_array($iterator) && !$iterator instanceof Traversable) {
+            throw new Exception\InvalidArgumentException(__METHOD__ . ' expects an array or Traversable object');
+        }
+
+        if (!$recursive) {
+>>>>>>> pantheon-drops-8/master
             if (is_array($iterator)) {
                 return $iterator;
             }
@@ -274,7 +326,11 @@ abstract class ArrayUtils
             } elseif (isset($a[$key]) || array_key_exists($key, $a)) {
                 if ($value instanceof MergeRemoveKey) {
                     unset($a[$key]);
+<<<<<<< HEAD
                 } elseif (! $preserveNumericKeys && is_int($key)) {
+=======
+                } elseif (!$preserveNumericKeys && is_int($key)) {
+>>>>>>> pantheon-drops-8/master
                     $a[] = $value;
                 } elseif (is_array($value) && is_array($a[$key])) {
                     $a[$key] = static::merge($a[$key], $value, $preserveNumericKeys);
@@ -282,7 +338,11 @@ abstract class ArrayUtils
                     $a[$key] = $value;
                 }
             } else {
+<<<<<<< HEAD
                 if (! $value instanceof MergeRemoveKey) {
+=======
+                if (!$value instanceof MergeRemoveKey) {
+>>>>>>> pantheon-drops-8/master
                     $a[$key] = $value;
                 }
             }
@@ -292,13 +352,20 @@ abstract class ArrayUtils
     }
 
     /**
+<<<<<<< HEAD
      * @deprecated Since 3.2.0; use the native array_filter methods
+=======
+     * Compatibility Method for array_filter on <5.6 systems
+>>>>>>> pantheon-drops-8/master
      *
      * @param array $data
      * @param callable $callback
      * @param null|int $flag
      * @return array
+<<<<<<< HEAD
      * @throws Exception\InvalidArgumentException
+=======
+>>>>>>> pantheon-drops-8/master
      */
     public static function filter(array $data, $callback, $flag = null)
     {
@@ -309,6 +376,32 @@ abstract class ArrayUtils
             ));
         }
 
+<<<<<<< HEAD
         return array_filter($data, $callback, $flag);
+=======
+        if (version_compare(PHP_VERSION, '5.6.0') >= 0) {
+            return array_filter($data, $callback, $flag);
+        }
+
+        $output = [];
+        foreach ($data as $key => $value) {
+            $params = [$value];
+
+            if ($flag === static::ARRAY_FILTER_USE_BOTH) {
+                $params[] = $key;
+            }
+
+            if ($flag === static::ARRAY_FILTER_USE_KEY) {
+                $params = [$key];
+            }
+
+            $response = call_user_func_array($callback, $params);
+            if ($response) {
+                $output[$key] = $value;
+            }
+        }
+
+        return $output;
+>>>>>>> pantheon-drops-8/master
     }
 }

@@ -1,7 +1,14 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-diactoros for the canonical source repository
  * @copyright Copyright (c) 2015-2017 Zend Technologies USA Inc. (http://www.zend.com)
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @see       http://github.com/zendframework/zend-diactoros for the canonical source repository
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
+>>>>>>> pantheon-drops-8/master
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
@@ -11,6 +18,7 @@ use InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 
+<<<<<<< HEAD
 use function array_keys;
 use function get_class;
 use function gettype;
@@ -20,6 +28,8 @@ use function preg_match;
 use function sprintf;
 use function strtolower;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * Trait with common request behaviors.
  *

@@ -1,7 +1,14 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-diactoros for the canonical source repository
  * @copyright Copyright (c) 2015-2017 Zend Technologies USA Inc. (http://www.zend.com)
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @see       http://github.com/zendframework/zend-diactoros for the canonical source repository
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
+>>>>>>> pantheon-drops-8/master
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
@@ -12,6 +19,7 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 
+<<<<<<< HEAD
 use function dirname;
 use function fclose;
 use function fopen;
@@ -51,11 +59,21 @@ class UploadedFile implements UploadedFileInterface
 
     /**
      * @var string|null
+=======
+class UploadedFile implements UploadedFileInterface
+{
+    /**
+     * @var string
+>>>>>>> pantheon-drops-8/master
      */
     private $clientFilename;
 
     /**
+<<<<<<< HEAD
      * @var string|null
+=======
+     * @var string
+>>>>>>> pantheon-drops-8/master
      */
     private $clientMediaType;
 
@@ -147,10 +165,14 @@ class UploadedFile implements UploadedFileInterface
     public function getStream()
     {
         if ($this->error !== UPLOAD_ERR_OK) {
+<<<<<<< HEAD
             throw new RuntimeException(sprintf(
                 'Cannot retrieve stream due to upload error: %s',
                 self::ERROR_MESSAGES[$this->error]
             ));
+=======
+            throw new RuntimeException('Cannot retrieve stream due to upload error');
+>>>>>>> pantheon-drops-8/master
         }
 
         if ($this->moved) {
@@ -183,10 +205,14 @@ class UploadedFile implements UploadedFileInterface
         }
 
         if ($this->error !== UPLOAD_ERR_OK) {
+<<<<<<< HEAD
             throw new RuntimeException(sprintf(
                 'Cannot retrieve stream due to upload error: %s',
                 self::ERROR_MESSAGES[$this->error]
             ));
+=======
+            throw new RuntimeException('Cannot retrieve stream due to upload error');
+>>>>>>> pantheon-drops-8/master
         }
 
         if (! is_string($targetPath) || empty($targetPath)) {

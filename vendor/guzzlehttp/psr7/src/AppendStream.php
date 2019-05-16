@@ -16,6 +16,10 @@ class AppendStream implements StreamInterface
     private $seekable = true;
     private $current = 0;
     private $pos = 0;
+<<<<<<< HEAD
+=======
+    private $detached = false;
+>>>>>>> pantheon-drops-8/master
 
     /**
      * @param StreamInterface[] $streams Streams to decorate. Each stream must
@@ -72,7 +76,10 @@ class AppendStream implements StreamInterface
     public function close()
     {
         $this->pos = $this->current = 0;
+<<<<<<< HEAD
         $this->seekable = true;
+=======
+>>>>>>> pantheon-drops-8/master
 
         foreach ($this->streams as $stream) {
             $stream->close();
@@ -82,14 +89,19 @@ class AppendStream implements StreamInterface
     }
 
     /**
+<<<<<<< HEAD
      * Detaches each attached stream.
      *
      * Returns null as it's not clear which underlying stream resource to return.
+=======
+     * Detaches each attached stream
+>>>>>>> pantheon-drops-8/master
      *
      * {@inheritdoc}
      */
     public function detach()
     {
+<<<<<<< HEAD
         $this->pos = $this->current = 0;
         $this->seekable = true;
 
@@ -98,6 +110,10 @@ class AppendStream implements StreamInterface
         }
 
         $this->streams = [];
+=======
+        $this->close();
+        $this->detached = true;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function tell()

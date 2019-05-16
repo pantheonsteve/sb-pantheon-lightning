@@ -11,8 +11,11 @@
 
 namespace Symfony\Bridge\PsrHttpMessage\Factory;
 
+<<<<<<< HEAD
 @trigger_error(sprintf('The "%s" class is deprecated since symfony/psr-http-message-bridge 1.2, use PsrHttpFactory instead.', DiactorosFactory::class), E_USER_DEPRECATED);
 
+=======
+>>>>>>> pantheon-drops-8/master
 use Psr\Http\Message\UploadedFileInterface;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -30,8 +33,11 @@ use Zend\Diactoros\UploadedFile as DiactorosUploadedFile;
  * Builds Psr\HttpMessage instances using the Zend Diactoros implementation.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
+<<<<<<< HEAD
  *
  * @deprecated since symfony/psr-http-message-bridge 1.2, use PsrHttpFactory instead
+=======
+>>>>>>> pantheon-drops-8/master
  */
 class DiactorosFactory implements HttpMessageFactoryInterface
 {
@@ -52,7 +58,16 @@ class DiactorosFactory implements HttpMessageFactoryInterface
             : \Zend\Diactoros\normalizeServer($symfonyRequest->server->all());
         $headers = $symfonyRequest->headers->all();
 
+<<<<<<< HEAD
         $body = new DiactorosStream($symfonyRequest->getContent(true));
+=======
+        if (PHP_VERSION_ID < 50600) {
+            $body = new DiactorosStream('php://temp', 'wb+');
+            $body->write($symfonyRequest->getContent());
+        } else {
+            $body = new DiactorosStream($symfonyRequest->getContent(true));
+        }
+>>>>>>> pantheon-drops-8/master
 
         $files = method_exists('Zend\Diactoros\ServerRequestFactory', 'normalizeFiles')
             ? DiactorosRequestFactory::normalizeFiles($this->getFiles($symfonyRequest->files->all()))
@@ -90,7 +105,11 @@ class DiactorosFactory implements HttpMessageFactoryInterface
      */
     private function getFiles(array $uploadedFiles)
     {
+<<<<<<< HEAD
         $files = [];
+=======
+        $files = array();
+>>>>>>> pantheon-drops-8/master
 
         foreach ($uploadedFiles as $key => $value) {
             if (null === $value) {
@@ -152,7 +171,11 @@ class DiactorosFactory implements HttpMessageFactoryInterface
         if (!isset($headers['Set-Cookie']) && !isset($headers['set-cookie'])) {
             $cookies = $symfonyResponse->headers->getCookies();
             if (!empty($cookies)) {
+<<<<<<< HEAD
                 $headers['Set-Cookie'] = [];
+=======
+                $headers['Set-Cookie'] = array();
+>>>>>>> pantheon-drops-8/master
                 foreach ($cookies as $cookie) {
                     $headers['Set-Cookie'][] = $cookie->__toString();
                 }

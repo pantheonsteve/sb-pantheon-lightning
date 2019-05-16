@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
 namespace Masterminds\HTML5\Serializer;
 
 /**
@@ -13,6 +16,7 @@ namespace Masterminds\HTML5\Serializer;
  */
 class Traverser
 {
+<<<<<<< HEAD
     /**
      * Namespaces that should be treated as "local" to HTML5.
      */
@@ -20,6 +24,16 @@ class Traverser
         'http://www.w3.org/1999/xhtml' => 'html',
         'http://www.w3.org/1998/Math/MathML' => 'math',
         'http://www.w3.org/2000/svg' => 'svg',
+=======
+
+    /**
+     * Namespaces that should be treated as "local" to HTML5.
+     */
+    static $local_ns = array(
+        'http://www.w3.org/1999/xhtml' => 'html',
+        'http://www.w3.org/1998/Math/MathML' => 'math',
+        'http://www.w3.org/2000/svg' => 'svg'
+>>>>>>> pantheon-drops-8/master
     );
 
     protected $dom;
@@ -35,6 +49,7 @@ class Traverser
     /**
      * Create a traverser.
      *
+<<<<<<< HEAD
      * @param \DOMNode|\DOMNodeList $dom     The document or node to traverse.
      * @param resource              $out     A stream that allows writing. The traverser will output into this
      *                                       stream.
@@ -42,6 +57,18 @@ class Traverser
      *                                       - encode_entities: A bool to specify if full encding should happen for all named
      *                                       charachter references. Defaults to false which escapes &'<>".
      *                                       - output_rules: The path to the class handling the output rules.
+=======
+     * @param DOMNode|DOMNodeList $dom
+     *            The document or node to traverse.
+     * @param resource $out
+     *            A stream that allows writing. The traverser will output into this
+     *            stream.
+     * @param array $options
+     *            An array or options for the traverser as key/value pairs. These include:
+     *            - encode_entities: A bool to specify if full encding should happen for all named
+     *            charachter references. Defaults to false which escapes &'<>".
+     *            - output_rules: The path to the class handling the output rules.
+>>>>>>> pantheon-drops-8/master
      */
     public function __construct($dom, $out, RulesInterface $rules, $options = array())
     {
@@ -56,7 +83,12 @@ class Traverser
     /**
      * Tell the traverser to walk the DOM.
      *
+<<<<<<< HEAD
      * @return resource $out Returns the output stream.
+=======
+     * @return resource $out
+     *         Returns the output stream.
+>>>>>>> pantheon-drops-8/master
      */
     public function walk()
     {
@@ -83,7 +115,12 @@ class Traverser
     /**
      * Process a node in the DOM.
      *
+<<<<<<< HEAD
      * @param mixed $node A node implementing \DOMNode.
+=======
+     * @param mixed $node
+     *            A node implementing \DOMNode.
+>>>>>>> pantheon-drops-8/master
      */
     public function node($node)
     {
@@ -114,7 +151,12 @@ class Traverser
     /**
      * Walk through all the nodes on a node list.
      *
+<<<<<<< HEAD
      * @param \DOMNodeList $nl A list of child elements to walk through.
+=======
+     * @param \DOMNodeList $nl
+     *            A list of child elements to walk through.
+>>>>>>> pantheon-drops-8/master
      */
     public function children($nl)
     {
@@ -126,9 +168,16 @@ class Traverser
     /**
      * Is an element local?
      *
+<<<<<<< HEAD
      * @param mixed $ele An element that implement \DOMNode.
      *
      * @return bool true if local and false otherwise.
+=======
+     * @param mixed $ele
+     *            An element that implement \DOMNode.
+     *
+     * @return bool True if local and false otherwise.
+>>>>>>> pantheon-drops-8/master
      */
     public function isLocalElement($ele)
     {

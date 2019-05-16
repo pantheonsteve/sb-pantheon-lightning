@@ -1,4 +1,7 @@
 vendor/
 composer.lock
 phpunit.xml
+<<<<<<< HEAD
 .php_cs.cache
+=======
+>>>>>>> pantheon-drops-8/master

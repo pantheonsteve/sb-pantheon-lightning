@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
 namespace Masterminds\HTML5\Parser;
 
 /**
@@ -12,6 +15,7 @@ namespace Masterminds\HTML5\Parser;
  * really like to rewrite this class to efficiently handle lower level
  * stream reads (and thus efficiently handle large documents).
  *
+<<<<<<< HEAD
  * @deprecated since 2.4, to remove in 3.0. Use a string in the scanner instead.
  */
 class FileInputStream extends StringInputStream implements InputStream
@@ -22,6 +26,18 @@ class FileInputStream extends StringInputStream implements InputStream
      * @param string $data     The file or url path to load.
      * @param string $encoding The encoding to use for the data.
      * @param string $debug    A fprintf format to use to echo the data on stdout.
+=======
+ * @todo A buffered input stream would be useful.
+ */
+class FileInputStream extends StringInputStream implements InputStream
+{
+
+    /**
+     * Load a file input stream.
+     *
+     * @param string $data
+     *            The file or url path to load.
+>>>>>>> pantheon-drops-8/master
      */
     public function __construct($data, $encoding = 'UTF-8', $debug = '')
     {

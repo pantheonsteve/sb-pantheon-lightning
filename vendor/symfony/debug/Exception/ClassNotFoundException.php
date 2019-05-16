@@ -18,7 +18,11 @@ namespace Symfony\Component\Debug\Exception;
  */
 class ClassNotFoundException extends FatalErrorException
 {
+<<<<<<< HEAD
     public function __construct(string $message, \ErrorException $previous)
+=======
+    public function __construct($message, \ErrorException $previous)
+>>>>>>> pantheon-drops-8/master
     {
         parent::__construct(
             $message,

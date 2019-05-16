@@ -20,7 +20,11 @@ use Zend\ServiceManager\Factory\InvokableFactory;
  * Validation checks that we have an Extension\AbstractEntry or
  * Extension\AbstractFeed.
  */
+<<<<<<< HEAD
 class ExtensionPluginManager extends AbstractPluginManager implements ExtensionManagerInterface
+=======
+class ExtensionPluginManager extends AbstractPluginManager
+>>>>>>> pantheon-drops-8/master
 {
     /**
      * Aliases for default set of extension classes
@@ -31,6 +35,7 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         'atomentry'            => Extension\Atom\Entry::class,
         'atomEntry'            => Extension\Atom\Entry::class,
         'AtomEntry'            => Extension\Atom\Entry::class,
+<<<<<<< HEAD
         'Atom\Entry'           => Extension\Atom\Entry::class,
         'atomfeed'             => Extension\Atom\Feed::class,
         'atomFeed'             => Extension\Atom\Feed::class,
@@ -88,6 +93,44 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         'wellFormedWebEntry'   => Extension\WellFormedWeb\Entry::class,
         'WellFormedWebEntry'   => Extension\WellFormedWeb\Entry::class,
         'WellFormedWeb\Entry'  => Extension\WellFormedWeb\Entry::class,
+=======
+        'atomfeed'             => Extension\Atom\Feed::class,
+        'atomFeed'             => Extension\Atom\Feed::class,
+        'AtomFeed'             => Extension\Atom\Feed::class,
+        'contententry'         => Extension\Content\Entry::class,
+        'contentEntry'         => Extension\Content\Entry::class,
+        'ContentEntry'         => Extension\Content\Entry::class,
+        'creativecommonsentry' => Extension\CreativeCommons\Entry::class,
+        'creativeCommonsEntry' => Extension\CreativeCommons\Entry::class,
+        'CreativeCommonsEntry' => Extension\CreativeCommons\Entry::class,
+        'creativecommonsfeed'  => Extension\CreativeCommons\Feed::class,
+        'creativeCommonsFeed'  => Extension\CreativeCommons\Feed::class,
+        'CreativeCommonsFeed'  => Extension\CreativeCommons\Feed::class,
+        'dublincoreentry'      => Extension\DublinCore\Entry::class,
+        'dublinCoreEntry'      => Extension\DublinCore\Entry::class,
+        'DublinCoreEntry'      => Extension\DublinCore\Entry::class,
+        'dublincorefeed'       => Extension\DublinCore\Feed::class,
+        'dublinCoreFeed'       => Extension\DublinCore\Feed::class,
+        'DublinCoreFeed'       => Extension\DublinCore\Feed::class,
+        'podcastentry'         => Extension\Podcast\Entry::class,
+        'podcastEntry'         => Extension\Podcast\Entry::class,
+        'PodcastEntry'         => Extension\Podcast\Entry::class,
+        'podcastfeed'          => Extension\Podcast\Feed::class,
+        'podcastFeed'          => Extension\Podcast\Feed::class,
+        'PodcastFeed'          => Extension\Podcast\Feed::class,
+        'slashentry'           => Extension\Slash\Entry::class,
+        'slashEntry'           => Extension\Slash\Entry::class,
+        'SlashEntry'           => Extension\Slash\Entry::class,
+        'syndicationfeed'      => Extension\Syndication\Feed::class,
+        'syndicationFeed'      => Extension\Syndication\Feed::class,
+        'SyndicationFeed'      => Extension\Syndication\Feed::class,
+        'threadentry'          => Extension\Thread\Entry::class,
+        'threadEntry'          => Extension\Thread\Entry::class,
+        'ThreadEntry'          => Extension\Thread\Entry::class,
+        'wellformedwebentry'   => Extension\WellFormedWeb\Entry::class,
+        'wellFormedWebEntry'   => Extension\WellFormedWeb\Entry::class,
+        'WellFormedWebEntry'   => Extension\WellFormedWeb\Entry::class,
+>>>>>>> pantheon-drops-8/master
     ];
 
     /**
@@ -103,8 +146,11 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         Extension\CreativeCommons\Feed::class  => InvokableFactory::class,
         Extension\DublinCore\Entry::class      => InvokableFactory::class,
         Extension\DublinCore\Feed::class       => InvokableFactory::class,
+<<<<<<< HEAD
         Extension\GooglePlayPodcast\Entry::class => InvokableFactory::class,
         Extension\GooglePlayPodcast\Feed::class  => InvokableFactory::class,
+=======
+>>>>>>> pantheon-drops-8/master
         Extension\Podcast\Entry::class         => InvokableFactory::class,
         Extension\Podcast\Feed::class          => InvokableFactory::class,
         Extension\Slash\Entry::class           => InvokableFactory::class,
@@ -121,8 +167,11 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         'zendfeedreaderextensioncreativecommonsfeed'  => InvokableFactory::class,
         'zendfeedreaderextensiondublincoreentry'      => InvokableFactory::class,
         'zendfeedreaderextensiondublincorefeed'       => InvokableFactory::class,
+<<<<<<< HEAD
         'zendfeedreaderextensiongoogleplaypodcastentry' => InvokableFactory::class,
         'zendfeedreaderextensiongoogleplaypodcastfeed'  => InvokableFactory::class,
+=======
+>>>>>>> pantheon-drops-8/master
         'zendfeedreaderextensionpodcastentry'         => InvokableFactory::class,
         'zendfeedreaderextensionpodcastfeed'          => InvokableFactory::class,
         'zendfeedreaderextensionslashentry'           => InvokableFactory::class,

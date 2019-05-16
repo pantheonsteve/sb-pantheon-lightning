@@ -16,7 +16,11 @@ class Native extends AbstractStringWrapper
 {
     /**
      * The character encoding working on
+<<<<<<< HEAD
      * (overwritten to change default encoding)
+=======
+     * (overwritten to change defaut encoding)
+>>>>>>> pantheon-drops-8/master
      *
      * @var string
      */
@@ -35,7 +39,11 @@ class Native extends AbstractStringWrapper
         $encodingUpper      = strtoupper($encoding);
         $supportedEncodings = static::getSupportedEncodings();
 
+<<<<<<< HEAD
         if (! in_array($encodingUpper, $supportedEncodings)) {
+=======
+        if (!in_array($encodingUpper, $supportedEncodings)) {
+>>>>>>> pantheon-drops-8/master
             return false;
         }
 
@@ -69,7 +77,11 @@ class Native extends AbstractStringWrapper
         $supportedEncodings = static::getSupportedEncodings();
 
         $encodingUpper = strtoupper($encoding);
+<<<<<<< HEAD
         if (! in_array($encodingUpper, $supportedEncodings)) {
+=======
+        if (!in_array($encodingUpper, $supportedEncodings)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException(
                 'Wrapper doesn\'t support character encoding "' . $encoding . '"'
             );

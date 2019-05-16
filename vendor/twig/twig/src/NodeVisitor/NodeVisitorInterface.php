@@ -30,7 +30,11 @@ interface NodeVisitorInterface
     /**
      * Called after child nodes are visited.
      *
+<<<<<<< HEAD
      * @return \Twig_NodeInterface|false|null The modified node or null if the node must be removed
+=======
+     * @return \Twig_NodeInterface|false The modified node or false if the node must be removed
+>>>>>>> pantheon-drops-8/master
      */
     public function leaveNode(\Twig_NodeInterface $node, Environment $env);
 

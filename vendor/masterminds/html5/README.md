@@ -2,7 +2,11 @@
 
 HTML5 is a standards-compliant HTML5 parser and writer written entirely in PHP.
 It is stable and used in many production websites, and has
+<<<<<<< HEAD
 well over [five million downloads](https://packagist.org/packages/masterminds/html5).
+=======
+well over [one million downloads](https://packagist.org/packages/masterminds/html5).
+>>>>>>> pantheon-drops-8/master
 
 HTML5 provides the following features.
 
@@ -24,21 +28,37 @@ HTML5 provides the following features.
 
 Install HTML5-PHP using [composer](http://getcomposer.org/).
 
+<<<<<<< HEAD
 By adding the `masterminds/html5` dependency to your `composer.json` file:
+=======
+To install, add `masterminds/html5` to your `composer.json` file:
+>>>>>>> pantheon-drops-8/master
 
 ```json
 {
   "require" : {
+<<<<<<< HEAD
     "masterminds/html5": "^2.0"
+=======
+    "masterminds/html5": "2.*"
+>>>>>>> pantheon-drops-8/master
   },
 }
 ```
 
+<<<<<<< HEAD
 By invoking require command via composer executable:
 
 ```bash
 composer require masterminds/html5
 ```
+=======
+(You may substitute `2.*` for a more specific release tag, of
+course.)
+
+From there, use the `composer install` or `composer update` commands to
+install.
+>>>>>>> pantheon-drops-8/master
 
 ## Basic Usage
 
@@ -50,9 +70,15 @@ Here is how you use the high-level `HTML5` library API:
 <?php
 // Assuming you installed from Composer:
 require "vendor/autoload.php";
+<<<<<<< HEAD
 
 use Masterminds\HTML5;
 
+=======
+use Masterminds\HTML5;
+
+
+>>>>>>> pantheon-drops-8/master
 // An example HTML document:
 $html = <<< 'HERE'
   <html>
@@ -75,6 +101,11 @@ print $html5->saveHTML($dom);
 
 // Or save it to a file:
 $html5->save($dom, 'out.html');
+<<<<<<< HEAD
+=======
+
+?>
+>>>>>>> pantheon-drops-8/master
 ```
 
 The `$dom` created by the parser is a full `DOMDocument` object. And the
@@ -115,6 +146,11 @@ The following options are supported:
 This library provides the following low-level APIs that you can use to
 create more customized HTML5 tools:
 
+<<<<<<< HEAD
+=======
+- An `InputStream` abstraction that can work with different kinds of
+input source (not just files and strings).
+>>>>>>> pantheon-drops-8/master
 - A SAX-like event-based parser that you can hook into for special kinds
 of parsing.
 - A flexible error-reporting mechanism that can be tuned to document
@@ -128,6 +164,10 @@ is well-documented.
 
 The parser is designed as follows:
 
+<<<<<<< HEAD
+=======
+- The `InputStream` portion handles direct I/O.
+>>>>>>> pantheon-drops-8/master
 - The `Scanner` handles scanning on behalf of the parser.
 - The `Tokenizer` requests data off of the scanner, parses it, clasifies
 it, and sends it to an `EventHandler`. It is a *recursive descent parser.*
@@ -197,7 +237,11 @@ issues known issues that are not presently on the roadmap:
 - PLAINTEXT: Unsupported.
 - Adoption Agency Algorithm: Not yet implemented. (8.2.5.4.7)
 
+<<<<<<< HEAD
 ## XML Namespaces
+=======
+##XML Namespaces
+>>>>>>> pantheon-drops-8/master
 
 To use XML style namespaces you have to configure well the main `HTML5` instance.
 
@@ -214,7 +258,11 @@ $dom->documentElement->namespaceURI; // http://www.example.com
 ```
 
 You can also add some default prefixes that will not require the namespace declaration,
+<<<<<<< HEAD
 but its elements will be namespaced.
+=======
+but it's elements will be namespaced.
+>>>>>>> pantheon-drops-8/master
 
 ```php
 use Masterminds\HTML5;
@@ -238,7 +286,11 @@ a list of contributors.
 
 We owe a huge debt of gratitude to the original authors of html5lib.
 
+<<<<<<< HEAD
 While not much of the original parser remains, we learned a lot from
+=======
+While not much of the orignal parser remains, we learned a lot from
+>>>>>>> pantheon-drops-8/master
 reading the html5lib library. And some pieces remain here. In
 particular, much of the UTF-8 and Unicode handling is derived from the
 html5lib project.

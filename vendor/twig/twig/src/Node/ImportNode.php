@@ -46,7 +46,11 @@ class ImportNode extends Node
                 ->repr($this->getTemplateName())
                 ->raw(', ')
                 ->repr($this->getTemplateLine())
+<<<<<<< HEAD
                 ->raw(')->unwrap()')
+=======
+                ->raw(')')
+>>>>>>> pantheon-drops-8/master
             ;
         }
 

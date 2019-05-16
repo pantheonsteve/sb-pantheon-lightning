@@ -91,7 +91,11 @@ abstract class FileLoader extends BaseFileLoader
      */
     protected function setDefinition($id, Definition $definition)
     {
+<<<<<<< HEAD
         $this->container->removeBindings($id);
+=======
+        $this->container->addRemovedBindingIds($id);
+>>>>>>> pantheon-drops-8/master
 
         if ($this->isLoadingInstanceof) {
             if (!$definition instanceof ChildDefinition) {

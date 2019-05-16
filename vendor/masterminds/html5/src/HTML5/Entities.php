@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
 namespace Masterminds\HTML5;
 
 /**
@@ -8,6 +11,10 @@ namespace Masterminds\HTML5;
  */
 class Entities
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> pantheon-drops-8/master
     public static $byName = array(
         'Aacute' => 'Á',
         'Aacut' => 'Á',
@@ -2231,6 +2238,10 @@ class Entities
         'Zscr' => '𝒵',
         'zscr' => '𝓏',
         'zwj' => '‍',
+<<<<<<< HEAD
         'zwnj' => '‌',
+=======
+        'zwnj' => '‌'
+>>>>>>> pantheon-drops-8/master
     );
 }

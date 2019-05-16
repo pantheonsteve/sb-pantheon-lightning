@@ -19,7 +19,11 @@ class Message implements MessageInterface
     protected $metadata = [];
 
     /**
+<<<<<<< HEAD
      * @var mixed
+=======
+     * @var string
+>>>>>>> pantheon-drops-8/master
      */
     protected $content = '';
 
@@ -40,7 +44,11 @@ class Message implements MessageInterface
             $this->metadata[$spec] = $value;
             return $this;
         }
+<<<<<<< HEAD
         if (! is_array($spec) && ! $spec instanceof Traversable) {
+=======
+        if (!is_array($spec) && !$spec instanceof Traversable) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException(sprintf(
                 'Expected a string, array, or Traversable argument in first position; received "%s"',
                 (is_object($spec) ? get_class($spec) : gettype($spec))
@@ -66,7 +74,11 @@ class Message implements MessageInterface
             return $this->metadata;
         }
 
+<<<<<<< HEAD
         if (! is_scalar($key)) {
+=======
+        if (!is_scalar($key)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Non-scalar argument provided for key');
         }
 

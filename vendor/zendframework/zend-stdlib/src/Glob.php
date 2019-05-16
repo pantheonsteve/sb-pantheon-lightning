@@ -38,7 +38,11 @@ abstract class Glob
      */
     public static function glob($pattern, $flags = 0, $forceFallback = false)
     {
+<<<<<<< HEAD
         if (! defined('GLOB_BRACE') || $forceFallback) {
+=======
+        if (!defined('GLOB_BRACE') || $forceFallback) {
+>>>>>>> pantheon-drops-8/master
             return static::fallbackGlob($pattern, $flags);
         }
 
@@ -96,7 +100,11 @@ abstract class Glob
      */
     protected static function fallbackGlob($pattern, $flags)
     {
+<<<<<<< HEAD
         if (! $flags & self::GLOB_BRACE) {
+=======
+        if (!$flags & self::GLOB_BRACE) {
+>>>>>>> pantheon-drops-8/master
             return static::systemGlob($pattern, $flags);
         }
 
@@ -182,7 +190,11 @@ abstract class Glob
         $current = $begin;
 
         while ($current < $length) {
+<<<<<<< HEAD
             if (! $flags & self::GLOB_NOESCAPE && $pattern[$current] === '\\') {
+=======
+            if (!$flags & self::GLOB_NOESCAPE && $pattern[$current] === '\\') {
+>>>>>>> pantheon-drops-8/master
                 if (++$current === $length) {
                     break;
                 }

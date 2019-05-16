@@ -11,8 +11,13 @@
 
 namespace Symfony\Bridge\PsrHttpMessage;
 
+<<<<<<< HEAD
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+=======
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+>>>>>>> pantheon-drops-8/master
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -51,7 +51,11 @@ class Entry extends Extension\AbstractEntry
         $stringParade = $this->getData($name);
         $hitParade    = [];
 
+<<<<<<< HEAD
         if (! empty($stringParade)) {
+=======
+        if (!empty($stringParade)) {
+>>>>>>> pantheon-drops-8/master
             $stringParade = explode(',', $stringParade);
 
             foreach ($stringParade as $hit) {
@@ -78,7 +82,11 @@ class Entry extends Extension\AbstractEntry
 
         $comments = $this->getData($name, 'string');
 
+<<<<<<< HEAD
         if (! $comments) {
+=======
+        if (!$comments) {
+>>>>>>> pantheon-drops-8/master
             $this->data[$name] = null;
             return $this->data[$name];
         }
@@ -101,7 +109,11 @@ class Entry extends Extension\AbstractEntry
 
         $data = $this->xpath->evaluate($type . '(' . $this->getXpathPrefix() . '/slash10:' . $name . ')');
 
+<<<<<<< HEAD
         if (! $data) {
+=======
+        if (!$data) {
+>>>>>>> pantheon-drops-8/master
             $data = null;
         }
 

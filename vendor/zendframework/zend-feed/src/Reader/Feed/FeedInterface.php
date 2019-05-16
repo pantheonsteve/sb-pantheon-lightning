@@ -41,14 +41,22 @@ interface FeedInterface extends Iterator, Countable
     /**
      * Get the feed creation date
      *
+<<<<<<< HEAD
      * @return \DateTime|null
+=======
+     * @return string|null
+>>>>>>> pantheon-drops-8/master
      */
     public function getDateCreated();
 
     /**
      * Get the feed modification date
      *
+<<<<<<< HEAD
      * @return \DateTime|null
+=======
+     * @return string|null
+>>>>>>> pantheon-drops-8/master
      */
     public function getDateModified();
 

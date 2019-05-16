@@ -13,9 +13,12 @@ use DOMDocument;
 use DOMElement;
 use DOMXPath;
 
+<<<<<<< HEAD
 /**
  * @deprecated This (abstract) class is deprecated. Use \Zend\Feed\Reader\Feed\AbstractFeed instead.
  */
+=======
+>>>>>>> pantheon-drops-8/master
 abstract class AbstractFeed implements Feed\FeedInterface
 {
     /**
@@ -125,11 +128,19 @@ abstract class AbstractFeed implements Feed\FeedInterface
     /**
      * Return the current entry
      *
+<<<<<<< HEAD
      * @return \Zend\Feed\Reader\Entry\AbstractEntry
      */
     public function current()
     {
         if (0 === strpos($this->getType(), 'rss')) {
+=======
+     * @return \Zend\Feed\Reader\AbstractEntry
+     */
+    public function current()
+    {
+        if (substr($this->getType(), 0, 3) == 'rss') {
+>>>>>>> pantheon-drops-8/master
             $reader = new Entry\RSS($this->entries[$this->key()], $this->key(), $this->getType());
         } else {
             $reader = new Entry\Atom($this->entries[$this->key()], $this->key(), $this->getType());
@@ -171,7 +182,11 @@ abstract class AbstractFeed implements Feed\FeedInterface
      */
     public function saveXml()
     {
+<<<<<<< HEAD
         return $this->getDomDocument()->saveXML();
+=======
+        return $this->getDomDocument()->saveXml();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

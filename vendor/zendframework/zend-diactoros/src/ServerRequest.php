@@ -1,7 +1,14 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-diactoros for the canonical source repository
  * @copyright Copyright (c) 2015-2017 Zend Technologies USA Inc. (http://www.zend.com)
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @see       http://github.com/zendframework/zend-diactoros for the canonical source repository
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
+>>>>>>> pantheon-drops-8/master
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
@@ -13,9 +20,12 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriInterface;
 
+<<<<<<< HEAD
 use function array_key_exists;
 use function is_array;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * Server-side HTTP request
  *
@@ -180,6 +190,7 @@ class ServerRequest implements ServerRequestInterface
      */
     public function withParsedBody($data)
     {
+<<<<<<< HEAD
         if (! is_array($data) && ! is_object($data) && null !== $data) {
             throw new InvalidArgumentException(sprintf(
                 '%s expects a null, array, or object argument; received %s',
@@ -188,6 +199,8 @@ class ServerRequest implements ServerRequestInterface
             ));
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         $new = clone $this;
         $new->parsedBody = $data;
         return $new;

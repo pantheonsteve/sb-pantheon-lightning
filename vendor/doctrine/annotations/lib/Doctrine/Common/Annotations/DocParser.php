@@ -61,7 +61,11 @@ final class DocParser
     /**
      * Current target context.
      *
+<<<<<<< HEAD
      * @var integer
+=======
+     * @var string
+>>>>>>> pantheon-drops-8/master
      */
     private $target;
 
@@ -105,7 +109,11 @@ final class DocParser
     /**
      * An array of default namespaces if operating in simple mode.
      *
+<<<<<<< HEAD
      * @var string[]
+=======
+     * @var array
+>>>>>>> pantheon-drops-8/master
      */
     private $namespaces = array();
 
@@ -115,11 +123,16 @@ final class DocParser
      * The names must be the raw names as used in the class, not the fully qualified
      * class names.
      *
+<<<<<<< HEAD
      * @var bool[] indexed by annotation name
+=======
+     * @var array
+>>>>>>> pantheon-drops-8/master
      */
     private $ignoredAnnotationNames = array();
 
     /**
+<<<<<<< HEAD
      * A list with annotations in namespaced format
      * that are not causing exceptions when not resolved to an annotation class.
      *
@@ -128,6 +141,8 @@ final class DocParser
     private $ignoredAnnotationNamespaces = array();
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * @var string
      */
     private $context = '';
@@ -250,7 +265,11 @@ final class DocParser
      * The names are supposed to be the raw names as used in the class, not the
      * fully qualified class names.
      *
+<<<<<<< HEAD
      * @param bool[] $names indexed by annotation name
+=======
+     * @param array $names
+>>>>>>> pantheon-drops-8/master
      *
      * @return void
      */
@@ -260,6 +279,7 @@ final class DocParser
     }
 
     /**
+<<<<<<< HEAD
      * Sets the annotation namespaces that are ignored during the parsing process.
      *
      * @param bool[] $ignoredAnnotationNamespaces indexed by annotation namespace name
@@ -272,6 +292,8 @@ final class DocParser
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Sets ignore on not-imported annotations.
      *
      * @param boolean $bool
@@ -286,7 +308,11 @@ final class DocParser
     /**
      * Sets the default namespaces.
      *
+<<<<<<< HEAD
      * @param string $namespace
+=======
+     * @param array $namespace
+>>>>>>> pantheon-drops-8/master
      *
      * @return void
      *
@@ -367,10 +393,15 @@ final class DocParser
 
         // search for first valid annotation
         while (($pos = strpos($input, '@', $pos)) !== false) {
+<<<<<<< HEAD
             $preceding = substr($input, $pos - 1, 1);
 
             // if the @ is preceded by a space, a tab or * it is valid
             if ($pos === 0 || $preceding === ' ' || $preceding === '*' || $preceding === "\t") {
+=======
+            // if the @ is preceded by a space or * it is valid
+            if ($pos === 0 || $input[$pos - 1] === ' ' || $input[$pos - 1] === '*') {
+>>>>>>> pantheon-drops-8/master
                 return $pos;
             }
 
@@ -686,6 +717,7 @@ final class DocParser
         // check if we have an annotation
         $name = $this->Identifier();
 
+<<<<<<< HEAD
         if ($this->lexer->isNextToken(DocLexer::T_MINUS)
             && $this->lexer->nextTokenIsAdjacent()
         ) {
@@ -693,15 +725,22 @@ final class DocParser
             return false;
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         // only process names which are not fully qualified, yet
         // fully qualified names must start with a \
         $originalName = $name;
 
         if ('\\' !== $name[0]) {
+<<<<<<< HEAD
             $pos = strpos($name, '\\');
             $alias = (false === $pos)? $name : substr($name, 0, $pos);
             $found = false;
             $loweredAlias = strtolower($alias);
+=======
+            $alias = (false === $pos = strpos($name, '\\'))? $name : substr($name, 0, $pos);
+            $found = false;
+>>>>>>> pantheon-drops-8/master
 
             if ($this->namespaces) {
                 foreach ($this->namespaces as $namespace) {
@@ -711,7 +750,11 @@ final class DocParser
                         break;
                     }
                 }
+<<<<<<< HEAD
             } elseif (isset($this->imports[$loweredAlias])) {
+=======
+            } elseif (isset($this->imports[$loweredAlias = strtolower($alias)])) {
+>>>>>>> pantheon-drops-8/master
                 $found = true;
                 $name  = (false !== $pos)
                     ? $this->imports[$loweredAlias] . substr($name, $pos)
@@ -727,7 +770,11 @@ final class DocParser
             }
 
             if ( ! $found) {
+<<<<<<< HEAD
                 if ($this->isIgnoredAnnotation($name)) {
+=======
+                if ($this->ignoreNotImportedAnnotations || isset($this->ignoredAnnotationNames[$name])) {
+>>>>>>> pantheon-drops-8/master
                     return false;
                 }
 
@@ -735,8 +782,11 @@ final class DocParser
             }
         }
 
+<<<<<<< HEAD
         $name = ltrim($name,'\\');
 
+=======
+>>>>>>> pantheon-drops-8/master
         if ( ! $this->classExists($name)) {
             throw AnnotationException::semanticalError(sprintf('The annotation "@%s" in %s does not exist, or could not be auto-loaded.', $name, $this->context));
         }
@@ -753,7 +803,11 @@ final class DocParser
 
         // verify that the class is really meant to be an annotation and not just any ordinary class
         if (self::$annotationMetadata[$name]['is_annotation'] === false) {
+<<<<<<< HEAD
             if ($this->ignoreNotImportedAnnotations || isset($this->ignoredAnnotationNames[$originalName])) {
+=======
+            if (isset($this->ignoredAnnotationNames[$originalName])) {
+>>>>>>> pantheon-drops-8/master
                 return false;
             }
 
@@ -930,10 +984,15 @@ final class DocParser
         if ( ! defined($identifier) && false !== strpos($identifier, '::') && '\\' !== $identifier[0]) {
             list($className, $const) = explode('::', $identifier);
 
+<<<<<<< HEAD
             $pos = strpos($className, '\\');
             $alias = (false === $pos) ? $className : substr($className, 0, $pos);
             $found = false;
             $loweredAlias = strtolower($alias);
+=======
+            $alias = (false === $pos = strpos($className, '\\')) ? $className : substr($className, 0, $pos);
+            $found = false;
+>>>>>>> pantheon-drops-8/master
 
             switch (true) {
                 case !empty ($this->namespaces):
@@ -946,7 +1005,11 @@ final class DocParser
                     }
                     break;
 
+<<<<<<< HEAD
                 case isset($this->imports[$loweredAlias]):
+=======
+                case isset($this->imports[$loweredAlias = strtolower($alias)]):
+>>>>>>> pantheon-drops-8/master
                     $found     = true;
                     $className = (false !== $pos)
                         ? $this->imports[$loweredAlias] . substr($className, $pos)
@@ -1080,7 +1143,11 @@ final class DocParser
      * FieldAssignment ::= FieldName "=" PlainValue
      * FieldName ::= identifier
      *
+<<<<<<< HEAD
      * @return \stdClass
+=======
+     * @return array
+>>>>>>> pantheon-drops-8/master
      */
     private function FieldAssignment()
     {
@@ -1170,6 +1237,7 @@ final class DocParser
 
         return array(null, $this->Value());
     }
+<<<<<<< HEAD
 
     /**
      * Checks whether the given $name matches any ignored annotation name or namespace
@@ -1194,4 +1262,6 @@ final class DocParser
 
         return false;
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

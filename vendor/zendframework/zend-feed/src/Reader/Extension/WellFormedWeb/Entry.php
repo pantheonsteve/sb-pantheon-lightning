@@ -29,7 +29,11 @@ class Entry extends Extension\AbstractEntry
 
         $data = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/wfw:' . $name . ')');
 
+<<<<<<< HEAD
         if (! $data) {
+=======
+        if (!$data) {
+>>>>>>> pantheon-drops-8/master
             $data = null;
         }
 

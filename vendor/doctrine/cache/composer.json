@@ -3,7 +3,11 @@
     "type": "library",
     "description": "Caching library offering an object-oriented API for many cache backends",
     "keywords": ["cache", "caching"],
+<<<<<<< HEAD
     "homepage": "https://www.doctrine-project.org",
+=======
+    "homepage": "http://www.doctrine-project.org",
+>>>>>>> pantheon-drops-8/master
     "license": "MIT",
     "authors": [
         {"name": "Guilherme Blanco", "email": "guilhermeblanco@gmail.com"},
@@ -13,6 +17,7 @@
         {"name": "Johannes Schmitt", "email": "schmittjoh@gmail.com"}
     ],
     "require": {
+<<<<<<< HEAD
         "php": "~7.1"
     },
     "require-dev": {
@@ -24,6 +29,14 @@
     },
     "suggest": {
         "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
+=======
+        "php": "~5.5|~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit":         "~4.8|~5.0",
+        "satooshi/php-coveralls":  "~0.6",
+        "predis/predis":           "~1.0"
+>>>>>>> pantheon-drops-8/master
     },
     "conflict": {
         "doctrine/common": ">2.2,<2.4"
@@ -36,7 +49,11 @@
     },
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "1.8.x-dev"
+=======
+            "dev-master": "1.6.x-dev"
+>>>>>>> pantheon-drops-8/master
         }
     }
 }

@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
 namespace Masterminds\HTML5\Parser;
 
 /**
@@ -10,11 +13,18 @@ namespace Masterminds\HTML5\Parser;
  *
  * Currently provided InputStream implementations include
  * FileInputStream and StringInputStream.
+<<<<<<< HEAD
  *
  * @deprecated since 2.4, to remove in 3.0. Use a string in the scanner instead.
  */
 interface InputStream extends \Iterator
 {
+=======
+ */
+interface InputStream extends \Iterator
+{
+
+>>>>>>> pantheon-drops-8/master
     /**
      * Returns the current line that is being consumed.
      *
@@ -49,12 +59,21 @@ interface InputStream extends \Iterator
      * and returns the matched substring.
      *
      * @see strcspn
+<<<<<<< HEAD
      *
      * @param string $bytes Bytes to match.
      * @param int    $max   Maximum number of bytes to scan.
      *
      * @return mixed Index or false if no match is found. You should use strong
      *               equality when checking the result, since index could be 0.
+=======
+     * @param string $bytes
+     *            Bytes to match.
+     * @param int $max
+     *            Maximum number of bytes to scan.
+     * @return mixed Index or false if no match is found. You should use strong
+     *         equality when checking the result, since index could be 0.
+>>>>>>> pantheon-drops-8/master
      */
     public function charsUntil($bytes, $max = null);
 
@@ -65,18 +84,32 @@ interface InputStream extends \Iterator
      * and returns the matched substring.
      *
      * @see strspn
+<<<<<<< HEAD
      *
      * @param string $bytes A mask of bytes to match. If ANY byte in this mask matches the
      *                      current char, the pointer advances and the char is part of the
      *                      substring.
      * @param int    $max   The max number of chars to read.
+=======
+     * @param string $bytes
+     *            A mask of bytes to match. If ANY byte in this mask matches the
+     *            current char, the pointer advances and the char is part of the
+     *            substring.
+     * @param int $max
+     *            The max number of chars to read.
+>>>>>>> pantheon-drops-8/master
      */
     public function charsWhile($bytes, $max = null);
 
     /**
      * Unconsume one character.
      *
+<<<<<<< HEAD
      * @param int $howMany The number of characters to move the pointer back.
+=======
+     * @param int $howMany
+     *            The number of characters to move the pointer back.
+>>>>>>> pantheon-drops-8/master
      */
     public function unconsume($howMany = 1);
 

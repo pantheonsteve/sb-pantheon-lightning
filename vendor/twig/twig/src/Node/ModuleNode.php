@@ -28,13 +28,24 @@ use Twig\Source;
  */
 class ModuleNode extends Node
 {
+<<<<<<< HEAD
+=======
+    private $source;
+
+>>>>>>> pantheon-drops-8/master
     public function __construct(\Twig_NodeInterface $body, AbstractExpression $parent = null, \Twig_NodeInterface $blocks, \Twig_NodeInterface $macros, \Twig_NodeInterface $traits, $embeddedTemplates, $name, $source = '')
     {
         if (!$name instanceof Source) {
             @trigger_error(sprintf('Passing a string as the $name argument of %s() is deprecated since version 1.27. Pass a \Twig\Source instance instead.', __METHOD__), E_USER_DEPRECATED);
+<<<<<<< HEAD
             $source = new Source($source, $name);
         } else {
             $source = $name;
+=======
+            $this->source = new Source($source, $name);
+        } else {
+            $this->source = $name;
+>>>>>>> pantheon-drops-8/master
         }
 
         $nodes = [
@@ -55,16 +66,26 @@ class ModuleNode extends Node
         // embedded templates are set as attributes so that they are only visited once by the visitors
         parent::__construct($nodes, [
             // source to be remove in 2.0
+<<<<<<< HEAD
             'source' => $source->getCode(),
             // filename to be remove in 2.0 (use getTemplateName() instead)
             'filename' => $source->getName(),
+=======
+            'source' => $this->source->getCode(),
+            // filename to be remove in 2.0 (use getTemplateName() instead)
+            'filename' => $this->source->getName(),
+>>>>>>> pantheon-drops-8/master
             'index' => null,
             'embedded_templates' => $embeddedTemplates,
         ], 1);
 
         // populate the template name of all node children
+<<<<<<< HEAD
         $this->setTemplateName($source->getName());
         $this->setSourceContext($source);
+=======
+        $this->setTemplateName($this->source->getName());
+>>>>>>> pantheon-drops-8/master
     }
 
     public function setIndex($index)
@@ -142,7 +163,11 @@ class ModuleNode extends Node
                 ->raw('$this->loadTemplate(')
                 ->subcompile($parent)
                 ->raw(', ')
+<<<<<<< HEAD
                 ->repr($this->getSourceContext()->getName())
+=======
+                ->repr($this->source->getName())
+>>>>>>> pantheon-drops-8/master
                 ->raw(', ')
                 ->repr($parent->getTemplateLine())
                 ->raw(')')
@@ -177,8 +202,13 @@ class ModuleNode extends Node
         }
         $compiler
             // if the template name contains */, add a blank to avoid a PHP parse error
+<<<<<<< HEAD
             ->write('/* '.str_replace('*/', '* /', $this->getSourceContext()->getName())." */\n")
             ->write('class '.$compiler->getEnvironment()->getTemplateClass($this->getSourceContext()->getName(), $this->getAttribute('index')))
+=======
+            ->write('/* '.str_replace('*/', '* /', $this->source->getName())." */\n")
+            ->write('class '.$compiler->getEnvironment()->getTemplateClass($this->source->getName(), $this->getAttribute('index')))
+>>>>>>> pantheon-drops-8/master
             ->raw(sprintf(" extends %s\n", $compiler->getEnvironment()->getBaseTemplateClass()))
             ->write("{\n")
             ->indent()
@@ -197,6 +227,20 @@ class ModuleNode extends Node
         // parent
         if (!$this->hasNode('parent')) {
             $compiler->write("\$this->parent = false;\n\n");
+<<<<<<< HEAD
+=======
+        } elseif (($parent = $this->getNode('parent')) && $parent instanceof ConstantExpression) {
+            $compiler
+                ->addDebugInfo($parent)
+                ->write('$this->parent = $this->loadTemplate(')
+                ->subcompile($parent)
+                ->raw(', ')
+                ->repr($this->source->getName())
+                ->raw(', ')
+                ->repr($parent->getTemplateLine())
+                ->raw(");\n")
+            ;
+>>>>>>> pantheon-drops-8/master
         }
 
         $countTraits = \count($this->getNode('traits'));
@@ -205,16 +249,25 @@ class ModuleNode extends Node
             foreach ($this->getNode('traits') as $i => $trait) {
                 $this->compileLoadTemplate($compiler, $trait->getNode('template'), sprintf('$_trait_%s', $i));
 
+<<<<<<< HEAD
                 $node = $trait->getNode('template');
                 $compiler
                     ->addDebugInfo($node)
+=======
+                $compiler
+                    ->addDebugInfo($trait->getNode('template'))
+>>>>>>> pantheon-drops-8/master
                     ->write(sprintf("if (!\$_trait_%s->isTraitable()) {\n", $i))
                     ->indent()
                     ->write("throw new RuntimeError('Template \"'.")
                     ->subcompile($trait->getNode('template'))
+<<<<<<< HEAD
                     ->raw(".'\" cannot be used as a trait.', ")
                     ->repr($node->getTemplateLine())
                     ->raw(", \$this->getSourceContext());\n")
+=======
+                    ->raw(".'\" cannot be used as a trait.');\n")
+>>>>>>> pantheon-drops-8/master
                     ->outdent()
                     ->write("}\n")
                     ->write(sprintf("\$_trait_%s_blocks = \$_trait_%s->getBlocks();\n\n", $i, $i))
@@ -230,9 +283,13 @@ class ModuleNode extends Node
                         ->string($key)
                         ->raw(' is not defined in trait ')
                         ->subcompile($trait->getNode('template'))
+<<<<<<< HEAD
                         ->raw(".'), ")
                         ->repr($node->getTemplateLine())
                         ->raw(", \$this->getSourceContext());\n")
+=======
+                        ->raw(".'));\n")
+>>>>>>> pantheon-drops-8/master
                         ->outdent()
                         ->write("}\n\n")
 
@@ -324,6 +381,7 @@ class ModuleNode extends Node
 
         if ($this->hasNode('parent')) {
             $parent = $this->getNode('parent');
+<<<<<<< HEAD
 
             $compiler->addDebugInfo($parent);
             if ($parent instanceof ConstantExpression) {
@@ -336,6 +394,10 @@ class ModuleNode extends Node
                     ->repr($parent->getTemplateLine())
                     ->raw(");\n")
                 ;
+=======
+            $compiler->addDebugInfo($parent);
+            if ($parent instanceof ConstantExpression) {
+>>>>>>> pantheon-drops-8/master
                 $compiler->write('$this->parent');
             } else {
                 $compiler->write('$this->getParent($context)');
@@ -370,7 +432,11 @@ class ModuleNode extends Node
             ->write("public function getTemplateName()\n", "{\n")
             ->indent()
             ->write('return ')
+<<<<<<< HEAD
             ->repr($this->getSourceContext()->getName())
+=======
+            ->repr($this->source->getName())
+>>>>>>> pantheon-drops-8/master
             ->raw(";\n")
             ->outdent()
             ->write("}\n\n")
@@ -460,11 +526,19 @@ class ModuleNode extends Node
             ->write("public function getSourceContext()\n", "{\n")
             ->indent()
             ->write('return new Source(')
+<<<<<<< HEAD
             ->string($compiler->getEnvironment()->isDebug() ? $this->getSourceContext()->getCode() : '')
             ->raw(', ')
             ->string($this->getSourceContext()->getName())
             ->raw(', ')
             ->string($this->getSourceContext()->getPath())
+=======
+            ->string($compiler->getEnvironment()->isDebug() ? $this->source->getCode() : '')
+            ->raw(', ')
+            ->string($this->source->getName())
+            ->raw(', ')
+            ->string($this->source->getPath())
+>>>>>>> pantheon-drops-8/master
             ->raw(");\n")
             ->outdent()
             ->write("}\n")

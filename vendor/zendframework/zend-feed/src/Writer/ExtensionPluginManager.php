@@ -18,7 +18,11 @@ use Zend\ServiceManager\Factory\InvokableFactory;
  *
  * Validation checks that we have an Entry, Feed, or Extension\AbstractRenderer.
  */
+<<<<<<< HEAD
 class ExtensionPluginManager extends AbstractPluginManager implements ExtensionManagerInterface
+=======
+class ExtensionPluginManager extends AbstractPluginManager
+>>>>>>> pantheon-drops-8/master
 {
     /**
      * Aliases for default set of extension classes
@@ -29,6 +33,7 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         'atomrendererfeed'           => Extension\Atom\Renderer\Feed::class,
         'atomRendererFeed'           => Extension\Atom\Renderer\Feed::class,
         'AtomRendererFeed'           => Extension\Atom\Renderer\Feed::class,
+<<<<<<< HEAD
         'AtomRenderer\Feed'          => Extension\Atom\Renderer\Feed::class,
         'Atom\Renderer\Feed'         => Extension\Atom\Renderer\Feed::class,
         'contentrendererentry'       => Extension\Content\Renderer\Entry::class,
@@ -70,28 +75,49 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         'GooglePlayPodcastRendererFeed'    => Extension\GooglePlayPodcast\Renderer\Feed::class,
         'GoogleplaypodcastRenderer\Feed'   => Extension\GooglePlayPodcast\Renderer\Feed::class,
         'GooglePlayPodcast\Renderer\Feed'  => Extension\GooglePlayPodcast\Renderer\Feed::class,
+=======
+        'contentrendererentry'       => Extension\Content\Renderer\Entry::class,
+        'contentRendererEntry'       => Extension\Content\Renderer\Entry::class,
+        'ContentRendererEntry'       => Extension\Content\Renderer\Entry::class,
+        'dublincorerendererentry'    => Extension\DublinCore\Renderer\Entry::class,
+        'dublinCoreRendererEntry'    => Extension\DublinCore\Renderer\Entry::class,
+        'DublinCoreRendererEntry'    => Extension\DublinCore\Renderer\Entry::class,
+        'dublincorerendererfeed'     => Extension\DublinCore\Renderer\Feed::class,
+        'dublinCoreRendererFeed'     => Extension\DublinCore\Renderer\Feed::class,
+        'DublinCoreRendererFeed'     => Extension\DublinCore\Renderer\Feed::class,
+>>>>>>> pantheon-drops-8/master
         'itunesentry'                => Extension\ITunes\Entry::class,
         'itunesEntry'                => Extension\ITunes\Entry::class,
         'iTunesEntry'                => Extension\ITunes\Entry::class,
         'ItunesEntry'                => Extension\ITunes\Entry::class,
+<<<<<<< HEAD
         'Itunes\Entry'               => Extension\ITunes\Entry::class,
         'ITunes\Entry'               => Extension\ITunes\Entry::class,
+=======
+>>>>>>> pantheon-drops-8/master
         'itunesfeed'                 => Extension\ITunes\Feed::class,
         'itunesFeed'                 => Extension\ITunes\Feed::class,
         'iTunesFeed'                 => Extension\ITunes\Feed::class,
         'ItunesFeed'                 => Extension\ITunes\Feed::class,
+<<<<<<< HEAD
         'Itunes\Feed'                => Extension\ITunes\Feed::class,
         'ITunes\Feed'                => Extension\ITunes\Feed::class,
+=======
+>>>>>>> pantheon-drops-8/master
         'itunesrendererentry'        => Extension\ITunes\Renderer\Entry::class,
         'itunesRendererEntry'        => Extension\ITunes\Renderer\Entry::class,
         'iTunesRendererEntry'        => Extension\ITunes\Renderer\Entry::class,
         'ItunesRendererEntry'        => Extension\ITunes\Renderer\Entry::class,
+<<<<<<< HEAD
         'ItunesRenderer\Entry'       => Extension\ITunes\Renderer\Entry::class,
         'ITunes\Renderer\Entry'      => Extension\ITunes\Renderer\Entry::class,
+=======
+>>>>>>> pantheon-drops-8/master
         'itunesrendererfeed'         => Extension\ITunes\Renderer\Feed::class,
         'itunesRendererFeed'         => Extension\ITunes\Renderer\Feed::class,
         'iTunesRendererFeed'         => Extension\ITunes\Renderer\Feed::class,
         'ItunesRendererFeed'         => Extension\ITunes\Renderer\Feed::class,
+<<<<<<< HEAD
         'ItunesRenderer\Feed'        => Extension\ITunes\Renderer\Feed::class,
         'ITunes\Renderer\Feed'       => Extension\ITunes\Renderer\Feed::class,
         'slashrendererentry'         => Extension\Slash\Renderer\Entry::class,
@@ -109,6 +135,17 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         'WellFormedWebRendererEntry' => Extension\WellFormedWeb\Renderer\Entry::class,
         'WellFormedWebRenderer\Entry' => Extension\WellFormedWeb\Renderer\Entry::class,
         'WellFormedWeb\Renderer\Entry' => Extension\WellFormedWeb\Renderer\Entry::class,
+=======
+        'slashrendererentry'         => Extension\Slash\Renderer\Entry::class,
+        'slashRendererEntry'         => Extension\Slash\Renderer\Entry::class,
+        'SlashRendererEntry'         => Extension\Slash\Renderer\Entry::class,
+        'threadingrendererentry'     => Extension\Threading\Renderer\Entry::class,
+        'threadingRendererEntry'     => Extension\Threading\Renderer\Entry::class,
+        'ThreadingRendererEntry'     => Extension\Threading\Renderer\Entry::class,
+        'wellformedwebrendererentry' => Extension\WellFormedWeb\Renderer\Entry::class,
+        'wellFormedWebRendererEntry' => Extension\WellFormedWeb\Renderer\Entry::class,
+        'WellFormedWebRendererEntry' => Extension\WellFormedWeb\Renderer\Entry::class,
+>>>>>>> pantheon-drops-8/master
     ];
 
     /**
@@ -121,10 +158,13 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         Extension\Content\Renderer\Entry::class       => InvokableFactory::class,
         Extension\DublinCore\Renderer\Entry::class    => InvokableFactory::class,
         Extension\DublinCore\Renderer\Feed::class     => InvokableFactory::class,
+<<<<<<< HEAD
         Extension\GooglePlayPodcast\Entry::class          => InvokableFactory::class,
         Extension\GooglePlayPodcast\Feed::class           => InvokableFactory::class,
         Extension\GooglePlayPodcast\Renderer\Entry::class => InvokableFactory::class,
         Extension\GooglePlayPodcast\Renderer\Feed::class  => InvokableFactory::class,
+=======
+>>>>>>> pantheon-drops-8/master
         Extension\ITunes\Entry::class                 => InvokableFactory::class,
         Extension\ITunes\Feed::class                  => InvokableFactory::class,
         Extension\ITunes\Renderer\Entry::class        => InvokableFactory::class,
@@ -139,11 +179,14 @@ class ExtensionPluginManager extends AbstractPluginManager implements ExtensionM
         'zendfeedwriterextensioncontentrendererentry'       => InvokableFactory::class,
         'zendfeedwriterextensiondublincorerendererentry'    => InvokableFactory::class,
         'zendfeedwriterextensiondublincorerendererfeed'     => InvokableFactory::class,
+<<<<<<< HEAD
         'zendfeedwriterextensiongoogleplaypodcastentry'         => InvokableFactory::class,
         'zendfeedwriterextensiongoogleplaypodcastfeed'          => InvokableFactory::class,
         'zendfeedwriterextensiongoogleplaypodcastrendererentry' => InvokableFactory::class,
         'zendfeedwriterextensiongoogleplaypodcastrendererfeed'  => InvokableFactory::class,
 
+=======
+>>>>>>> pantheon-drops-8/master
         'zendfeedwriterextensionitunesentry'                => InvokableFactory::class,
         'zendfeedwriterextensionitunesfeed'                 => InvokableFactory::class,
         'zendfeedwriterextensionitunesrendererentry'        => InvokableFactory::class,

@@ -86,7 +86,11 @@ class Profile implements \IteratorAggregate, \Serializable
     /**
      * Returns the duration in microseconds.
      *
+<<<<<<< HEAD
      * @return float
+=======
+     * @return int
+>>>>>>> pantheon-drops-8/master
      */
     public function getDuration()
     {
@@ -160,11 +164,16 @@ class Profile implements \IteratorAggregate, \Serializable
 
     public function serialize()
     {
+<<<<<<< HEAD
         return serialize($this->__serialize());
+=======
+        return serialize([$this->template, $this->name, $this->type, $this->starts, $this->ends, $this->profiles]);
+>>>>>>> pantheon-drops-8/master
     }
 
     public function unserialize($data)
     {
+<<<<<<< HEAD
         $this->__unserialize(unserialize($data));
     }
 
@@ -182,6 +191,9 @@ class Profile implements \IteratorAggregate, \Serializable
     public function __unserialize(array $data)
     {
         list($this->template, $this->name, $this->type, $this->starts, $this->ends, $this->profiles) = $data;
+=======
+        list($this->template, $this->name, $this->type, $this->starts, $this->ends, $this->profiles) = unserialize($data);
+>>>>>>> pantheon-drops-8/master
     }
 }
 

@@ -32,10 +32,17 @@ Also Lzma2 compressed archives are supported with xz extension.</description>
   <email>stig@php.net</email>
   <active>no</active>
  </helper>
+<<<<<<< HEAD
  <date>2019-04-08</date>
  <time>15:30:00</time>
  <version>
   <release>1.4.7</release>
+=======
+ <date>2019-02-01</date>
+ <time>12:10:00</time>
+ <version>
+  <release>1.4.6</release>
+>>>>>>> pantheon-drops-8/master
   <api>1.4.0</api>
  </version>
  <stability>
@@ -44,7 +51,11 @@ Also Lzma2 compressed archives are supported with xz extension.</description>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
+<<<<<<< HEAD
 * Improved performance by increasing read buffer size
+=======
+* Improve path traversal detection for forward and backward slashes
+>>>>>>> pantheon-drops-8/master
  </notes>
  <contents>
   <dir name="/">
@@ -76,6 +87,7 @@ Also Lzma2 compressed archives are supported with xz extension.</description>
  <changelog>
   <release>
    <version>
+<<<<<<< HEAD
     <release>1.4.6</release>
     <api>1.4.0</api>
    </version>
@@ -91,6 +103,8 @@ Also Lzma2 compressed archives are supported with xz extension.</description>
   </release>
   <release>
    <version>
+=======
+>>>>>>> pantheon-drops-8/master
     <release>1.4.5</release>
     <api>1.4.0</api>
    </version>

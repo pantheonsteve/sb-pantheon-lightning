@@ -17,7 +17,11 @@ interface EntryInterface
      * Get the specified author
      *
      * @param  int $index
+<<<<<<< HEAD
      * @return array<string, string>|null
+=======
+     * @return string|null
+>>>>>>> pantheon-drops-8/master
      */
     public function getAuthor($index = 0);
 

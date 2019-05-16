@@ -75,7 +75,11 @@ class Publisher
             $options = ArrayUtils::iteratorToArray($options);
         }
 
+<<<<<<< HEAD
         if (! is_array($options)) {
+=======
+        if (!is_array($options)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Array or Traversable object'
                                 . 'expected, got ' . gettype($options));
         }
@@ -100,7 +104,11 @@ class Publisher
      */
     public function addHubUrl($url)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "url"'
                 . ' of "' . $url . '" must be a non-empty string and a valid'
                 . 'URL');
@@ -131,7 +139,11 @@ class Publisher
      */
     public function removeHubUrl($url)
     {
+<<<<<<< HEAD
         if (! in_array($url, $this->getHubUrls())) {
+=======
+        if (!in_array($url, $this->getHubUrls())) {
+>>>>>>> pantheon-drops-8/master
             return $this;
         }
         $key = array_search($url, $this->hubUrls);
@@ -159,7 +171,11 @@ class Publisher
      */
     public function addUpdatedTopicUrl($url)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "url"'
                 . ' of "' . $url . '" must be a non-empty string and a valid'
                 . 'URL');
@@ -190,7 +206,11 @@ class Publisher
      */
     public function removeUpdatedTopicUrl($url)
     {
+<<<<<<< HEAD
         if (! in_array($url, $this->getUpdatedTopicUrls())) {
+=======
+        if (!in_array($url, $this->getUpdatedTopicUrls())) {
+>>>>>>> pantheon-drops-8/master
             return $this;
         }
         $key = array_search($url, $this->updatedTopicUrls);
@@ -219,7 +239,11 @@ class Publisher
      */
     public function notifyHub($url)
     {
+<<<<<<< HEAD
         if (empty($url) || ! is_string($url) || ! Uri::factory($url)->isValid()) {
+=======
+        if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "url"'
                 . ' of "' . $url . '" must be a non-empty string and a valid'
                 . 'URL');
@@ -281,7 +305,11 @@ class Publisher
             $this->setParameters($name);
             return $this;
         }
+<<<<<<< HEAD
         if (empty($name) || ! is_string($name)) {
+=======
+        if (empty($name) || !is_string($name)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "name"'
                 . ' of "' . $name . '" must be a non-empty string');
         }
@@ -289,7 +317,11 @@ class Publisher
             $this->removeParameter($name);
             return $this;
         }
+<<<<<<< HEAD
         if (empty($value) || (! is_string($value) && $value !== null)) {
+=======
+        if (empty($value) || (!is_string($value) && $value !== null)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "value"'
                 . ' of "' . $value . '" must be a non-empty string');
         }
@@ -320,7 +352,11 @@ class Publisher
      */
     public function removeParameter($name)
     {
+<<<<<<< HEAD
         if (empty($name) || ! is_string($name)) {
+=======
+        if (empty($name) || !is_string($name)) {
+>>>>>>> pantheon-drops-8/master
             throw new Exception\InvalidArgumentException('Invalid parameter "name"'
                 . ' of "' . $name . '" must be a non-empty string');
         }
@@ -348,7 +384,11 @@ class Publisher
      */
     public function isSuccess()
     {
+<<<<<<< HEAD
         return ! $this->errors;
+=======
+        return !(count($this->errors) != 0);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -369,10 +409,15 @@ class Publisher
      * @return \Zend\Http\Client
      * @throws Exception\RuntimeException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _getHttpClient()
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _getHttpClient()
+    {
+>>>>>>> pantheon-drops-8/master
         $client = PubSubHubbub::getHttpClient();
         $client->setMethod(HttpRequest::METHOD_POST);
         $client->setOptions([

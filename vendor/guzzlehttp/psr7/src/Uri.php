@@ -301,7 +301,19 @@ class Uri implements UriInterface
      */
     public static function withoutQueryValue(UriInterface $uri, $key)
     {
+<<<<<<< HEAD
         $result = self::getFilteredQueryString($uri, [$key]);
+=======
+        $current = $uri->getQuery();
+        if ($current === '') {
+            return $uri;
+        }
+
+        $decodedKey = rawurldecode($key);
+        $result = array_filter(explode('&', $current), function ($part) use ($decodedKey) {
+            return rawurldecode(explode('=', $part)[0]) !== $decodedKey;
+        });
+>>>>>>> pantheon-drops-8/master
 
         return $uri->withQuery(implode('&', $result));
     }
@@ -323,6 +335,7 @@ class Uri implements UriInterface
      */
     public static function withQueryValue(UriInterface $uri, $key, $value)
     {
+<<<<<<< HEAD
         $result = self::getFilteredQueryString($uri, [$key]);
 
         $result[] = self::generateQueryString($key, $value);
@@ -346,6 +359,28 @@ class Uri implements UriInterface
 
         foreach ($keyValueArray as $key => $value) {
             $result[] = self::generateQueryString($key, $value);
+=======
+        $current = $uri->getQuery();
+
+        if ($current === '') {
+            $result = [];
+        } else {
+            $decodedKey = rawurldecode($key);
+            $result = array_filter(explode('&', $current), function ($part) use ($decodedKey) {
+                return rawurldecode(explode('=', $part)[0]) !== $decodedKey;
+            });
+        }
+
+        // Query string separators ("=", "&") within the key or value need to be encoded
+        // (while preventing double-encoding) before setting the query string. All other
+        // chars that need percent-encoding will be encoded by withQuery().
+        $key = strtr($key, self::$replaceQuery);
+
+        if ($value !== null) {
+            $result[] = $key . '=' . strtr($value, self::$replaceQuery);
+        } else {
+            $result[] = $key;
+>>>>>>> pantheon-drops-8/master
         }
 
         return $uri->withQuery(implode('&', $result));
@@ -615,6 +650,7 @@ class Uri implements UriInterface
         return $port;
     }
 
+<<<<<<< HEAD
     /**
      * @param UriInterface $uri
      * @param array        $keys
@@ -656,6 +692,8 @@ class Uri implements UriInterface
         return $queryString;
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     private function removeDefaultPort()
     {
         if ($this->port !== null && self::isDefaultPort($this)) {

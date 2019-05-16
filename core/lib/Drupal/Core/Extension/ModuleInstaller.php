@@ -357,7 +357,11 @@ class ModuleInstaller implements ModuleInstallerInterface {
             return FALSE;
           }
 
+<<<<<<< HEAD
           // Skip already uninstalled modules and dependencies of profiles.
+=======
+          // Skip already uninstalled modules.
+>>>>>>> pantheon-drops-8/master
           if (isset($installed_modules[$dependent]) && !isset($module_list[$dependent])) {
             $module_list[$dependent] = $dependent;
           }

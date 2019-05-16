@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+<<<<<<< HEAD
 ## 1.8.6 - 2018-09-05
 
 ### Added
@@ -497,6 +498,8 @@ All notable changes to this project will be documented in this file, in reverse 
   `Uri` class provides user-info within the URI authority; the value is now
   correctly percent-encoded , per RFC 3986 Section 3.2.1.
 
+=======
+>>>>>>> pantheon-drops-8/master
 ## 1.4.1 - 2017-08-17
 
 ### Added

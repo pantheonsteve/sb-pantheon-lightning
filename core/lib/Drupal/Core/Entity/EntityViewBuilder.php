@@ -359,6 +359,7 @@ class EntityViewBuilder extends EntityHandlerBase implements EntityHandlerInterf
     if ($entity->isNew()) {
       return;
     }
+<<<<<<< HEAD
     $links = [];
     // Only attach one of either the revision or canonical contextual link
     // group.
@@ -383,6 +384,22 @@ class EntityViewBuilder extends EntityHandlerBase implements EntityHandlerInterf
             'changed' => $entity->getChangedTime(),
           ];
         }
+=======
+    $key = $entity->getEntityTypeId();
+    $rel = 'canonical';
+    if ($entity instanceof ContentEntityInterface && !$entity->isDefaultRevision()) {
+      $rel = 'revision';
+      $key .= '_revision';
+    }
+    if ($entity->hasLinkTemplate($rel)) {
+      $build['#contextual_links'][$key] = [
+        'route_parameters' => $entity->toUrl($rel)->getRouteParameters(),
+      ];
+      if ($entity instanceof EntityChangedInterface) {
+        $build['#contextual_links'][$key]['metadata'] = [
+          'changed' => $entity->getChangedTime(),
+        ];
+>>>>>>> pantheon-drops-8/master
       }
     }
   }

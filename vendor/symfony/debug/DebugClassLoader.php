@@ -11,8 +11,11 @@
 
 namespace Symfony\Component\Debug;
 
+<<<<<<< HEAD
 use PHPUnit\Framework\MockObject\Matcher\StatelessInvocation;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * Autoloader checking if the class is really defined in the file found.
  *
@@ -23,7 +26,10 @@ use PHPUnit\Framework\MockObject\Matcher\StatelessInvocation;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Christophe Coevoet <stof@notk.org>
  * @author Nicolas Grekas <p@tchwork.com>
+<<<<<<< HEAD
  * @author Guilhem Niot <guilhem.niot@gmail.com>
+=======
+>>>>>>> pantheon-drops-8/master
  */
 class DebugClassLoader
 {
@@ -37,7 +43,11 @@ class DebugClassLoader
     private static $deprecated = [];
     private static $internal = [];
     private static $internalMethods = [];
+<<<<<<< HEAD
     private static $annotatedParameters = [];
+=======
+    private static $php7Reserved = ['int' => 1, 'float' => 1, 'bool' => 1, 'string' => 1, 'true' => 1, 'false' => 1, 'null' => 1];
+>>>>>>> pantheon-drops-8/master
     private static $darwinCache = ['/' => ['/', []]];
 
     public function __construct(callable $classLoader)
@@ -159,7 +169,11 @@ class DebugClassLoader
                     require $file;
                 }
             } else {
+<<<<<<< HEAD
                 ($this->classLoader)($class);
+=======
+                \call_user_func($this->classLoader, $class);
+>>>>>>> pantheon-drops-8/master
                 $file = false;
             }
         } finally {
@@ -195,6 +209,13 @@ class DebugClassLoader
 
             $deprecations = $this->checkAnnotations($refl, $name);
 
+<<<<<<< HEAD
+=======
+            if (isset(self::$php7Reserved[\strtolower($refl->getShortName())])) {
+                $deprecations[] = sprintf('The "%s" class uses the reserved name "%s", it will break on PHP 7 and higher', $name, $refl->getShortName());
+            }
+
+>>>>>>> pantheon-drops-8/master
             foreach ($deprecations as $message) {
                 @trigger_error($message, E_USER_DEPRECATED);
             }
@@ -272,12 +293,20 @@ class DebugClassLoader
             return $deprecations;
         }
 
+<<<<<<< HEAD
         // Inherit @final, @internal and @param annotations for methods
         self::$finalMethods[$class] = [];
         self::$internalMethods[$class] = [];
         self::$annotatedParameters[$class] = [];
         foreach ($parentAndOwnInterfaces as $use) {
             foreach (['finalMethods', 'internalMethods', 'annotatedParameters'] as $property) {
+=======
+        // Inherit @final and @internal annotations for methods
+        self::$finalMethods[$class] = [];
+        self::$internalMethods[$class] = [];
+        foreach ($parentAndOwnInterfaces as $use) {
+            foreach (['finalMethods', 'internalMethods'] as $property) {
+>>>>>>> pantheon-drops-8/master
                 if (isset(self::${$property}[$use])) {
                     self::${$property}[$class] = self::${$property}[$class] ? self::${$property}[$use] + self::${$property}[$class] : self::${$property}[$use];
                 }
@@ -301,6 +330,7 @@ class DebugClassLoader
                 }
             }
 
+<<<<<<< HEAD
             // To read method annotations
             $doc = $method->getDocComment();
 
@@ -323,10 +353,18 @@ class DebugClassLoader
 
             $finalOrInternal = false;
 
+=======
+            // Detect method annotations
+            if (false === $doc = $method->getDocComment()) {
+                continue;
+            }
+
+>>>>>>> pantheon-drops-8/master
             foreach (['final', 'internal'] as $annotation) {
                 if (false !== \strpos($doc, $annotation) && preg_match('#\n\s+\* @'.$annotation.'(?:( .+?)\.?)?\r?\n\s+\*(?: @|/$|\r?\n)#s', $doc, $notice)) {
                     $message = isset($notice[1]) ? preg_replace('#\.?\r?\n( \*)? *(?= |\r?\n|$)#', '', $notice[1]) : '';
                     self::${$annotation.'Methods'}[$class][$method->name] = [$class, $message];
+<<<<<<< HEAD
                     $finalOrInternal = true;
                 }
             }
@@ -347,6 +385,8 @@ class DebugClassLoader
                 if (!isset($definedParameters[$parameterName])) {
                     $parameterType = trim($parameterType);
                     self::$annotatedParameters[$class][$method->name][$parameterName] = sprintf('The "%%s::%s()" method will require a new "%s$%s" argument in the next major version of its parent class "%s", not defining it is deprecated.', $method->name, $parameterType ? $parameterType.' ' : '', $parameterName, $method->class);
+=======
+>>>>>>> pantheon-drops-8/master
                 }
             }
         }

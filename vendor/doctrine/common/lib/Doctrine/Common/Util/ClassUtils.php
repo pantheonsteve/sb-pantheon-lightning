@@ -1,4 +1,25 @@
 <?php
+<<<<<<< HEAD
+=======
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
+
+>>>>>>> pantheon-drops-8/master
 namespace Doctrine\Common\Util;
 
 use Doctrine\Common\Persistence\Proxy;
@@ -9,8 +30,11 @@ use Doctrine\Common\Persistence\Proxy;
  *
  * @author Benjamin Eberlei <kontakt@beberlei.de>
  * @author Johannes Schmitt <schmittjoh@gmail.com>
+<<<<<<< HEAD
  *
  * @deprecated The ClassUtils class is deprecated.
+=======
+>>>>>>> pantheon-drops-8/master
  */
 class ClassUtils
 {
@@ -23,7 +47,11 @@ class ClassUtils
      */
     public static function getRealClass($class)
     {
+<<<<<<< HEAD
         if (false === $pos = strrpos($class, '\\' . Proxy::MARKER . '\\')) {
+=======
+        if (false === $pos = strrpos($class, '\\'.Proxy::MARKER.'\\')) {
+>>>>>>> pantheon-drops-8/master
             return $class;
         }
 
@@ -51,7 +79,11 @@ class ClassUtils
      */
     public static function getParentClass($className)
     {
+<<<<<<< HEAD
         return get_parent_class(self::getRealClass($className));
+=======
+        return get_parent_class( self::getRealClass( $className ) );
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -63,7 +95,11 @@ class ClassUtils
      */
     public static function newReflectionClass($class)
     {
+<<<<<<< HEAD
         return new \ReflectionClass(self::getRealClass($class));
+=======
+        return new \ReflectionClass( self::getRealClass( $class ) );
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -71,11 +107,19 @@ class ClassUtils
      *
      * @param object $object
      *
+<<<<<<< HEAD
      * @return \ReflectionClass
      */
     public static function newReflectionObject($object)
     {
         return self::newReflectionClass(self::getClass($object));
+=======
+     * @return \ReflectionObject
+     */
+    public static function newReflectionObject($object)
+    {
+        return self::newReflectionClass( self::getClass( $object ) );
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -88,6 +132,10 @@ class ClassUtils
      */
     public static function generateProxyClassName($className, $proxyNamespace)
     {
+<<<<<<< HEAD
         return rtrim($proxyNamespace, '\\') . '\\' . Proxy::MARKER . '\\' . ltrim($className, '\\');
+=======
+        return rtrim($proxyNamespace, '\\') . '\\'.Proxy::MARKER.'\\' . ltrim($className, '\\');
+>>>>>>> pantheon-drops-8/master
     }
 }

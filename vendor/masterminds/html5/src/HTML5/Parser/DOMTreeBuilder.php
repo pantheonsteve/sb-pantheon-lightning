@@ -1,9 +1,15 @@
 <?php
+<<<<<<< HEAD
 
 namespace Masterminds\HTML5\Parser;
 
 use Masterminds\HTML5\Elements;
 use Masterminds\HTML5\InstructionProcessor;
+=======
+namespace Masterminds\HTML5\Parser;
+
+use Masterminds\HTML5\Elements;
+>>>>>>> pantheon-drops-8/master
 
 /**
  * Create an HTML5 DOM tree from events.
@@ -26,7 +32,11 @@ use Masterminds\HTML5\InstructionProcessor;
 class DOMTreeBuilder implements EventHandler
 {
     /**
+<<<<<<< HEAD
      * Defined in http://www.w3.org/TR/html51/infrastructure.html#html-namespace-0.
+=======
+     * Defined in http://www.w3.org/TR/html51/infrastructure.html#html-namespace-0
+>>>>>>> pantheon-drops-8/master
      */
     const NAMESPACE_HTML = 'http://www.w3.org/1999/xhtml';
 
@@ -47,14 +57,22 @@ class DOMTreeBuilder implements EventHandler
     const OPT_IMPLICIT_NS = 'implicit_namespaces';
 
     /**
+<<<<<<< HEAD
      * Holds the HTML5 element names that causes a namespace switch.
+=======
+     * Holds the HTML5 element names that causes a namespace switch
+>>>>>>> pantheon-drops-8/master
      *
      * @var array
      */
     protected $nsRoots = array(
         'html' => self::NAMESPACE_HTML,
         'svg' => self::NAMESPACE_SVG,
+<<<<<<< HEAD
         'math' => self::NAMESPACE_MATHML,
+=======
+        'math' => self::NAMESPACE_MATHML
+>>>>>>> pantheon-drops-8/master
     );
 
     /**
@@ -65,7 +83,11 @@ class DOMTreeBuilder implements EventHandler
     protected $implicitNamespaces = array(
         'xml' => self::NAMESPACE_XML,
         'xmlns' => self::NAMESPACE_XMLNS,
+<<<<<<< HEAD
         'xlink' => self::NAMESPACE_XLINK,
+=======
+        'xlink' => self::NAMESPACE_XLINK
+>>>>>>> pantheon-drops-8/master
     );
 
     /**
@@ -138,7 +160,10 @@ class DOMTreeBuilder implements EventHandler
     protected $stack = array();
 
     protected $current; // Pointer in the tag hierarchy.
+<<<<<<< HEAD
     protected $rules;
+=======
+>>>>>>> pantheon-drops-8/master
     protected $doc;
 
     protected $frag;
@@ -148,15 +173,24 @@ class DOMTreeBuilder implements EventHandler
     protected $insertMode = 0;
 
     /**
+<<<<<<< HEAD
      * Track if we are in an element that allows only inline child nodes.
      *
+=======
+     * Track if we are in an element that allows only inline child nodes
+>>>>>>> pantheon-drops-8/master
      * @var string|null
      */
     protected $onlyInline;
 
     /**
      * Quirks mode is enabled by default.
+<<<<<<< HEAD
      * Any document that is missing the DT will be considered to be in quirks mode.
+=======
+     * Any document that is missing the
+     * DT will be considered to be in quirks mode.
+>>>>>>> pantheon-drops-8/master
      */
     protected $quirks = true;
 
@@ -177,23 +211,41 @@ class DOMTreeBuilder implements EventHandler
             // $this->doc = \DOMImplementation::createDocument(NULL, 'html', $dt);
             $this->doc = $impl->createDocument(null, null, $dt);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         $this->errors = array();
 
         $this->current = $this->doc; // ->documentElement;
 
         // Create a rules engine for tags.
+<<<<<<< HEAD
         $this->rules = new TreeBuildingRules();
+=======
+        $this->rules = new TreeBuildingRules($this->doc);
+>>>>>>> pantheon-drops-8/master
 
         $implicitNS = array();
         if (isset($this->options[self::OPT_IMPLICIT_NS])) {
             $implicitNS = $this->options[self::OPT_IMPLICIT_NS];
+<<<<<<< HEAD
         } elseif (isset($this->options['implicitNamespaces'])) {
             $implicitNS = $this->options['implicitNamespaces'];
         }
 
         // Fill $nsStack with the defalut HTML5 namespaces, plus the "implicitNamespaces" array taken form $options
         array_unshift($this->nsStack, $implicitNS + array('' => self::NAMESPACE_HTML) + $this->implicitNamespaces);
+=======
+        } elseif (isset($this->options["implicitNamespaces"])) {
+            $implicitNS = $this->options["implicitNamespaces"];
+        }
+
+        // Fill $nsStack with the defalut HTML5 namespaces, plus the "implicitNamespaces" array taken form $options
+        array_unshift($this->nsStack, $implicitNS + array(
+            '' => self::NAMESPACE_HTML
+        ) + $this->implicitNamespaces);
+>>>>>>> pantheon-drops-8/master
 
         if ($isFragment) {
             $this->insertMode = static::IM_IN_BODY;
@@ -218,7 +270,11 @@ class DOMTreeBuilder implements EventHandler
      *
      * @see http://www.w3.org/TR/2012/CR-html5-20121217/syntax.html#concept-frag-parse-context
      *
+<<<<<<< HEAD
      * @return \DOMDocumentFragment
+=======
+     * @return \DOMFragmentDocumentFragment
+>>>>>>> pantheon-drops-8/master
      */
     public function fragment()
     {
@@ -230,10 +286,15 @@ class DOMTreeBuilder implements EventHandler
      *
      * This is used for handling Processor Instructions as they are
      * inserted. If omitted, PI's are inserted directly into the DOM tree.
+<<<<<<< HEAD
      *
      * @param InstructionProcessor $proc
      */
     public function setInstructionProcessor(InstructionProcessor $proc)
+=======
+     */
+    public function setInstructionProcessor(\Masterminds\HTML5\InstructionProcessor $proc)
+>>>>>>> pantheon-drops-8/master
     {
         $this->processor = $proc;
     }
@@ -245,7 +306,11 @@ class DOMTreeBuilder implements EventHandler
         $this->quirks = $quirks;
 
         if ($this->insertMode > static::IM_INITIAL) {
+<<<<<<< HEAD
             $this->parseError('Illegal placement of DOCTYPE tag. Ignoring: ' . $name);
+=======
+            $this->parseError("Illegal placement of DOCTYPE tag. Ignoring: " . $name);
+>>>>>>> pantheon-drops-8/master
 
             return;
         }
@@ -259,6 +324,7 @@ class DOMTreeBuilder implements EventHandler
      * @todo - XMLNS namespace handling (we need to parse, even if it's not valid)
      *       - XLink, MathML and SVG namespace handling
      *       - Omission rules: 8.1.2.4 Optional tags
+<<<<<<< HEAD
      *
      * @param string $name
      * @param array  $attributes
@@ -272,19 +338,39 @@ class DOMTreeBuilder implements EventHandler
 
         // Make sure we have an html element.
         if (!$this->doc->documentElement && 'html' !== $name && !$this->frag) {
+=======
+     */
+    public function startTag($name, $attributes = array(), $selfClosing = false)
+    {
+        // fprintf(STDOUT, $name);
+        $lname = $this->normalizeTagName($name);
+
+        // Make sure we have an html element.
+        if (! $this->doc->documentElement && $name !== 'html' && ! $this->frag) {
+>>>>>>> pantheon-drops-8/master
             $this->startTag('html');
         }
 
         // Set quirks mode if we're at IM_INITIAL with no doctype.
+<<<<<<< HEAD
         if ($this->insertMode === static::IM_INITIAL) {
             $this->quirks = true;
             $this->parseError('No DOCTYPE specified.');
+=======
+        if ($this->insertMode == static::IM_INITIAL) {
+            $this->quirks = true;
+            $this->parseError("No DOCTYPE specified.");
+>>>>>>> pantheon-drops-8/master
         }
 
         // SPECIAL TAG HANDLING:
         // Spec says do this, and "don't ask."
         // find the spec where this is defined... looks problematic
+<<<<<<< HEAD
         if ('image' === $name && !($this->insertMode === static::IM_IN_SVG || $this->insertMode === static::IM_IN_MATHML)) {
+=======
+        if ($name == 'image' && !($this->insertMode === static::IM_IN_SVG || $this->insertMode === static::IM_IN_MATHML)) {
+>>>>>>> pantheon-drops-8/master
             $name = 'img';
         }
 
@@ -300,7 +386,11 @@ class DOMTreeBuilder implements EventHandler
                 break;
             case 'head':
                 if ($this->insertMode > static::IM_BEFORE_HEAD) {
+<<<<<<< HEAD
                     $this->parseError('Unexpected head tag outside of head context.');
+=======
+                    $this->parseError("Unexpected head tag outside of head context.");
+>>>>>>> pantheon-drops-8/master
                 } else {
                     $this->insertMode = static::IM_IN_HEAD;
                 }
@@ -315,14 +405,22 @@ class DOMTreeBuilder implements EventHandler
                 $this->insertMode = static::IM_IN_MATHML;
                 break;
             case 'noscript':
+<<<<<<< HEAD
                 if ($this->insertMode === static::IM_IN_HEAD) {
+=======
+                if ($this->insertMode == static::IM_IN_HEAD) {
+>>>>>>> pantheon-drops-8/master
                     $this->insertMode = static::IM_IN_HEAD_NOSCRIPT;
                 }
                 break;
         }
 
         // Special case handling for SVG.
+<<<<<<< HEAD
         if ($this->insertMode === static::IM_IN_SVG) {
+=======
+        if ($this->insertMode == static::IM_IN_SVG) {
+>>>>>>> pantheon-drops-8/master
             $lname = Elements::normalizeSvgElement($lname);
         }
 
@@ -330,6 +428,7 @@ class DOMTreeBuilder implements EventHandler
         // when we found a tag thats appears inside $nsRoots, we have to switch the defalut namespace
         if (isset($this->nsRoots[$lname]) && $this->nsStack[0][''] !== $this->nsRoots[$lname]) {
             array_unshift($this->nsStack, array(
+<<<<<<< HEAD
                 '' => $this->nsRoots[$lname],
             ) + $this->nsStack[0]);
             ++$pushes;
@@ -349,39 +448,86 @@ class DOMTreeBuilder implements EventHandler
                         substr($aName, $pos + 1) => $aVal,
                     ) + $this->nsStack[0]);
                     ++$pushes;
+=======
+                '' => $this->nsRoots[$lname]
+            ) + $this->nsStack[0]);
+            $pushes ++;
+        }
+        $needsWorkaround = false;
+        if (isset($this->options["xmlNamespaces"]) && $this->options["xmlNamespaces"]) {
+            // when xmlNamespaces is true a and we found a 'xmlns' or 'xmlns:*' attribute, we should add a new item to the $nsStack
+            foreach ($attributes as $aName => $aVal) {
+                if ($aName === 'xmlns') {
+                    $needsWorkaround = $aVal;
+                    array_unshift($this->nsStack, array(
+                        '' => $aVal
+                    ) + $this->nsStack[0]);
+                    $pushes ++;
+                } elseif ((($pos = strpos($aName, ':')) ? substr($aName, 0, $pos) : '') === 'xmlns') {
+                    array_unshift($this->nsStack, array(
+                        substr($aName, $pos + 1) => $aVal
+                    ) + $this->nsStack[0]);
+                    $pushes ++;
+>>>>>>> pantheon-drops-8/master
                 }
             }
         }
 
         if ($this->onlyInline && Elements::isA($lname, Elements::BLOCK_TAG)) {
+<<<<<<< HEAD
             $this->autoclose($this->onlyInline);
             $this->onlyInline = null;
+=======
+        	$this->autoclose($this->onlyInline);
+        	$this->onlyInline = null;
+>>>>>>> pantheon-drops-8/master
         }
 
         try {
             $prefix = ($pos = strpos($lname, ':')) ? substr($lname, 0, $pos) : '';
 
+<<<<<<< HEAD
             if (false !== $needsWorkaround) {
                 $xml = "<$lname xmlns=\"$needsWorkaround\" " . (strlen($prefix) && isset($this->nsStack[0][$prefix]) ? ("xmlns:$prefix=\"" . $this->nsStack[0][$prefix] . '"') : '') . '/>';
+=======
+
+            if ($needsWorkaround!==false) {
+
+                $xml = "<$lname xmlns=\"$needsWorkaround\" ".(strlen($prefix) && isset($this->nsStack[0][$prefix])?("xmlns:$prefix=\"".$this->nsStack[0][$prefix]."\""):"")."/>";
+>>>>>>> pantheon-drops-8/master
 
                 $frag = new \DOMDocument('1.0', 'UTF-8');
                 $frag->loadXML($xml);
 
                 $ele = $this->doc->importNode($frag->documentElement, true);
+<<<<<<< HEAD
             } else {
                 if (!isset($this->nsStack[0][$prefix]) || ('' === $prefix && isset($this->options[self::OPT_DISABLE_HTML_NS]) && $this->options[self::OPT_DISABLE_HTML_NS])) {
+=======
+
+            } else {
+                if (!isset($this->nsStack[0][$prefix]) || ($prefix === "" && isset($this->options[self::OPT_DISABLE_HTML_NS]) && $this->options[self::OPT_DISABLE_HTML_NS])) {
+>>>>>>> pantheon-drops-8/master
                     $ele = $this->doc->createElement($lname);
                 } else {
                     $ele = $this->doc->createElementNS($this->nsStack[0][$prefix], $lname);
                 }
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> pantheon-drops-8/master
         } catch (\DOMException $e) {
             $this->parseError("Illegal tag name: <$lname>. Replaced with <invalid>.");
             $ele = $this->doc->createElement('invalid');
         }
 
         if (Elements::isA($lname, Elements::BLOCK_ONLY_INLINE)) {
+<<<<<<< HEAD
             $this->onlyInline = $lname;
+=======
+        	$this->onlyInline = $lname;
+>>>>>>> pantheon-drops-8/master
         }
 
         // When we add some namespacess, we have to track them. Later, when "endElement" is invoked, we have to remove them.
@@ -400,6 +546,7 @@ class DOMTreeBuilder implements EventHandler
 
         foreach ($attributes as $aName => $aVal) {
             // xmlns attributes can't be set
+<<<<<<< HEAD
             if ('xmlns' === $aName) {
                 continue;
             }
@@ -407,16 +554,32 @@ class DOMTreeBuilder implements EventHandler
             if ($this->insertMode === static::IM_IN_SVG) {
                 $aName = Elements::normalizeSvgAttribute($aName);
             } elseif ($this->insertMode === static::IM_IN_MATHML) {
+=======
+            if ($aName === 'xmlns') {
+                continue;
+            }
+
+            if ($this->insertMode == static::IM_IN_SVG) {
+                $aName = Elements::normalizeSvgAttribute($aName);
+            } elseif ($this->insertMode == static::IM_IN_MATHML) {
+>>>>>>> pantheon-drops-8/master
                 $aName = Elements::normalizeMathMlAttribute($aName);
             }
 
             try {
                 $prefix = ($pos = strpos($aName, ':')) ? substr($aName, 0, $pos) : false;
 
+<<<<<<< HEAD
                 if ('xmlns' === $prefix) {
                     $ele->setAttributeNS(self::NAMESPACE_XMLNS, $aName, $aVal);
                 } elseif (false !== $prefix && isset($this->nsStack[0][$prefix])) {
                     $ele->setAttributeNS($this->nsStack[0][$prefix], $aName, $aVal);
+=======
+                if ($prefix==='xmlns') {
+                    $ele->setAttributeNs(self::NAMESPACE_XMLNS, $aName, $aVal);
+                } elseif ($prefix!==false && isset($this->nsStack[0][$prefix])) {
+                    $ele->setAttributeNs($this->nsStack[0][$prefix], $aName, $aVal);
+>>>>>>> pantheon-drops-8/master
                 } else {
                     $ele->setAttribute($aName, $aVal);
                 }
@@ -426,11 +589,16 @@ class DOMTreeBuilder implements EventHandler
             }
 
             // This is necessary on a non-DTD schema, like HTML5.
+<<<<<<< HEAD
             if ('id' === $aName) {
+=======
+            if ($aName == 'id') {
+>>>>>>> pantheon-drops-8/master
                 $ele->setIdAttribute('id', true);
             }
         }
 
+<<<<<<< HEAD
         if ($this->frag !== $this->current && $this->rules->hasRules($name)) {
             // Some elements have special processing rules. Handle those separately.
             $this->current = $this->rules->evaluate($ele, $this->current);
@@ -448,11 +616,28 @@ class DOMTreeBuilder implements EventHandler
             if (Elements::isHtml5Element($name)) {
                 $selfClosing = false;
             }
+=======
+        // Some elements have special processing rules. Handle those separately.
+        if ($this->rules->hasRules($name) && $this->frag !== $this->current) {
+            $this->current = $this->rules->evaluate($ele, $this->current);
+        }         // Otherwise, it's a standard element.
+        else {
+            $this->current->appendChild($ele);
+
+            // XXX: Need to handle self-closing tags and unary tags.
+            if (! Elements::isA($name, Elements::VOID_TAG)) {
+                $this->current = $ele;
+            }
+>>>>>>> pantheon-drops-8/master
         }
 
         // This is sort of a last-ditch attempt to correct for cases where no head/body
         // elements are provided.
+<<<<<<< HEAD
         if ($this->insertMode <= static::IM_BEFORE_HEAD && 'head' !== $name && 'html' !== $name) {
+=======
+        if ($this->insertMode <= static::IM_BEFORE_HEAD && $name != 'head' && $name != 'html') {
+>>>>>>> pantheon-drops-8/master
             $this->insertMode = static::IM_IN_BODY;
         }
 
@@ -460,6 +645,7 @@ class DOMTreeBuilder implements EventHandler
         // but we have to remove the namespaces pushed to $nsStack.
         if ($pushes > 0 && Elements::isA($name, Elements::VOID_TAG)) {
             // remove the namespaced definded by current node
+<<<<<<< HEAD
             for ($i = 0; $i < $pushes; ++$i) {
                 array_shift($this->nsStack);
             }
@@ -469,6 +655,12 @@ class DOMTreeBuilder implements EventHandler
             $this->endTag($name);
         }
 
+=======
+            for ($i = 0; $i < $pushes; $i ++) {
+                array_shift($this->nsStack);
+            }
+        }
+>>>>>>> pantheon-drops-8/master
         // Return the element mask, which the tokenizer can then use to set
         // various processing rules.
         return Elements::element($name);
@@ -489,7 +681,11 @@ class DOMTreeBuilder implements EventHandler
                 'html',
                 'br',
                 'head',
+<<<<<<< HEAD
                 'title',
+=======
+                'title'
+>>>>>>> pantheon-drops-8/master
             ))) {
                 $this->startTag('html');
                 $this->endTag($name);
@@ -499,13 +695,21 @@ class DOMTreeBuilder implements EventHandler
             }
 
             // Ignore the tag.
+<<<<<<< HEAD
             $this->parseError('Illegal closing tag at global scope.');
+=======
+            $this->parseError("Illegal closing tag at global scope.");
+>>>>>>> pantheon-drops-8/master
 
             return;
         }
 
         // Special case handling for SVG.
+<<<<<<< HEAD
         if ($this->insertMode === static::IM_IN_SVG) {
+=======
+        if ($this->insertMode == static::IM_IN_SVG) {
+>>>>>>> pantheon-drops-8/master
             $lname = Elements::normalizeSvgElement($lname);
         }
 
@@ -516,20 +720,36 @@ class DOMTreeBuilder implements EventHandler
             $cid = spl_object_hash($this->current);
         }
 
+<<<<<<< HEAD
         // XXX: HTML has no parent. What do we do, though,
         // if this element appears in the wrong place?
         if ('html' === $lname) {
+=======
+        // XXX: Not sure whether we need this anymore.
+        // if ($name != $lname) {
+        // return $this->quirksTreeResolver($lname);
+        // }
+
+        // XXX: HTML has no parent. What do we do, though,
+        // if this element appears in the wrong place?
+        if ($lname == 'html') {
+>>>>>>> pantheon-drops-8/master
             return;
         }
 
         // remove the namespaced definded by current node
         if (isset($this->pushes[$cid])) {
+<<<<<<< HEAD
             for ($i = 0; $i < $this->pushes[$cid][0]; ++$i) {
+=======
+            for ($i = 0; $i < $this->pushes[$cid][0]; $i ++) {
+>>>>>>> pantheon-drops-8/master
                 array_shift($this->nsStack);
             }
             unset($this->pushes[$cid]);
         }
 
+<<<<<<< HEAD
         if (!$this->autoclose($lname)) {
             $this->parseError('Could not find closing tag for ' . $lname);
         }
@@ -543,6 +763,22 @@ class DOMTreeBuilder implements EventHandler
                 break;
             case 'svg':
             case 'mathml':
+=======
+        if (! $this->autoclose($lname)) {
+            $this->parseError('Could not find closing tag for ' . $lname);
+        }
+
+        // switch ($this->insertMode) {
+        switch ($lname) {
+            case "head":
+                $this->insertMode = static::IM_AFTER_HEAD;
+                break;
+            case "body":
+                $this->insertMode = static::IM_AFTER_BODY;
+                break;
+            case "svg":
+            case "mathml":
+>>>>>>> pantheon-drops-8/master
                 $this->insertMode = static::IM_IN_BODY;
                 break;
         }
@@ -564,9 +800,15 @@ class DOMTreeBuilder implements EventHandler
             // practical as most documents contain these characters. Other text is not
             // expected here so recording a parse error is necessary.
             $dataTmp = trim($data, " \t\n\r\f");
+<<<<<<< HEAD
             if (!empty($dataTmp)) {
                 // fprintf(STDOUT, "Unexpected insert mode: %d", $this->insertMode);
                 $this->parseError('Unexpected text. Ignoring: ' . $dataTmp);
+=======
+            if (! empty($dataTmp)) {
+                // fprintf(STDOUT, "Unexpected insert mode: %d", $this->insertMode);
+                $this->parseError("Unexpected text. Ignoring: " . $dataTmp);
+>>>>>>> pantheon-drops-8/master
             }
 
             return;
@@ -583,7 +825,11 @@ class DOMTreeBuilder implements EventHandler
 
     public function parseError($msg, $line = 0, $col = 0)
     {
+<<<<<<< HEAD
         $this->errors[] = sprintf('Line %d, Col %d: %s', $line, $col, $msg);
+=======
+        $this->errors[] = sprintf("Line %d, Col %d: %s", $line, $col, $msg);
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getErrors()
@@ -600,6 +846,7 @@ class DOMTreeBuilder implements EventHandler
     public function processingInstruction($name, $data = null)
     {
         // XXX: Ignore initial XML declaration, per the spec.
+<<<<<<< HEAD
         if ($this->insertMode === static::IM_INITIAL && 'xml' === strtolower($name)) {
             return;
         }
@@ -608,6 +855,17 @@ class DOMTreeBuilder implements EventHandler
         if ($this->processor instanceof InstructionProcessor) {
             $res = $this->processor->process($this->current, $name, $data);
             if (!empty($res)) {
+=======
+        if ($this->insertMode == static::IM_INITIAL && 'xml' == strtolower($name)) {
+            return;
+        }
+
+        // Important: The processor may modify the current DOM tree however
+        // it sees fit.
+        if (isset($this->processor)) {
+            $res = $this->processor->process($this->current, $name, $data);
+            if (! empty($res)) {
+>>>>>>> pantheon-drops-8/master
                 $this->current = $res;
             }
 
@@ -626,6 +884,7 @@ class DOMTreeBuilder implements EventHandler
 
     /**
      * Apply normalization rules to a tag name.
+<<<<<<< HEAD
      * See sections 2.9 and 8.1.2.
      *
      * @param string $tagName
@@ -633,20 +892,39 @@ class DOMTreeBuilder implements EventHandler
      * @return string The normalized tag name.
      */
     protected function normalizeTagName($tagName)
+=======
+     *
+     * See sections 2.9 and 8.1.2.
+     *
+     * @param string $name
+     *            The tag name.
+     * @return string The normalized tag name.
+     */
+    protected function normalizeTagName($name)
+>>>>>>> pantheon-drops-8/master
     {
         /*
          * Section 2.9 suggests that we should not do this. if (strpos($name, ':') !== false) { // We know from the grammar that there must be at least one other // char besides :, since : is not a legal tag start. $parts = explode(':', $name); return array_pop($parts); }
          */
+<<<<<<< HEAD
         return $tagName;
+=======
+        return $name;
+>>>>>>> pantheon-drops-8/master
     }
 
     protected function quirksTreeResolver($name)
     {
+<<<<<<< HEAD
         throw new \Exception('Not implemented.');
+=======
+        throw new \Exception("Not implemented.");
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
      * Automatically climb the tree and close the closest node with the matching $tag.
+<<<<<<< HEAD
      *
      * @param string $tagName
      *
@@ -660,12 +938,26 @@ class DOMTreeBuilder implements EventHandler
                 return false;
             }
             if ($working->tagName === $tagName) {
+=======
+     */
+    protected function autoclose($tag)
+    {
+        $working = $this->current;
+        do {
+            if ($working->nodeType != XML_ELEMENT_NODE) {
+                return false;
+            }
+            if ($working->tagName == $tag) {
+>>>>>>> pantheon-drops-8/master
                 $this->current = $working->parentNode;
 
                 return true;
             }
         } while ($working = $working->parentNode);
+<<<<<<< HEAD
 
+=======
+>>>>>>> pantheon-drops-8/master
         return false;
     }
 
@@ -674,6 +966,7 @@ class DOMTreeBuilder implements EventHandler
      *
      * If $this->current or anything above $this->current matches the given tag
      * name, this returns true.
+<<<<<<< HEAD
      *
      * @param string $tagName
      *
@@ -684,6 +977,14 @@ class DOMTreeBuilder implements EventHandler
         $candidate = $this->current;
         while (XML_ELEMENT_NODE === $candidate->nodeType) {
             if ($candidate->tagName === $tagName) {
+=======
+     */
+    protected function isAncestor($tagname)
+    {
+        $candidate = $this->current;
+        while ($candidate->nodeType === XML_ELEMENT_NODE) {
+            if ($candidate->tagName == $tagname) {
+>>>>>>> pantheon-drops-8/master
                 return true;
             }
             $candidate = $candidate->parentNode;
@@ -694,6 +995,7 @@ class DOMTreeBuilder implements EventHandler
 
     /**
      * Returns true if the immediate parent element is of the given tagname.
+<<<<<<< HEAD
      *
      * @param string $tagName
      *
@@ -702,5 +1004,11 @@ class DOMTreeBuilder implements EventHandler
     protected function isParent($tagName)
     {
         return $this->current->tagName === $tagName;
+=======
+     */
+    protected function isParent($tagname)
+    {
+        return $this->current->tagName == $tagname;
+>>>>>>> pantheon-drops-8/master
     }
 }

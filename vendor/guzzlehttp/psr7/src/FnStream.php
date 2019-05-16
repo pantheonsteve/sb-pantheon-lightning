@@ -53,6 +53,7 @@ class FnStream implements StreamInterface
     }
 
     /**
+<<<<<<< HEAD
      * An unserialize would allow the __destruct to run when the unserialized value goes out of scope.
      * @throws \LogicException
      */
@@ -62,6 +63,8 @@ class FnStream implements StreamInterface
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Adds custom functionality to an underlying stream by intercepting
      * specific method calls.
      *

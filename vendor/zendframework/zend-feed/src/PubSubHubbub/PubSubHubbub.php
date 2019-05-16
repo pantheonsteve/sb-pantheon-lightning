@@ -85,7 +85,11 @@ class PubSubHubbub
      */
     public static function getHttpClient()
     {
+<<<<<<< HEAD
         if (! isset(static::$httpClient)) {
+=======
+        if (!isset(static::$httpClient)) {
+>>>>>>> pantheon-drops-8/master
             static::$httpClient = new Http\Client;
         } else {
             static::$httpClient->resetParameters();

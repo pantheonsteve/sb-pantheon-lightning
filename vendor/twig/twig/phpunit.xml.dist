@@ -8,6 +8,10 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
+<<<<<<< HEAD
+=======
+         syntaxCheck="false"
+>>>>>>> pantheon-drops-8/master
          bootstrap="vendor/autoload.php"
 >
   <testsuites>
@@ -18,7 +22,10 @@
 
   <php>
     <ini name="error_reporting" value="-1" />
+<<<<<<< HEAD
     <ini name="xdebug.overload_var_dump" value="0" />
+=======
+>>>>>>> pantheon-drops-8/master
   </php>
 
   <listeners>

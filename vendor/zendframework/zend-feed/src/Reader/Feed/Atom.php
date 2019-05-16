@@ -92,7 +92,11 @@ class Atom extends AbstractFeed
 
         $copyright = $this->getExtension('Atom')->getCopyright();
 
+<<<<<<< HEAD
         if (! $copyright) {
+=======
+        if (!$copyright) {
+>>>>>>> pantheon-drops-8/master
             $copyright = null;
         }
 
@@ -104,7 +108,11 @@ class Atom extends AbstractFeed
     /**
      * Get the feed creation date
      *
+<<<<<<< HEAD
      * @return \DateTime|null
+=======
+     * @return string|null
+>>>>>>> pantheon-drops-8/master
      */
     public function getDateCreated()
     {
@@ -114,7 +122,11 @@ class Atom extends AbstractFeed
 
         $dateCreated = $this->getExtension('Atom')->getDateCreated();
 
+<<<<<<< HEAD
         if (! $dateCreated) {
+=======
+        if (!$dateCreated) {
+>>>>>>> pantheon-drops-8/master
             $dateCreated = null;
         }
 
@@ -126,7 +138,11 @@ class Atom extends AbstractFeed
     /**
      * Get the feed modification date
      *
+<<<<<<< HEAD
      * @return \DateTime|null
+=======
+     * @return string|null
+>>>>>>> pantheon-drops-8/master
      */
     public function getDateModified()
     {
@@ -136,7 +152,11 @@ class Atom extends AbstractFeed
 
         $dateModified = $this->getExtension('Atom')->getDateModified();
 
+<<<<<<< HEAD
         if (! $dateModified) {
+=======
+        if (!$dateModified) {
+>>>>>>> pantheon-drops-8/master
             $dateModified = null;
         }
 
@@ -168,7 +188,11 @@ class Atom extends AbstractFeed
 
         $description = $this->getExtension('Atom')->getDescription();
 
+<<<<<<< HEAD
         if (! $description) {
+=======
+        if (!$description) {
+>>>>>>> pantheon-drops-8/master
             $description = null;
         }
 
@@ -226,11 +250,19 @@ class Atom extends AbstractFeed
 
         $language = $this->getExtension('Atom')->getLanguage();
 
+<<<<<<< HEAD
         if (! $language) {
             $language = $this->xpath->evaluate('string(//@xml:lang[1])');
         }
 
         if (! $language) {
+=======
+        if (!$language) {
+            $language = $this->xpath->evaluate('string(//@xml:lang[1])');
+        }
+
+        if (!$language) {
+>>>>>>> pantheon-drops-8/master
             $language = null;
         }
 

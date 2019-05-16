@@ -38,6 +38,7 @@ class StreamWrapper
                 . 'writable, or both.');
         }
 
+<<<<<<< HEAD
         return fopen('guzzle://stream', $mode, null, self::createStreamContext($stream));
     }
 
@@ -53,6 +54,11 @@ class StreamWrapper
         return stream_context_create([
             'guzzle' => ['stream' => $stream]
         ]);
+=======
+        return fopen('guzzle://stream', $mode, null, stream_context_create([
+            'guzzle' => ['stream' => $stream]
+        ]));
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -106,6 +112,7 @@ class StreamWrapper
         return true;
     }
 
+<<<<<<< HEAD
     public function stream_cast($cast_as)
     {
         $stream = clone($this->stream);
@@ -113,14 +120,21 @@ class StreamWrapper
         return $stream->detach();
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     public function stream_stat()
     {
         static $modeMap = [
             'r'  => 33060,
+<<<<<<< HEAD
             'rb' => 33060,
             'r+' => 33206,
             'w'  => 33188,
             'wb' => 33188
+=======
+            'r+' => 33206,
+            'w'  => 33188
+>>>>>>> pantheon-drops-8/master
         ];
 
         return [
@@ -139,6 +153,7 @@ class StreamWrapper
             'blocks'  => 0
         ];
     }
+<<<<<<< HEAD
 
     public function url_stat($path, $flags)
     {
@@ -158,4 +173,6 @@ class StreamWrapper
             'blocks'  => 0
         ];
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

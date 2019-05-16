@@ -69,10 +69,17 @@ function uri_for($uri)
  * - metadata: Array of custom metadata.
  * - size: Size of the stream.
  *
+<<<<<<< HEAD
  * @param resource|string|null|int|float|bool|StreamInterface|callable|\Iterator $resource Entity body data
  * @param array                                                                  $options  Additional options
  *
  * @return StreamInterface
+=======
+ * @param resource|string|null|int|float|bool|StreamInterface|callable $resource Entity body data
+ * @param array                                                        $options  Additional options
+ *
+ * @return Stream
+>>>>>>> pantheon-drops-8/master
  * @throws \InvalidArgumentException if the $resource arg is not valid.
  */
 function stream_for($resource = '', array $options = [])
@@ -238,7 +245,11 @@ function modify_request(RequestInterface $request, array $changes)
     }
 
     if ($request instanceof ServerRequestInterface) {
+<<<<<<< HEAD
         return (new ServerRequest(
+=======
+        return new ServerRequest(
+>>>>>>> pantheon-drops-8/master
             isset($changes['method']) ? $changes['method'] : $request->getMethod(),
             $uri,
             $headers,
@@ -247,11 +258,15 @@ function modify_request(RequestInterface $request, array $changes)
                 ? $changes['version']
                 : $request->getProtocolVersion(),
             $request->getServerParams()
+<<<<<<< HEAD
         ))
         ->withParsedBody($request->getParsedBody())
         ->withQueryParams($request->getQueryParams())
         ->withCookieParams($request->getCookieParams())
         ->withUploadedFiles($request->getUploadedFiles());
+=======
+        );
+>>>>>>> pantheon-drops-8/master
     }
 
     return new Request(
@@ -435,7 +450,11 @@ function hash(
  * @param StreamInterface $stream    Stream to read from
  * @param int             $maxLength Maximum buffer length
  *
+<<<<<<< HEAD
  * @return string
+=======
+ * @return string|bool
+>>>>>>> pantheon-drops-8/master
  */
 function readline(StreamInterface $stream, $maxLength = null)
 {
@@ -499,7 +518,11 @@ function parse_response($message)
     // between status-code and reason-phrase is required. But browsers accept
     // responses without space and reason as well.
     if (!preg_match('/^HTTP\/.* [0-9]{3}( .*|$)/', $data['start-line'])) {
+<<<<<<< HEAD
         throw new \InvalidArgumentException('Invalid response string: ' . $data['start-line']);
+=======
+        throw new \InvalidArgumentException('Invalid response string');
+>>>>>>> pantheon-drops-8/master
     }
     $parts = explode(' ', $data['start-line'], 3);
 
@@ -520,8 +543,13 @@ function parse_response($message)
  * PHP style arrays into an associative array (e.g., foo[a]=1&foo[b]=2 will
  * be parsed into ['foo[a]' => '1', 'foo[b]' => '2']).
  *
+<<<<<<< HEAD
  * @param string   $str         Query string to parse
  * @param int|bool $urlEncoding How the query string is encoded
+=======
+ * @param string      $str         Query string to parse
+ * @param bool|string $urlEncoding How the query string is encoded
+>>>>>>> pantheon-drops-8/master
  *
  * @return array
  */
@@ -537,9 +565,15 @@ function parse_query($str, $urlEncoding = true)
         $decoder = function ($value) {
             return rawurldecode(str_replace('+', ' ', $value));
         };
+<<<<<<< HEAD
     } elseif ($urlEncoding === PHP_QUERY_RFC3986) {
         $decoder = 'rawurldecode';
     } elseif ($urlEncoding === PHP_QUERY_RFC1738) {
+=======
+    } elseif ($urlEncoding == PHP_QUERY_RFC3986) {
+        $decoder = 'rawurldecode';
+    } elseif ($urlEncoding == PHP_QUERY_RFC1738) {
+>>>>>>> pantheon-drops-8/master
         $decoder = 'urldecode';
     } else {
         $decoder = function ($str) { return $str; };
@@ -637,7 +671,10 @@ function mimetype_from_filename($filename)
 function mimetype_from_extension($extension)
 {
     static $mimetypes = [
+<<<<<<< HEAD
         '3gp' => 'video/3gpp',
+=======
+>>>>>>> pantheon-drops-8/master
         '7z' => 'application/x-7z-compressed',
         'aac' => 'audio/x-aac',
         'ai' => 'application/postscript',
@@ -685,7 +722,10 @@ function mimetype_from_extension($extension)
         'mid' => 'audio/midi',
         'midi' => 'audio/midi',
         'mov' => 'video/quicktime',
+<<<<<<< HEAD
         'mkv' => 'video/x-matroska',
+=======
+>>>>>>> pantheon-drops-8/master
         'mp3' => 'audio/mpeg',
         'mp4' => 'video/mp4',
         'mp4a' => 'audio/mp4',
@@ -764,6 +804,7 @@ function _parse_message($message)
         throw new \InvalidArgumentException('Invalid message');
     }
 
+<<<<<<< HEAD
     $message = ltrim($message, "\r\n");
 
     $messageParts = preg_split("/\r?\n\r?\n/", $message, 2);
@@ -811,6 +852,31 @@ function _parse_message($message)
         'headers' => $headers,
         'body' => $body,
     ];
+=======
+    // Iterate over each line in the message, accounting for line endings
+    $lines = preg_split('/(\\r?\\n)/', $message, -1, PREG_SPLIT_DELIM_CAPTURE);
+    $result = ['start-line' => array_shift($lines), 'headers' => [], 'body' => ''];
+    array_shift($lines);
+
+    for ($i = 0, $totalLines = count($lines); $i < $totalLines; $i += 2) {
+        $line = $lines[$i];
+        // If two line breaks were encountered, then this is the end of body
+        if (empty($line)) {
+            if ($i < $totalLines - 1) {
+                $result['body'] = implode('', array_slice($lines, $i + 2));
+            }
+            break;
+        }
+        if (strpos($line, ':')) {
+            $parts = explode(':', $line, 2);
+            $key = trim($parts[0]);
+            $value = isset($parts[1]) ? trim($parts[1]) : '';
+            $result['headers'][$key][] = $value;
+        }
+    }
+
+    return $result;
+>>>>>>> pantheon-drops-8/master
 }
 
 /**
@@ -839,6 +905,7 @@ function _parse_request_uri($path, array $headers)
     return $scheme . '://' . $host . '/' . ltrim($path, '/');
 }
 
+<<<<<<< HEAD
 /**
  * Get a short summary of the message body
  *
@@ -879,6 +946,8 @@ function get_message_body_summary(MessageInterface $message, $truncateAt = 120)
     return $summary;
 }
 
+=======
+>>>>>>> pantheon-drops-8/master
 /** @internal */
 function _caseless_remove($keys, array $data)
 {

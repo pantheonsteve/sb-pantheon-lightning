@@ -1,5 +1,6 @@
 # Release Notes
 
+<<<<<<< HEAD
 2.6.0 (2019-03-10)
 
 - #163: Allow to pass a charset to the Scanner
@@ -27,6 +28,8 @@
 - #136: Handle illegal self-closing according to spec (fixed by #137)
 - #141: Minor fixes in the README
 
+=======
+>>>>>>> pantheon-drops-8/master
 2.3.0 (2017-09-04)
 
 - #129: image within inline svg breaks system (fixed by #133) 

@@ -21,7 +21,11 @@ matrix:
   - php: 7.3
     dist: trusty
 install:
+<<<<<<< HEAD
 #  - pear upgrade --force --alldeps pear/pear
+=======
+  - pear upgrade --force --alldeps pear/pear
+>>>>>>> pantheon-drops-8/master
   - pear install -f package.xml
 script:
   - pear run-tests -qr tests/

@@ -11,16 +11,28 @@ $json = json_decode($payload);
 
 $table = array();
 foreach ($json as $name => $obj) {
+<<<<<<< HEAD
     $sname = substr($name, 1, -1);
     $table[$sname] = $obj->characters;
 }
 
 echo '<?php
+=======
+  $sname = substr($name, 1, -1);
+  $table[$sname] = $obj->characters;
+}
+
+print '<?php
+>>>>>>> pantheon-drops-8/master
 namespace Masterminds\\HTML5;
 /** Entity lookup tables. This class is automatically generated. */
 class Entities {
   public static $byName = ';
 var_export($table);
+<<<<<<< HEAD
 echo ';
+=======
+print ';
+>>>>>>> pantheon-drops-8/master
 }' . PHP_EOL;
 //print serialize($table);

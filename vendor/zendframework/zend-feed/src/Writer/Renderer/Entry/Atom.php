@@ -56,7 +56,11 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
         foreach ($this->extensions as $ext) {
             $ext->setType($this->getType());
             $ext->setRootElement($this->getRootElement());
+<<<<<<< HEAD
             $ext->setDomDocument($this->getDomDocument(), $entry);
+=======
+            $ext->setDOMDocument($this->getDOMDocument(), $entry);
+>>>>>>> pantheon-drops-8/master
             $ext->render();
         }
 
@@ -71,6 +75,7 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @return void
      * @throws Writer\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
@@ -80,6 +85,15 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
             . ' atom:title element but a title has not been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (! $this->ignoreExceptions) {
+=======
+    protected function _setTitle(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getTitle()) {
+            $message = 'Atom 1.0 entry elements MUST contain exactly one'
+            . ' atom:title element but a title has not been set';
+            $exception = new Writer\Exception\InvalidArgumentException($message);
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -100,11 +114,17 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDescription(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getDescription()) {
+=======
+    protected function _setDescription(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDescription()) {
+>>>>>>> pantheon-drops-8/master
             return; // unless src content or base64
         }
         $subtitle = $dom->createElement('summary');
@@ -124,6 +144,7 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @return void
      * @throws Writer\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDateModified(DOMDocument $dom, DOMElement $root)
     {
@@ -133,6 +154,15 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
             . ' atom:updated element but a modification date has not been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (! $this->ignoreExceptions) {
+=======
+    protected function _setDateModified(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDateModified()) {
+            $message = 'Atom 1.0 entry elements MUST contain exactly one'
+            . ' atom:updated element but a modification date has not been set';
+            $exception = new Writer\Exception\InvalidArgumentException($message);
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -155,11 +185,17 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDateCreated(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getDateCreated()) {
+=======
+    protected function _setDateCreated(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getDateCreated()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $el = $dom->createElement('published');
@@ -177,12 +213,19 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setAuthors(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $authors = $this->container->getAuthors();
         if ((! $authors || empty($authors))) {
+=======
+    protected function _setAuthors(DOMDocument $dom, DOMElement $root)
+    {
+        $authors = $this->container->getAuthors();
+        if ((!$authors || empty($authors))) {
+>>>>>>> pantheon-drops-8/master
             /**
              * This will actually trigger an Exception at the feed level if
              * a feed level author is not set.
@@ -218,12 +261,19 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setEnclosure(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $data = $this->container->getEnclosure();
         if ((! $data || empty($data))) {
+=======
+    protected function _setEnclosure(DOMDocument $dom, DOMElement $root)
+    {
+        $data = $this->container->getEnclosure();
+        if ((!$data || empty($data))) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $enclosure = $this->dom->createElement('link');
@@ -238,11 +288,17 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
         $root->appendChild($enclosure);
     }
 
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setLink(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getLink()) {
+=======
+    protected function _setLink(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getLink()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $link = $dom->createElement('link');
@@ -260,18 +316,29 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @return void
      * @throws Writer\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getId()
         && ! $this->getDataContainer()->getLink()) {
+=======
+    protected function _setId(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getId()
+        && !$this->getDataContainer()->getLink()) {
+>>>>>>> pantheon-drops-8/master
             $message = 'Atom 1.0 entry elements MUST contain exactly one '
             . 'atom:id element, or as an alternative, we can use the same '
             . 'value as atom:link however neither a suitable link nor an '
             . 'id have been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
+<<<<<<< HEAD
             if (! $this->ignoreExceptions) {
+=======
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
@@ -279,17 +346,30 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
             }
         }
 
+<<<<<<< HEAD
         if (! $this->getDataContainer()->getId()) {
+=======
+        if (!$this->getDataContainer()->getId()) {
+>>>>>>> pantheon-drops-8/master
             $this->getDataContainer()->setId(
                 $this->getDataContainer()->getLink()
             );
         }
+<<<<<<< HEAD
         if (! Uri::factory($this->getDataContainer()->getId())->isValid()
             && ! preg_match(
                 "#^urn:[a-zA-Z0-9][a-zA-Z0-9\-]{1,31}:([a-zA-Z0-9\(\)\+\,\.\:\=\@\;\$\_\!\*\-]|%[0-9a-fA-F]{2})*#",
                 $this->getDataContainer()->getId()
             )
             && ! $this->_validateTagUri($this->getDataContainer()->getId())
+=======
+        if (!Uri::factory($this->getDataContainer()->getId())->isValid()
+            && !preg_match(
+                "#^urn:[a-zA-Z0-9][a-zA-Z0-9\-]{1,31}:([a-zA-Z0-9\(\)\+\,\.\:\=\@\;\$\_\!\*\-]|%[0-9a-fA-F]{2})*#",
+                $this->getDataContainer()->getId()
+            )
+            && !$this->_validateTagUri($this->getDataContainer()->getId())
+>>>>>>> pantheon-drops-8/master
         ) {
             throw new Writer\Exception\InvalidArgumentException('Atom 1.0 IDs must be a valid URI/IRI');
         }
@@ -305,10 +385,15 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @param string $id
      * @return bool
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _validateTagUri($id)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _validateTagUri($id)
+    {
+>>>>>>> pantheon-drops-8/master
         if (preg_match(
             '/^tag:(?P<name>.*),(?P<date>\d{4}-?\d{0,2}-?\d{0,2}):(?P<specific>.*)(.*:)*$/',
             $id,
@@ -343,25 +428,40 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @return void
      * @throws Writer\Exception\InvalidArgumentException
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setContent(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $content = $this->getDataContainer()->getContent();
         if (! $content && ! $this->getDataContainer()->getLink()) {
+=======
+    protected function _setContent(DOMDocument $dom, DOMElement $root)
+    {
+        $content = $this->getDataContainer()->getContent();
+        if (!$content && !$this->getDataContainer()->getLink()) {
+>>>>>>> pantheon-drops-8/master
             $message = 'Atom 1.0 entry elements MUST contain exactly one '
             . 'atom:content element, or as an alternative, at least one link '
             . 'with a rel attribute of "alternate" to indicate an alternate '
             . 'method to consume the content.';
             $exception = new Writer\Exception\InvalidArgumentException($message);
+<<<<<<< HEAD
             if (! $this->ignoreExceptions) {
+=======
+            if (!$this->ignoreExceptions) {
+>>>>>>> pantheon-drops-8/master
                 throw $exception;
             } else {
                 $this->exceptions[] = $exception;
                 return;
             }
         }
+<<<<<<< HEAD
         if (! $content) {
+=======
+        if (!$content) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $element = $dom->createElement('content');
@@ -375,6 +475,7 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
 
     /**
      * Load a HTML string and attempt to normalise to XML
+<<<<<<< HEAD
      *
      * @param string $content
      * @return \DOMElement
@@ -383,6 +484,11 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
     protected function _loadXhtml($content)
     {
         // @codingStandardsIgnoreEnd
+=======
+     */
+    protected function _loadXhtml($content)
+    {
+>>>>>>> pantheon-drops-8/master
         if (class_exists('tidy', false)) {
             $tidy = new \tidy;
             $config = [
@@ -416,12 +522,19 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCategories(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $categories = $this->getDataContainer()->getCategories();
         if (! $categories) {
+=======
+    protected function _setCategories(DOMDocument $dom, DOMElement $root)
+    {
+        $categories = $this->getDataContainer()->getCategories();
+        if (!$categories) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($categories as $cat) {
@@ -446,12 +559,19 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setSource(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $source = $this->getDataContainer()->getSource();
         if (! $source) {
+=======
+    protected function _setSource(DOMDocument $dom, DOMElement $root)
+    {
+        $source = $this->getDataContainer()->getSource();
+        if (!$source) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $renderer = new Renderer\Feed\AtomSource($source);

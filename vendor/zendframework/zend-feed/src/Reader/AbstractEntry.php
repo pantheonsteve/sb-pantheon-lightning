@@ -13,9 +13,12 @@ use DOMDocument;
 use DOMElement;
 use DOMXPath;
 
+<<<<<<< HEAD
 /**
  * @deprecated This (abstract) class is deprecated. Use Zend\Feed\Reader\Entry\AbstractEntry instead.
  */
+=======
+>>>>>>> pantheon-drops-8/master
 abstract class AbstractEntry
 {
     /**
@@ -124,7 +127,11 @@ abstract class AbstractEntry
         $dom = new DOMDocument('1.0', $this->getEncoding());
         $entry = $dom->importNode($this->getElement(), true);
         $dom->appendChild($entry);
+<<<<<<< HEAD
         return $dom->saveXML();
+=======
+        return $dom->saveXml();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -144,7 +151,11 @@ abstract class AbstractEntry
      */
     public function getXpath()
     {
+<<<<<<< HEAD
         if (! $this->xpath) {
+=======
+        if (!$this->xpath) {
+>>>>>>> pantheon-drops-8/master
             $this->setXpath(new DOMXPath($this->getDomDocument()));
         }
         return $this->xpath;
@@ -210,10 +221,15 @@ abstract class AbstractEntry
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _loadExtensions()
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _loadExtensions()
+    {
+>>>>>>> pantheon-drops-8/master
         $all = Reader::getExtensions();
         $feed = $all['entry'];
         foreach ($feed as $extension) {

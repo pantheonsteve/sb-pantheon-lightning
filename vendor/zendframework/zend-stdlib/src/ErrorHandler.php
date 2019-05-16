@@ -51,7 +51,11 @@ abstract class ErrorHandler
      */
     public static function start($errorLevel = \E_WARNING)
     {
+<<<<<<< HEAD
         if (! static::$stack) {
+=======
+        if (!static::$stack) {
+>>>>>>> pantheon-drops-8/master
             set_error_handler([get_called_class(), 'addError'], $errorLevel);
         }
 
@@ -63,7 +67,11 @@ abstract class ErrorHandler
      *
      * @param  bool $throw Throw the ErrorException if any
      * @return null|ErrorException
+<<<<<<< HEAD
      * @throws ErrorException If an error has been caught and $throw is true
+=======
+     * @throws ErrorException If an error has been catched and $throw is true
+>>>>>>> pantheon-drops-8/master
      */
     public static function stop($throw = false)
     {
@@ -72,7 +80,11 @@ abstract class ErrorHandler
         if (static::$stack) {
             $errorException = array_pop(static::$stack);
 
+<<<<<<< HEAD
             if (! static::$stack) {
+=======
+            if (!static::$stack) {
+>>>>>>> pantheon-drops-8/master
                 restore_error_handler();
             }
 

@@ -47,6 +47,7 @@ class Entry extends Extension\AbstractRenderer
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _appendNamespaces()
     {
@@ -55,6 +56,12 @@ class Entry extends Extension\AbstractRenderer
             'xmlns:slash',
             'http://purl.org/rss/1.0/modules/slash/'
         );
+=======
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute('xmlns:slash',
+            'http://purl.org/rss/1.0/modules/slash/');
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -64,12 +71,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCommentCount(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $count = $this->getDataContainer()->getCommentCount();
         if (! $count) {
+=======
+    protected function _setCommentCount(DOMDocument $dom, DOMElement $root)
+    {
+        $count = $this->getDataContainer()->getCommentCount();
+        if (!$count) {
+>>>>>>> pantheon-drops-8/master
             $count = 0;
         }
         $tcount = $this->dom->createElement('slash:comments');

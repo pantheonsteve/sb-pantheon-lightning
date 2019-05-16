@@ -31,7 +31,11 @@ class Subscription extends AbstractModel implements SubscriptionPersistenceInter
      */
     public function setSubscription(array $data)
     {
+<<<<<<< HEAD
         if (! isset($data['id'])) {
+=======
+        if (!isset($data['id'])) {
+>>>>>>> pantheon-drops-8/master
             throw new PubSubHubbub\Exception\InvalidArgumentException(
                 'ID must be set before attempting a save'
             );
@@ -66,12 +70,20 @@ class Subscription extends AbstractModel implements SubscriptionPersistenceInter
      */
     public function getSubscription($key)
     {
+<<<<<<< HEAD
         if (empty($key) || ! is_string($key)) {
+=======
+        if (empty($key) || !is_string($key)) {
+>>>>>>> pantheon-drops-8/master
             throw new PubSubHubbub\Exception\InvalidArgumentException('Invalid parameter "key"'
                 .' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->db->select(['id' => $key]);
+<<<<<<< HEAD
         if ($result && count($result)) {
+=======
+        if (count($result)) {
+>>>>>>> pantheon-drops-8/master
             return $result->current()->getArrayCopy();
         }
         return false;
@@ -86,12 +98,20 @@ class Subscription extends AbstractModel implements SubscriptionPersistenceInter
      */
     public function hasSubscription($key)
     {
+<<<<<<< HEAD
         if (empty($key) || ! is_string($key)) {
+=======
+        if (empty($key) || !is_string($key)) {
+>>>>>>> pantheon-drops-8/master
             throw new PubSubHubbub\Exception\InvalidArgumentException('Invalid parameter "key"'
                 .' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->db->select(['id' => $key]);
+<<<<<<< HEAD
         if ($result && count($result)) {
+=======
+        if (count($result)) {
+>>>>>>> pantheon-drops-8/master
             return true;
         }
         return false;
@@ -106,7 +126,11 @@ class Subscription extends AbstractModel implements SubscriptionPersistenceInter
     public function deleteSubscription($key)
     {
         $result = $this->db->select(['id' => $key]);
+<<<<<<< HEAD
         if ($result && count($result)) {
+=======
+        if (count($result)) {
+>>>>>>> pantheon-drops-8/master
             $this->db->delete(
                 ['id' => $key]
             );

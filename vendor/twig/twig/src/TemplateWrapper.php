@@ -96,7 +96,11 @@ final class TemplateWrapper
     {
         $context = $this->env->mergeGlobals($context);
         $level = ob_get_level();
+<<<<<<< HEAD
         ob_start(function () { return ''; });
+=======
+        ob_start();
+>>>>>>> pantheon-drops-8/master
         try {
             $this->template->displayBlock($name, $context);
         } catch (\Exception $e) {
@@ -138,6 +142,7 @@ final class TemplateWrapper
     /**
      * @return string
      */
+<<<<<<< HEAD
     public function getTemplateName()
     {
         return $this->template->getTemplateName();
@@ -152,6 +157,12 @@ final class TemplateWrapper
     {
         return $this->template;
     }
+=======
+    public function getTemplatename()
+    {
+        return $this->template->getTemplateName();
+    }
+>>>>>>> pantheon-drops-8/master
 }
 
 class_alias('Twig\TemplateWrapper', 'Twig_TemplateWrapper');

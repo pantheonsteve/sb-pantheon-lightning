@@ -180,16 +180,25 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      */
     public function exchangeArray($data)
     {
+<<<<<<< HEAD
         if (! is_array($data) && ! is_object($data)) {
             throw new Exception\InvalidArgumentException(
                 'Passed variable is not an array or object, using empty array instead'
             );
+=======
+        if (!is_array($data) && !is_object($data)) {
+            throw new Exception\InvalidArgumentException('Passed variable is not an array or object, using empty array instead');
+>>>>>>> pantheon-drops-8/master
         }
 
         if (is_object($data) && ($data instanceof self || $data instanceof \ArrayObject)) {
             $data = $data->getArrayCopy();
         }
+<<<<<<< HEAD
         if (! is_array($data)) {
+=======
+        if (!is_array($data)) {
+>>>>>>> pantheon-drops-8/master
             $data = (array) $data;
         }
 
@@ -292,7 +301,11 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
     public function &offsetGet($key)
     {
         $ret = null;
+<<<<<<< HEAD
         if (! $this->offsetExists($key)) {
+=======
+        if (!$this->offsetExists($key)) {
+>>>>>>> pantheon-drops-8/master
             return $ret;
         }
         $ret =& $this->storage[$key];
@@ -425,7 +438,11 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
                     $this->setIteratorClass($v);
                     break;
                 case 'protectedProperties':
+<<<<<<< HEAD
                     break;
+=======
+                    continue;
+>>>>>>> pantheon-drops-8/master
                 default:
                     $this->__set($k, $v);
             }

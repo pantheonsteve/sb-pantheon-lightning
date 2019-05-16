@@ -1,8 +1,15 @@
 <?php
 
+<<<<<<< HEAD
 require 'vendor/autoload.php';
 use Masterminds\HTML5;
 
+=======
+require "vendor/autoload.php";
+use Masterminds\HTML5;
+
+
+>>>>>>> pantheon-drops-8/master
 $html = <<< 'HERE'
   <html>
   <head>
@@ -27,6 +34,12 @@ HERE;
 $html5 = new HTML5();
 $dom = $html5->loadHTML($html);
 
+<<<<<<< HEAD
 echo "Converting to HTML 5\n";
 
 $html5->save($dom, fopen('php://stdin', 'w'));
+=======
+print "Converting to HTML 5\n";
+
+$html5->save($dom, fopen("php://stdin", 'w'));
+>>>>>>> pantheon-drops-8/master

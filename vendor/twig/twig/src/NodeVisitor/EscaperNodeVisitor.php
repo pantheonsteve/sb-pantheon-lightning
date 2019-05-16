@@ -15,11 +15,16 @@ use Twig\Environment;
 use Twig\Node\AutoEscapeNode;
 use Twig\Node\BlockNode;
 use Twig\Node\BlockReferenceNode;
+<<<<<<< HEAD
 use Twig\Node\DoNode;
 use Twig\Node\Expression\ConditionalExpression;
 use Twig\Node\Expression\ConstantExpression;
 use Twig\Node\Expression\FilterExpression;
 use Twig\Node\Expression\InlinePrint;
+=======
+use Twig\Node\Expression\ConstantExpression;
+use Twig\Node\Expression\FilterExpression;
+>>>>>>> pantheon-drops-8/master
 use Twig\Node\ImportNode;
 use Twig\Node\ModuleNode;
 use Twig\Node\Node;
@@ -72,6 +77,7 @@ class EscaperNodeVisitor extends AbstractNodeVisitor
             $this->blocks = [];
         } elseif ($node instanceof FilterExpression) {
             return $this->preEscapeFilterNode($node, $env);
+<<<<<<< HEAD
         } elseif ($node instanceof PrintNode && false !== $type = $this->needEscaping($env)) {
             $expression = $node->getNode('expr');
             if ($expression instanceof ConditionalExpression && $this->shouldUnwrapConditional($expression, $env, $type)) {
@@ -79,6 +85,10 @@ class EscaperNodeVisitor extends AbstractNodeVisitor
             }
 
             return $this->escapePrintNode($node, $env, $type);
+=======
+        } elseif ($node instanceof PrintNode) {
+            return $this->escapePrintNode($node, $env, $this->needEscaping($env));
+>>>>>>> pantheon-drops-8/master
         }
 
         if ($node instanceof AutoEscapeNode || $node instanceof BlockNode) {
@@ -90,6 +100,7 @@ class EscaperNodeVisitor extends AbstractNodeVisitor
         return $node;
     }
 
+<<<<<<< HEAD
     private function shouldUnwrapConditional(ConditionalExpression $expression, Environment $env, $type)
     {
         $expr2Safe = $this->isSafeFor($type, $expression->getNode('expr2'), $env);
@@ -128,6 +139,8 @@ class EscaperNodeVisitor extends AbstractNodeVisitor
         return new InlinePrint($this->getEscaperFilter($type, $expression), $node->getTemplateLine());
     }
 
+=======
+>>>>>>> pantheon-drops-8/master
     protected function escapePrintNode(PrintNode $node, Environment $env, $type)
     {
         if (false === $type) {
@@ -142,7 +155,14 @@ class EscaperNodeVisitor extends AbstractNodeVisitor
 
         $class = \get_class($node);
 
+<<<<<<< HEAD
         return new $class($this->getEscaperFilter($type, $expression), $node->getTemplateLine());
+=======
+        return new $class(
+            $this->getEscaperFilter($type, $expression),
+            $node->getTemplateLine()
+        );
+>>>>>>> pantheon-drops-8/master
     }
 
     protected function preEscapeFilterNode(FilterExpression $filter, Environment $env)

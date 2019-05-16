@@ -47,6 +47,7 @@ class Entry extends Extension\AbstractRenderer
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _appendNamespaces()
     {
@@ -55,6 +56,12 @@ class Entry extends Extension\AbstractRenderer
             'xmlns:wfw',
             'http://wellformedweb.org/CommentAPI/'
         );
+=======
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute('xmlns:wfw',
+            'http://wellformedweb.org/CommentAPI/');
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -64,12 +71,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setCommentFeedLinks(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $links = $this->getDataContainer()->getCommentFeedLinks();
         if (! $links || empty($links)) {
+=======
+    protected function _setCommentFeedLinks(DOMDocument $dom, DOMElement $root)
+    {
+        $links = $this->getDataContainer()->getCommentFeedLinks();
+        if (!$links || empty($links)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($links as $link) {

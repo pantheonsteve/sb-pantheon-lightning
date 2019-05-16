@@ -20,9 +20,12 @@ use Twig\Parser;
  */
 abstract class AbstractTokenParser implements TokenParserInterface
 {
+<<<<<<< HEAD
     /**
      * @var Parser
      */
+=======
+>>>>>>> pantheon-drops-8/master
     protected $parser;
 
     public function setParser(Parser $parser)

@@ -84,7 +84,11 @@ abstract class StringUtils
     public static function registerWrapper($wrapper)
     {
         $wrapper = (string) $wrapper;
+<<<<<<< HEAD
         if (! in_array($wrapper, static::$wrapperRegistry, true)) {
+=======
+        if (!in_array($wrapper, static::$wrapperRegistry, true)) {
+>>>>>>> pantheon-drops-8/master
             static::$wrapperRegistry[] = $wrapper;
         }
     }

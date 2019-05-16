@@ -126,7 +126,11 @@ abstract class AbstractEntry
         $deep  = version_compare(PHP_VERSION, '7', 'ge') ? 1 : true;
         $entry = $dom->importNode($this->getElement(), $deep);
         $dom->appendChild($entry);
+<<<<<<< HEAD
         return $dom->saveXML();
+=======
+        return $dom->saveXml();
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -146,7 +150,11 @@ abstract class AbstractEntry
      */
     public function getXpath()
     {
+<<<<<<< HEAD
         if (! $this->xpath) {
+=======
+        if (!$this->xpath) {
+>>>>>>> pantheon-drops-8/master
             $this->setXpath(new DOMXPath($this->getDomDocument()));
         }
         return $this->xpath;

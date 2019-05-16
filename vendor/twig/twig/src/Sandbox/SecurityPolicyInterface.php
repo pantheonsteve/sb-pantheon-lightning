@@ -12,7 +12,11 @@
 namespace Twig\Sandbox;
 
 /**
+<<<<<<< HEAD
  * Interface that all security policy classes must implements.
+=======
+ * Interfaces that all security policy classes must implements.
+>>>>>>> pantheon-drops-8/master
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

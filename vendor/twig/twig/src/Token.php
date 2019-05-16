@@ -38,7 +38,10 @@ class Token
     const PUNCTUATION_TYPE = 9;
     const INTERPOLATION_START_TYPE = 10;
     const INTERPOLATION_END_TYPE = 11;
+<<<<<<< HEAD
     const ARROW_TYPE = 12;
+=======
+>>>>>>> pantheon-drops-8/master
 
     /**
      * @param int    $type   The type of the token
@@ -158,9 +161,12 @@ class Token
             case self::INTERPOLATION_END_TYPE:
                 $name = 'INTERPOLATION_END_TYPE';
                 break;
+<<<<<<< HEAD
             case self::ARROW_TYPE:
                 $name = 'ARROW_TYPE';
                 break;
+=======
+>>>>>>> pantheon-drops-8/master
             default:
                 throw new \LogicException(sprintf('Token of type "%s" does not exist.', $type));
         }
@@ -204,8 +210,11 @@ class Token
                 return 'begin of string interpolation';
             case self::INTERPOLATION_END_TYPE:
                 return 'end of string interpolation';
+<<<<<<< HEAD
             case self::ARROW_TYPE:
                 return 'arrow function';
+=======
+>>>>>>> pantheon-drops-8/master
             default:
                 throw new \LogicException(sprintf('Token of type "%s" does not exist.', $type));
         }

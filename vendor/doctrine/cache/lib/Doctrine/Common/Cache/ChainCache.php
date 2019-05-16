@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 namespace Doctrine\Common\Cache;
 
@@ -22,6 +23,48 @@ class ChainCache extends CacheProvider
         $this->cacheProviders = $cacheProviders instanceof \Traversable
             ? iterator_to_array($cacheProviders, false)
             : array_values($cacheProviders);
+=======
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
+
+namespace Doctrine\Common\Cache;
+
+/**
+ * Cache provider that allows to easily chain multiple cache providers
+ *
+ * @author Michaël Gallego <mic.gallego@gmail.com>
+ */
+class ChainCache extends CacheProvider
+{
+    /**
+     * @var CacheProvider[]
+     */
+    private $cacheProviders = array();
+
+    /**
+     * Constructor
+     *
+     * @param CacheProvider[] $cacheProviders
+     */
+    public function __construct($cacheProviders = array())
+    {
+        $this->cacheProviders = $cacheProviders;
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -46,7 +89,11 @@ class ChainCache extends CacheProvider
                 $value = $cacheProvider->doFetch($id);
 
                 // We populate all the previous cache layers (that are assumed to be faster)
+<<<<<<< HEAD
                 for ($subKey = $key - 1; $subKey >= 0; $subKey--) {
+=======
+                for ($subKey = $key - 1 ; $subKey >= 0 ; $subKey--) {
+>>>>>>> pantheon-drops-8/master
                     $this->cacheProviders[$subKey]->doSave($id, $value);
                 }
 
@@ -58,6 +105,7 @@ class ChainCache extends CacheProvider
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     protected function doFetchMultiple(array $keys)
@@ -86,6 +134,8 @@ class ChainCache extends CacheProvider
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritDoc}
      */
     protected function doContains($id)
@@ -114,6 +164,7 @@ class ChainCache extends CacheProvider
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     protected function doSaveMultiple(array $keysAndValues, $lifetime = 0)
@@ -128,6 +179,8 @@ class ChainCache extends CacheProvider
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritDoc}
      */
     protected function doDelete($id)
@@ -142,6 +195,7 @@ class ChainCache extends CacheProvider
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     protected function doDeleteMultiple(array $keys)
@@ -156,6 +210,8 @@ class ChainCache extends CacheProvider
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritDoc}
      */
     protected function doFlush()
@@ -175,7 +231,11 @@ class ChainCache extends CacheProvider
     protected function doGetStats()
     {
         // We return all the stats from all adapters
+<<<<<<< HEAD
         $stats = [];
+=======
+        $stats = array();
+>>>>>>> pantheon-drops-8/master
 
         foreach ($this->cacheProviders as $cacheProvider) {
             $stats[] = $cacheProvider->doGetStats();

@@ -12,6 +12,7 @@ namespace Zend\Diactoros;
 use Psr\Http\Message\StreamInterface;
 use UnexpectedValueException;
 
+<<<<<<< HEAD
 use function array_pop;
 use function implode;
 use function ltrim;
@@ -20,6 +21,8 @@ use function sprintf;
 use function str_replace;
 use function ucwords;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * Provides base functionality for request and response de/serialization
  * strategies, including functionality for retrieving a line at a time from

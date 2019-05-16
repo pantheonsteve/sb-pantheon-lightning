@@ -39,7 +39,12 @@ class Feed extends Extension\AbstractFeed
                 return $period;
             default:
                 throw new Reader\Exception\InvalidArgumentException("Feed specified invalid update period: '$period'."
+<<<<<<< HEAD
                     .  " Must be one of hourly, daily, weekly or yearly");
+=======
+                    .  " Must be one of hourly, daily, weekly or yearly"
+                );
+>>>>>>> pantheon-drops-8/master
         }
     }
 
@@ -53,7 +58,11 @@ class Feed extends Extension\AbstractFeed
         $name = 'updateFrequency';
         $freq = $this->getData($name, 'number');
 
+<<<<<<< HEAD
         if (! $freq || $freq < 1) {
+=======
+        if (!$freq || $freq < 1) {
+>>>>>>> pantheon-drops-8/master
             $this->data[$name] = 1;
             return 1;
         }
@@ -71,7 +80,11 @@ class Feed extends Extension\AbstractFeed
         $name = 'updateFrequency';
         $freq = $this->getData($name, 'number');
 
+<<<<<<< HEAD
         if (! $freq || $freq < 1) {
+=======
+        if (!$freq || $freq < 1) {
+>>>>>>> pantheon-drops-8/master
             $this->data[$name] = 1;
             $freq = 1;
         }
@@ -129,7 +142,11 @@ class Feed extends Extension\AbstractFeed
 
         $data = $this->xpath->evaluate($type . '(' . $this->getXpathPrefix() . '/syn10:' . $name . ')');
 
+<<<<<<< HEAD
         if (! $data) {
+=======
+        if (!$data) {
+>>>>>>> pantheon-drops-8/master
             $data = null;
         }
 

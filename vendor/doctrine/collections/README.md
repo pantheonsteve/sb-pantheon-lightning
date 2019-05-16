@@ -1,13 +1,17 @@
 # Doctrine Collections
 
 [![Build Status](https://travis-ci.org/doctrine/collections.svg?branch=master)](https://travis-ci.org/doctrine/collections)
+<<<<<<< HEAD
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/doctrine/collections/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/doctrine/collections/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/doctrine/collections/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/doctrine/collections/?branch=master)
+=======
+>>>>>>> pantheon-drops-8/master
 
 Collections Abstraction library
 
 ## Changelog
 
+<<<<<<< HEAD
 ### v1.6.1
 
 This release, combined with the release of [`doctrine/collections` `v1.6.1`](https://github.com/doctrine/collections/releases/tag/v1.6.1),
@@ -74,6 +78,8 @@ Total issues resolved: **16**
 * [Comparison `MEMBER_OF`](https://github.com/doctrine/collections/pull/66)
 * [Add Contributing guide](https://github.com/doctrine/collections/pull/103)
 
+=======
+>>>>>>> pantheon-drops-8/master
 ### v1.3.0
 
 * [Explicit casting of first and max results in criteria API](https://github.com/doctrine/collections/pull/26)

@@ -14,7 +14,10 @@ namespace Twig\TokenParser;
 use Twig\Error\SyntaxError;
 use Twig\Node\BodyNode;
 use Twig\Node\MacroNode;
+<<<<<<< HEAD
 use Twig\Node\Node;
+=======
+>>>>>>> pantheon-drops-8/master
 use Twig\Token;
 
 /**
@@ -50,8 +53,11 @@ class MacroTokenParser extends AbstractTokenParser
         $stream->expect(Token::BLOCK_END_TYPE);
 
         $this->parser->setMacro($name, new MacroNode($name, new BodyNode([$body]), $arguments, $lineno, $this->getTag()));
+<<<<<<< HEAD
 
         return new Node();
+=======
+>>>>>>> pantheon-drops-8/master
     }
 
     public function decideBlockEnd(Token $token)

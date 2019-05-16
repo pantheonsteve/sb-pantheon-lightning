@@ -70,7 +70,11 @@ class Parameters extends PhpArrayObject implements ParametersInterface
      */
     public function toString()
     {
+<<<<<<< HEAD
         return http_build_query($this->toArray());
+=======
+        return http_build_query($this);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

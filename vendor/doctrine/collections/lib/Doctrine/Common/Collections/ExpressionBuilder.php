@@ -1,18 +1,49 @@
 <?php
+<<<<<<< HEAD
+=======
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
+>>>>>>> pantheon-drops-8/master
 
 namespace Doctrine\Common\Collections;
 
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Collections\Expr\CompositeExpression;
 use Doctrine\Common\Collections\Expr\Value;
+<<<<<<< HEAD
 use function func_get_args;
+=======
+>>>>>>> pantheon-drops-8/master
 
 /**
  * Builder for Expressions in the {@link Selectable} interface.
  *
  * Important Notice for interoperable code: You have to use scalar
+<<<<<<< HEAD
  * values only for comparisons, otherwise the behavior of the comparison
  * may be different between implementations (Array vs ORM vs ODM).
+=======
+ * values only for comparisons, otherwise the behavior of the comparision
+ * may be different between implementations (Array vs ORM vs ODM).
+ *
+ * @author Benjamin Eberlei <kontakt@beberlei.de>
+ * @since  2.3
+>>>>>>> pantheon-drops-8/master
  */
 class ExpressionBuilder
 {
@@ -114,7 +145,11 @@ class ExpressionBuilder
 
     /**
      * @param string $field
+<<<<<<< HEAD
      * @param array  $values
+=======
+     * @param mixed  $values
+>>>>>>> pantheon-drops-8/master
      *
      * @return Comparison
      */
@@ -125,7 +160,11 @@ class ExpressionBuilder
 
     /**
      * @param string $field
+<<<<<<< HEAD
      * @param array  $values
+=======
+     * @param mixed  $values
+>>>>>>> pantheon-drops-8/master
      *
      * @return Comparison
      */
@@ -144,6 +183,7 @@ class ExpressionBuilder
     {
         return new Comparison($field, Comparison::CONTAINS, new Value($value));
     }
+<<<<<<< HEAD
 
     /**
      * @param string $field
@@ -177,4 +217,6 @@ class ExpressionBuilder
     {
         return new Comparison($field, Comparison::ENDS_WITH, new Value($value));
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

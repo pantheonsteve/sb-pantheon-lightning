@@ -1,7 +1,14 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-diactoros for the canonical source repository
  * @copyright Copyright (c) 2015-2018 Zend Technologies USA Inc. (http://www.zend.com)
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @see       http://github.com/zendframework/zend-diactoros for the canonical source repository
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
+>>>>>>> pantheon-drops-8/master
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
@@ -11,12 +18,15 @@ use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
+<<<<<<< HEAD
 use function gettype;
 use function is_float;
 use function is_numeric;
 use function is_scalar;
 use function sprintf;
 
+=======
+>>>>>>> pantheon-drops-8/master
 /**
  * HTTP response encapsulation.
  *
@@ -41,7 +51,10 @@ class Response implements ResponseInterface
         100 => 'Continue',
         101 => 'Switching Protocols',
         102 => 'Processing',
+<<<<<<< HEAD
         103 => 'Early Hints',
+=======
+>>>>>>> pantheon-drops-8/master
         // SUCCESS CODES
         200 => 'OK',
         201 => 'Created',
@@ -87,7 +100,11 @@ class Response implements ResponseInterface
         422 => 'Unprocessable Entity',
         423 => 'Locked',
         424 => 'Failed Dependency',
+<<<<<<< HEAD
         425 => 'Too Early',
+=======
+        425 => 'Unordered Collection',
+>>>>>>> pantheon-drops-8/master
         426 => 'Upgrade Required',
         428 => 'Precondition Required',
         429 => 'Too Many Requests',
@@ -113,7 +130,11 @@ class Response implements ResponseInterface
     /**
      * @var string
      */
+<<<<<<< HEAD
     private $reasonPhrase;
+=======
+    private $reasonPhrase = '';
+>>>>>>> pantheon-drops-8/master
 
     /**
      * @var int
@@ -146,6 +167,15 @@ class Response implements ResponseInterface
      */
     public function getReasonPhrase()
     {
+<<<<<<< HEAD
+=======
+        if (! $this->reasonPhrase
+            && isset($this->phrases[$this->statusCode])
+        ) {
+            $this->reasonPhrase = $this->phrases[$this->statusCode];
+        }
+
+>>>>>>> pantheon-drops-8/master
         return $this->reasonPhrase;
     }
 
@@ -155,7 +185,12 @@ class Response implements ResponseInterface
     public function withStatus($code, $reasonPhrase = '')
     {
         $new = clone $this;
+<<<<<<< HEAD
         $new->setStatusCode($code, $reasonPhrase);
+=======
+        $new->setStatusCode($code);
+        $new->reasonPhrase = $reasonPhrase;
+>>>>>>> pantheon-drops-8/master
         return $new;
     }
 
@@ -163,10 +198,16 @@ class Response implements ResponseInterface
      * Set a valid status code.
      *
      * @param int $code
+<<<<<<< HEAD
      * @param string $reasonPhrase
      * @throws InvalidArgumentException on an invalid status code.
      */
     private function setStatusCode($code, $reasonPhrase = '')
+=======
+     * @throws InvalidArgumentException on an invalid status code.
+     */
+    private function setStatusCode($code)
+>>>>>>> pantheon-drops-8/master
     {
         if (! is_numeric($code)
             || is_float($code)
@@ -175,11 +216,16 @@ class Response implements ResponseInterface
         ) {
             throw new InvalidArgumentException(sprintf(
                 'Invalid status code "%s"; must be an integer between %d and %d, inclusive',
+<<<<<<< HEAD
                 is_scalar($code) ? $code : gettype($code),
+=======
+                (is_scalar($code) ? $code : gettype($code)),
+>>>>>>> pantheon-drops-8/master
                 static::MIN_STATUS_CODE_VALUE,
                 static::MAX_STATUS_CODE_VALUE
             ));
         }
+<<<<<<< HEAD
 
         if (! is_string($reasonPhrase)) {
             throw new InvalidArgumentException(sprintf(
@@ -194,5 +240,8 @@ class Response implements ResponseInterface
 
         $this->reasonPhrase = $reasonPhrase;
         $this->statusCode = (int) $code;
+=======
+        $this->statusCode = $code;
+>>>>>>> pantheon-drops-8/master
     }
 }

@@ -1,26 +1,41 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-diactoros for the canonical source repository
  * @copyright Copyright (c) 2015-2018 Zend Technologies USA Inc. (http://www.zend.com)
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @see       http://github.com/zendframework/zend-diactoros for the canonical source repository
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
+>>>>>>> pantheon-drops-8/master
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
 namespace Zend\Diactoros;
 
 use OutOfBoundsException;
+<<<<<<< HEAD
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function property_exists;
+=======
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+>>>>>>> pantheon-drops-8/master
 
 /**
  * "Serve" incoming HTTP requests
  *
  * Given a callback, takes an incoming request, dispatches it to the
  * callback, and then sends a response.
+<<<<<<< HEAD
  *
  * @deprecated since 1.8.0. We recommend using the `RequestHandlerRunner` class
  *     from the zendframework/zend-httphandlerrunner package instead.
+=======
+>>>>>>> pantheon-drops-8/master
  */
 class Server
 {
@@ -153,18 +168,35 @@ class Server
      * If provided a $finalHandler, that callable will be used for
      * incomplete requests.
      *
+<<<<<<< HEAD
+=======
+     * Output buffering is enabled prior to invoking the attached
+     * callback; any output buffered will be sent prior to any
+     * response body content.
+     *
+>>>>>>> pantheon-drops-8/master
      * @param null|callable $finalHandler
      */
     public function listen(callable $finalHandler = null)
     {
         $callback = $this->callback;
 
+<<<<<<< HEAD
+=======
+        ob_start();
+        $bufferLevel = ob_get_level();
+
+>>>>>>> pantheon-drops-8/master
         $response = $callback($this->request, $this->response, $finalHandler);
         if (! $response instanceof ResponseInterface) {
             $response = $this->response;
         }
+<<<<<<< HEAD
 
         $this->getEmitter()->emit($response);
+=======
+        $this->getEmitter()->emit($response, $bufferLevel);
+>>>>>>> pantheon-drops-8/master
     }
 
     /**

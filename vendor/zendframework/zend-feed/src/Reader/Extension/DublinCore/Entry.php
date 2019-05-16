@@ -47,6 +47,7 @@ class Entry extends Extension\AbstractEntry
         $authors = [];
         $list = $this->getXpath()->evaluate($this->getXpathPrefix() . '//dc11:creator');
 
+<<<<<<< HEAD
         if (! $list->length) {
             $list = $this->getXpath()->evaluate($this->getXpathPrefix() . '//dc10:creator');
         }
@@ -54,6 +55,15 @@ class Entry extends Extension\AbstractEntry
             $list = $this->getXpath()->evaluate($this->getXpathPrefix() . '//dc11:publisher');
 
             if (! $list->length) {
+=======
+        if (!$list->length) {
+            $list = $this->getXpath()->evaluate($this->getXpathPrefix() . '//dc10:creator');
+        }
+        if (!$list->length) {
+            $list = $this->getXpath()->evaluate($this->getXpathPrefix() . '//dc11:publisher');
+
+            if (!$list->length) {
+>>>>>>> pantheon-drops-8/master
                 $list = $this->getXpath()->evaluate($this->getXpathPrefix() . '//dc10:publisher');
             }
         }
@@ -89,7 +99,11 @@ class Entry extends Extension\AbstractEntry
 
         $list = $this->getXpath()->evaluate($this->getXpathPrefix() . '//dc11:subject');
 
+<<<<<<< HEAD
         if (! $list->length) {
+=======
+        if (!$list->length) {
+>>>>>>> pantheon-drops-8/master
             $list = $this->getXpath()->evaluate($this->getXpathPrefix() . '//dc10:subject');
         }
 
@@ -133,11 +147,19 @@ class Entry extends Extension\AbstractEntry
 
         $description = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc11:description)');
 
+<<<<<<< HEAD
         if (! $description) {
             $description = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc10:description)');
         }
 
         if (! $description) {
+=======
+        if (!$description) {
+            $description = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc10:description)');
+        }
+
+        if (!$description) {
+>>>>>>> pantheon-drops-8/master
             $description = null;
         }
 
@@ -159,7 +181,11 @@ class Entry extends Extension\AbstractEntry
 
         $id = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc11:identifier)');
 
+<<<<<<< HEAD
         if (! $id) {
+=======
+        if (!$id) {
+>>>>>>> pantheon-drops-8/master
             $id = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc10:identifier)');
         }
 
@@ -181,11 +207,19 @@ class Entry extends Extension\AbstractEntry
 
         $title = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc11:title)');
 
+<<<<<<< HEAD
         if (! $title) {
             $title = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc10:title)');
         }
 
         if (! $title) {
+=======
+        if (!$title) {
+            $title = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc10:title)');
+        }
+
+        if (!$title) {
+>>>>>>> pantheon-drops-8/master
             $title = null;
         }
 
@@ -208,7 +242,11 @@ class Entry extends Extension\AbstractEntry
         $d    = null;
         $date = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc11:date)');
 
+<<<<<<< HEAD
         if (! $date) {
+=======
+        if (!$date) {
+>>>>>>> pantheon-drops-8/master
             $date = $this->getXpath()->evaluate('string(' . $this->getXpathPrefix() . '/dc10:date)');
         }
 

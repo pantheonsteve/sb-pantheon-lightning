@@ -1,5 +1,9 @@
 vendor/
 scratch.php
 composer.lock
+<<<<<<< HEAD
 build/
 .php_cs.cache
+=======
+build/
+>>>>>>> pantheon-drops-8/master

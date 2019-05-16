@@ -36,6 +36,7 @@ class Entry extends Extension\AbstractRenderer
         $this->_setAuthors($this->dom, $this->base);
         $this->_setBlock($this->dom, $this->base);
         $this->_setDuration($this->dom, $this->base);
+<<<<<<< HEAD
         $this->_setImage($this->dom, $this->base);
         $this->_setExplicit($this->dom, $this->base);
         $this->_setKeywords($this->dom, $this->base);
@@ -46,6 +47,12 @@ class Entry extends Extension\AbstractRenderer
         $this->_setEpisodeType($this->dom, $this->base);
         $this->_setClosedCaptioned($this->dom, $this->base);
         $this->_setSeason($this->dom, $this->base);
+=======
+        $this->_setExplicit($this->dom, $this->base);
+        $this->_setKeywords($this->dom, $this->base);
+        $this->_setSubtitle($this->dom, $this->base);
+        $this->_setSummary($this->dom, $this->base);
+>>>>>>> pantheon-drops-8/master
         if ($this->called) {
             $this->_appendNamespaces();
         }
@@ -56,6 +63,7 @@ class Entry extends Extension\AbstractRenderer
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _appendNamespaces()
     {
@@ -64,6 +72,12 @@ class Entry extends Extension\AbstractRenderer
             'xmlns:itunes',
             'http://www.itunes.com/dtds/podcast-1.0.dtd'
         );
+=======
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute('xmlns:itunes',
+            'http://www.itunes.com/dtds/podcast-1.0.dtd');
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -73,12 +87,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setAuthors(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $authors = $this->getDataContainer()->getItunesAuthors();
         if (! $authors || empty($authors)) {
+=======
+    protected function _setAuthors(DOMDocument $dom, DOMElement $root)
+    {
+        $authors = $this->getDataContainer()->getItunesAuthors();
+        if (!$authors || empty($authors)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         foreach ($authors as $author) {
@@ -97,10 +118,15 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setBlock(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _setBlock(DOMDocument $dom, DOMElement $root)
+    {
+>>>>>>> pantheon-drops-8/master
         $block = $this->getDataContainer()->getItunesBlock();
         if ($block === null) {
             return;
@@ -119,12 +145,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setDuration(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $duration = $this->getDataContainer()->getItunesDuration();
         if (! $duration) {
+=======
+    protected function _setDuration(DOMDocument $dom, DOMElement $root)
+    {
+        $duration = $this->getDataContainer()->getItunesDuration();
+        if (!$duration) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $el = $dom->createElement('itunes:duration');
@@ -135,6 +168,7 @@ class Entry extends Extension\AbstractRenderer
     }
 
     /**
+<<<<<<< HEAD
      * Set feed image (icon)
      *
      * @param  DOMDocument $dom
@@ -156,16 +190,23 @@ class Entry extends Extension\AbstractRenderer
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Set explicit flag
      *
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setExplicit(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
+=======
+    protected function _setExplicit(DOMDocument $dom, DOMElement $root)
+    {
+>>>>>>> pantheon-drops-8/master
         $explicit = $this->getDataContainer()->getItunesExplicit();
         if ($explicit === null) {
             return;
@@ -184,12 +225,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setKeywords(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $keywords = $this->getDataContainer()->getItunesKeywords();
         if (! $keywords || empty($keywords)) {
+=======
+    protected function _setKeywords(DOMDocument $dom, DOMElement $root)
+    {
+        $keywords = $this->getDataContainer()->getItunesKeywords();
+        if (!$keywords || empty($keywords)) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $el = $dom->createElement('itunes:keywords');
@@ -200,6 +248,7 @@ class Entry extends Extension\AbstractRenderer
     }
 
     /**
+<<<<<<< HEAD
      * Set entry title
      *
      * @param  DOMDocument $dom
@@ -222,18 +271,27 @@ class Entry extends Extension\AbstractRenderer
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Set entry subtitle
      *
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setSubtitle(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $subtitle = $this->getDataContainer()->getItunesSubtitle();
         if (! $subtitle) {
+=======
+    protected function _setSubtitle(DOMDocument $dom, DOMElement $root)
+    {
+        $subtitle = $this->getDataContainer()->getItunesSubtitle();
+        if (!$subtitle) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $el = $dom->createElement('itunes:subtitle');
@@ -250,12 +308,19 @@ class Entry extends Extension\AbstractRenderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setSummary(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $summary = $this->getDataContainer()->getItunesSummary();
         if (! $summary) {
+=======
+    protected function _setSummary(DOMDocument $dom, DOMElement $root)
+    {
+        $summary = $this->getDataContainer()->getItunesSummary();
+        if (!$summary) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $el = $dom->createElement('itunes:summary');
@@ -264,6 +329,7 @@ class Entry extends Extension\AbstractRenderer
         $root->appendChild($el);
         $this->called = true;
     }
+<<<<<<< HEAD
 
     /**
      * Set entry episode number
@@ -352,4 +418,6 @@ class Entry extends Extension\AbstractRenderer
         $root->appendChild($el);
         $this->called = true;
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

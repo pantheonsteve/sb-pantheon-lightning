@@ -9,8 +9,11 @@
 
 namespace Zend\Feed\Writer;
 
+<<<<<<< HEAD
 use Zend\Feed\Writer\Exception\InvalidArgumentException;
 
+=======
+>>>>>>> pantheon-drops-8/master
 class StandaloneExtensionManager implements ExtensionManagerInterface
 {
     private $extensions = [
@@ -18,10 +21,13 @@ class StandaloneExtensionManager implements ExtensionManagerInterface
         'Content\Renderer\Entry'       => Extension\Content\Renderer\Entry::class,
         'DublinCore\Renderer\Entry'    => Extension\DublinCore\Renderer\Entry::class,
         'DublinCore\Renderer\Feed'     => Extension\DublinCore\Renderer\Feed::class,
+<<<<<<< HEAD
         'GooglePlayPodcast\Entry'          => Extension\GooglePlayPodcast\Entry::class,
         'GooglePlayPodcast\Feed'           => Extension\GooglePlayPodcast\Feed::class,
         'GooglePlayPodcast\Renderer\Entry' => Extension\GooglePlayPodcast\Renderer\Entry::class,
         'GooglePlayPodcast\Renderer\Feed'  => Extension\GooglePlayPodcast\Renderer\Feed::class,
+=======
+>>>>>>> pantheon-drops-8/master
         'ITunes\Entry'                 => Extension\ITunes\Entry::class,
         'ITunes\Feed'                  => Extension\ITunes\Feed::class,
         'ITunes\Renderer\Entry'        => Extension\ITunes\Renderer\Entry::class,
@@ -53,6 +59,7 @@ class StandaloneExtensionManager implements ExtensionManagerInterface
         $class = $this->extensions[$extension];
         return new $class();
     }
+<<<<<<< HEAD
 
     /**
      * Add an extension.
@@ -91,4 +98,6 @@ class StandaloneExtensionManager implements ExtensionManagerInterface
     {
         unset($this->extensions[$name]);
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

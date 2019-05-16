@@ -15,7 +15,11 @@ use Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 /**
+<<<<<<< HEAD
  * FlattenException wraps a PHP Error or Exception to be able to serialize it.
+=======
+ * FlattenException wraps a PHP Exception to be able to serialize it.
+>>>>>>> pantheon-drops-8/master
  *
  * Basically, this class removes all objects from the trace.
  *
@@ -35,11 +39,14 @@ class FlattenException
 
     public static function create(\Exception $exception, $statusCode = null, array $headers = [])
     {
+<<<<<<< HEAD
         return static::createFromThrowable($exception, $statusCode, $headers);
     }
 
     public static function createFromThrowable(\Throwable $exception, ?int $statusCode = null, array $headers = []): self
     {
+=======
+>>>>>>> pantheon-drops-8/master
         $e = new static();
         $e->setMessage($exception->getMessage());
         $e->setCode($exception->getCode());
@@ -57,15 +64,27 @@ class FlattenException
 
         $e->setStatusCode($statusCode);
         $e->setHeaders($headers);
+<<<<<<< HEAD
         $e->setTraceFromThrowable($exception);
         $e->setClass($exception instanceof FatalThrowableError ? $exception->getOriginalClassName() : \get_class($exception));
+=======
+        $e->setTraceFromException($exception);
+        $e->setClass(\get_class($exception));
+>>>>>>> pantheon-drops-8/master
         $e->setFile($exception->getFile());
         $e->setLine($exception->getLine());
 
         $previous = $exception->getPrevious();
 
+<<<<<<< HEAD
         if ($previous instanceof \Throwable) {
             $e->setPrevious(static::createFromThrowable($previous));
+=======
+        if ($previous instanceof \Exception) {
+            $e->setPrevious(static::create($previous));
+        } elseif ($previous instanceof \Throwable) {
+            $e->setPrevious(static::create(new FatalThrowableError($previous)));
+>>>>>>> pantheon-drops-8/master
         }
 
         return $e;
@@ -90,6 +109,7 @@ class FlattenException
         return $this->statusCode;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -98,6 +118,11 @@ class FlattenException
         $this->statusCode = $code;
 
         return $this;
+=======
+    public function setStatusCode($code)
+    {
+        $this->statusCode = $code;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getHeaders()
@@ -105,6 +130,7 @@ class FlattenException
         return $this->headers;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -113,6 +139,11 @@ class FlattenException
         $this->headers = $headers;
 
         return $this;
+=======
+    public function setHeaders(array $headers)
+    {
+        $this->headers = $headers;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getClass()
@@ -120,6 +151,7 @@ class FlattenException
         return $this->class;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -128,6 +160,11 @@ class FlattenException
         $this->class = 'c' === $class[0] && 0 === strpos($class, "class@anonymous\0") ? get_parent_class($class).'@anonymous' : $class;
 
         return $this;
+=======
+    public function setClass($class)
+    {
+        $this->class = $class;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getFile()
@@ -135,6 +172,7 @@ class FlattenException
         return $this->file;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -143,6 +181,11 @@ class FlattenException
         $this->file = $file;
 
         return $this;
+=======
+    public function setFile($file)
+    {
+        $this->file = $file;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getLine()
@@ -150,6 +193,7 @@ class FlattenException
         return $this->line;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -158,6 +202,11 @@ class FlattenException
         $this->line = $line;
 
         return $this;
+=======
+    public function setLine($line)
+    {
+        $this->line = $line;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getMessage()
@@ -165,6 +214,7 @@ class FlattenException
         return $this->message;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -179,6 +229,11 @@ class FlattenException
         $this->message = $message;
 
         return $this;
+=======
+    public function setMessage($message)
+    {
+        $this->message = $message;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getCode()
@@ -186,6 +241,7 @@ class FlattenException
         return $this->code;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -194,6 +250,11 @@ class FlattenException
         $this->code = $code;
 
         return $this;
+=======
+    public function setCode($code)
+    {
+        $this->code = $code;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getPrevious()
@@ -201,6 +262,7 @@ class FlattenException
         return $this->previous;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
@@ -209,6 +271,11 @@ class FlattenException
         $this->previous = $previous;
 
         return $this;
+=======
+    public function setPrevious(self $previous)
+    {
+        $this->previous = $previous;
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getAllPrevious()
@@ -227,6 +294,7 @@ class FlattenException
         return $this->trace;
     }
 
+<<<<<<< HEAD
     /**
      * @deprecated since 4.1, use {@see setTraceFromThrowable()} instead.
      */
@@ -245,6 +313,13 @@ class FlattenException
     /**
      * @return $this
      */
+=======
+    public function setTraceFromException(\Exception $exception)
+    {
+        $this->setTrace($exception->getTrace(), $exception->getFile(), $exception->getLine());
+    }
+
+>>>>>>> pantheon-drops-8/master
     public function setTrace($trace, $file, $line)
     {
         $this->trace = [];
@@ -278,8 +353,11 @@ class FlattenException
                 'args' => isset($entry['args']) ? $this->flattenArgs($entry['args']) : [],
             ];
         }
+<<<<<<< HEAD
 
         return $this;
+=======
+>>>>>>> pantheon-drops-8/master
     }
 
     private function flattenArgs($args, $level = 0, &$count = 0)

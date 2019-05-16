@@ -7,6 +7,10 @@
     "keywords": ["php", "phar", "stream-wrapper", "security"],
     "require": {
         "php": "^5.3.3|^7.0",
+<<<<<<< HEAD
+=======
+        "ext-fileinfo": "*",
+>>>>>>> pantheon-drops-8/master
         "ext-json": "*",
         "brumann/polyfill-unserialize": "^1.0"
     },
@@ -14,9 +18,12 @@
         "ext-xdebug": "*",
         "phpunit/phpunit": "^4.8.36"
     },
+<<<<<<< HEAD
     "suggest": {
         "ext-fileinfo": "For PHP builtin file type guessing, otherwise uses internal processing"
     },
+=======
+>>>>>>> pantheon-drops-8/master
     "autoload": {
         "psr-4": {
             "TYPO3\\PharStreamWrapper\\": "src/"

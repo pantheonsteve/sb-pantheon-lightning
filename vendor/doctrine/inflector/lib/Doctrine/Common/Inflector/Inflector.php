@@ -38,7 +38,11 @@ class Inflector
     /**
      * Plural inflector rules.
      *
+<<<<<<< HEAD
      * @var string[][]
+=======
+     * @var array
+>>>>>>> pantheon-drops-8/master
      */
     private static $plural = array(
         'rules' => array(
@@ -49,11 +53,18 @@ class Inflector
             '/(matr|vert|ind)(ix|ex)$/i' => '\1ices',
             '/(x|ch|ss|sh)$/i' => '\1es',
             '/([^aeiouy]|qu)y$/i' => '\1ies',
+<<<<<<< HEAD
             '/(hive|gulf)$/i' => '\1s',
             '/(?:([^f])fe|([lr])f)$/i' => '\1\2ves',
             '/sis$/i' => 'ses',
             '/([ti])um$/i' => '\1a',
             '/(c)riterion$/i' => '\1riteria',
+=======
+            '/(hive)$/i' => '\1s',
+            '/(?:([^f])fe|([lr])f)$/i' => '\1\2ves',
+            '/sis$/i' => 'ses',
+            '/([ti])um$/i' => '\1a',
+>>>>>>> pantheon-drops-8/master
             '/(p)erson$/i' => '\1eople',
             '/(m)an$/i' => '\1en',
             '/(c)hild$/i' => '\1hildren',
@@ -68,6 +79,7 @@ class Inflector
             '/$/' => 's',
         ),
         'uninflected' => array(
+<<<<<<< HEAD
             '.*[nrlm]ese',
             '.*deer',
             '.*fish',
@@ -78,6 +90,9 @@ class Inflector
             'people',
             'cookie',
             'police',
+=======
+            '.*[nrlm]ese', '.*deer', '.*fish', '.*measles', '.*ois', '.*pox', '.*sheep', 'people', 'cookie'
+>>>>>>> pantheon-drops-8/master
         ),
         'irregular' => array(
             'atlas' => 'atlases',
@@ -86,7 +101,10 @@ class Inflector
             'brother' => 'brothers',
             'cafe' => 'cafes',
             'chateau' => 'chateaux',
+<<<<<<< HEAD
             'niveau' => 'niveaux',
+=======
+>>>>>>> pantheon-drops-8/master
             'child' => 'children',
             'cookie' => 'cookies',
             'corpus' => 'corpuses',
@@ -101,13 +119,19 @@ class Inflector
             'ganglion' => 'ganglions',
             'genie' => 'genies',
             'genus' => 'genera',
+<<<<<<< HEAD
             'goose' => 'geese',
+=======
+>>>>>>> pantheon-drops-8/master
             'graffito' => 'graffiti',
             'hippopotamus' => 'hippopotami',
             'hoof' => 'hoofs',
             'human' => 'humans',
             'iris' => 'irises',
+<<<<<<< HEAD
             'larva' => 'larvae',
+=======
+>>>>>>> pantheon-drops-8/master
             'leaf' => 'leaves',
             'loaf' => 'loaves',
             'man' => 'men',
@@ -125,7 +149,10 @@ class Inflector
             'octopus' => 'octopuses',
             'opus' => 'opuses',
             'ox' => 'oxen',
+<<<<<<< HEAD
             'passerby' => 'passersby',
+=======
+>>>>>>> pantheon-drops-8/master
             'penis' => 'penises',
             'person' => 'people',
             'plateau' => 'plateaux',
@@ -140,7 +167,10 @@ class Inflector
             'tornado' => 'tornadoes',
             'trilby' => 'trilbys',
             'turf' => 'turfs',
+<<<<<<< HEAD
             'valve' => 'valves',
+=======
+>>>>>>> pantheon-drops-8/master
             'volcano' => 'volcanoes',
         )
     );
@@ -148,7 +178,11 @@ class Inflector
     /**
      * Singular inflector rules.
      *
+<<<<<<< HEAD
      * @var string[][]
+=======
+     * @var array
+>>>>>>> pantheon-drops-8/master
      */
     private static $singular = array(
         'rules' => array(
@@ -176,12 +210,18 @@ class Inflector
             '/(tive)s$/i' => '\1',
             '/(hive)s$/i' => '\1',
             '/(drive)s$/i' => '\1',
+<<<<<<< HEAD
             '/(dive)s$/i' => '\1',
             '/(olive)s$/i' => '\1',
             '/([^fo])ves$/i' => '\1fe',
             '/(^analy)ses$/i' => '\1sis',
             '/(analy|diagno|^ba|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i' => '\1\2sis',
             '/(c)riteria$/i' => '\1riterion',
+=======
+            '/([^fo])ves$/i' => '\1fe',
+            '/(^analy)ses$/i' => '\1sis',
+            '/(analy|diagno|^ba|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i' => '\1\2sis',
+>>>>>>> pantheon-drops-8/master
             '/([ti])a$/i' => '\1um',
             '/(p)eople$/i' => '\1\2erson',
             '/(m)en$/i' => '\1an',
@@ -201,6 +241,7 @@ class Inflector
             '.*pox',
             '.*sheep',
             '.*ss',
+<<<<<<< HEAD
             'data',
             'police',
             'pants',
@@ -222,6 +263,19 @@ class Inflector
             'waves'      => 'wave',
             'oases'      => 'oasis',
             'valves'     => 'valve',
+=======
+        ),
+        'irregular' => array(
+            'criteria'  => 'criterion',
+            'curves'    => 'curve',
+            'emphases'  => 'emphasis',
+            'foes'      => 'foe',
+            'hoaxes'    => 'hoax',
+            'media'     => 'medium',
+            'neuroses'  => 'neurosis',
+            'waves'     => 'wave',
+            'oases'     => 'oasis',
+>>>>>>> pantheon-drops-8/master
         )
     );
 
@@ -231,6 +285,7 @@ class Inflector
      * @var array
      */
     private static $uninflected = array(
+<<<<<<< HEAD
         '.*?media', 'Amoyese', 'audio', 'bison', 'Borghese', 'bream', 'breeches',
         'britches', 'buffalo', 'cantus', 'carp', 'chassis', 'clippers', 'cod', 'coitus', 'compensation', 'Congoese',
         'contretemps', 'coreopsis', 'corps', 'data', 'debris', 'deer', 'diabetes', 'djinn', 'education', 'eland',
@@ -243,6 +298,20 @@ class Inflector
         'proceedings', 'rabies', 'rain', 'rhinoceros', 'rice', 'salmon', 'Sarawakese', 'scissors', 'sea[- ]bass',
         'series', 'Shavese', 'shears', 'sheep', 'siemens', 'species', 'staff', 'swine', 'traffic',
         'trousers', 'trout', 'tuna', 'us', 'Vermontese', 'Wenchowese', 'wheat', 'whiting', 'wildebeest', 'Yengeese'
+=======
+        'Amoyese', 'bison', 'Borghese', 'bream', 'breeches', 'britches', 'buffalo', 'cantus',
+        'carp', 'chassis', 'clippers', 'cod', 'coitus', 'Congoese', 'contretemps', 'corps',
+        'debris', 'diabetes', 'djinn', 'eland', 'elk', 'equipment', 'Faroese', 'flounder',
+        'Foochowese', 'gallows', 'Genevese', 'Genoese', 'Gilbertese', 'graffiti',
+        'headquarters', 'herpes', 'hijinks', 'Hottentotese', 'information', 'innings',
+        'jackanapes', 'Kiplingese', 'Kongoese', 'Lucchese', 'mackerel', 'Maltese', '.*?media',
+        'mews', 'moose', 'mumps', 'Nankingese', 'news', 'nexus', 'Niasese',
+        'Pekingese', 'Piedmontese', 'pincers', 'Pistoiese', 'pliers', 'Portuguese',
+        'proceedings', 'rabies', 'rice', 'rhinoceros', 'salmon', 'Sarawakese', 'scissors',
+        'sea[- ]bass', 'series', 'Shavese', 'shears', 'siemens', 'species', 'staff', 'swine',
+        'testes', 'trousers', 'trout', 'tuna', 'Vermontese', 'Wenchowese', 'whiting',
+        'wildebeest', 'Yengeese'
+>>>>>>> pantheon-drops-8/master
     );
 
     /**
@@ -261,24 +330,53 @@ class Inflector
 
     /**
      * Converts a word into the format for a Doctrine table name. Converts 'ModelName' to 'model_name'.
+<<<<<<< HEAD
      */
     public static function tableize(string $word) : string
+=======
+     *
+     * @param string $word The word to tableize.
+     *
+     * @return string The tableized word.
+     */
+    public static function tableize($word)
+>>>>>>> pantheon-drops-8/master
     {
         return strtolower(preg_replace('~(?<=\\w)([A-Z])~', '_$1', $word));
     }
 
     /**
      * Converts a word into the format for a Doctrine class name. Converts 'table_name' to 'TableName'.
+<<<<<<< HEAD
      */
     public static function classify(string $word) : string
     {
         return str_replace([' ', '_', '-'], '', ucwords($word, ' _-'));
+=======
+     *
+     * @param string $word The word to classify.
+     *
+     * @return string The classified word.
+     */
+    public static function classify($word)
+    {
+        return str_replace(" ", "", ucwords(strtr($word, "_-", "  ")));
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
      * Camelizes a word. This uses the classify() method and turns the first character to lowercase.
+<<<<<<< HEAD
      */
     public static function camelize(string $word) : string
+=======
+     *
+     * @param string $word The word to camelize.
+     *
+     * @return string The camelized word.
+     */
+    public static function camelize($word)
+>>>>>>> pantheon-drops-8/master
     {
         return lcfirst(self::classify($word));
     }
@@ -287,7 +385,11 @@ class Inflector
      * Uppercases words with configurable delimeters between words.
      *
      * Takes a string and capitalizes all of the words, like PHP's built-in
+<<<<<<< HEAD
      * ucwords function. This extends that behavior, however, by allowing the
+=======
+     * ucwords function.  This extends that behavior, however, by allowing the
+>>>>>>> pantheon-drops-8/master
      * word delimeters to be configured, rather than only separating on
      * whitespace.
      *
@@ -308,16 +410,35 @@ class Inflector
      *
      * @return string The string with all delimeter-separated words capitalized.
      */
+<<<<<<< HEAD
     public static function ucwords(string $string, string $delimiters = " \n\t\r\0\x0B-") : string
     {
         return ucwords($string, $delimiters);
+=======
+    public static function ucwords($string, $delimiters = " \n\t\r\0\x0B-")
+    {
+        return preg_replace_callback(
+            '/[^' . preg_quote($delimiters, '/') . ']+/',
+            function($matches) {
+                return ucfirst($matches[0]);
+            },
+            $string
+        );
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
      * Clears Inflectors inflected value caches, and resets the inflection
      * rules to the initial values.
+<<<<<<< HEAD
      */
     public static function reset() : void
+=======
+     *
+     * @return void
+     */
+    public static function reset()
+>>>>>>> pantheon-drops-8/master
     {
         if (empty(self::$initialState)) {
             self::$initialState = get_class_vars('Inflector');
@@ -326,7 +447,11 @@ class Inflector
         }
 
         foreach (self::$initialState as $key => $val) {
+<<<<<<< HEAD
             if ($key !== 'initialState') {
+=======
+            if ($key != 'initialState') {
+>>>>>>> pantheon-drops-8/master
                 self::${$key} = $val;
             }
         }
@@ -346,6 +471,7 @@ class Inflector
      * ));
      * }}}
      *
+<<<<<<< HEAD
      * @param string  $type         The type of inflection, either 'plural' or 'singular'
      * @param array|iterable $rules An array of rules to be added.
      * @param boolean $reset        If true, will unset default inflections for all
@@ -354,6 +480,16 @@ class Inflector
      * @return void
      */
     public static function rules(string $type, iterable $rules, bool $reset = false) : void
+=======
+     * @param string  $type  The type of inflection, either 'plural' or 'singular'
+     * @param array   $rules An array of rules to be added.
+     * @param boolean $reset If true, will unset default inflections for all
+     *                       new rules that are being defined in $rules.
+     *
+     * @return void
+     */
+    public static function rules($type, $rules, $reset = false)
+>>>>>>> pantheon-drops-8/master
     {
         foreach ($rules as $rule => $pattern) {
             if ( ! is_array($pattern)) {
@@ -391,7 +527,11 @@ class Inflector
      *
      * @return string The word in plural form.
      */
+<<<<<<< HEAD
     public static function pluralize(string $word) : string
+=======
+    public static function pluralize($word)
+>>>>>>> pantheon-drops-8/master
     {
         if (isset(self::$cache['pluralize'][$word])) {
             return self::$cache['pluralize'][$word];
@@ -411,8 +551,13 @@ class Inflector
         }
 
         if (preg_match('/(.*)\\b(' . self::$plural['cacheIrregular'] . ')$/i', $word, $regs)) {
+<<<<<<< HEAD
             self::$cache['pluralize'][$word] = $regs[1] . $word[0] . substr(self::$plural['merged']['irregular'][strtolower($regs[2])], 1);
 
+=======
+            self::$cache['pluralize'][$word] = $regs[1] . substr($word, 0, 1) . substr(self::$plural['merged']['irregular'][strtolower($regs[2])], 1);
+            
+>>>>>>> pantheon-drops-8/master
             return self::$cache['pluralize'][$word];
         }
 
@@ -438,7 +583,11 @@ class Inflector
      *
      * @return string The word in singular form.
      */
+<<<<<<< HEAD
     public static function singularize(string $word) : string
+=======
+    public static function singularize($word)
+>>>>>>> pantheon-drops-8/master
     {
         if (isset(self::$cache['singularize'][$word])) {
             return self::$cache['singularize'][$word];
@@ -459,6 +608,7 @@ class Inflector
         }
 
         if (!isset(self::$singular['cacheUninflected']) || !isset(self::$singular['cacheIrregular'])) {
+<<<<<<< HEAD
             self::$singular['cacheUninflected'] = '(?:' . implode('|', self::$singular['merged']['uninflected']) . ')';
             self::$singular['cacheIrregular'] = '(?:' . implode('|', array_keys(self::$singular['merged']['irregular'])) . ')';
         }
@@ -466,6 +616,15 @@ class Inflector
         if (preg_match('/(.*)\\b(' . self::$singular['cacheIrregular'] . ')$/i', $word, $regs)) {
             self::$cache['singularize'][$word] = $regs[1] . $word[0] . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
 
+=======
+            self::$singular['cacheUninflected'] = '(?:' . join('|', self::$singular['merged']['uninflected']) . ')';
+            self::$singular['cacheIrregular'] = '(?:' . join('|', array_keys(self::$singular['merged']['irregular'])) . ')';
+        }
+
+        if (preg_match('/(.*)\\b(' . self::$singular['cacheIrregular'] . ')$/i', $word, $regs)) {
+            self::$cache['singularize'][$word] = $regs[1] . substr($word, 0, 1) . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
+            
+>>>>>>> pantheon-drops-8/master
             return self::$cache['singularize'][$word];
         }
 

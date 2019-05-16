@@ -226,10 +226,14 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
                     } elseif (self::METHOD_ARGUMENTS_TOKEN === $item) {
                         $this->skipMethodArgument($tokenIterator);
                     } elseif (self::DOMAIN_TOKEN === $item) {
+<<<<<<< HEAD
                         $domainToken = $this->getValue($tokenIterator);
                         if ('' !== $domainToken) {
                             $domain = $domainToken;
                         }
+=======
+                        $domain = $this->getValue($tokenIterator);
+>>>>>>> pantheon-drops-8/master
 
                         break;
                     } else {

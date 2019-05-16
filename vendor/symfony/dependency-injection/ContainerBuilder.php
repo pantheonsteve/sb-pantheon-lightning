@@ -1527,6 +1527,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
     }
 
     /**
+<<<<<<< HEAD
      * Removes bindings for a service.
      *
      * @param string $id The service identifier
@@ -1534,6 +1535,15 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * @internal
      */
     public function removeBindings($id)
+=======
+     * Adds a removed binding id.
+     *
+     * @param int $id
+     *
+     * @internal
+     */
+    public function addRemovedBindingIds($id)
+>>>>>>> pantheon-drops-8/master
     {
         if ($this->hasDefinition($id)) {
             foreach ($this->getDefinition($id)->getBindings() as $key => $binding) {

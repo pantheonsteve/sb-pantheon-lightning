@@ -1,14 +1,27 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-feed for the canonical source repository
  * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (https://www.zend.com)
  * @license   https://github.com/zendframework/zend-feed/blob/master/LICENSE.md New BSD License
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @link      http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+>>>>>>> pantheon-drops-8/master
  */
 
 namespace Zend\Feed\Reader\Extension\Podcast;
 
 use Zend\Feed\Reader\Extension;
 
+<<<<<<< HEAD
+=======
+/**
+*/
+>>>>>>> pantheon-drops-8/master
 class Entry extends Extension\AbstractEntry
 {
     /**
@@ -24,7 +37,11 @@ class Entry extends Extension\AbstractEntry
 
         $author = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:author)');
 
+<<<<<<< HEAD
         if (! $author) {
+=======
+        if (!$author) {
+>>>>>>> pantheon-drops-8/master
             $author = null;
         }
 
@@ -46,7 +63,11 @@ class Entry extends Extension\AbstractEntry
 
         $block = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:block)');
 
+<<<<<<< HEAD
         if (! $block) {
+=======
+        if (!$block) {
+>>>>>>> pantheon-drops-8/master
             $block = null;
         }
 
@@ -68,7 +89,11 @@ class Entry extends Extension\AbstractEntry
 
         $duration = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:duration)');
 
+<<<<<<< HEAD
         if (! $duration) {
+=======
+        if (!$duration) {
+>>>>>>> pantheon-drops-8/master
             $duration = null;
         }
 
@@ -90,7 +115,11 @@ class Entry extends Extension\AbstractEntry
 
         $explicit = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:explicit)');
 
+<<<<<<< HEAD
         if (! $explicit) {
+=======
+        if (!$explicit) {
+>>>>>>> pantheon-drops-8/master
             $explicit = null;
         }
 
@@ -102,25 +131,35 @@ class Entry extends Extension\AbstractEntry
     /**
      * Get the entry keywords
      *
+<<<<<<< HEAD
      * @deprecated since 2.10.0; itunes:keywords is no longer part of the
      *     iTunes podcast RSS specification.
+=======
+>>>>>>> pantheon-drops-8/master
      * @return string
      */
     public function getKeywords()
     {
+<<<<<<< HEAD
         trigger_error(
             'itunes:keywords has been deprecated in the iTunes podcast RSS specification,'
             . ' and should not be relied on.',
             \E_USER_DEPRECATED
         );
 
+=======
+>>>>>>> pantheon-drops-8/master
         if (isset($this->data['keywords'])) {
             return $this->data['keywords'];
         }
 
         $keywords = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:keywords)');
 
+<<<<<<< HEAD
         if (! $keywords) {
+=======
+        if (!$keywords) {
+>>>>>>> pantheon-drops-8/master
             $keywords = null;
         }
 
@@ -130,6 +169,7 @@ class Entry extends Extension\AbstractEntry
     }
 
     /**
+<<<<<<< HEAD
      * Get the entry title
      *
      * @return string
@@ -152,6 +192,8 @@ class Entry extends Extension\AbstractEntry
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Get the entry subtitle
      *
      * @return string
@@ -164,7 +206,11 @@ class Entry extends Extension\AbstractEntry
 
         $subtitle = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:subtitle)');
 
+<<<<<<< HEAD
         if (! $subtitle) {
+=======
+        if (!$subtitle) {
+>>>>>>> pantheon-drops-8/master
             $subtitle = null;
         }
 
@@ -186,7 +232,11 @@ class Entry extends Extension\AbstractEntry
 
         $summary = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:summary)');
 
+<<<<<<< HEAD
         if (! $summary) {
+=======
+        if (!$summary) {
+>>>>>>> pantheon-drops-8/master
             $summary = null;
         }
 
@@ -196,6 +246,7 @@ class Entry extends Extension\AbstractEntry
     }
 
     /**
+<<<<<<< HEAD
      * Get the entry image
      *
      * @return string
@@ -304,6 +355,8 @@ class Entry extends Extension\AbstractEntry
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * Register iTunes namespace
      *
      */

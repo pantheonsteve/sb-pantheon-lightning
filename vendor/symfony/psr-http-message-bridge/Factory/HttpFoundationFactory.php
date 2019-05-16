@@ -11,9 +11,14 @@
 
 namespace Symfony\Bridge\PsrHttpMessage\Factory;
 
+<<<<<<< HEAD
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
+=======
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+>>>>>>> pantheon-drops-8/master
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriInterface;
 use Symfony\Bridge\PsrHttpMessage\HttpFoundationFactoryInterface;
@@ -21,7 +26,10 @@ use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\StreamedResponse;
+=======
+>>>>>>> pantheon-drops-8/master
 
 /**
  * {@inheritdoc}
@@ -31,6 +39,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class HttpFoundationFactory implements HttpFoundationFactoryInterface
 {
     /**
+<<<<<<< HEAD
      * @var int The maximum output buffering size for each iteration when sending the response
      */
     private $responseBufferMaxLength;
@@ -41,11 +50,17 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
     }
 
     /**
+=======
+>>>>>>> pantheon-drops-8/master
      * {@inheritdoc}
      */
     public function createRequest(ServerRequestInterface $psrRequest)
     {
+<<<<<<< HEAD
         $server = [];
+=======
+        $server = array();
+>>>>>>> pantheon-drops-8/master
         $uri = $psrRequest->getUri();
 
         if ($uri instanceof UriInterface) {
@@ -60,7 +75,11 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
         $server = array_replace($server, $psrRequest->getServerParams());
 
         $parsedBody = $psrRequest->getParsedBody();
+<<<<<<< HEAD
         $parsedBody = \is_array($parsedBody) ? $parsedBody : [];
+=======
+        $parsedBody = is_array($parsedBody) ? $parsedBody : array();
+>>>>>>> pantheon-drops-8/master
 
         $request = new Request(
             $psrRequest->getQueryParams(),
@@ -85,7 +104,11 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
      */
     private function getFiles(array $uploadedFiles)
     {
+<<<<<<< HEAD
         $files = [];
+=======
+        $files = array();
+>>>>>>> pantheon-drops-8/master
 
         foreach ($uploadedFiles as $key => $value) {
             if ($value instanceof UploadedFileInterface) {
@@ -150,11 +173,16 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function createResponse(ResponseInterface $psrResponse, bool $streamed = false)
+=======
+    public function createResponse(ResponseInterface $psrResponse)
+>>>>>>> pantheon-drops-8/master
     {
         $cookies = $psrResponse->getHeader('Set-Cookie');
         $psrResponse = $psrResponse->withoutHeader('Set-Cookie');
 
+<<<<<<< HEAD
         if ($streamed) {
             $response = new StreamedResponse(
                 $this->createStreamedResponseCallback($psrResponse->getBody()),
@@ -169,6 +197,13 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
             );
         }
 
+=======
+        $response = new Response(
+            $psrResponse->getBody()->__toString(),
+            $psrResponse->getStatusCode(),
+            $psrResponse->getHeaders()
+        );
+>>>>>>> pantheon-drops-8/master
         $response->setProtocolVersion($psrResponse->getProtocolVersion());
 
         foreach ($cookies as $cookie) {
@@ -258,6 +293,7 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
             isset($samesite) ? $samesite : null
         );
     }
+<<<<<<< HEAD
 
     private function createStreamedResponseCallback(StreamInterface $body): callable
     {
@@ -277,4 +313,6 @@ class HttpFoundationFactory implements HttpFoundationFactoryInterface
             }
         };
     }
+=======
+>>>>>>> pantheon-drops-8/master
 }

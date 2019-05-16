@@ -58,7 +58,11 @@ class SetNode extends Node implements NodeCaptureInterface
         } else {
             if ($this->getAttribute('capture')) {
                 $compiler
+<<<<<<< HEAD
                     ->write("ob_start(function () { return ''; });\n")
+=======
+                    ->write("ob_start();\n")
+>>>>>>> pantheon-drops-8/master
                     ->subcompile($this->getNode('values'))
                 ;
             }

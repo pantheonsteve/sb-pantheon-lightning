@@ -1,13 +1,21 @@
 <?php
 /**
+<<<<<<< HEAD
  * @see       https://github.com/zendframework/zend-diactoros for the canonical source repository
  * @copyright Copyright (c) 2015-2017 Zend Technologies USA Inc. (http://www.zend.com)
+=======
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @see       http://github.com/zendframework/zend-diactoros for the canonical source repository
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
+>>>>>>> pantheon-drops-8/master
  * @license   https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md New BSD License
  */
 
 namespace Zend\Diactoros;
 
 use InvalidArgumentException;
+<<<<<<< HEAD
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 
@@ -32,6 +40,10 @@ use function strstr;
 
 use const E_WARNING;
 use const SEEK_SET;
+=======
+use RuntimeException;
+use Psr\Http\Message\StreamInterface;
+>>>>>>> pantheon-drops-8/master
 
 /**
  * Implementation of PSR HTTP streams
@@ -125,11 +137,15 @@ class Stream implements StreamInterface
         }
 
         $stats = fstat($this->resource);
+<<<<<<< HEAD
         if ($stats !== false) {
             return $stats['size'];
         }
 
         return null;
+=======
+        return $stats['size'];
+>>>>>>> pantheon-drops-8/master
     }
 
     /**
@@ -330,12 +346,17 @@ class Stream implements StreamInterface
 
         if (is_string($stream)) {
             set_error_handler(function ($e) use (&$error) {
+<<<<<<< HEAD
                 if ($e !== E_WARNING) {
                     return;
                 }
 
                 $error = $e;
             });
+=======
+                $error = $e;
+            }, E_WARNING);
+>>>>>>> pantheon-drops-8/master
             $resource = fopen($stream, $mode);
             restore_error_handler();
         }

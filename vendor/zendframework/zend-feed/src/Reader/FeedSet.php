@@ -41,6 +41,7 @@ class FeedSet extends ArrayObject
     {
         foreach ($links as $link) {
             if (strtolower($link->getAttribute('rel')) !== 'alternate'
+<<<<<<< HEAD
                 || ! $link->getAttribute('type') || ! $link->getAttribute('href')) {
                 continue;
             }
@@ -49,27 +50,44 @@ class FeedSet extends ArrayObject
             } elseif (! isset($this->atom) && $link->getAttribute('type') == 'application/atom+xml') {
                 $this->atom = $this->absolutiseUri(trim($link->getAttribute('href')), $uri);
             } elseif (! isset($this->rdf) && $link->getAttribute('type') == 'application/rdf+xml') {
+=======
+                || !$link->getAttribute('type') || !$link->getAttribute('href')) {
+                continue;
+            }
+            if (!isset($this->rss) && $link->getAttribute('type') == 'application/rss+xml') {
+                $this->rss = $this->absolutiseUri(trim($link->getAttribute('href')), $uri);
+            } elseif (!isset($this->atom) && $link->getAttribute('type') == 'application/atom+xml') {
+                $this->atom = $this->absolutiseUri(trim($link->getAttribute('href')), $uri);
+            } elseif (!isset($this->rdf) && $link->getAttribute('type') == 'application/rdf+xml') {
+>>>>>>> pantheon-drops-8/master
                 $this->rdf = $this->absolutiseUri(trim($link->getAttribute('href')), $uri);
             }
             $this[] = new static([
                 'rel' => 'alternate',
                 'type' => $link->getAttribute('type'),
                 'href' => $this->absolutiseUri(trim($link->getAttribute('href')), $uri),
+<<<<<<< HEAD
                 'title' => $link->getAttribute('title'),
+=======
+>>>>>>> pantheon-drops-8/master
             ]);
         }
     }
 
     /**
      *  Attempt to turn a relative URI into an absolute URI
+<<<<<<< HEAD
      *
      *  @param string $link
      *  @param string $uri OPTIONAL
      *  @return string|null absolutised link or null if invalid
+=======
+>>>>>>> pantheon-drops-8/master
      */
     protected function absolutiseUri($link, $uri = null)
     {
         $linkUri = Uri::factory($link);
+<<<<<<< HEAD
         if ($linkUri->isAbsolute()) {
             // invalid absolute link can not be recovered
             return $linkUri->isValid() ? $link : null;
@@ -91,10 +109,33 @@ class FeedSet extends ArrayObject
             return null;
         }
 
+=======
+        if (!$linkUri->isAbsolute() or !$linkUri->isValid()) {
+            if ($uri !== null) {
+                $uri = Uri::factory($uri);
+
+                if ($link[0] !== '/') {
+                    $link = $uri->getPath() . '/' . $link;
+                }
+
+                $link   = sprintf(
+                    '%s://%s/%s',
+                    ($uri->getScheme() ?: 'http'),
+                    $uri->getHost(),
+                    $this->canonicalizePath($link)
+                );
+
+                if (!Uri::factory($link)->isValid()) {
+                    $link = null;
+                }
+            }
+        }
+>>>>>>> pantheon-drops-8/master
         return $link;
     }
 
     /**
+<<<<<<< HEAD
      * Resolves scheme relative link to absolute
      *
      * @param string $link
@@ -134,6 +175,9 @@ class FeedSet extends ArrayObject
      *
      * @param string $path
      * @return string
+=======
+     *  Canonicalize relative path
+>>>>>>> pantheon-drops-8/master
      */
     protected function canonicalizePath($path)
     {
@@ -161,8 +205,13 @@ class FeedSet extends ArrayObject
      */
     public function offsetGet($offset)
     {
+<<<<<<< HEAD
         if ($offset == 'feed' && ! $this->offsetExists('feed')) {
             if (! $this->offsetExists('href')) {
+=======
+        if ($offset == 'feed' && !$this->offsetExists('feed')) {
+            if (!$this->offsetExists('href')) {
+>>>>>>> pantheon-drops-8/master
                 return;
             }
             $feed = Reader::import($this->offsetGet('href'));

@@ -140,27 +140,39 @@ class FilesystemLoader implements LoaderInterface, ExistsLoaderInterface, Source
     {
         @trigger_error(sprintf('Calling "getSource" on "%s" is deprecated since 1.27. Use getSourceContext() instead.', \get_class($this)), E_USER_DEPRECATED);
 
+<<<<<<< HEAD
         if (null === ($path = $this->findTemplate($name)) || false === $path) {
             return '';
         }
 
         return file_get_contents($path);
+=======
+        return file_get_contents($this->findTemplate($name));
+>>>>>>> pantheon-drops-8/master
     }
 
     public function getSourceContext($name)
     {
+<<<<<<< HEAD
         if (null === ($path = $this->findTemplate($name)) || false === $path) {
             return new Source('', $name, '');
         }
+=======
+        $path = $this->findTemplate($name);
+>>>>>>> pantheon-drops-8/master
 
         return new Source(file_get_contents($path), $name, $path);
     }
 
     public function getCacheKey($name)
     {
+<<<<<<< HEAD
         if (null === ($path = $this->findTemplate($name)) || false === $path) {
             return '';
         }
+=======
+        $path = $this->findTemplate($name);
+>>>>>>> pantheon-drops-8/master
         $len = \strlen($this->rootPath);
         if (0 === strncmp($this->rootPath, $path, $len)) {
             return substr($path, $len);
@@ -178,8 +190,13 @@ class FilesystemLoader implements LoaderInterface, ExistsLoaderInterface, Source
         }
 
         try {
+<<<<<<< HEAD
             return null !== ($path = $this->findTemplate($name, false)) && false !== $path;
         } catch (LoaderError $e) {
+=======
+            return false !== $this->findTemplate($name, false);
+        } catch (LoaderError $exception) {
+>>>>>>> pantheon-drops-8/master
             @trigger_error(sprintf('In %s::findTemplate(), you must accept a second argument that when set to "false" returns "false" instead of throwing an exception. Not supporting this argument is deprecated since version 1.27.', \get_class($this)), E_USER_DEPRECATED);
 
             return false;
@@ -188,6 +205,7 @@ class FilesystemLoader implements LoaderInterface, ExistsLoaderInterface, Source
 
     public function isFresh($name, $time)
     {
+<<<<<<< HEAD
         // false support to be removed in 3.0
         if (null === ($path = $this->findTemplate($name)) || false === $path) {
             return false;
@@ -204,6 +222,11 @@ class FilesystemLoader implements LoaderInterface, ExistsLoaderInterface, Source
      * @return string|false      The template name or false
      * @return string|false|null The template name or false/null
      */
+=======
+        return filemtime($this->findTemplate($name)) < $time;
+    }
+
+>>>>>>> pantheon-drops-8/master
     protected function findTemplate($name)
     {
         $throw = \func_num_args() > 1 ? func_get_arg(1) : true;

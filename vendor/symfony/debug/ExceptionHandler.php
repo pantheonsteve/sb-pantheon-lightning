@@ -36,7 +36,11 @@ class ExceptionHandler
     private $caughtLength;
     private $fileLinkFormat;
 
+<<<<<<< HEAD
     public function __construct(bool $debug = true, string $charset = null, $fileLinkFormat = null)
+=======
+    public function __construct($debug = true, $charset = null, $fileLinkFormat = null)
+>>>>>>> pantheon-drops-8/master
     {
         $this->debug = $debug;
         $this->charset = $charset ?: ini_get('default_charset') ?: 'UTF-8';
@@ -142,7 +146,11 @@ class ExceptionHandler
         $this->caughtBuffer = null;
 
         try {
+<<<<<<< HEAD
             ($this->handler)($exception);
+=======
+            \call_user_func($this->handler, $exception);
+>>>>>>> pantheon-drops-8/master
             $this->caughtLength = $caughtLength;
         } catch (\Exception $e) {
             if (!$caughtLength) {
@@ -253,8 +261,12 @@ EOF
         } catch (\Exception $e) {
             // something nasty happened and we cannot throw an exception anymore
             if ($this->debug) {
+<<<<<<< HEAD
                 $e = FlattenException::create($e);
                 $title = sprintf('Exception thrown when handling an exception (%s: %s)', $e->getClass(), $this->escapeHtml($e->getMessage()));
+=======
+                $title = sprintf('Exception thrown when handling an exception (%s: %s)', \get_class($e), $this->escapeHtml($e->getMessage()));
+>>>>>>> pantheon-drops-8/master
             } else {
                 $title = 'Whoops, looks like something went wrong.';
             }

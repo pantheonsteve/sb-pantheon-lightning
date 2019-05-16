@@ -7,10 +7,26 @@ cache:
         - vendor
         - $HOME/.composer/cache/files
 
+<<<<<<< HEAD
+=======
+php:
+    - 5.4
+    - 5.5
+    - 5.6
+    - 7.0
+    - 7.1
+    - 7.2
+    - 7.3
+
+>>>>>>> pantheon-drops-8/master
 env:
     - TWIG_EXT=no
 
 before_install:
+<<<<<<< HEAD
+=======
+    # turn off XDebug
+>>>>>>> pantheon-drops-8/master
     - phpenv config-rm xdebug.ini || return 0
 
 install:
@@ -22,6 +38,7 @@ before_script:
 
 script: ./vendor/bin/simple-phpunit
 
+<<<<<<< HEAD
 jobs:
     fast_finish: true
     include:
@@ -42,3 +59,14 @@ jobs:
         - stage: integration tests
           php: 7.3
           script: ./drupal_test.sh
+=======
+matrix:
+    fast_finish: true
+    include:
+        - php: 5.4
+          env: TWIG_EXT=yes
+        - php: 5.5
+          env: TWIG_EXT=yes
+        - php: 5.6
+          env: TWIG_EXT=yes
+>>>>>>> pantheon-drops-8/master

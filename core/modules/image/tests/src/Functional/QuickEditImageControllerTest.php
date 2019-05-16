@@ -3,8 +3,11 @@
 namespace Drupal\Tests\image\Functional;
 
 use Drupal\Component\Serialization\Json;
+<<<<<<< HEAD
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
+=======
+>>>>>>> pantheon-drops-8/master
 use Drupal\Tests\BrowserTestBase;
 use Drupal\Tests\image\Kernel\ImageFieldCreationTrait;
 use Drupal\Tests\TestFileCreationTrait;
@@ -165,6 +168,7 @@ class QuickEditImageControllerTest extends BrowserTestBase {
   }
 
   /**
+<<<<<<< HEAD
    * Test the latest revision of an entity is loaded for editing.
    */
   public function testLatestRevisionLoaded() {
@@ -238,6 +242,8 @@ class QuickEditImageControllerTest extends BrowserTestBase {
   }
 
   /**
+=======
+>>>>>>> pantheon-drops-8/master
    * Uploads an image using the image module's Quick Edit route.
    *
    * @param object $image

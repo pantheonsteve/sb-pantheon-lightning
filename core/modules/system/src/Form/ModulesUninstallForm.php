@@ -116,15 +116,21 @@ class ModulesUninstallForm extends FormBase {
       return $form;
     }
 
+<<<<<<< HEAD
     $profiles = \Drupal::service('extension.list.profile')->getAncestors();
 
+=======
+>>>>>>> pantheon-drops-8/master
     // Sort all modules by their name.
     uasort($uninstallable, 'system_sort_modules_by_info_name');
     $validation_reasons = $this->moduleInstaller->validateUninstall(array_keys($uninstallable));
 
+<<<<<<< HEAD
     // Remove any profiles from the list.
     $uninstallable = array_diff_key($uninstallable, $profiles);
 
+=======
+>>>>>>> pantheon-drops-8/master
     $form['uninstall'] = ['#tree' => TRUE];
     foreach ($uninstallable as $module_key => $module) {
       $name = $module->info['name'] ?: $module->getName();
@@ -145,8 +151,12 @@ class ModulesUninstallForm extends FormBase {
         $form['uninstall'][$module->getName()]['#disabled'] = TRUE;
       }
       // All modules which depend on this one must be uninstalled first, before
+<<<<<<< HEAD
       // we can allow this module to be uninstalled. (Installation profiles are
       // excluded from this list.)
+=======
+      // we can allow this module to be uninstalled.
+>>>>>>> pantheon-drops-8/master
       foreach (array_keys($module->required_by) as $dependent) {
         if (drupal_get_installed_schema_version($dependent) != SCHEMA_UNINSTALLED) {
           $name = isset($modules[$dependent]->info['name']) ? $modules[$dependent]->info['name'] : $dependent;

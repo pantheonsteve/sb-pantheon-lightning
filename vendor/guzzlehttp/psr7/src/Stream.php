@@ -24,11 +24,19 @@ class Stream implements StreamInterface
             'r' => true, 'w+' => true, 'r+' => true, 'x+' => true, 'c+' => true,
             'rb' => true, 'w+b' => true, 'r+b' => true, 'x+b' => true,
             'c+b' => true, 'rt' => true, 'w+t' => true, 'r+t' => true,
+<<<<<<< HEAD
             'x+t' => true, 'c+t' => true, 'a+' => true, 'rb+' => true,
         ],
         'write' => [
             'w' => true, 'w+' => true, 'rw' => true, 'r+' => true, 'x+' => true,
             'c+' => true, 'wb' => true, 'w+b' => true, 'r+b' => true, 'rb+' => true,
+=======
+            'x+t' => true, 'c+t' => true, 'a+' => true
+        ],
+        'write' => [
+            'w' => true, 'w+' => true, 'rw' => true, 'r+' => true, 'x+' => true,
+            'c+' => true, 'wb' => true, 'w+b' => true, 'r+b' => true,
+>>>>>>> pantheon-drops-8/master
             'x+b' => true, 'c+b' => true, 'w+t' => true, 'r+t' => true,
             'x+t' => true, 'c+t' => true, 'a' => true, 'a+' => true
         ]
@@ -70,6 +78,18 @@ class Stream implements StreamInterface
         $this->uri = $this->getMetadata('uri');
     }
 
+<<<<<<< HEAD
+=======
+    public function __get($name)
+    {
+        if ($name == 'stream') {
+            throw new \RuntimeException('The stream is detached');
+        }
+
+        throw new \BadMethodCallException('No value for ' . $name);
+    }
+
+>>>>>>> pantheon-drops-8/master
     /**
      * Closes the stream when the destructed
      */
@@ -90,10 +110,13 @@ class Stream implements StreamInterface
 
     public function getContents()
     {
+<<<<<<< HEAD
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         $contents = stream_get_contents($this->stream);
 
         if ($contents === false) {
@@ -168,19 +191,26 @@ class Stream implements StreamInterface
 
     public function eof()
     {
+<<<<<<< HEAD
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
         }
 
         return feof($this->stream);
+=======
+        return !$this->stream || feof($this->stream);
+>>>>>>> pantheon-drops-8/master
     }
 
     public function tell()
     {
+<<<<<<< HEAD
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
         }
 
+=======
+>>>>>>> pantheon-drops-8/master
         $result = ftell($this->stream);
 
         if ($result === false) {
@@ -197,6 +227,7 @@ class Stream implements StreamInterface
 
     public function seek($offset, $whence = SEEK_SET)
     {
+<<<<<<< HEAD
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
         }
@@ -204,6 +235,11 @@ class Stream implements StreamInterface
             throw new \RuntimeException('Stream is not seekable');
         }
         if (fseek($this->stream, $offset, $whence) === -1) {
+=======
+        if (!$this->seekable) {
+            throw new \RuntimeException('Stream is not seekable');
+        } elseif (fseek($this->stream, $offset, $whence) === -1) {
+>>>>>>> pantheon-drops-8/master
             throw new \RuntimeException('Unable to seek to stream position '
                 . $offset . ' with whence ' . var_export($whence, true));
         }
@@ -211,9 +247,12 @@ class Stream implements StreamInterface
 
     public function read($length)
     {
+<<<<<<< HEAD
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
         }
+=======
+>>>>>>> pantheon-drops-8/master
         if (!$this->readable) {
             throw new \RuntimeException('Cannot read from non-readable stream');
         }
@@ -235,9 +274,12 @@ class Stream implements StreamInterface
 
     public function write($string)
     {
+<<<<<<< HEAD
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
         }
+=======
+>>>>>>> pantheon-drops-8/master
         if (!$this->writable) {
             throw new \RuntimeException('Cannot write to a non-writable stream');
         }

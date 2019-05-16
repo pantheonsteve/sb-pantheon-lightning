@@ -32,7 +32,11 @@ class AtomDeleted extends Renderer\AbstractRenderer implements Renderer\Renderer
     /**
      * Render atom entry
      *
+<<<<<<< HEAD
      * @return \Zend\Feed\Writer\Renderer\Entry\AtomDeleted
+=======
+     * @return \Zend\Feed\Writer\Renderer\Entry\Atom
+>>>>>>> pantheon-drops-8/master
      */
     public function render()
     {
@@ -57,11 +61,17 @@ class AtomDeleted extends Renderer\AbstractRenderer implements Renderer\Renderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setComment(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         if (! $this->getDataContainer()->getComment()) {
+=======
+    protected function _setComment(DOMDocument $dom, DOMElement $root)
+    {
+        if (!$this->getDataContainer()->getComment()) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $c = $dom->createElement('at:comment');
@@ -78,12 +88,19 @@ class AtomDeleted extends Renderer\AbstractRenderer implements Renderer\Renderer
      * @param  DOMElement $root
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     protected function _setBy(DOMDocument $dom, DOMElement $root)
     {
         // @codingStandardsIgnoreEnd
         $data = $this->container->getBy();
         if ((! $data || empty($data))) {
+=======
+    protected function _setBy(DOMDocument $dom, DOMElement $root)
+    {
+        $data = $this->container->getBy();
+        if ((!$data || empty($data))) {
+>>>>>>> pantheon-drops-8/master
             return;
         }
         $author = $this->dom->createElement('at:by');

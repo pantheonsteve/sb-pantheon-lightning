@@ -160,7 +160,11 @@ abstract class AbstractRenderer implements RendererInterface
      *
      * @return void
      */
+<<<<<<< HEAD
     // @codingStandardsIgnoreStart
     abstract protected function _appendNamespaces();
     // @codingStandardsIgnoreEnd
+=======
+    abstract protected function _appendNamespaces();
+>>>>>>> pantheon-drops-8/master
 }
